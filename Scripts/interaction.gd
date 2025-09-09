@@ -17,11 +17,8 @@ func _ready() -> void:
 		enemies_parent.add_child(enemi)
 		enemi.position.x += pos
 		pos += 200
-	
-	#var goblin = goblin_scene.instantiate()
-	#add_child(goblin)
-	#goblin.position.y -= 300
 
 func end_turn():
 	for enemy in enemies_parent.get_children():
 		enemy.start_turn()
+	Player.start_turn()

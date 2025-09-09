@@ -25,6 +25,7 @@ func die():
 	self.queue_free()
 
 func start_turn():
+	super()
 	var chosen_potion = potions.pick_random()
 	#animation
 	var potion_ingredients = chosen_potion.ingredients

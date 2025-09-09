@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xwd75vy5re77"]
+[gd_scene load_steps=12 format=3 uid="uid://xwd75vy5re77"]
 
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/hand_manager.gd" id="1_287d8"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card.tscn" id="2_14rvc"]
@@ -8,6 +8,9 @@
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Ingredients/heart_ing.tres" id="7_hxaw1"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Ingredients/ice_ing.tres" id="7_sivyo"]
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Ingredients/poison.tres" id="8_8a75f"]
+[ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Sprites/temporary_art/potion.aseprite" id="9_8a75f"]
+[ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Sprites/temporary_art/potion_bar_empty.aseprite" id="10_82ff2"]
+[ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Sprites/temporary_art/potion_bar.aseprite" id="11_s1ioh"]
 
 [node name="hand" type="Control"]
 layout_mode = 3
@@ -72,13 +75,26 @@ offset_right = 117.0
 offset_bottom = -162.0
 text = "throw to self"
 
-[node name="mana" type="HBoxContainer" parent="."]
+[node name="potion_sprite" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -796.0
-offset_top = 150.0
-offset_right = 56.0
-offset_bottom = 196.0
-alignment = 1
+offset_left = -288.0
+offset_top = -30.0
+offset_right = -280.0
+offset_bottom = -19.0
+scale = Vector2(10, 10)
+texture = ExtResource("9_8a75f")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -618.0
+offset_top = 87.0
+offset_right = -538.0
+offset_bottom = 91.0
+scale = Vector2(7, 7)
+max_value = 5.0
+rounded = true
+texture_under = ExtResource("10_82ff2")
+texture_progress = ExtResource("11_s1ioh")
 
 [connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
 [connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]

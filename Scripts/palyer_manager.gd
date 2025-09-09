@@ -4,13 +4,19 @@ extends Entity
 @export var level = 0
 @export var xp = 0
 
+@export var max_mana = 5
+var mana = 5
+
 @onready var info: Label = $info
 @onready var burn_label: Label = $burn/Label
 @onready var poison_label: Label = $posion/Label
 @onready var rejuv_label: Label = $rejuv/Label
 
-var potion_bars = 5
 var xp_needed = 10
+
+func start_turn():
+	super()
+	mana = max_mana
 
 func _process(delta: float) -> void:
 	if xp >= xp_needed:

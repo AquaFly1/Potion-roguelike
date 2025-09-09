@@ -9,27 +9,15 @@ var selected_card: Card
 var cards: Array[Card]
 
 var has_potion = false
+@onready var potion_sprite: TextureRect = $potion_sprite
 
-#mana
-var mana: int = Player.potion_bars
-
-@onready var mana_container: HBoxContainer = $mana
-
-var mana_texture = load("res://Sprites/temporary_art/potion_bar.aseprite")
-var mana_empty = load("res://Sprites/temporary_art/potion_bar_empty.aseprite")
+@onready var mana_bar: TextureProgressBar = $TextureProgressBar
 
 @export var deck: Array[Ingredient]
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient]
 
 func _ready() -> void:
-	
-	for i in mana:
-		var mana_bar = TextureRect.new()
-		mana_container.add_child(mana_bar)
-		mana_bar.texture = mana_texture
-		mana_bar.custom_minimum_size.x = 100
-	
 	Game.card_selected.connect(on_selected_card)
 	deck.shuffle()
 	use_deck = deck.duplicate()
@@ -76,28 +64,39 @@ func _on_draw_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	if has_potion:
-		if selected_card:
-			potion.append(selected_card.ingredient)
-			remove_card(selected_card)
-			mana -= 1
+		if Player.mana > 0:
+			if selected_card:
+				potion.append(selected_card.ingredient)
+				remove_card(selected_card)
+				Player.mana -= 1
 
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
 		Game.current_enemy.take_potion(potion)
 		potion = []
+		has_potion = false
 
 func _on_end_turn_pressed() -> void:
 	Game.end_turn.emit()
+	has_potion = false
 
 
 func _on_throw_self_pressed() -> void:
 	Player.take_potion(potion)
-	print(potion, Player.health)
 	potion = []
+	has_potion = false
 	
 
 
 func _on_get_potion_pressed() -> void:
-	if has_potion == false:
-		mana -= 1
-		has_potion = true
+	if Player.mana > 0:
+		if has_potion == false:
+			Player.mana -= 1
+			has_potion = true
+
+func _process(delta: float) -> void:
+	mana_bar.value = Player.mana
+	if has_potion:
+		potion_sprite.visible = true
+	else:
+		potion_sprite.visible = false

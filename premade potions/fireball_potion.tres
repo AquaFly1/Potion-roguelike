@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://bgy0mnllkauw2"]
+
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="1_h7meg"]
+[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/potion.gd" id="2_tnyaf"]
+[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Ingredients/bois_ing.tres" id="2_w0yt7"]
+[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Ingredients/etincelle_ing.tres" id="3_07d4y"]
+
+[resource]
+script = ExtResource("2_tnyaf")
+ingredients = Array[ExtResource("1_h7meg")]([ExtResource("2_w0yt7"), ExtResource("3_07d4y")])
+metadata/_custom_type_script = "uid://dot6hntkybv0w"

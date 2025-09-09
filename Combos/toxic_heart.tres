@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Combo" load_steps=6 format=3 uid="uid://dlvjxfw27owt2"]
+
+[ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/Combo.gd" id="1_2f560"]
+[ext_resource type="Resource" uid="uid://cvnw2m4qh74b7" path="res://Combos/heal.tres" id="2_irs2g"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="2_wyu8r"]
+[ext_resource type="Resource" uid="uid://dvwafr5064vxy" path="res://Tags/heart_tag.tres" id="4_3xo80"]
+[ext_resource type="Resource" uid="uid://bd3x5epqsyy7k" path="res://Tags/poison_tag.tres" id="5_71xbp"]
+
+[resource]
+script = ExtResource("1_2f560")
+name = "toxic heart"
+tags_needed = Array[ExtResource("2_wyu8r")]([ExtResource("4_3xo80"), ExtResource("5_71xbp")])
+combos_removed = Array[ExtResource("1_2f560")]([ExtResource("2_irs2g")])
+dmg = 0
+burn = 0
+poison = 2
+rejuv = 0
+heal = 3
+metadata/_custom_type_script = "uid://dr6idhc60c460"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg651b3jwwuqk"]
+
+[ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/goblin.tscn" id="1_q35ui"]
+[ext_resource type="Script" uid="uid://cv0yp1nlcemhy" path="res://Scripts/interaction.gd" id="1_qhmss"]
+[ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="2_msng8"]
+[ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/hand_manager.tscn" id="3_msng8"]
+
+[node name="interaction" type="Node2D"]
+script = ExtResource("1_qhmss")
+goblin_scene = ExtResource("1_q35ui")
+enemies = Array[PackedScene]([ExtResource("1_q35ui"), ExtResource("1_q35ui"), ExtResource("1_q35ui")])
+
+[node name="Player" parent="." instance=ExtResource("2_msng8")]
+position = Vector2(-2, 5)
+
+[node name="hand" parent="." instance=ExtResource("3_msng8")]
+offset_left = 736.0
+offset_top = 311.0
+offset_right = 736.0
+offset_bottom = 311.0
+
+[node name="enemies_parent" type="Node" parent="."]

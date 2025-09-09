@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://xwd75vy5re77"]
+
+[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/hand_manager.gd" id="1_287d8"]
+[ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card.tscn" id="2_14rvc"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="3_ko15p"]
+[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Ingredients/bois_ing.tres" id="3_rbqwa"]
+[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Ingredients/etincelle_ing.tres" id="5_hxaw1"]
+[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Ingredients/heart_ing.tres" id="7_hxaw1"]
+[ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Ingredients/ice_ing.tres" id="7_sivyo"]
+[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Ingredients/poison.tres" id="8_8a75f"]
+
+[node name="hand" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 912.0
+offset_top = 429.0
+offset_right = -240.0
+offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_287d8")
+card_scene = ExtResource("2_14rvc")
+deck = Array[ExtResource("3_ko15p")]([ExtResource("3_rbqwa"), ExtResource("3_rbqwa"), ExtResource("5_hxaw1"), ExtResource("5_hxaw1"), ExtResource("7_sivyo"), ExtResource("7_hxaw1"), ExtResource("7_hxaw1"), ExtResource("8_8a75f"), ExtResource("8_8a75f")])
+
+[node name="draw" type="Button" parent="."]
+layout_mode = 0
+offset_left = -555.0
+offset_top = -139.0
+offset_right = -355.0
+offset_bottom = -39.0
+text = "draw"
+
+[node name="get_potion" type="Button" parent="."]
+layout_mode = 0
+offset_left = -297.0
+offset_top = -266.0
+offset_right = -97.0
+offset_bottom = -166.0
+text = "get potion"
+
+[node name="play" type="Button" parent="."]
+layout_mode = 0
+offset_left = -319.0
+offset_top = -144.0
+offset_right = -119.0
+offset_bottom = -44.0
+text = "play"
+
+[node name="throw_pot" type="Button" parent="."]
+layout_mode = 0
+offset_left = -81.0
+offset_top = -140.0
+offset_right = 119.0
+offset_bottom = -40.0
+text = "throw potion"
+
+[node name="end_turn" type="Button" parent="."]
+layout_mode = 0
+offset_left = -501.0
+offset_top = -4.0
+offset_right = -301.0
+offset_bottom = 96.0
+text = "end turn"
+
+[node name="throw_self" type="Button" parent="."]
+layout_mode = 0
+offset_left = -83.0
+offset_top = -262.0
+offset_right = 117.0
+offset_bottom = -162.0
+text = "throw to self"
+
+[node name="mana" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -796.0
+offset_top = 150.0
+offset_right = 56.0
+offset_bottom = 196.0
+alignment = 1
+
+[connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
+[connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]
+[connection signal="pressed" from="end_turn" to="." method="_on_end_turn_pressed"]
+[connection signal="pressed" from="throw_self" to="." method="_on_throw_self_pressed"]

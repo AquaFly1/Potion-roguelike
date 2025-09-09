@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://ccbgrr0ka2q11"]
+
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="1_2j0qd"]
+[ext_resource type="Texture2D" uid="uid://onlegdf0n1m4" path="res://Sprites/temporary_art/poison_card.aseprite" id="2_77mcx"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="2_86bsn"]
+[ext_resource type="Resource" uid="uid://bd3x5epqsyy7k" path="res://Tags/poison_tag.tres" id="4_nuxnh"]
+
+[resource]
+script = ExtResource("1_2j0qd")
+name = "Poison"
+tags = Array[ExtResource("2_86bsn")]([ExtResource("4_nuxnh")])
+sprite = ExtResource("2_77mcx")
+metadata/_custom_type_script = "uid://b34khk8m7t8aq"

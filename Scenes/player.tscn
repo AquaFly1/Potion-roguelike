@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxuteeu2gi31u"]
+
+[ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/palyer_manager.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Sprites/temporary_art/white_square.aseprite" id="2_6t5aa"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_cvnsp")
+gold = 20
+
+[node name="info" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 565.0
+offset_right = 107.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 60
+text = "100"
+
+[node name="burn" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -28.0
+offset_top = 103.0
+offset_right = 12.0
+offset_bottom = 143.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="burn"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 110.0
+offset_right = 51.0
+offset_bottom = 150.0
+texture = ExtResource("2_6t5aa")
+
+[node name="Label" type="Label" parent="burn"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 121.0
+offset_right = 65.0
+offset_bottom = 144.0
+text = "0"
+
+[node name="posion" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 158.0
+offset_top = 111.0
+offset_right = 198.0
+offset_bottom = 151.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="posion"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 108.0
+offset_right = 46.0
+offset_bottom = 148.0
+texture = ExtResource("2_6t5aa")
+
+[node name="Label" type="Label" parent="posion"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 120.0
+offset_right = 61.0
+offset_bottom = 143.0
+text = "0"
+
+[node name="rejuv" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 344.0
+offset_top = 110.0
+offset_right = 384.0
+offset_bottom = 150.0
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="rejuv"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 108.0
+offset_right = 43.0
+offset_bottom = 148.0
+texture = ExtResource("2_6t5aa")
+
+[node name="Label" type="Label" parent="rejuv"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 117.0
+offset_right = 60.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"

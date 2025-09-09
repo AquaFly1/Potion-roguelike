@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl5187ltkgw2i"]
+
+[ext_resource type="Script" uid="uid://ckjxrktq3e26r" path="res://Scripts/Card.gd" id="1_3p273"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="2_wejov"]
+[ext_resource type="Texture2D" uid="uid://dudoidhqi2x68" path="res://Sprites/SparkRock.aseprite" id="3_h8wm0"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="4_c6tr3"]
+[ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Tags/etincelle_tag.tres" id="5_1geux"]
+[ext_resource type="Resource" uid="uid://cfvm3alspeqe4" path="res://Tags/bois_tag.tres" id="6_13sua"]
+
+[sub_resource type="Resource" id="Resource_pbuqb"]
+script = ExtResource("4_c6tr3")
+name = "feu"
+metadata/_custom_type_script = "uid://tjt7fxkcbbpx"
+
+[sub_resource type="Resource" id="Resource_f3ywt"]
+script = ExtResource("2_wejov")
+name = "Feux"
+tags = Array[ExtResource("4_c6tr3")]([ExtResource("5_1geux"), ExtResource("6_13sua"), SubResource("Resource_pbuqb")])
+sprite = ExtResource("3_h8wm0")
+metadata/_custom_type_script = "uid://b34khk8m7t8aq"
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 140.0
+script = ExtResource("1_3p273")
+ingredient = SubResource("Resource_f3ywt")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 140.0
+texture = ExtResource("3_h8wm0")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 140.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://cklr6xig7l0v"]
+
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="1_h4gw7"]
+[ext_resource type="Texture2D" uid="uid://dgra05ueuc6is" path="res://Sprites/temporary_art/ice_card.aseprite" id="2_ek1pm"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="2_lk13m"]
+[ext_resource type="Resource" uid="uid://bh67rgfjwakd0" path="res://Tags/ice_tag.tres" id="3_lk13m"]
+
+[resource]
+script = ExtResource("1_h4gw7")
+name = "Glace"
+tags = Array[ExtResource("2_lk13m")]([ExtResource("3_lk13m")])
+sprite = ExtResource("2_ek1pm")
+metadata/_custom_type_script = "uid://b34khk8m7t8aq"

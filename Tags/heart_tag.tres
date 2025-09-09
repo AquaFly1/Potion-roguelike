@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=2 format=3 uid="uid://dvwafr5064vxy"]
+
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="1_82xus"]
+
+[resource]
+script = ExtResource("1_82xus")
+name = "heart"
+metadata/_custom_type_script = "uid://tjt7fxkcbbpx"

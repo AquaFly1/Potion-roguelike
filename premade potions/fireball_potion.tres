@@ -8,4 +8,6 @@
 [resource]
 script = ExtResource("2_tnyaf")
 ingredients = Array[ExtResource("1_h7meg")]([ExtResource("2_w0yt7"), ExtResource("3_07d4y")])
+heal = false
+name = "Fireball"
 metadata/_custom_type_script = "uid://dot6hntkybv0w"

@@ -9,6 +9,7 @@ class_name Enemy
 @export var gold_range: Array[int]
 @export var xp_given = 0
 
+var chosen_potion = null
 @export var potions: Array[Potion]
 
 @onready var burn_label: Label = $burn/Label
@@ -16,8 +17,13 @@ class_name Enemy
 @onready var rejuv_label: Label = $rejuv/Label
 @onready var health_label: Label = $health/Label
 
+@onready var info_panel: Panel = $info_panel
+@onready var potion_name: Label = $info_panel/potion_name
+@onready var potion_ingredients: Label = $info_panel/potion_ingredients
+
 func _ready() -> void:
 	entity_sprite.texture = sprite
+	chosen_potion = potions.pick_random()
 
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
@@ -26,18 +32,40 @@ func die():
 
 func start_turn():
 	super()
-	var chosen_potion = potions.pick_random()
+	
 	#animation
+	
 	var potion_ingredients = chosen_potion.ingredients
-	Player.take_potion(potion_ingredients)
+	
+	if chosen_potion.heal == true:
+		self.take_potion(potion_ingredients)
+	else:
+		Player.take_potion(potion_ingredients)
+	chosen_potion = potions.pick_random()
 
 
 
 func _process(delta: float) -> void:
+	super(delta)
 	burn_label.text = str(burn)
 	poison_label.text = str(poison)
 	rejuv_label.text = str(rejuv)
 	health_label.text = str(health)
+	if chosen_potion:
+		potion_name.text = chosen_potion.name
+		var ingredient_text: String
+		for ing in chosen_potion.ingredients:
+			ingredient_text += str(ing) + "\n"
+		potion_ingredients.text = ingredient_text
+		
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
+
+
+func _on_button_mouse_entered() -> void:
+	info_panel.scale = Vector2(1,1)
+
+
+func _on_button_mouse_exited() -> void:
+	info_panel.scale = Vector2(0,0)

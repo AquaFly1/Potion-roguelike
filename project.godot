@@ -24,6 +24,10 @@ Player="*res://Scripts/palyer_manager.gd"
 Game="*res://Scenes/game_manager.tscn"
 ComboMan="*res://Scripts/combo_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")

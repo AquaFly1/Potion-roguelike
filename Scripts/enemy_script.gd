@@ -4,7 +4,7 @@ class_name Enemy
 
 @export var sprite: Texture
 
-@onready var entity_sprite: Sprite2D = $Sprite2D
+#@onready var entity_sprite: Sprite2D = $Sprite2D
 
 @export var gold_range: Array[int]
 @export var xp_given = 0
@@ -22,7 +22,7 @@ var chosen_potion = null
 @onready var potion_ingredients: Label = $info_panel/potion_ingredients
 
 func _ready() -> void:
-	entity_sprite.texture = sprite
+#6	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
 func die():

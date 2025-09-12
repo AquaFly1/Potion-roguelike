@@ -27,13 +27,13 @@ script = ExtResource("1_287d8")
 card_scene = ExtResource("2_14rvc")
 deck = Array[ExtResource("3_ko15p")]([ExtResource("3_rbqwa"), ExtResource("3_rbqwa"), ExtResource("5_hxaw1"), ExtResource("5_hxaw1"), ExtResource("7_sivyo"), ExtResource("7_hxaw1"), ExtResource("7_hxaw1"), ExtResource("8_8a75f"), ExtResource("8_8a75f")])
 
-[node name="draw" type="Button" parent="."]
+[node name="discard" type="Button" parent="."]
 layout_mode = 0
 offset_left = -555.0
 offset_top = -139.0
 offset_right = -355.0
 offset_bottom = -39.0
-text = "draw"
+text = "discard"
 
 [node name="get_potion" type="Button" parent="."]
 layout_mode = 0
@@ -96,7 +96,7 @@ rounded = true
 texture_under = ExtResource("10_82ff2")
 texture_progress = ExtResource("11_s1ioh")
 
-[connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
+[connection signal="pressed" from="discard" to="." method="_on_discard_pressed"]
 [connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]

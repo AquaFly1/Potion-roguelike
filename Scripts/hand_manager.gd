@@ -54,14 +54,6 @@ func _update_hand_layout():
 func on_selected_card(card):
 	selected_card = card
 
-func _on_draw_pressed() -> void:
-	if cards.size() < hand_size:
-		if use_deck != []:
-			add_card(use_deck[0])
-		else:
-			deck.shuffle()
-			use_deck = deck.duplicate()
-
 func _on_play_pressed() -> void:
 	if has_potion:
 		if Player.mana > 0:
@@ -100,3 +92,13 @@ func _process(delta: float) -> void:
 		potion_sprite.visible = true
 	else:
 		potion_sprite.visible = false
+
+
+func _on_discard_pressed() -> void:
+	if selected_card:
+		cards.erase(selected_card)
+		selected_card.queue_free()
+		if cards.size() < hand_size:
+			if use_deck != []:
+				add_card(use_deck[0])
+		selected_card = null

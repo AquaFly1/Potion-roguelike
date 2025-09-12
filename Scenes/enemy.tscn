@@ -1,10 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5qtsrtjjpnt0"]
+[gd_scene load_steps=17 format=3 uid="uid://c5qtsrtjjpnt0"]
 
 [ext_resource type="PackedScene" uid="uid://d7m3r833chkm" path="res://Scenes/entity.tscn" id="1_xm08b"]
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/enemy_script.gd" id="2_fkbyy"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Sprites/goblion.aseprite" id="2_xcvi8"]
 [ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Sprites/temporary_art/white_square.aseprite" id="4_6n10i"]
 [ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/potion.gd" id="4_0830c"]
+[ext_resource type="Texture2D" uid="uid://dgf2sa6iqm6k" path="res://Sprites/goblion_animation.png" id="5_ghaa6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dp5w"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(21, 21, 20, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwsv"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(41, 21, 20, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uf12"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po0sg"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haro7"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(42, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56vhr"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(0, 21, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta2yt"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(20, 43, 20, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4x7e"]
+atlas = ExtResource("5_ghaa6")
+region = Rect2(0, 42, 20, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt4ob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dp5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uf12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po0sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haro7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56vhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta2yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4x7e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_0830c"]
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -17,10 +82,12 @@ xp_given = 2
 potions = Array[ExtResource("4_0830c")]([])
 max_health = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(64, 64)
 scale = Vector2(4, 4)
-texture = ExtResource("2_xcvi8")
+sprite_frames = SubResource("SpriteFrames_vt4ob")
+autoplay = "default"
+frame_progress = 0.513824
 
 [node name="burn" type="Control" parent="." index="1"]
 layout_mode = 3

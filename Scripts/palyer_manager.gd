@@ -12,6 +12,7 @@ var mana = 5
 @onready var poison_label: Label = $posion/Label
 @onready var rejuv_label: Label = $rejuv/Label
 
+
 var xp_needed = 10
 
 func start_turn():

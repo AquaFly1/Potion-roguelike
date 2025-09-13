@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://31bfstnkp780"]
+[gd_scene load_steps=14 format=4 uid="uid://31bfstnkp780"]
+
+[ext_resource type="Script" uid="uid://c2fcvriv3c3s0" path="res://Scripts/HandAnimationController.gd" id="1_2lkj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v30xo"]
 specular_mode = 1
@@ -120,7 +122,26 @@ bind/30/name = &"Bone.030"
 bind/30/bone = -1
 bind/30/pose = Transform3D(0.200187, 0.716864, 0.667856, -0.280808, 0.695037, -0.661869, -0.938654, -0.0550423, 0.340438, -0.334697, 0.42521, 1.16945)
 
-[sub_resource type="AnimationRootNode" id="AnimationRootNode_g8mh5"]
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2lkj8"]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_27gqo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bix0s"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxk7j"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6hf2v"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6hf2v"]
+states/Holding/node = SubResource("AnimationNodeBlendSpace2D_2lkj8")
+states/Holding/position = Vector2(577, 177)
+states/Pickup/node = SubResource("AnimationNodeBlendSpace2D_27gqo")
+states/Pickup/position = Vector2(439, 109)
+states/Start/position = Vector2(210, 117)
+transitions = ["Start", "Pickup", SubResource("AnimationNodeStateMachineTransition_bix0s"), "Pickup", "Holding", SubResource("AnimationNodeStateMachineTransition_qxk7j"), "Holding", "Pickup", SubResource("AnimationNodeStateMachineTransition_6hf2v")]
 
 [sub_resource type="Animation" id="Animation_1sqng"]
 resource_name = "ArmRightHoldCards"
@@ -932,8 +953,11 @@ mesh = SubResource("ArrayMesh_g8mh5")
 skin = SubResource("Skin_2lkj8")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationRootNode_g8mh5")
+tree_root = SubResource("AnimationNodeStateMachine_6hf2v")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Holding/blend_position = Vector2(0, 0)
+parameters/Pickup/blend_position = Vector2(-0.512745, 0.329114)
+script = ExtResource("1_2lkj8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -30,6 +30,10 @@ texture = SubResource("GradientTexture2D_7pwvw")
 [node name="Player" parent="." instance=ExtResource("2_msng8")]
 position = Vector2(-2, 5)
 
+[node name="3D Projection" parent="Player" instance=ExtResource("5_0d3ml")]
+position = Vector2(962, 535)
+texture = SubResource("ViewportTexture_7pwvw")
+
 [node name="hand" parent="." instance=ExtResource("3_msng8")]
 offset_left = 736.0
 offset_top = 311.0
@@ -37,7 +41,3 @@ offset_right = 736.0
 offset_bottom = 311.0
 
 [node name="enemies_parent" type="Node" parent="."]
-
-[node name="3D Projection" parent="." instance=ExtResource("5_0d3ml")]
-position = Vector2(960, 540)
-texture = SubResource("ViewportTexture_7pwvw")

@@ -1,8 +1,9 @@
 extends Node
 
 @export var deck: Array[Ingredient]
-
 @export var combos: Array[Combo]
+
+signal held_hand_modified
 
 var current_enemy: Enemy = null
 

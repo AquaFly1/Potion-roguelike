@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://drhlo4inut523"]
+[gd_scene load_steps=8 format=3 uid="uid://drhlo4inut523"]
 
-[ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Shaders/pixel.gdshader" id="1_kjtoe"]
-[ext_resource type="PackedScene" uid="uid://31bfstnkp780" path="res://3DAssets/hand.tscn" id="2_m31gb"]
+[ext_resource type="PackedScene" uid="uid://pujqkmtdknev" path="res://3DAssets/3DEnvironment.tscn" id="2_v6xcv"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Shaders/3DMask.gdshader" id="3_b7dpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b7dpg"]
@@ -10,139 +9,49 @@ shader_parameter/key_color = Color(1, 0, 1, 1)
 shader_parameter/threshold = 0.3
 shader_parameter/softness = 0.1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0v7ay"]
-viewport_path = NodePath("3D View/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_v6xcv"]
+viewport_path = NodePath("3D View/ViewMasked")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_b7dpg"]
-viewport_path = NodePath("3D View/SubViewport2")
+viewport_path = NodePath("3D View/ViewBack")
 
-[sub_resource type="TorusMesh" id="TorusMesh_r0du0"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_v6xcv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glv2v"]
-diffuse_mode = 3
-albedo_color = Color(0.607843, 1, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glv2v"]
-render_priority = 0
-shader = ExtResource("1_kjtoe")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.83
-shader_parameter/highlight_strength = 0.06
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Environment" id="Environment_glv2v"]
-background_color = Color(0.52549, 0.717647, 0.901961, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.23, 0.23, 0.46, 1)
-ambient_light_energy = 0.87
-tonemap_mode = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_b7dpg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6xcv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7dpg"]
 render_priority = 1
 transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 1, 1)
 
 [node name="3D Projection" type="Sprite2D"]
-z_index = 10
+z_index = -10
 texture_filter = 1
 material = SubResource("ShaderMaterial_b7dpg")
 scale = Vector2(7.98668, 8)
-texture = SubResource("ViewportTexture_0v7ay")
+texture = SubResource("ViewportTexture_v6xcv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -22
+texture_filter = 1
 texture = SubResource("ViewportTexture_b7dpg")
 
 [node name="3D View" type="Node3D" parent="."]
 
-[node name="SubViewport" type="SubViewport" parent="3D View"]
+[node name="ViewMasked" type="SubViewport" parent="3D View"]
 transparent_bg = true
 size = Vector2i(240, 135)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="3D View/SubViewport"]
-transform = Transform3D(0.596265, 0, 0, 0, 0.543275, -0.245732, 0, 0.245732, 0.543275, 2.73239, 1.55541, -4.90785)
-mesh = SubResource("TorusMesh_r0du0")
-surface_material_override/0 = SubResource("StandardMaterial3D_glv2v")
+[node name="3DMasked" parent="3D View/ViewMasked" instance=ExtResource("2_v6xcv")]
 
-[node name="PostProcess" type="MeshInstance3D" parent="3D View/SubViewport"]
-transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 0, 1.00732, 0.939768)
-mesh = SubResource("BoxMesh_cm0pq")
+[node name="mask2" type="MeshInstance3D" parent="3D View/ViewMasked/3DMasked"]
+transform = Transform3D(1, 0, 0, 0, 0.102202, -0.994764, 0, 0.994764, 0.102202, 1.55677, 1.08376, 0.409809)
+mesh = SubResource("PlaneMesh_v6xcv")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_glv2v")
+surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="3D View/SubViewport"]
-environment = SubResource("Environment_glv2v")
-
-[node name="Camera2" type="Camera3D" parent="3D View/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)
-projection = 1
-size = 3.65625
-near = 0.1
-far = 100.0
-
-[node name="hand2" parent="3D View/SubViewport" instance=ExtResource("2_m31gb")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="3D View/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
-visible = false
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D View/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.241
-
-[node name="mask" type="MeshInstance3D" parent="3D View/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.102202, -0.994764, 0, 0.994764, 0.102202, 1.69081, 1.08376, 0.409809)
-mesh = SubResource("PlaneMesh_b7dpg")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_v6xcv")
-
-[node name="SubViewport2" type="SubViewport" parent="3D View"]
+[node name="ViewBack" type="SubViewport" parent="3D View"]
 transparent_bg = true
 size = Vector2i(240, 135)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="3D View/SubViewport2"]
-transform = Transform3D(0.596265, 0, 0, 0, 0.543275, -0.245732, 0, 0.245732, 0.543275, 22.7324, 1.55541, -4.90785)
-mesh = SubResource("TorusMesh_r0du0")
-surface_material_override/0 = SubResource("StandardMaterial3D_glv2v")
-
-[node name="PostProcess" type="MeshInstance3D" parent="3D View/SubViewport2"]
-transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 20, 1.00732, 0.939768)
-mesh = SubResource("BoxMesh_cm0pq")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_glv2v")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="3D View/SubViewport2"]
-environment = SubResource("Environment_glv2v")
-
-[node name="Camera2" type="Camera3D" parent="3D View/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 20, 1.4, 2)
-projection = 1
-size = 3.65625
-near = 0.1
-far = 100.0
-
-[node name="hand2" parent="3D View/SubViewport2" instance=ExtResource("2_m31gb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="3D View/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 20, 3.51133, -1.39321)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D View/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 20, 3.51133, -1.39321)
-visible = false
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.241
-
-[node name="mask" type="MeshInstance3D" parent="3D View/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, 0.102202, -0.994764, 0, 0.994764, 0.102202, 21.6908, 1.08376, 0.409809)
-visible = false
-mesh = SubResource("PlaneMesh_b7dpg")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_v6xcv")
+[node name="3DBack" parent="3D View/ViewBack" instance=ExtResource("2_v6xcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4911, 0, 0)

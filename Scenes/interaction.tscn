@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cg651b3jwwuqk"]
+[gd_scene load_steps=11 format=3 uid="uid://cg651b3jwwuqk"]
 
 [ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/goblin.tscn" id="1_q35ui"]
 [ext_resource type="Script" uid="uid://cv0yp1nlcemhy" path="res://Scripts/interaction.gd" id="1_qhmss"]
@@ -15,8 +15,15 @@ width = 1920
 height = 1080
 fill_from = Vector2(1, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7pwvw"]
-viewport_path = NodePath("3D View/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_0d3ml"]
+viewport_path = NodePath("3D View/ViewMasked")
+
+[sub_resource type="Gradient" id="Gradient_7pwvw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1jkv"]
+gradient = SubResource("Gradient_7pwvw")
+width = 128
+height = 128
 
 [node name="interaction" type="Node2D"]
 script = ExtResource("1_qhmss")
@@ -24,6 +31,7 @@ goblin_scene = ExtResource("1_q35ui")
 enemies = Array[PackedScene]([ExtResource("1_q35ui"), ExtResource("1_q35ui"), ExtResource("1_q35ui")])
 
 [node name="(Tmp) Bg" type="Sprite2D" parent="."]
+z_index = -50
 position = Vector2(960, 540)
 texture = SubResource("GradientTexture2D_7pwvw")
 
@@ -31,9 +39,15 @@ texture = SubResource("GradientTexture2D_7pwvw")
 position = Vector2(-2, 5)
 
 [node name="3D Projection" parent="Player" instance=ExtResource("5_0d3ml")]
-position = Vector2(962, 535)
-scale = Vector2(8.03727, 8.16081)
-texture = SubResource("ViewportTexture_7pwvw")
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_0d3ml")
+
+[node name="TempHand" type="Sprite2D" parent="Player"]
+z_index = -23
+position = Vector2(1336, 590)
+rotation = -0.159667
+scale = Vector2(3.40505, 2.05355)
+texture = SubResource("GradientTexture2D_x1jkv")
 
 [node name="hand" parent="." instance=ExtResource("3_msng8")]
 anchors_preset = 0

@@ -1,6 +1,6 @@
 extends Control
 
-@export var hand_size: int = 3
+@export var hand_size: int = 5
 @export var card_spacing: float = 100.0
 
 @export var card_scene: PackedScene
@@ -21,6 +21,8 @@ func _ready() -> void:
 	Game.card_selected.connect(on_selected_card)
 	deck.shuffle()
 	use_deck = deck.duplicate()
+	add_card(use_deck[0])
+	add_card(use_deck[0])
 	add_card(use_deck[0])
 	add_card(use_deck[0])
 	add_card(use_deck[0])

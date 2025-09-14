@@ -3,8 +3,13 @@
 [ext_resource type="Script" uid="uid://c2fcvriv3c3s0" path="res://Scripts/HandAnimationController.gd" id="1_2lkj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v30xo"]
+render_priority = 1
+depth_draw_mode = 1
 specular_mode = 1
 albedo_color = Color(0.423651, 0.423651, 0.423651, 1)
+subsurf_scatter_strength = 1.0
+subsurf_scatter_transmittance_color = Color(0, 1, 1, 1)
+grow_amount = -0.753
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_g8mh5"]
 resource_name = "hand_hand"
@@ -736,6 +741,7 @@ _data = {
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)
+visible = false
 projection = 1
 size = 3.65625
 near = 0.1

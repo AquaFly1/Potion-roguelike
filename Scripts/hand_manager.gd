@@ -25,7 +25,6 @@ func _ready() -> void:
 	add_card(use_deck[0])
 	add_card(use_deck[0])
 	add_card(use_deck[0])
-	add_card(use_deck[0])
 	
 func add_card(card_ing):
 	if cards.size() >= hand_size:

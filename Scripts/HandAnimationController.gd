@@ -10,7 +10,6 @@ func hand_modified(cards):
 	Size = CurrentSize
 	time = 0
 	NewSize = float(len(cards)-1)/5
-	print("gotUpdate",NewSize)
 	
 	
 func _ready() -> void:
@@ -24,7 +23,6 @@ func _process(delta: float) -> void:
 	if time < 1:
 		time = clampf(time+2*delta,0,1)
 	timeSmooth = cubic_ease_in_out(time)
-	print(time-timeSmooth)
 	CurrentSize = lerp(Size, NewSize, timeSmooth)
 	set("parameters/HoldBlend/TimeSeek/seek_request", CurrentSize)
 	pass

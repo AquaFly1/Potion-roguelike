@@ -24,7 +24,6 @@ func _ready() -> void:
 	add_card(use_deck[0])
 	add_card(use_deck[0])
 	add_card(use_deck[0])
-	Game.held_hand_modified.emit(cards)
 	
 func add_card(card_ing):
 	if cards.size() >= hand_size:
@@ -35,14 +34,12 @@ func add_card(card_ing):
 	cards.append(card)
 	use_deck.pop_at(0)
 	_update_hand_layout()
-	Game.held_hand_modified.emit(cards)
 
 func remove_card(card):
 	if card in cards:
 		cards.erase(card)
 		card.queue_free()
 		_update_hand_layout()
-	Game.held_hand_modified.emit(cards)
 
 func _update_hand_layout():
 	var total = cards.size()
@@ -52,6 +49,7 @@ func _update_hand_layout():
 	for i in range(total):
 		var target_pos = Vector2(start_x + i * card_spacing, 0)
 		cards[i].move_to_position(target_pos)
+	Game.held_hand_modified.emit(cards)
 
 func on_selected_card(card):
 	selected_card = card
@@ -63,7 +61,6 @@ func _on_play_pressed() -> void:
 				potion.append(selected_card.ingredient)
 				remove_card(selected_card)
 				Player.mana -= 1
-				Game.held_hand_modified.emit(cards)
 
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -105,4 +102,3 @@ func _on_discard_pressed() -> void:
 			if use_deck != []:
 				add_card(use_deck[0])
 		selected_card = null
-		Game.held_hand_modified.emit(cards)

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/hand_manager.tscn" id="3_msng8"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="5_0d3ml"]
 [ext_resource type="Script" uid="uid://bec6qugy56fm0" path="res://Scripts/target_test.gd" id="5_7pwvw"]
-[ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="6_x1jkv"]
+[ext_resource type="Script" uid="uid://dmgno2iyexvi0" path="res://Scripts/card_originTest.gd" id="6_x1jkv"]
 
 [sub_resource type="Gradient" id="Gradient_0d3ml"]
 colors = PackedColorArray(0.0641319, 0.0186549, 1.50409e-09, 1, 0.0280463, 0.00619265, 0, 1)
@@ -30,7 +30,7 @@ fill_from = Vector2(1, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_0d3ml"]
 _data = {
-"points": PackedVector2Array(105.522, 40.7548, -105.522, -40.7548, 1537.55, 687.046, 33.8246, -74.2971, -33.8246, 74.2971, 1310.37, 783.152)
+"points": PackedVector2Array(111.247, 41.2851, -111.247, -41.2851, 1537.55, 687.046, 27.5791, -106.115, -27.5791, 106.115, 1302.25, 777.985)
 }
 point_count = 2
 
@@ -51,52 +51,11 @@ position = Vector2(960, 540)
 scale = Vector2(8, 8)
 texture = SubResource("ViewportTexture_0d3ml")
 
-[node name="TempCard" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
+[node name="TempCard" type="Marker2D" parent="Player"]
 position = Vector2(172, 251)
 script = ExtResource("5_7pwvw")
-Target_Obj = NodePath("")
 
 [node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard"]
-z_index = -23
-position = Vector2(0, -90)
-texture = SubResource("GradientTexture2D_x1jkv")
-
-[node name="TempCard2" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
-position = Vector2(172, 251)
-script = ExtResource("5_7pwvw")
-Target_Obj = NodePath("")
-
-[node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard2"]
-z_index = -23
-position = Vector2(0, -90)
-texture = SubResource("GradientTexture2D_x1jkv")
-
-[node name="TempCard3" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
-position = Vector2(172, 251)
-script = ExtResource("5_7pwvw")
-Target_Obj = NodePath("")
-
-[node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard3"]
-z_index = -23
-position = Vector2(0, -90)
-texture = SubResource("GradientTexture2D_x1jkv")
-
-[node name="TempCard4" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
-position = Vector2(172, 251)
-script = ExtResource("5_7pwvw")
-Target_Obj = NodePath("")
-
-[node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard4"]
-z_index = -23
-position = Vector2(0, -90)
-texture = SubResource("GradientTexture2D_x1jkv")
-
-[node name="TempCard5" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
-position = Vector2(344, 502)
-script = ExtResource("5_7pwvw")
-Target_Obj = NodePath("")
-
-[node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard5"]
 z_index = -23
 position = Vector2(0, -90)
 texture = SubResource("GradientTexture2D_x1jkv")
@@ -106,8 +65,16 @@ position = Vector2(7.01403, 16.1616)
 scale = Vector2(0.985972, 0.967677)
 curve = SubResource("Curve2D_0d3ml")
 
-[node name="CardInHandTarget" parent="Player/HandShape" instance=ExtResource("6_x1jkv")]
-position = Vector2(1537.55, 687.046)
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/HandShape"]
+position = Vector2(1360.14, 691.263)
+rotation = 2.55863
+scale = Vector2(1.01423, 1.0334)
+progress = 184.059
+script = ExtResource("6_x1jkv")
+
+[node name="cardOrigin" type="Marker2D" parent="Player/HandShape/PathFollow2D"]
+rotation = 3.14159
+scale = Vector2(0.983775, 0.96991)
 
 [node name="hand" parent="." instance=ExtResource("3_msng8")]
 anchors_preset = 0

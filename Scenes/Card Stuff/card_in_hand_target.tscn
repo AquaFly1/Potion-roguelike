@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1vvsgo53l5k2"]
+
+[ext_resource type="Script" uid="uid://dmgno2iyexvi0" path="res://Scripts/card_originTest.gd" id="1_7puno"]
+
+[node name="CardInHandTarget" type="PathFollow2D"]
+rotation = -2.77302
+scale = Vector2(1.01423, 1.0334)
+loop = false
+script = ExtResource("1_7puno")
+path_Pos_Index = 1
+
+[node name="cardOrigin" type="Marker2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.983775, 0.96991)

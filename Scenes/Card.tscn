@@ -27,16 +27,19 @@ offset_bottom = 140.0
 script = ExtResource("1_3p273")
 ingredient = SubResource("Resource_f3ywt")
 
-[node name="Sprite2D" type="TextureRect" parent="."]
+[node name="TransformBase" type="Marker2D" parent="."]
+position = Vector2(50, 140)
+
+[node name="Sprite2D" type="TextureRect" parent="TransformBase"]
 texture_filter = 1
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 140.0
+offset_left = -50.0
+offset_top = -140.0
+offset_right = 50.0
 texture = ExtResource("3_h8wm0")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 140.0
+[node name="Button" type="Button" parent="TransformBase"]
+offset_left = -50.0
+offset_top = -140.0
+offset_right = 50.0
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TransformBase/Button" to="." method="_on_button_pressed"]

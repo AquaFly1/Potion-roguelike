@@ -19,13 +19,15 @@ tags = Array[ExtResource("4_c6tr3")]([ExtResource("5_1geux"), ExtResource("6_13s
 sprite = ExtResource("3_h8wm0")
 metadata/_custom_type_script = "uid://b34khk8m7t8aq"
 
-[node name="Node2D" type="Control"]
+[node name="Node2D" type="Control" node_paths=PackedStringArray("transformBase")]
+z_index = -13
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 140.0
 script = ExtResource("1_3p273")
 ingredient = SubResource("Resource_f3ywt")
+transformBase = NodePath("TransformBase")
 
 [node name="TransformBase" type="Marker2D" parent="."]
 position = Vector2(50, 140)

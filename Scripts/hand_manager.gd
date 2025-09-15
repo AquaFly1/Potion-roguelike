@@ -4,6 +4,7 @@ extends Control
 @export var card_spacing: float = 100.0
 
 @export var card_scene: PackedScene
+@export var path_scene: PackedScene
 
 var selected_card: Card
 var cards: Array[Card]
@@ -13,7 +14,11 @@ var has_potion = false
 
 @onready var mana_bar: TextureProgressBar = $TextureProgressBar
 
+@export var hand_path: Path2D
+
 @export var deck: Array[Ingredient]
+
+
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient]
 
@@ -30,8 +35,13 @@ func add_card(card_ing):
 	if cards.size() >= hand_size:
 		return
 	var card = card_scene.instantiate()
+	var card_path = path_scene.instantiate()
 	card.ingredient = card_ing
+	card.path = card_path
+	card.path_pos_index = float(len(cards))/5
 	add_child(card)
+	hand_path.add_child(card_path)
+	card_path.set("position",Vector2(0,0))
 	cards.append(card)
 	use_deck.pop_at(0)
 	_update_hand_layout()

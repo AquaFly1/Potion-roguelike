@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg651b3jwwuqk"]
+[gd_scene load_steps=14 format=3 uid="uid://cg651b3jwwuqk"]
 
 [ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/goblin.tscn" id="1_q35ui"]
 [ext_resource type="Script" uid="uid://cv0yp1nlcemhy" path="res://Scripts/interaction.gd" id="1_qhmss"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="2_msng8"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/hand_manager.tscn" id="3_msng8"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="5_0d3ml"]
+[ext_resource type="Script" uid="uid://bec6qugy56fm0" path="res://Scripts/target_test.gd" id="5_7pwvw"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="6_x1jkv"]
 
 [sub_resource type="Gradient" id="Gradient_0d3ml"]
@@ -19,9 +20,17 @@ fill_from = Vector2(1, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_0d3ml"]
 viewport_path = NodePath("3D View/ViewMasked")
 
+[sub_resource type="Gradient" id="Gradient_7pwvw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1jkv"]
+gradient = SubResource("Gradient_7pwvw")
+width = 128
+height = 180
+fill_from = Vector2(1, 1)
+
 [sub_resource type="Curve2D" id="Curve2D_0d3ml"]
 _data = {
-"points": PackedVector2Array(105.522, 40.7548, -105.522, -40.7548, 1421.93, 650.877, 1.917, -81.7996, -1.917, 81.7996, 1161.28, 860.657)
+"points": PackedVector2Array(105.522, 40.7548, -105.522, -40.7548, 1537.55, 687.046, 33.8246, -74.2971, -33.8246, 74.2971, 1310.37, 783.152)
 }
 point_count = 2
 
@@ -42,12 +51,25 @@ position = Vector2(960, 540)
 scale = Vector2(8, 8)
 texture = SubResource("ViewportTexture_0d3ml")
 
+[node name="TempCard" type="Marker2D" parent="Player" node_paths=PackedStringArray("Target_Obj")]
+position = Vector2(172, 251)
+script = ExtResource("5_7pwvw")
+Target_Obj = NodePath(".")
+
+[node name="TempCardSprite" type="Sprite2D" parent="Player/TempCard"]
+z_index = -23
+position = Vector2(0, -90)
+texture = SubResource("GradientTexture2D_x1jkv")
+
 [node name="HandShape" type="Path2D" parent="Player"]
 position = Vector2(7.01403, 16.1616)
 scale = Vector2(0.985972, 0.967677)
 curve = SubResource("Curve2D_0d3ml")
 
-[node name="hand" parent="." node_paths=PackedStringArray("hand_path") instance=ExtResource("3_msng8")]
+[node name="CardInHandTarget" parent="Player/HandShape" instance=ExtResource("6_x1jkv")]
+position = Vector2(1537.55, 687.046)
+
+[node name="hand" parent="." instance=ExtResource("3_msng8")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -57,7 +79,8 @@ offset_right = 736.0
 offset_bottom = 311.0
 grow_horizontal = 1
 grow_vertical = 1
+hand_size = 5
+card_spacing = 100.0
 path_scene = ExtResource("6_x1jkv")
-hand_path = NodePath("../Player/HandShape")
 
 [node name="enemies_parent" type="Node" parent="."]

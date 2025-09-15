@@ -10,7 +10,7 @@ loop = false
 [node name="cardOrigin" type="Marker2D" parent="."]
 z_index = -15
 rotation = 3.14159
-scale = Vector2(0.983775, 0.96991)
+scale = Vector2(1.45, 1.45)
 
 [node name="Sprite2D" type="Sprite2D" parent="cardOrigin"]
 texture = SubResource("PlaceholderTexture2D_7puno")

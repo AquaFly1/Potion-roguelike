@@ -21,7 +21,7 @@ viewport_path = NodePath("3D View/ViewMasked")
 
 [sub_resource type="Curve2D" id="Curve2D_0d3ml"]
 _data = {
-"points": PackedVector2Array(105.522, 40.7548, -105.522, -40.7548, 1421.93, 650.877, 1.917, -81.7996, -1.917, 81.7996, 1161.28, 860.657)
+"points": PackedVector2Array(105.522, 0.74144, -105.522, -0.74144, 1401.66, 658.278, 38.7335, -89.3021, -38.7335, 89.3021, 1145.06, 844.29)
 }
 point_count = 2
 
@@ -43,7 +43,7 @@ scale = Vector2(8, 8)
 texture = SubResource("ViewportTexture_0d3ml")
 
 [node name="HandShape" type="Path2D" parent="Player"]
-position = Vector2(7.01403, 16.1616)
+position = Vector2(29, -18)
 scale = Vector2(0.985972, 0.967677)
 curve = SubResource("Curve2D_0d3ml")
 

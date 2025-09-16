@@ -1,11 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/palyer_manager.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/player_manager.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Sprites/temporary_art/white_square.aseprite" id="2_6t5aa"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("info", "burn_label", "poison_label", "rejuv_label")]
 script = ExtResource("1_cvnsp")
 gold = 20
+info = NodePath("info")
+burn_label = NodePath("burn/Label")
+poison_label = NodePath("posion/Label")
+rejuv_label = NodePath("rejuv/Label")
 
 [node name="info" type="Label" parent="."]
 offset_left = 4.0

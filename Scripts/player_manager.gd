@@ -7,10 +7,10 @@ extends Entity
 @export var max_mana = 5
 var mana = 5
 
-@onready var info: Label# = $info			#g enleve pasque ca mettait des erreurs jsp ca sert a quoi
-@onready var burn_label: Label# = $burn/Label
-@onready var poison_label: Label# = $posion/Label
-@onready var rejuv_label: Label# = $rejuv/Label
+@export var info: Label			#g enleve pasque ca mettait des erreurs jsp ca sert a quoi
+@export var burn_label: Label
+@export var poison_label: Label 
+@export var rejuv_label: Label 
 
 
 var xp_needed = 10

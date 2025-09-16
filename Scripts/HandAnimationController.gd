@@ -5,13 +5,20 @@ var NewSize: float
 var CurrentSize: float
 var time: float
 var timeSmooth: float
+@export var animationPlayer: AnimationPlayer
+@onready var hold_anim_length: float = animationPlayer.get_animation("ArmRightHoldCards").length
 
 func hand_modified(cards):
 	Size = CurrentSize
 	time = 0
-	NewSize = float(len(cards)-1)/5
+	print(animationPlayer)
+	NewSize = (float(len(cards)-1)/4) * hold_anim_length
 	
 	
+func set_hand_size(size) -> void:
+	set("parameters/HoldBlend/TimeSeek/seek_request", CurrentSize)
+
+
 func _ready() -> void:
 	Game.held_hand_modified.connect(hand_modified)
 	Size = 0

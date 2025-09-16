@@ -59,6 +59,7 @@ func remove_card(card):
 func _update_hand_layout():
 	var total = cards.size()
 	if total == 0:
+		Game.held_hand_modified.emit(cards)
 		return
 	var start_x = -((total - 1) * card_spacing) / 2
 	for i in range(total):

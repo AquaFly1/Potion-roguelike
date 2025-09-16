@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl5187ltkgw2i"]
+[gd_scene load_steps=5 format=3 uid="uid://cl5187ltkgw2i"]
 
 [ext_resource type="Script" uid="uid://ckjxrktq3e26r" path="res://Scripts/Card.gd" id="1_3p273"]
+[ext_resource type="Shader" uid="uid://3aey8gv4qyqd" path="res://Shaders/CardOutline.gdshader" id="3_3m7nw"]
 [ext_resource type="Texture2D" uid="uid://dudoidhqi2x68" path="res://Sprites/SparkRock.aseprite" id="3_h8wm0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8wm0"]
+shader = ExtResource("3_3m7nw")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 6.1
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("control")]
 script = ExtResource("1_3p273")
@@ -17,12 +24,14 @@ offset_right = 50.0
 
 [node name="Sprite2D" type="TextureRect" parent="Control"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_h8wm0")
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 140.0
 texture = ExtResource("3_h8wm0")
 
 [node name="Button" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 140.0

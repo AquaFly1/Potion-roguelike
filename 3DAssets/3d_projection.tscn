@@ -27,19 +27,22 @@ albedo_color = Color(1, 0, 1, 1)
 z_index = -10
 texture_filter = 1
 material = SubResource("ShaderMaterial_b7dpg")
-scale = Vector2(7.98668, 8)
+scale = Vector2(8, 8)
 texture = SubResource("ViewportTexture_v6xcv")
+centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -22
 texture_filter = 1
 texture = SubResource("ViewportTexture_b7dpg")
+centered = false
 
 [node name="3D View" type="Node3D" parent="."]
 
 [node name="ViewMasked" type="SubViewport" parent="3D View"]
 transparent_bg = true
-size = Vector2i(240, 135)
+size = Vector2i(320, 180)
+size_2d_override = Vector2i(1920, 1080)
 
 [node name="3DMasked" parent="3D View/ViewMasked" instance=ExtResource("2_v6xcv")]
 
@@ -51,7 +54,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")
 
 [node name="ViewBack" type="SubViewport" parent="3D View"]
 transparent_bg = true
-size = Vector2i(240, 135)
+size = Vector2i(320, 180)
+size_2d_override = Vector2i(1920, 1080)
 
 [node name="3DBack" parent="3D View/ViewBack" instance=ExtResource("2_v6xcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4911, 0, 0)

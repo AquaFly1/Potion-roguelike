@@ -23,10 +23,10 @@ shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Environment" id="Environment_glv2v"]
 background_color = Color(0.52549, 0.717647, 0.901961, 1)
+background_energy_multiplier = 0.58
 ambient_light_source = 2
-ambient_light_color = Color(0.23, 0.23, 0.46, 1)
-ambient_light_energy = 0.87
-tonemap_mode = 2
+ambient_light_color = Color(0.2944, 0.31096, 0.46, 1)
+ambient_light_energy = 0.37
 
 [node name="Transform" type="Node3D"]
 
@@ -60,5 +60,7 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
+light_color = Color(1, 0.883333, 0, 1)
+light_energy = 2.432
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.241

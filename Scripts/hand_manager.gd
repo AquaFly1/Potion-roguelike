@@ -105,7 +105,7 @@ func _on_get_potion_pressed() -> void:
 			Player.mana -= 1
 			has_potion = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	mana_bar.value = Player.mana
 	if has_potion:
 		potion_sprite.visible = true

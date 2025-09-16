@@ -35,12 +35,12 @@ func start_turn():
 	
 	#animation
 	
-	var potion_ingredients = chosen_potion.ingredients
+	var chosen_potion_ingredients = chosen_potion.ingredients
 	
 	if chosen_potion.heal == true:
-		self.take_potion(potion_ingredients)
+		self.take_potion(chosen_potion_ingredients)
 	else:
-		Player.take_potion(potion_ingredients)
+		Player.take_potion(chosen_potion_ingredients)
 	chosen_potion = potions.pick_random()
 
 
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	health_label.text = str(health)
 	if chosen_potion:
 		potion_name.text = chosen_potion.name
-		var ingredient_text: String
+		var ingredient_text: String = ""
 		for ing in chosen_potion.ingredients:
 			ingredient_text += str(ing) + "\n"
 		potion_ingredients.text = ingredient_text

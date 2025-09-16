@@ -3,7 +3,7 @@ extends Node
 @export var deck: Array[Ingredient]
 @export var combos: Array[Combo]
 
-signal held_hand_modified
+signal held_hand_modified(cards: Array)
 
 var current_enemy: Enemy = null
 
@@ -11,6 +11,21 @@ signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()
 
+func _ready() -> void:
+	held_hand_modified.connect(hand_modified)
+	card_selected.connect(card_selected_func)
+	end_turn.connect(end_turn_func)
+	player_start_turn.connect(player_start_turn_func)
+	pass
+
+func hand_modified(_cards: Array):
+	pass
+func card_selected_func(_card):
+	pass
+func end_turn_func():
+	pass
+func player_start_turn_func():
+	pass
 
 func apply_potion(ingredients: Array[Ingredient]):
 	var active_combos = ComboMan.find_combos(ingredients)
@@ -27,5 +42,5 @@ func apply_potion(ingredients: Array[Ingredient]):
 		heal += combo.heal
 	return[dmg, burn, poison, rejuv, heal]
 
-func _ready() -> void:
-	pass
+
+	

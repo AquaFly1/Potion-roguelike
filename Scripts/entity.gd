@@ -37,6 +37,6 @@ func start_turn():
 func die():
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if health > max_health:
 		health = max_health

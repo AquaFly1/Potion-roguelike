@@ -7,10 +7,10 @@ extends Entity
 @export var max_mana = 5
 var mana = 5
 
-@onready var info: Label = $info
-@onready var burn_label: Label = $burn/Label
-@onready var poison_label: Label = $posion/Label
-@onready var rejuv_label: Label = $rejuv/Label
+@onready var info: Label# = $info			#g enleve pasque ca mettait des erreurs jsp ca sert a quoi
+@onready var burn_label: Label# = $burn/Label
+@onready var poison_label: Label# = $posion/Label
+@onready var rejuv_label: Label# = $rejuv/Label
 
 
 var xp_needed = 10
@@ -20,7 +20,7 @@ func start_turn():
 	mana = max_mana
 	Game.player_start_turn.emit()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if xp >= xp_needed:
 		xp -= xp_needed
 		xp_needed *= 2

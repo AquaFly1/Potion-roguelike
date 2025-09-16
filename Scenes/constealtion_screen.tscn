@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://d307ar41aq1ay"]
+
+[ext_resource type="Script" uid="uid://dhh5vo5oejf3c" path="res://Scripts/constealtion.gd" id="1_thsms"]
+[ext_resource type="Texture2D" uid="uid://bwpkll6jqn6yd" path="res://Sprites/temporary_art/sky.aseprite" id="2_4woni"]
+[ext_resource type="Texture2D" uid="uid://cyyh2jxftqy77" path="res://Sprites/temporary_art/constelation.aseprite" id="3_a2t8u"]
+
+[node name="ConstealtionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_thsms")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("2_4woni")
+
+[node name="contelation_1" type="Area2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="contelation_1"]
+points = PackedVector2Array(136, 945, 341, 740, 221, 690, 129, 458, 476, 383, 578, 730, 838, 520, 672, 286, 279, 155)
+width = 32.33
+default_color = Color(0, 0.65882355, 1, 0.3764706)
+joint_mode = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="contelation_1"]
+polygon = PackedVector2Array(164, 957, 396, 734, 252, 683, 177, 483, 454, 419, 574, 775, 889, 531, 681, 228, 278, 113, 250, 168, 642, 318, 767, 505, 604, 646, 501, 321, 83, 415, 173, 702, 269, 747, 109, 932)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("3_a2t8u")
+
+[connection signal="mouse_entered" from="contelation_1" to="." method="_on_contelation_1_mouse_entered"]
+[connection signal="mouse_exited" from="contelation_1" to="." method="_on_contelation_1_mouse_exited"]

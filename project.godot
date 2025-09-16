@@ -29,8 +29,8 @@ ComboMan="*res://Scripts/combo_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
@@ -41,3 +41,14 @@ enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+gradientMetallic={
+"type": "sampler2D",
+"value": ""
+}
+shadow_color={
+"type": "vec4",
+"value": Vector4(0, 0, 0, 1)
+}

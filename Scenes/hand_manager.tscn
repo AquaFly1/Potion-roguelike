@@ -34,6 +34,16 @@ offset_bottom = 791.0
 scale = Vector2(1.85476, 1.84715)
 text = "discard"
 
+[node name="draw" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1544.0
+offset_top = 4.0
+offset_right = 1744.0
+offset_bottom = 104.0
+scale = Vector2(1.85476, 1.84715)
+text = "draw (temporary)
+"
+
 [node name="get_potion" type="Button" parent="."]
 layout_mode = 0
 offset_left = 189.0
@@ -101,6 +111,7 @@ texture_under = ExtResource("10_82ff2")
 texture_progress = ExtResource("11_s1ioh")
 
 [connection signal="pressed" from="discard" to="." method="_on_discard_pressed"]
+[connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
 [connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]

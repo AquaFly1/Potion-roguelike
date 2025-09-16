@@ -9,6 +9,7 @@ var current_enemy: Enemy = null
 
 signal card_selected(card: Card)
 signal end_turn()
+signal player_start_turn()
 
 
 func apply_potion(ingredients: Array[Ingredient]):

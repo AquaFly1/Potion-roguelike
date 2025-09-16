@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dudoidhqi2x68"
-path="res://.godot/imported/SparkRock.aseprite-cef934e77cdd494bab3435e013e2f51b.ctex"
+uid="uid://cyyh2jxftqy77"
+path="res://.godot/imported/constelation.aseprite-8b7ecf0a83cfa00115a96e34ff680405.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SparkRock.aseprite"
-dest_files=["res://.godot/imported/SparkRock.aseprite-cef934e77cdd494bab3435e013e2f51b.ctex"]
+source_file="res://Sprites/temporary_art/constelation.aseprite"
+dest_files=["res://.godot/imported/constelation.aseprite-8b7ecf0a83cfa00115a96e34ff680405.ctex"]
 
 [params]
 

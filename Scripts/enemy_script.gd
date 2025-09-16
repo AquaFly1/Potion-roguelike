@@ -22,7 +22,7 @@ var chosen_potion = null
 @onready var potion_ingredients: Label = $info_panel/potion_ingredients
 
 func _ready() -> void:
-#6	entity_sprite.texture = sprite
+#	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
 func die():

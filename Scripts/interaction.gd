@@ -9,6 +9,7 @@ var current_enemy = null
 
 func _ready() -> void:
 	Game.end_turn.connect(end_turn)
+	Player.start_turn()
 	
 	#temporary
 	var pos = 0

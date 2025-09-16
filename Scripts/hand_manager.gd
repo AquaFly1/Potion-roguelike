@@ -23,13 +23,11 @@ var use_deck: Array[Ingredient]
 var potion: Array[Ingredient]
 
 func _ready() -> void:
+	Game.player_start_turn.connect(player_start)
 	Game.card_selected.connect(on_selected_card)
-	deck.shuffle()
-	use_deck = deck.duplicate()
-	add_card(use_deck[0])
-	add_card(use_deck[0])
-	add_card(use_deck[0])
-	add_card(use_deck[0])
+	draw(4)
+	
+
 	
 func add_card(card_ing):
 	#if cards.size() >= hand_size:
@@ -84,7 +82,8 @@ func _on_play_pressed() -> void:
 				Player.mana -= 1
 				for i in cards:
 					i.path_pos_index -= 1.0/max(5,cards.size())
-				_update_hand_layout()
+				draw(1)
+				selected_card = null
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -96,13 +95,10 @@ func _on_end_turn_pressed() -> void:
 	Game.end_turn.emit()
 	has_potion = false
 
-
 func _on_throw_self_pressed() -> void:
 	Player.take_potion(potion)
 	potion = []
 	has_potion = false
-	
-
 
 func _on_get_potion_pressed() -> void:
 	if Player.mana > 0:
@@ -122,7 +118,32 @@ func _on_discard_pressed() -> void:
 	if selected_card:
 		cards.erase(selected_card)
 		selected_card.queue_free()
+		_update_hand_layout()
+		for i in cards:
+			i.path_pos_index -= 1.0/max(5,cards.size())
 		if cards.size() < hand_size:
-			if use_deck != []:
-				add_card(use_deck[0])
+			draw(1)
 		selected_card = null
+				
+
+
+func _on_draw_pressed() -> void:
+	print(use_deck)
+	draw(1)
+
+func draw(amount: int):
+	for i in amount:
+		if use_deck != []:
+			add_card(use_deck[0])
+			_update_hand_layout()
+
+func player_start():
+	print("start player turn")
+	deck.shuffle()
+	use_deck = deck.duplicate()
+	for card in cards:
+		remove_card(card)
+	cards = []
+	_update_hand_layout()
+	draw(4)
+	selected_card = null

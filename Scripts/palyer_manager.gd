@@ -18,6 +18,7 @@ var xp_needed = 10
 func start_turn():
 	super()
 	mana = max_mana
+	Game.player_start_turn.emit()
 
 func _process(delta: float) -> void:
 	if xp >= xp_needed:

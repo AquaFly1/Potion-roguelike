@@ -11,11 +11,10 @@ var timeSmooth: float
 func hand_modified(cards):
 	Size = CurrentSize
 	time = 0
-	print(animationPlayer)
 	NewSize = (float(len(cards)-1)/4) * hold_anim_length
 	
 	
-func set_hand_size(size) -> void:
+func set_hand_size() -> void:
 	set("parameters/HoldBlend/TimeSeek/seek_request", CurrentSize)
 
 

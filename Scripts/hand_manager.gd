@@ -36,7 +36,7 @@ func add_card(card_ing):
 	var card_path = path_scene.instantiate()
 	card.ingredient = card_ing
 	card.path = card_path
-	card.path_pos_index = float(cards.size())/max(5,cards.size())
+	card.path_pos_index = float(cards.size())
 	add_child(card)
 	hand_path.add_child(card_path)
 	card_path.set("position",Vector2(0,0))
@@ -46,22 +46,19 @@ func add_card(card_ing):
 	_update_hand_layout()
 
 func remove_card(card):
-	if card in cards:
-		card.path.queue_free()
-		cards.erase(card)
+	card.path.queue_free()
+	
+	cards.erase(card)
+	card.queue_free()
 		
-		card.queue_free()
-		
-		_update_hand_layout()
+	_update_hand_layout()
 
 func _update_hand_layout():
 	var total = cards.size()
 	if total == 0:
 		Game.held_hand_modified.emit(cards)
 		return
-	var start_x = -((total - 1) * card_spacing) / 2
 	for i in range(total):
-		var target_pos = Vector2(start_x + i * card_spacing, 0)
 		cards[i].move_to_position()
 	Game.held_hand_modified.emit(cards)
 
@@ -69,7 +66,7 @@ func on_selected_card(card):
 	selected_card = card
 	for i in cards:
 		if i.path_pos_index < selected_card.path_pos_index:
-			i.path_pos_index += 1.0/max(5,cards.size())
+			i.path_pos_index += 1.0
 	selected_card.path_pos_index = 0
 	_update_hand_layout()
 
@@ -81,9 +78,11 @@ func _on_play_pressed() -> void:
 				remove_card(selected_card)
 				Player.mana -= 1
 				for i in cards:
-					i.path_pos_index -= 1.0/max(5,cards.size())
-				draw(1)
+					i.path_pos_index -= 1.0
+
 				selected_card = null
+	
+	_update_hand_layout()
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -116,11 +115,9 @@ func _process(delta: float) -> void:
 
 func _on_discard_pressed() -> void:
 	if selected_card:
-		cards.erase(selected_card)
-		selected_card.queue_free()
-		_update_hand_layout()
+		remove_card(selected_card)
 		for i in cards:
-			i.path_pos_index -= 1.0/max(5,cards.size())
+			i.path_pos_index -= 1.0
 		if cards.size() < hand_size:
 			draw(1)
 		selected_card = null
@@ -141,9 +138,10 @@ func player_start():
 	print("start player turn")
 	deck.shuffle()
 	use_deck = deck.duplicate()
-	for card in cards:
+	var cards_to_remove = cards.duplicate()
+	for card in cards_to_remove:
 		remove_card(card)
-	cards = []
+	
 	_update_hand_layout()
 	draw(4)
 	selected_card = null

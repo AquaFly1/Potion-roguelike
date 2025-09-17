@@ -11,6 +11,8 @@ signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()
 
+var xp_end_of_fight: int = 0
+
 func _ready() -> void:
 	held_hand_modified.connect(hand_modified)
 	card_selected.connect(card_selected_func)

@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
-	Player.xp += xp_given
+	Game.xp_end_of_fight += xp_given
 	self.queue_free()
 
 func start_turn():

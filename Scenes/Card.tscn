@@ -18,9 +18,11 @@ control = NodePath("Control")
 z_index = -13
 layout_mode = 3
 anchors_preset = 0
-offset_left = -50.0
-offset_top = -140.0
-offset_right = 50.0
+offset_left = -75.0
+offset_top = -203.0
+offset_right = 25.0
+offset_bottom = -63.0
+scale = Vector2(1.45, 1.45)
 
 [node name="Sprite2D" type="TextureRect" parent="Control"]
 texture_filter = 1
@@ -31,7 +33,7 @@ offset_bottom = 140.0
 texture = ExtResource("3_h8wm0")
 
 [node name="Button" type="Button" parent="Control"]
-modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 140.0

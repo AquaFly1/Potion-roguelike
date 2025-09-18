@@ -25,7 +25,6 @@ var potion: Array[Ingredient]
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
 	Game.card_selected.connect(on_selected_card)
-	draw(4)
 	
 
 	
@@ -39,10 +38,12 @@ func add_card(card_ing):
 	card.path_pos_index = float(cards.size())
 	add_child(card)
 	hand_path.add_child(card_path)
+	
+	#remote path is a node that forces another to copy its transforms
+	card_path.get_child(0).remote_path = card_path.get_child(0).get_path_to(card)
 	card_path.set("position",Vector2(0,0))
 	cards.append(card)
 	use_deck.pop_at(0)
-	
 	_update_hand_layout()
 
 func remove_card(card):
@@ -143,5 +144,5 @@ func player_start():
 		remove_card(card)
 	
 	_update_hand_layout()
-	draw(4)
+	draw(5)
 	selected_card = null

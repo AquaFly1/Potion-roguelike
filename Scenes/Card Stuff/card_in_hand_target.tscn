@@ -1,14 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1vvsgo53l5k2"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7puno"]
-size = Vector2(64, 64)
+[gd_scene format=3 uid="uid://b1vvsgo53l5k2"]
 
 [node name="CardInHandTarget" type="PathFollow2D"]
 loop = false
 
-[node name="cardOrigin" type="Marker2D" parent="."]
+[node name="cardOrigin" type="RemoteTransform2D" parent="."]
 z_index = -15
 rotation = 3.14159
-
-[node name="Sprite2D" type="Sprite2D" parent="cardOrigin"]
-texture = SubResource("PlaceholderTexture2D_7puno")

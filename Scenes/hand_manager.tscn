@@ -27,10 +27,10 @@ deck = Array[ExtResource("3_ko15p")]([ExtResource("3_rbqwa"), ExtResource("3_rbq
 
 [node name="discard" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1359.0
-offset_top = 691.0
-offset_right = 1559.0
-offset_bottom = 791.0
+offset_left = 1580.0
+offset_top = 846.0
+offset_right = 1780.0
+offset_bottom = 946.0
 scale = Vector2(1.85476, 1.84715)
 text = "discard"
 
@@ -55,10 +55,10 @@ text = "get potion"
 
 [node name="play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1361.0
-offset_top = 879.0
-offset_right = 1561.0
-offset_bottom = 979.0
+offset_left = 1205.9999
+offset_top = 862.0
+offset_right = 1405.9999
+offset_bottom = 962.0
 scale = Vector2(1.85476, 1.84715)
 text = "play"
 

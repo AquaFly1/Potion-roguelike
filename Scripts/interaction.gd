@@ -26,7 +26,7 @@ func end_turn():
 		enemy.start_turn()
 	Player.start_turn()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if fight_ended == false:
 		if enemies == []:
 			end_fight()

@@ -6,7 +6,7 @@ extends Control
 @export var card_scene: PackedScene
 @export var path_scene: PackedScene
 
-var selected_card: Card
+var selected_cards: Array[Card]
 var cards: Array[Card]
 
 var has_potion = false
@@ -24,7 +24,7 @@ var potion: Array[Ingredient]
 
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
-	Game.card_selected.connect(on_selected_card)
+	Game.card_selected.connect(on_selected_cards)
 	
 
 	
@@ -61,27 +61,42 @@ func _update_hand_layout():
 		return
 	for i in range(total):
 		cards[i].move_to_position()
+	
+	for i in len(cards):				#card selection based on order in node tree (end is better)
+		move_child(cards[i],-(i+1))		#reversing the order makes the top card the highest prior
 	Game.held_hand_modified.emit(cards)
+	
 
-func on_selected_card(card):
-	selected_card = card
-	for i in cards:
-		if i.path_pos_index < selected_card.path_pos_index:
-			i.path_pos_index += 1.0
-	selected_card.path_pos_index = 0
-	_update_hand_layout()
+func on_selected_cards(card):
+	if not selected_cards.has(card):
+		selected_cards.append(card)
+		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
+		for i in cards:
+			if i.path_pos_index < card.path_pos_index:
+				i.path_pos_index += 1.0
+		card.path_pos_index = 0
+		_update_hand_layout()
+	else:
+		selected_cards.erase(card)
+		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,0))
+		for i in selected_cards:
+			if i.path_pos_index > card.path_pos_index:
+				i.path_pos_index -= 1
+		card.path_pos_index = len(selected_cards)
+		_update_hand_layout()
 
 func _on_play_pressed() -> void:
 	if has_potion:
 		if Player.mana > 0:
-			if selected_card:
-				potion.append(selected_card.ingredient)
-				remove_card(selected_card)
-				Player.mana -= 1
-				for i in cards:
-					i.path_pos_index -= 1.0
+			if selected_cards:
+				for i in selected_cards:
+					potion.append(i.ingredient)
+					remove_card(i)
+					Player.mana -= 1
+					for j in cards:
+						j.path_pos_index -= 1.0
 
-				selected_card = null
+				selected_cards = []
 	
 	_update_hand_layout()
 				
@@ -115,13 +130,13 @@ func _process(_delta: float) -> void:
 
 
 func _on_discard_pressed() -> void:
-	if selected_card:
-		remove_card(selected_card)
+	if selected_cards:
+		remove_card(selected_cards)
 		for i in cards:
 			i.path_pos_index -= 1.0
 		if cards.size() < hand_size:
 			draw(1)
-		selected_card = null
+		selected_cards = []
 				
 
 
@@ -145,4 +160,4 @@ func player_start():
 	
 	_update_hand_layout()
 	draw(5)
-	selected_card = null
+	selected_cards = []

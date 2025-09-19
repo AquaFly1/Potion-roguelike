@@ -8,6 +8,7 @@ var timeSmooth: float
 @onready var animationPlayer: AnimationPlayer = $"../AnimationPlayer"
 @onready var hold_anim_length: float = animationPlayer.get_animation("RHHoldCards").length
 
+
 func hand_modified(cards):
 	Size = CurrentSize
 	time = 0

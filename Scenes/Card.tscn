@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dudoidhqi2x68" path="res://Sprites/SparkRock.aseprite" id="3_h8wm0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h8wm0"]
+resource_local_to_scene = true
 shader = ExtResource("3_3m7nw")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 0)
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_time_scale = 6.1
 
@@ -33,7 +34,7 @@ offset_bottom = 140.0
 texture = ExtResource("3_h8wm0")
 
 [node name="Button" type="Button" parent="Control"]
-show_behind_parent = true
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 140.0

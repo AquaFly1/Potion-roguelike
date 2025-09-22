@@ -47,7 +47,7 @@ size_2d_override = Vector2i(1920, 1080)
 [node name="3DMasked" parent="3D View/ViewMasked" instance=ExtResource("2_v6xcv")]
 
 [node name="mask2" type="MeshInstance3D" parent="3D View/ViewMasked/3DMasked"]
-transform = Transform3D(0.9937912, 0.11067823, 0.011371076, 0, 0.102202, -0.994764, -0.1112608, 0.9885877, 0.10156745, 1.55677, 1.08376, 0.7765672)
+transform = Transform3D(0.9937912, 0.11067823, 0.011371076, 0, 0.102202, -0.994764, -0.1112608, 0.9885877, 0.10156745, 1.55677, 1.08376, 0.8277856)
 mesh = SubResource("PlaneMesh_v6xcv")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")

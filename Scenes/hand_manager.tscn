@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xwd75vy5re77"]
+[gd_scene load_steps=11 format=3 uid="uid://xwd75vy5re77"]
 
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/hand_manager.gd" id="1_287d8"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card.tscn" id="2_14rvc"]
@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Ingredients/heart_ing.tres" id="7_hxaw1"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Ingredients/ice_ing.tres" id="7_sivyo"]
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Ingredients/poison.tres" id="8_8a75f"]
-[ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Sprites/temporary_art/potion.aseprite" id="9_8a75f"]
 [ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Sprites/temporary_art/potion_bar_empty.aseprite" id="10_82ff2"]
 [ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Sprites/temporary_art/potion_bar.aseprite" id="11_s1ioh"]
 
@@ -88,15 +87,6 @@ offset_right = 992.0
 offset_bottom = 969.0
 scale = Vector2(1.85476, 1.84715)
 text = "throw to self"
-
-[node name="potion_sprite" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 350.0
-offset_top = 671.0
-offset_right = 358.0
-offset_bottom = 682.0
-scale = Vector2(18.5476, 18.4715)
-texture = ExtResource("9_8a75f")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0

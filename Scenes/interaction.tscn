@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Ingredients/etincelle_ing.tres" id="12_67qdp"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Ingredients/ice_ing.tres" id="13_cj8oy"]
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Ingredients/heart_ing.tres" id="14_p2sw0"]
+[ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Sprites/temporary_art/potion.aseprite" id="15_0rm1d"]
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Ingredients/poison.tres" id="15_clbkw"]
 
 [sub_resource type="Gradient" id="Gradient_0d3ml"]
@@ -30,15 +31,12 @@ viewport_path = NodePath("3D View/ViewMasked")
 [sub_resource type="Curve2D" id="Curve2D_0d3ml"]
 bake_interval = 1.0
 _data = {
-"points": PackedVector2Array(41.253006, 12.014827, -41.253006, -12.014827, 1630.8778, 842.2232, 46.48668, -63.01541, -46.48668, 63.01541, 1428.0323, 829.8224)
+"points": PackedVector2Array(41.253006, 12.014827, -41.253006, -12.014827, 1601, 773, 46.48668, -63.01541, -46.48668, 63.01541, 1430, 851)
 }
 point_count = 2
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_45lrk"]
 size = Vector2(47, 39)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0rm1d"]
-size = Vector2(34, 34)
 
 [node name="interaction" type="Node2D"]
 script = ExtResource("1_qhmss")
@@ -52,15 +50,23 @@ texture = SubResource("GradientTexture2D_7pwvw")
 
 [node name="Player" parent="." instance=ExtResource("2_msng8")]
 
+[node name="Potion" type="Sprite2D" parent="Player"]
+position = Vector2(409, 728)
+scale = Vector2(6, 6)
+texture = ExtResource("15_0rm1d")
+
+[node name="bottle opening" type="Marker2D" parent="Player/Potion"]
+position = Vector2(1.3333334, -21.333334)
+
 [node name="3D Projection" parent="Player" instance=ExtResource("5_0d3ml")]
 texture = SubResource("ViewportTexture_0d3ml")
 
 [node name="HandShape" type="Path2D" parent="Player"]
-scale = Vector2(0.985972, 0.967677)
 curve = SubResource("Curve2D_0d3ml")
 script = ExtResource("5_mw5kq")
 
 [node name="CardPathStart" type="Node2D" parent="Player/HandShape"]
+visible = false
 script = ExtResource("5_x1jkv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/HandShape/CardPathStart"]
@@ -68,6 +74,7 @@ position = Vector2(-1.9073495e-06, 0)
 texture = SubResource("PlaceholderTexture2D_45lrk")
 
 [node name="CardPathEnd" type="Node2D" parent="Player/HandShape"]
+visible = false
 script = ExtResource("5_x1jkv")
 end_segment = true
 
@@ -75,14 +82,6 @@ end_segment = true
 position = Vector2(-1.9073495e-06, 0)
 scale = Vector2(1.01, 1.01)
 texture = SubResource("PlaceholderTexture2D_45lrk")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/HandShape"]
-position = Vector2(1630.8778, 842.2232)
-rotation = -2.8581853
-loop = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/HandShape/PathFollow2D"]
-texture = SubResource("PlaceholderTexture2D_0rm1d")
 
 [node name="hand" parent="." node_paths=PackedStringArray("hand_path") instance=ExtResource("3_msng8")]
 anchors_preset = 0

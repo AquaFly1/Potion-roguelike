@@ -8,11 +8,13 @@ extends Control
 
 var selected_cards: Array[Card]
 var cards: Array[Card]
+var card_order: Array[Card] #card order for making sure we click the right card
 
 var has_potion = false
-@onready var potion_sprite: TextureRect = $potion_sprite
+@onready var potion_sprite: Sprite2D = $"../Player/Potion"
 
 @onready var mana_bar: TextureProgressBar = $TextureProgressBar
+
 
 @export var hand_path: Path2D
 
@@ -61,9 +63,13 @@ func _update_hand_layout():
 		return
 	for i in range(total):
 		cards[i].move_to_position()
-	
-	for i in len(cards):				#card selection based on order in node tree (end is better)
-		move_child(cards[i],-(i+1))		#reversing the order makes the top card the highest prior
+		
+	card_order = []				#card array with cards and selected_cards, selected_cards coming first and removing duplicates
+	for i in selected_cards+cards:
+		if not card_order.has(i):
+			card_order.append(i)
+	for i in len(card_order):				#card selection based on order in node tree (end is better)
+		move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
 	Game.held_hand_modified.emit(cards)
 	
 
@@ -72,9 +78,9 @@ func on_selected_cards(card):
 		selected_cards.append(card)
 		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
 		for i in cards:
-			if i.path_pos_index < card.path_pos_index:
+			if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
 				i.path_pos_index += 1.0
-		card.path_pos_index = 0
+		card.path_pos_index = len(selected_cards)-1
 		_update_hand_layout()
 	else:
 		selected_cards.erase(card)
@@ -107,8 +113,9 @@ func _on_throw_pot_pressed() -> void:
 		has_potion = false
 
 func _on_end_turn_pressed() -> void:
-	Game.end_turn.emit()
 	has_potion = false
+	Game.end_turn.emit()
+	
 
 func _on_throw_self_pressed() -> void:
 	Player.take_potion(potion)
@@ -160,4 +167,5 @@ func player_start():
 	
 	_update_hand_layout()
 	draw(5)
+	_on_get_potion_pressed()
 	selected_cards = []

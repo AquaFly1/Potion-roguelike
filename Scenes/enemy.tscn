@@ -87,7 +87,7 @@ position = Vector2(76, 68)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_vt4ob")
 autoplay = "default"
-frame_progress = 0.22664976
+frame_progress = 0.17742503
 
 [node name="burn" type="Control" parent="." index="1"]
 layout_mode = 3

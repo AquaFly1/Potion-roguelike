@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=5 format=3 uid="uid://cjuyi2adb48lg"]
 
-[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scenes/Environnement/player_controller.gd" id="1_ko3d7"]
+[ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2dly6"]
 albedo_color = Color(0, 0, 0.3764706, 1)
@@ -9,8 +9,6 @@ albedo_color = Color(0, 0, 0.3764706, 1)
 material = SubResource("ORMMaterial3D_2dly6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ko3d7"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2p7x"]
 
 [node name="RoomBase" type="Node3D"]
 
@@ -30,12 +28,5 @@ shape = SubResource("BoxShape3D_ko3d7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 4.3956428, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.385406, 0)
-axis_lock_angular_z = true
-script = ExtResource("1_ko3d7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("CapsuleShape3D_g2p7x")
-
-[node name="Camera3D" type="Camera3D" parent="RigidBody3D"]
+[node name="Node3D" parent="." instance=ExtResource("1_ko3d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3119478, 0)

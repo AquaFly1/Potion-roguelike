@@ -28,7 +28,7 @@ func end_turn():
 
 func _process(_delta: float) -> void:
 	if fight_ended == false:
-		if enemies == []:
+		if enemies_parent.get_children() == []:
 			end_fight()
 
 
@@ -36,3 +36,4 @@ func end_fight():
 	fight_ended = true
 	Player.xp += Game.xp_end_of_fight
 	Game.xp_end_of_fight = 0
+	get_tree().change_scene_to_file("res://Scenes/Environnement/RoomBase.tscn")

@@ -44,5 +44,6 @@ func apply_potion(ingredients: Array[Ingredient]):
 		heal += combo.heal
 	return[dmg, burn, poison, rejuv, heal]
 
-
-	
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()

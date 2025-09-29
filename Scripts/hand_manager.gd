@@ -92,6 +92,7 @@ func on_selected_cards(card):
 		_update_hand_layout()
 
 func _on_play_pressed() -> void:
+	var played_cards = 0
 	if has_potion:
 		if Player.mana > 0:
 			if selected_cards:
@@ -99,8 +100,10 @@ func _on_play_pressed() -> void:
 					potion.append(i.ingredient)
 					remove_card(i)
 					Player.mana -= 1
+					played_cards += 1
 					for j in cards:
 						j.path_pos_index -= 1.0
+				draw(played_cards)
 
 				selected_cards = []
 	
@@ -130,21 +133,11 @@ func _on_get_potion_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	mana_bar.value = Player.mana
-	if has_potion:
-		potion_sprite.visible = true
-	else:
-		potion_sprite.visible = false
-
-
-func _on_discard_pressed() -> void:
-	if selected_cards:
-		remove_card(selected_cards)
-		for i in cards:
-			i.path_pos_index -= 1.0
-		if cards.size() < hand_size:
-			draw(1)
-		selected_cards = []
-				
+	if potion_sprite:
+		if has_potion:
+			potion_sprite.visible = true
+		else:
+			potion_sprite.visible = false
 
 
 func _on_draw_pressed() -> void:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx54w3wo45241"]
+[gd_scene load_steps=10 format=3 uid="uid://bx54w3wo45241"]
 
 [ext_resource type="Script" uid="uid://ccxbovebvmybb" path="res://Scripts/interaction_tile.gd" id="1_vkcu2"]
-[ext_resource type="PackedScene" uid="uid://bf067ia071p7e" path="res://Sprites/temporary_art/interaction_floor.blend" id="2_px55y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41w8f"]
 albedo_color = Color(0, 0.24313726, 1, 1)
@@ -17,6 +16,16 @@ albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dtrgf"]
 material = SubResource("StandardMaterial3D_px55y")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkcu2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtrgf"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.41568628)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rmsek"]
+material = SubResource("StandardMaterial3D_dtrgf")
 
 [node name="Node3D" type="Node3D"]
 
@@ -35,5 +44,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4689445)
 mesh = SubResource("BoxMesh_dtrgf")
 script = ExtResource("1_vkcu2")
 
-[node name="interaction_floor" parent="interaction" instance=ExtResource("2_px55y")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="interaction"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interaction/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3926729, 0)
+shape = SubResource("BoxShape3D_vkcu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interaction/Area3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_rmsek")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="interaction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0015377998)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interaction/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.047790706, 0)
+shape = SubResource("BoxShape3D_px55y")

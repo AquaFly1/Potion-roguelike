@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjuyi2adb48lg"]
 
-[ext_resource type="MeshLibrary" uid="uid://hakqme6jiio7" path="res://rooms_ml.tres" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
+[ext_resource type="MeshLibrary" uid="uid://dp8r7mk5xmws4" path="res://rooms_meshl2.tres" id="2_g2p7x"]
 
 [node name="RoomBase" type="Node3D"]
 
@@ -12,4 +12,7 @@ transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3119478, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_g2p7x")
+mesh_library = ExtResource("2_g2p7x")
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 65535, 65535, 0, 0, 65534, 0, 65535, 65534, 0, 0, 0, 0, 65535, 0, 0, 1, 65533, 1, 0, 65533, 1, 65535, 65532, 1, 65535, 65533, 1, 0, 65532, 1, 1, 65532, 1)
+}

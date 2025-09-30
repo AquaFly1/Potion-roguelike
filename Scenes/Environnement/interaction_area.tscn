@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfrud3pja2p47"]
+
+[ext_resource type="Script" uid="uid://bdj1xb40m0f4b" path="res://Scripts/interaction_area.gd" id="1_4j0q4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ok3wg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsyvp"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.29803923)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t37yy"]
+material = SubResource("StandardMaterial3D_xsyvp")
+
+[node name="Interaction_area" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_4j0q4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ok3wg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_t37yy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

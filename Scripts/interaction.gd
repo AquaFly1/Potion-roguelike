@@ -12,6 +12,7 @@ var fight_ended = false
 func _ready() -> void:
 	Game.end_turn.connect(end_turn)
 	Player.start_turn()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	#temporary
 	var pos = 0

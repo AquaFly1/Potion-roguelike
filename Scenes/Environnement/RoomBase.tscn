@@ -1,18 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=8 format=3 uid="uid://cjuyi2adb48lg"]
 
+[ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
-[ext_resource type="MeshLibrary" uid="uid://dp8r7mk5xmws4" path="res://rooms_meshl2.tres" id="2_g2p7x"]
+[ext_resource type="PackedScene" uid="uid://dfrud3pja2p47" path="res://Scenes/Environnement/interaction_area.tscn" id="3_dutty"]
+[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]
+[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="5_cmu4p"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ko3d7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2p7x"]
+size = Vector3(2, 0.1, 2)
 
 [node name="RoomBase" type="Node3D"]
+script = ExtResource("1_g2p7x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 4.3956428, 0)
 
-[node name="Node3D" parent="." instance=ExtResource("1_ko3d7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3119478, 0)
+[node name="Player" parent="." instance=ExtResource("1_ko3d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.213772, 0)
 
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_g2p7x")
-data = {
-"cells": PackedInt32Array(0, 65535, 0, 65535, 65535, 0, 0, 65534, 0, 65535, 65534, 0, 0, 0, 0, 65535, 0, 0, 1, 65533, 1, 0, 65533, 1, 65535, 65532, 1, 65535, 65533, 1, 0, 65532, 1, 1, 65532, 1)
-}
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_ko3d7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04939586, 0)
+shape = SubResource("BoxShape3D_g2p7x")
+
+[node name="Interaction_area" parent="." instance=ExtResource("3_dutty")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -10)
+interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])
+
+[node name="Interaction_area2" parent="." instance=ExtResource("3_dutty")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 13)
+interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])

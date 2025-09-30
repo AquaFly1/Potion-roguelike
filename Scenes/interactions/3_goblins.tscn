@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://daadyt14cqlty"]
+
+[ext_resource type="PackedScene" uid="uid://cg651b3jwwuqk" path="res://Scenes/interaction.tscn" id="1_nfud5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0d3ml"]
+viewport_path = NodePath("3D View/ViewMasked")
+
+[node name="interaction" instance=ExtResource("1_nfud5")]
+
+[node name="3D Projection" parent="Player" index="4"]
+texture = SubResource("ViewportTexture_0d3ml")

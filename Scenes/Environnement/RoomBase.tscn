@@ -1,32 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=3 format=3 uid="uid://cjuyi2adb48lg"]
 
+[ext_resource type="MeshLibrary" uid="uid://hakqme6jiio7" path="res://rooms_ml.tres" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2dly6"]
-albedo_color = Color(0, 0, 0.3764706, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2dly6"]
-material = SubResource("ORMMaterial3D_2dly6")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ko3d7"]
-
 [node name="RoomBase" type="Node3D"]
-
-[node name="GridMap" type="GridMap" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_2dly6")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-visibility_parent = NodePath("../MeshInstance3D")
-shape = SubResource("BoxShape3D_ko3d7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 4.3956428, 0)
 
 [node name="Node3D" parent="." instance=ExtResource("1_ko3d7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3119478, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_g2p7x")

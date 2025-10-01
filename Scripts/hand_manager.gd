@@ -152,6 +152,7 @@ func draw(amount: int):
 
 func player_start():
 	print("start player turn")
+	
 	deck.shuffle()
 	use_deck = deck.duplicate()
 	var cards_to_remove = cards.duplicate()

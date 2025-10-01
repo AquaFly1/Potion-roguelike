@@ -11,6 +11,7 @@ var fight_ended = false
 
 func _ready() -> void:
 	Game.end_turn.connect(end_turn)
+	Game.interaction_ended.connect(interaction_ended)
 	Player.start_turn()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -30,10 +31,10 @@ func end_turn():
 func _process(_delta: float) -> void:
 	if fight_ended == false:
 		if enemies_parent.get_children() == []:
-			end_fight()
+			interaction_ended()
 
 
-func end_fight():
+func interaction_ended():
 	fight_ended = true
 	Player.xp += Game.xp_end_of_fight
 	Game.xp_end_of_fight = 0

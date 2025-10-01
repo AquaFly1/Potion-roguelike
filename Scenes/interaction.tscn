@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cg651b3jwwuqk"]
+[gd_scene load_steps=19 format=3 uid="uid://cg651b3jwwuqk"]
 
 [ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/goblin.tscn" id="1_q35ui"]
 [ext_resource type="Script" uid="uid://cv0yp1nlcemhy" path="res://Scripts/interaction.gd" id="1_qhmss"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="2_msng8"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/hand_manager.tscn" id="3_msng8"]
-[ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="5_0d3ml"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/CardPathController.gd" id="5_mw5kq"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/CardPath2D.gd" id="5_x1jkv"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="6_x1jkv"]
@@ -24,9 +23,6 @@ gradient = SubResource("Gradient_0d3ml")
 width = 1920
 height = 1080
 fill_from = Vector2(1, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0d3ml"]
-viewport_path = NodePath("3D View/ViewMasked")
 
 [sub_resource type="Curve2D" id="Curve2D_0d3ml"]
 bake_interval = 1.0
@@ -57,9 +53,6 @@ texture = ExtResource("15_0rm1d")
 
 [node name="bottle opening" type="Marker2D" parent="Player/Potion"]
 position = Vector2(1.3333334, -21.333334)
-
-[node name="3D Projection" parent="Player" instance=ExtResource("5_0d3ml")]
-texture = SubResource("ViewportTexture_0d3ml")
 
 [node name="HandShape" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_0d3ml")

@@ -10,6 +10,7 @@ var current_enemy: Enemy = null
 signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()
+signal interaction_ended()
 
 var xp_end_of_fight: int = 0
 
@@ -17,8 +18,9 @@ func _ready() -> void:
 	held_hand_modified.connect(hand_modified)
 	card_selected.connect(card_selected_func)
 	end_turn.connect(end_turn_func)
+	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
-	pass
+
 
 func hand_modified(_cards: Array):
 	pass
@@ -27,6 +29,8 @@ func card_selected_func(_card):
 func end_turn_func():
 	pass
 func player_start_turn_func():
+	pass
+func interaction_end_func():
 	pass
 
 func apply_potion(ingredients: Array[Ingredient]):

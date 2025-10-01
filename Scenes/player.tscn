@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=6 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/character_controller.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="2_cvnsp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6t5aa"]
+viewport_path = NodePath("3D View/ViewMasked")
 
 [node name="Node3D" type="CharacterBody3D"]
 script = ExtResource("1_v0iea")
@@ -20,3 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54748803, -0.09236109)
 
 [node name="Camera3D" type="Camera3D" parent="pivot"]
 current = true
+
+[node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
+texture = SubResource("ViewportTexture_6t5aa")

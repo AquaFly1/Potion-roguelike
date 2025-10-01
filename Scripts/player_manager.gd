@@ -4,8 +4,8 @@ extends Entity
 @export var level = 0
 @export var xp = 0
 
-@export var max_mana = 5
-var mana = 5
+@export var max_mana = 10
+var mana = 10
 
 @export var info: Label			#g enleve pasque ca mettait des erreurs jsp ca sert a quoi
 @export var burn_label: Label

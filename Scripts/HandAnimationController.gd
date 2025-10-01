@@ -7,7 +7,8 @@ var time: float
 var timeSmooth: float
 @onready var animationPlayer: AnimationPlayer = $"../AnimationPlayer"
 @onready var hold_anim_length: float = animationPlayer.get_animation("RHHoldCards").length
-
+@onready var state_machine = self["parameters/playback"]
+var is_in_interaction: bool = false
 
 func hand_modified(cards):
 	Size = CurrentSize
@@ -18,9 +19,18 @@ func hand_modified(cards):
 func set_hand_size() -> void:
 	set("parameters/HoldBlend/TimeSeek/seek_request", CurrentSize)
 
+func player_start() -> void:
+	is_in_interaction = true
+	state_machine.travel("ArmRightPickup")
+
+func interaction_ended() -> void:
+	is_in_interaction = false
+	state_machine.travel("Start")
 
 func _ready() -> void:
 	Game.held_hand_modified.connect(hand_modified)
+	Game.player_start_turn.connect(player_start)
+	Game.interaction_ended.connect(interaction_ended)
 	Size = 0
 	NewSize = 0
 	CurrentSize = 0

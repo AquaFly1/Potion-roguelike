@@ -13,6 +13,7 @@ func _ready() -> void:
 		.card_path_start_2D_pos
 		.connect(on_update_path_pos))
 
+
 func on_update_path_pos(_pos):
 	position = _pos
 	

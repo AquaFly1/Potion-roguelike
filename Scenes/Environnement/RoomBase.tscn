@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=12 format=3 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
@@ -6,10 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]
 [ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="5_cmu4p"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u4kg2"]
+noise_type = 4
+frequency = 0.0555
+fractal_type = 2
+
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4kg2"]
+noise = SubResource("FastNoiseLite_u4kg2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmu4p"]
+albedo_color = Color(0.46199998, 0.5124, 0.84, 1)
 albedo_texture = SubResource("NoiseTexture2D_u4kg2")
+albedo_texture_force_srgb = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ko3d7"]
 material = SubResource("StandardMaterial3D_cmu4p")
@@ -17,11 +25,15 @@ material = SubResource("StandardMaterial3D_cmu4p")
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2p7x"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="BoxMesh" id="BoxMesh_u4kg2"]
+
 [node name="RoomBase" type="Node3D"]
 script = ExtResource("1_g2p7x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 4.3956428, 0)
+transform = Transform3D(0.9202659, 0.32790193, 0.2135202, 0.06516121, -0.6664811, 0.7426687, 0.3858297, -0.6695396, -0.6347063, 0, 4.3956428, 0)
+light_color = Color(1, 0.8426667, 0.41000003, 1)
+shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ko3d7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.213772, 0)
@@ -43,3 +55,7 @@ interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p"
 [node name="Interaction_area2" parent="." instance=ExtResource("3_dutty")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 13)
 interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.453839, 0, 0, 0, 2.453839, 0, 0, 0, 2.453839, -3.583733, 1.0190465, 1.5952482)
+mesh = SubResource("BoxMesh_u4kg2")

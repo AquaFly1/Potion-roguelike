@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=10 format=3 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
@@ -6,15 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]
 [ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="5_cmu4p"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_u4kg2"]
-frequency = 0.185
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmu4p"]
-noise = SubResource("FastNoiseLite_u4kg2")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4kg2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmu4p"]
-albedo_texture = SubResource("NoiseTexture2D_cmu4p")
-albedo_texture_force_srgb = true
+albedo_texture = SubResource("NoiseTexture2D_u4kg2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ko3d7"]
 material = SubResource("StandardMaterial3D_cmu4p")

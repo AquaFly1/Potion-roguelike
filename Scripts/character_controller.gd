@@ -6,12 +6,17 @@ extends CharacterBody3D
 @export var jump_force: float = 7
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
-
+var dir: Vector3 = Vector3.ZERO
+var h_rot: float = 0
 @onready var pivot: Node3D = $pivot
+
+@onready var hand_display: Node2D = $"3D Projection"
 
 var horizontal_velocity: Vector3
 var vertical_velocity: Vector3
 
+var anim_y: float = 0
+var anim_time: float = 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,8 +32,9 @@ func _unhandled_input(event):
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_0:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _physics_process(delta):
-	var dir: Vector3 = Vector3.ZERO
-	var h_rot = pivot.global_transform.basis.get_euler().y
+	dir = Vector3.ZERO
+	h_rot = pivot.global_transform.basis.get_euler().y
+#region horizontal
 	if (Input.is_action_pressed("forward")
 	|| Input.is_action_pressed("backward") 
 	|| Input.is_action_pressed("left") 
@@ -49,17 +55,37 @@ func _physics_process(delta):
 	velocity.z = horizontal_velocity.z
 	
 	velocity.x = horizontal_velocity.x
+#endregion
 
-
-	# Apply gravity and jumpd
+#region vertical
+	#gravity and jump
 	if is_on_floor():
-		velocity.y = -0.01
+		velocity.y = 0
 		if Input.is_action_just_pressed("jump"):
 			vertical_velocity = Vector3.UP*jump_force
 			velocity.y = vertical_velocity.y
 	else:
 		velocity.y -= GRAVITY * delta
+#endregion
 		
+#region small anims
+	if velocity.distance_to(Vector3.ZERO) > 2 and is_on_floor():
+		anim_time += delta
+		anim_y = (cos(anim_time*15-PI)+1)*-10
 
+	else:
+		if is_on_floor():
+			if cos(anim_time*15) < 0.98:
+				anim_time += delta
+				anim_y = (cos(anim_time*15-PI)+1)*-10
+			
+			else:
+				anim_time = 0
+		else:
+			anim_y = lerpf(anim_y,0,0.1)	
+			anim_time = 0 
+		
+	hand_display.transform.origin.y = anim_y
+#endregion
 	# Move character
 	move_and_slide()

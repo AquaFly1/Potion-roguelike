@@ -52,11 +52,7 @@ func _process(delta: float) -> void:
 	rejuv_label.text = str(rejuv)
 	health_label.text = str(health)
 	if chosen_potion:
-		potion_name.text = chosen_potion.name
-		var ingredient_text: String = ""
-		for ing in chosen_potion.ingredients:
-			ingredient_text += str(ing) + "\n"
-		potion_ingredients.text = ingredient_text
+		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 		
 
 func _on_button_pressed() -> void:

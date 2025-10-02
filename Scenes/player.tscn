@@ -24,3 +24,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54748803, -0.09236109)
 current = true
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
+
+[node name="panels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0

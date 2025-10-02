@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+#region variables
 @export var walk_speed: float = 10.0
 @export var acceleration: float = 0.1
 @export var acceleration_air_mult: float = 0.5
@@ -17,7 +18,7 @@ var vertical_velocity: Vector3
 
 var anim_y: float = 0
 var anim_time: float = 0
-
+#endregion
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

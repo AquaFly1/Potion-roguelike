@@ -7,6 +7,8 @@ signal held_hand_modified(cards: Array)
 
 var current_enemy: Enemy = null
 
+var is_in_combat: bool = false
+
 signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()

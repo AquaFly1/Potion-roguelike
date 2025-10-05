@@ -11,6 +11,7 @@ var mana = 10
 @export var burn_label: Label
 @export var poison_label: Label 
 @export var rejuv_label: Label 
+@onready var panels: Control = $panels
 
 
 var xp_needed = 10
@@ -21,12 +22,17 @@ func start_turn():
 	Game.player_start_turn.emit()
 
 func _process(_delta: float) -> void:
+	if panels:
+		if Game.is_in_combat:
+			panels.visible = true
+		else:
+			panels.visible = false
 	if xp >= xp_needed:
 		xp -= xp_needed
 		xp_needed *= 2
 		level += 1
 	if info:
-		info.text = "health: %d gold: %d xp: %d level: %d " % [Player.health, Player.gold, Player.xp, Player.level]
+		info.text = "health: %d gold: %d \nxp: %d level: %d " % [Player.health, Player.gold, Player.xp, Player.level]
 	if burn_label and poison_label and rejuv_label:
 		burn_label.text = str(Player.burn)
 		poison_label.text = str(Player.poison)

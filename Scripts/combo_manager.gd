@@ -7,7 +7,7 @@ var tags: Array[Tag]
 func find_combos(ingredients: Array[Ingredient]):
 	tags = []
 	var active_combos: Array[Combo]
-	for ingredient in ingredients:
+	for ingredient in ingredients: 
 		for tag in ingredient.tags:
 			tags.append(tag)
 	var unique_tags: Array[Tag]

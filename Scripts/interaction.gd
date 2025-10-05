@@ -10,6 +10,7 @@ var current_enemy = null
 var fight_ended = false
 
 func _ready() -> void:
+	Game.is_in_combat = true
 	Game.end_turn.connect(end_turn)
 	Game.interaction_ended.connect(interaction_ended)
 	Player.start_turn()
@@ -39,3 +40,4 @@ func interaction_ended():
 	Player.xp += Game.xp_end_of_fight
 	Game.xp_end_of_fight = 0
 	get_tree().change_scene_to_file("res://Scenes/Environnement/RoomBase.tscn")
+	Game.is_in_combat = false

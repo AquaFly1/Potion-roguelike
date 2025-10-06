@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="2_cvnsp"]
-[ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/player_manager.gd" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/player_manager.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 
@@ -26,83 +26,4 @@ current = true
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
-[node name="player" type="Node2D" parent="." node_paths=PackedStringArray("info", "burn_label", "poison_label", "rejuv_label")]
-script = ExtResource("3_6t5aa")
-info = NodePath("panels/info/Label")
-burn_label = NodePath("panels/burn/Label")
-poison_label = NodePath("panels/poison/Label")
-rejuv_label = NodePath("panels/rejuv/Label")
-
-[node name="panels" type="Control" parent="player"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="info" type="ColorRect" parent="player/panels"]
-layout_mode = 0
-offset_left = 1577.0
-offset_top = 656.0
-offset_right = 1877.0
-offset_bottom = 756.0
-
-[node name="Label" type="Label" parent="player/panels/info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "5"
-horizontal_alignment = 1
-
-[node name="poison" type="ColorRect" parent="player/panels"]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 365.0
-offset_right = 1827.0
-offset_bottom = 465.0
-color = Color(0, 1, 0, 1)
-
-[node name="Label" type="Label" parent="player/panels/poison"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
-
-[node name="burn" type="ColorRect" parent="player/panels"]
-layout_mode = 0
-offset_left = 1577.0
-offset_top = 515.0
-offset_right = 1677.0
-offset_bottom = 615.0
-color = Color(1, 0, 0, 1)
-
-[node name="Label" type="Label" parent="player/panels/burn"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
-
-[node name="rejuv" type="ColorRect" parent="player/panels"]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 515.0
-offset_right = 1827.0
-offset_bottom = 615.0
-color = Color(1, 1, 0, 1)
-
-[node name="Label" type="Label" parent="player/panels/rejuv"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
+[node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]

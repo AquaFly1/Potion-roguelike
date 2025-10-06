@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://drhlo4inut523"]
+[gd_scene load_steps=16 format=3 uid="uid://drhlo4inut523"]
 
+[ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Sprites/palette.png" id="2_b7dpg"]
 [ext_resource type="PackedScene" uid="uid://pujqkmtdknev" path="res://3DAssets/3DEnvironment.tscn" id="2_v6xcv"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Shaders/3DMask.gdshader" id="3_b7dpg"]
 
@@ -14,15 +15,30 @@ shader = ExtResource("3_b7dpg")
 shader_parameter/key_color = Color(1, 0, 1, 1)
 shader_parameter/threshold = 0.3
 shader_parameter/softness = 0.1
+shader_parameter/gradient = ExtResource("2_b7dpg")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v6xcv"]
 viewport_path = NodePath("3D View/ViewMasked")
 
+[sub_resource type="Gradient" id="Gradient_b7dpg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.10148515, 0.4059406, 0.75247526)
+colors = PackedColorArray(0.19607843, 0.2, 0.3254902, 1, 0, 0, 0, 1, 0.24313726, 0.20784314, 0.27450982, 1, 0.5882353, 0.42352942, 0.42352942, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0v7ay"]
+gradient = SubResource("Gradient_b7dpg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v7ay"]
+shader = ExtResource("3_b7dpg")
+shader_parameter/key_color = Color(0, 1, 0, 1)
+shader_parameter/threshold = 0.3
+shader_parameter/softness = 0.1
+shader_parameter/gradient = SubResource("GradientTexture1D_0v7ay")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_b7dpg"]
 viewport_path = NodePath("3D View/ViewBack")
 
-[sub_resource type="Environment" id="Environment_v6xcv"]
-resource_local_to_scene = true
+[sub_resource type="Environment" id="Environment_glv2v"]
 background_color = Color(0.52549, 0.717647, 0.901961, 1)
 background_energy_multiplier = 0.58
 ambient_light_source = 2
@@ -33,7 +49,7 @@ glow_intensity = 3.48
 
 [sub_resource type="World3D" id="World3D_v6xcv"]
 resource_local_to_scene = true
-environment = SubResource("Environment_v6xcv")
+environment = SubResource("Environment_glv2v")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v6xcv"]
 
@@ -43,19 +59,9 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Environment" id="Environment_b7dpg"]
-resource_local_to_scene = true
-background_color = Color(0.52549, 0.717647, 0.901961, 1)
-background_energy_multiplier = 0.58
-ambient_light_source = 2
-ambient_light_color = Color(0.1665, 0.19485, 0.45, 1)
-ambient_light_energy = 0.37
-ssao_enabled = true
-glow_intensity = 3.48
-
 [sub_resource type="World3D" id="World3D_b7dpg"]
 resource_local_to_scene = true
-environment = SubResource("Environment_b7dpg")
+environment = SubResource("Environment_glv2v")
 
 [node name="3D Projection" type="Node2D"]
 z_index = -10
@@ -64,6 +70,7 @@ material = SubResource("ShaderMaterial_b7dpg")
 scale = Vector2(6, 6)
 
 [node name="ProjMask" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6xcv")
 texture = SubResource("ViewportTexture_v6xcv")
@@ -72,6 +79,7 @@ centered = false
 [node name="ProjBack" type="Sprite2D" parent="."]
 z_index = -50
 texture_filter = 1
+material = SubResource("ShaderMaterial_0v7ay")
 texture = SubResource("ViewportTexture_b7dpg")
 centered = false
 
@@ -100,3 +108,8 @@ size_2d_override = Vector2i(1920, 1080)
 
 [node name="3DBack" parent="3D View/ViewBack" instance=ExtResource("2_v6xcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4911, -156.86188, 0)
+
+[node name="Palette" type="Sprite2D" parent="."]
+position = Vector2(-121.83334, -35.666664)
+scale = Vector2(3.6249998, 65.66667)
+texture = ExtResource("2_b7dpg")

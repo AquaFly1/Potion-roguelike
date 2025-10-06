@@ -1,13 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://pujqkmtdknev"]
+[gd_scene load_steps=6 format=3 uid="uid://pujqkmtdknev"]
 
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Shaders/pixel.gdshader" id="1_y4y5h"]
 [ext_resource type="PackedScene" uid="uid://31bfstnkp780" path="res://3DAssets/hand.tscn" id="2_f6sjd"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_r0du0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glv2v"]
-diffuse_mode = 3
-albedo_color = Color(0.607843, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
 
@@ -32,14 +26,8 @@ glow_intensity = 3.48
 
 [node name="Transform" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.596265, 0, 0, 0, 0.543275, -0.245732, 0, 0.245732, 0.543275, 2.73239, 1.55541, -4.90785)
-mesh = SubResource("TorusMesh_r0du0")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_glv2v")
-
 [node name="PostProcess" type="MeshInstance3D" parent="."]
-transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 0, 1.00732, 0.939768)
+transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 0, 0.72268534, 1.3310851)
 mesh = SubResource("BoxMesh_cm0pq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_glv2v")

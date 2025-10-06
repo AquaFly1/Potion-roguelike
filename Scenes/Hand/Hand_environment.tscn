@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="1_y4y5h"]
 [ext_resource type="PackedScene" uid="uid://31bfstnkp780" path="res://Scenes/Hand/hand.tscn" id="2_f6sjd"]
+[ext_resource type="Environment" uid="uid://bgv7avnm6jp1i" path="res://Scenes/Hand/Hand_environment_preset.tres" id="2_uujy1"]
 [ext_resource type="PackedScene" uid="uid://l0qk45pib3v3" path="res://3DAssets/hand/handNew.blend" id="3_p1i0i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
@@ -16,15 +17,6 @@ shader_parameter/highlight_strength = 0.06
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Environment" id="Environment_lkv4t"]
-background_color = Color(0.52549, 0.717647, 0.901961, 1)
-background_energy_multiplier = 0.38
-ambient_light_source = 2
-ambient_light_color = Color(0.1665, 0.19485, 0.45, 1)
-ambient_light_energy = 0.86
-ssao_enabled = true
-glow_intensity = 3.48
-
 [node name="Transform" type="Node3D"]
 
 [node name="PostProcess" type="MeshInstance3D" parent="."]
@@ -34,7 +26,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_glv2v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lkv4t")
+environment = ExtResource("2_uujy1")
 
 [node name="Camera2" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)

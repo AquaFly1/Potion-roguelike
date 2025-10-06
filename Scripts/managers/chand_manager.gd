@@ -11,7 +11,6 @@ var cards: Array[Card]
 var card_order: Array[Card] #card order for making sure we click the right card
 
 var has_potion = false
-@onready var potion_sprite: Sprite2D = $"../Player/Potion"
 
 @onready var mana_bar: TextureProgressBar = $Mana_bar
 
@@ -133,11 +132,6 @@ func _on_get_potion_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	mana_bar.value = Player.mana
-	if potion_sprite:
-		if has_potion:
-			potion_sprite.visible = true
-		else:
-			potion_sprite.visible = false
 
 
 func _on_draw_pressed() -> void:

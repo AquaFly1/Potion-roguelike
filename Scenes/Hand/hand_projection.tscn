@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="2_b7dpg"]
 [ext_resource type="PackedScene" uid="uid://pujqkmtdknev" path="res://Scenes/Hand/Hand_environment.tscn" id="2_v6xcv"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="3_b7dpg"]
+[ext_resource type="Environment" uid="uid://bgv7avnm6jp1i" path="res://Scenes/Hand/Hand_environment_preset.tres" id="3_qaiqp"]
 [ext_resource type="Shader" uid="uid://bvsrns2282jtb" path="res://Graphics/Shaders/2Dposterization.gdshader" id="4_58i8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b7dpg"]
@@ -25,18 +26,9 @@ shader_parameter/colorForDelete = Color(1, 0, 1, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_b7dpg"]
 viewport_path = NodePath("3D View/ViewBack")
 
-[sub_resource type="Environment" id="Environment_lkv4t"]
-background_color = Color(0.52549, 0.717647, 0.901961, 1)
-background_energy_multiplier = 0.38
-ambient_light_source = 2
-ambient_light_color = Color(0.1665, 0.19485, 0.45, 1)
-ambient_light_energy = 0.86
-ssao_enabled = true
-glow_intensity = 3.48
-
 [sub_resource type="World3D" id="World3D_v6xcv"]
 resource_local_to_scene = true
-environment = SubResource("Environment_lkv4t")
+environment = ExtResource("3_qaiqp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v6xcv"]
 
@@ -48,7 +40,7 @@ albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="World3D" id="World3D_b7dpg"]
 resource_local_to_scene = true
-environment = SubResource("Environment_lkv4t")
+environment = ExtResource("3_qaiqp")
 
 [node name="3D Projection" type="Node2D"]
 z_index = -10
@@ -72,6 +64,7 @@ centered = false
 [node name="3D View" type="Node3D" parent="."]
 
 [node name="ViewMasked" type="SubViewport" parent="3D View"]
+own_world_3d = true
 world_3d = SubResource("World3D_v6xcv")
 transparent_bg = true
 size = Vector2i(320, 180)
@@ -87,6 +80,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")
 
 [node name="ViewBack" type="SubViewport" parent="3D View"]
+own_world_3d = true
 world_3d = SubResource("World3D_b7dpg")
 transparent_bg = true
 size = Vector2i(320, 180)

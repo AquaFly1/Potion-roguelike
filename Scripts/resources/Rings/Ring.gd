@@ -7,5 +7,5 @@ class_name Ring
 
 var bonus_damage: int = 0
 
-func activate(ings = Array[Ingredient]):
+func activate(ings: Array[Ingredient]):
 	pass

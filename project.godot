@@ -68,6 +68,7 @@ folder_colors={
 "res://Scripts/interaction/": "orange",
 "res://Scripts/managers/": "yellow",
 "res://Scripts/resources/": "green",
+"res://Scripts/resources/Rings/": "teal",
 "res://addons/": "orange",
 "res://addons/nklbdev.aseprite_importers/": "yellow"
 }

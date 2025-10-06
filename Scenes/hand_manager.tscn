@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://xwd75vy5re77"]
 
-[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/hand_manager.gd" id="1_287d8"]
+[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/entities/player/hand_manager.gd" id="1_287d8"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card.tscn" id="2_14rvc"]
-[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="3_ko15p"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_ko15p"]
 [ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Ingredients/bois_ing.tres" id="3_rbqwa"]
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Ingredients/etincelle_ing.tres" id="5_hxaw1"]
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Ingredients/heart_ing.tres" id="7_hxaw1"]

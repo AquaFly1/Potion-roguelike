@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://2emq08loikm2"]
 
-[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="1_a16tk"]
-[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="2_ajeck"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="1_a16tk"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_ajeck"]
 [ext_resource type="Texture2D" uid="uid://dudoidhqi2x68" path="res://Sprites/SparkRock.aseprite" id="2_gf0g7"]
 [ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Tags/etincelle_tag.tres" id="3_ajeck"]
 

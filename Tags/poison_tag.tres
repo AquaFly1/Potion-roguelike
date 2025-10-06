@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Tag" load_steps=2 format=3 uid="uid://bd3x5epqsyy7k"]
 
-[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="1_owbly"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="1_owbly"]
 
 [resource]
 script = ExtResource("1_owbly")

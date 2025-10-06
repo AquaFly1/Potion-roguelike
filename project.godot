@@ -21,9 +21,9 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [autoload]
 
-Player="*res://Scripts/player_manager.gd"
+Player="*res://Scripts/managers/player_manager.gd"
 Game="*res://Scenes/game_manager.tscn"
-ComboMan="*res://Scripts/combo_manager.gd"
+ComboMan="*res://Scripts/managers/combo_manager.gd"
 
 [display]
 

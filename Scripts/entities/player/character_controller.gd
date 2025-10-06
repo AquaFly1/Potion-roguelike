@@ -11,6 +11,8 @@ var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $pivot
 
+var mouse_mode_capture: bool = true
+
 @onready var hand_display: Node2D = $"3D Projection"
 
 var horizontal_velocity: Vector3
@@ -21,6 +23,7 @@ var anim_time: float = 0
 #endregion
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_mode_capture = true
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -30,8 +33,12 @@ func _unhandled_input(event):
 		pivot.rotate_x(-event.relative.y * mouse_sensitivity)
 		# Clamp pitch to avoid flipping
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_0:
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		mouse_mode_capture = false
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		mouse_mode_capture = true
 func _physics_process(delta):
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y

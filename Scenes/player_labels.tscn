@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgpx6lmd18v3f"]
 
-[ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://Scripts/player_labels.gd" id="1_51rkh"]
+[ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://Scripts/entities/player/player_labels.gd" id="1_51rkh"]
 
 [node name="PlayerLabels" type="Control"]
 layout_mode = 3

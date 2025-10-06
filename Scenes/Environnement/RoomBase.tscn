@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cjuyi2adb48lg"]
 
-[ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/dungeon.gd" id="1_g2p7x"]
+[ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/environment/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/player.tscn" id="1_ko3d7"]
 [ext_resource type="PackedScene" uid="uid://dfrud3pja2p47" path="res://Scenes/Environnement/interaction_area.tscn" id="3_dutty"]
 [ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]

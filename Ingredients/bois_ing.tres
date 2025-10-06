@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dgk78wy7djprj"]
 
-[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/Ingredient.gd" id="1_54cka"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="1_54cka"]
 [ext_resource type="Texture2D" uid="uid://xopt78yljg7h" path="res://Sprites/temporary_art/wood_card.aseprite" id="2_awg7b"]
-[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/Tag.gd" id="2_hhoux"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_hhoux"]
 [ext_resource type="Resource" uid="uid://cfvm3alspeqe4" path="res://Tags/bois_tag.tres" id="3_hhoux"]
 
 [resource]

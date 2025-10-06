@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://c5qtsrtjjpnt0"]
 
 [ext_resource type="PackedScene" uid="uid://d7m3r833chkm" path="res://Scenes/entity.tscn" id="1_xm08b"]
-[ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/enemy_script.gd" id="2_fkbyy"]
+[ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="2_fkbyy"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Sprites/goblion.aseprite" id="2_xcvi8"]
 [ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Sprites/temporary_art/white_square.aseprite" id="4_6n10i"]
-[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/potion.gd" id="4_0830c"]
+[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/resources/potion.gd" id="4_0830c"]
 [ext_resource type="Texture2D" uid="uid://dgf2sa6iqm6k" path="res://Sprites/goblion_animation.png" id="5_ghaa6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghaa6"]

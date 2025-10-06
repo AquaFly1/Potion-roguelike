@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Ring" load_steps=2 format=3 uid="uid://cic1reldcdcrg"]
 
-[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Ring.gd" id="1_qp55o"]
+[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="1_qp55o"]
 
 [resource]
 script = ExtResource("1_qp55o")

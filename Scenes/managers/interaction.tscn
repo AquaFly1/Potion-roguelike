@@ -53,10 +53,10 @@ curve = SubResource("Curve2D_0d3ml")
 script = ExtResource("5_0npaa")
 
 [node name="CardPathStart" type="Node2D" parent="Player/HandShape"]
-visible = false
 script = ExtResource("6_hm0mp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/HandShape/CardPathStart"]
+visible = false
 position = Vector2(-1.9073495e-06, 0)
 texture = SubResource("PlaceholderTexture2D_45lrk")
 

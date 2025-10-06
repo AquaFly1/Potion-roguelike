@@ -25,7 +25,7 @@ func _ready() -> void:
 #	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
-func die():
+func _on_entity_died():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
 	Game.xp_end_of_fight += xp_given
 	self.queue_free()

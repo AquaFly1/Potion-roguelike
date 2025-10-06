@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+
+
 #region variables
 @export var walk_speed: float = 10.0
 @export var acceleration: float = 0.1

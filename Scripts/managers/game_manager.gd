@@ -3,7 +3,7 @@ extends Node
 @export var deck: Array[Ingredient]
 @export var combos: Array[Combo]
 
-signal held_hand_modified(cards: Array)
+signal held_chand_modified(cards: Array)
 
 var current_enemy: Enemy = null
 
@@ -17,14 +17,14 @@ signal interaction_ended()
 var xp_end_of_fight: int = 0
 
 func _ready() -> void:
-	held_hand_modified.connect(hand_modified)
+	held_chand_modified.connect(chand_modified)
 	card_selected.connect(card_selected_func)
 	end_turn.connect(end_turn_func)
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
 
 
-func hand_modified(_cards: Array):
+func chand_modified(_cards: Array):
 	pass
 func card_selected_func(_card):
 	pass

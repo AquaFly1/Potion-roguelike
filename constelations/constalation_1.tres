@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Constelation" load_steps=3 format=3 uid="uid://cibllea3ey8dc"]
-
-[ext_resource type="Script" uid="uid://f447ggesxwqm" path="res://Scripts/constelation_resource.gd" id="1_dcnba"]
-[ext_resource type="PackedScene" uid="uid://cg651b3jwwuqk" path="res://Scenes/interaction.tscn" id="1_jiyt3"]
-
-[resource]
-script = ExtResource("1_dcnba")
-encounters = Array[PackedScene]([ExtResource("1_jiyt3"), ExtResource("1_jiyt3"), ExtResource("1_jiyt3")])
-metadata/_custom_type_script = "uid://f447ggesxwqm"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv7rugl7p8idc"]
+
+[ext_resource type="PackedScene" uid="uid://c5qtsrtjjpnt0" path="res://Scenes/Entities/enemies/enemy.tscn" id="1_xm08b"]
+[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/resources/potion.gd" id="2_7w5cp"]
+[ext_resource type="Resource" uid="uid://bgy0mnllkauw2" path="res://Resources/premade potions/fireball_potion.tres" id="3_6n10i"]
+[ext_resource type="Resource" uid="uid://b8q4rvr7t6aao" path="res://Resources/premade potions/Heal_potion.tres" id="4_6n10i"]
+
+[node name="Goblin" instance=ExtResource("1_xm08b")]
+potions = Array[ExtResource("2_7w5cp")]([ExtResource("3_6n10i"), ExtResource("4_6n10i")])

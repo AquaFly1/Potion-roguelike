@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://xwd75vy5re77"]
+
+[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/managers/chand_manager.gd" id="1_riyg6"]
+[ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card Stuff/Card.tscn" id="2_jjkdi"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_f1178"]
+[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="4_06x3b"]
+[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="5_v334f"]
+[ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="6_iyafx"]
+[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="7_3roop"]
+[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="8_drrq4"]
+[ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Graphics/temporary_art/potion_bar_empty.aseprite" id="9_63gbn"]
+[ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Graphics/temporary_art/potion_bar.aseprite" id="10_25dlp"]
+
+[node name="CHand" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_riyg6")
+card_scene = ExtResource("2_jjkdi")
+deck = Array[ExtResource("3_f1178")]([ExtResource("4_06x3b"), ExtResource("4_06x3b"), ExtResource("5_v334f"), ExtResource("5_v334f"), ExtResource("6_iyafx"), ExtResource("7_3roop"), ExtResource("7_3roop"), ExtResource("8_drrq4"), ExtResource("8_drrq4")])
+
+[node name="draw" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1544.0
+offset_top = 4.0
+offset_right = 1744.0
+offset_bottom = 104.0
+scale = Vector2(1.85476, 1.84715)
+text = "draw (temporary)
+"
+
+[node name="get_potion" type="Button" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 869.0
+offset_right = 389.0
+offset_bottom = 969.0
+scale = Vector2(1.85476, 1.84715)
+text = "get potion"
+
+[node name="play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1205.9999
+offset_top = 862.0
+offset_right = 1405.9999
+offset_bottom = 962.0
+scale = Vector2(1.85476, 1.84715)
+text = "play"
+
+[node name="throw_pot" type="Button" parent="."]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 22.0
+offset_right = 999.0
+offset_bottom = 122.0
+scale = Vector2(1.85476, 1.84715)
+text = "throw potion"
+
+[node name="end_turn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 380.0
+offset_right = 963.0
+offset_bottom = 480.0
+scale = Vector2(1.85476, 1.84715)
+text = "end turn"
+
+[node name="throw_self" type="Button" parent="."]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 869.0
+offset_right = 992.0
+offset_bottom = 969.0
+scale = Vector2(1.85476, 1.84715)
+text = "throw to self"
+
+[node name="Mana_bar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 812.0
+offset_right = 652.0
+offset_bottom = 816.0
+scale = Vector2(10, 10)
+max_value = 5.0
+rounded = true
+texture_under = ExtResource("9_63gbn")
+texture_progress = ExtResource("10_25dlp")
+
+[connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
+[connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]
+[connection signal="pressed" from="end_turn" to="." method="_on_end_turn_pressed"]
+[connection signal="pressed" from="throw_self" to="." method="_on_throw_self_pressed"]

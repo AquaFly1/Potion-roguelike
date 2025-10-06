@@ -10,13 +10,13 @@ var timeSmooth: float
 @onready var state_machine = self["parameters/playback"]
 var is_in_interaction: bool = false
 
-func hand_modified(cards):
+func chand_modified(cards):
 	Size = CurrentSize
 	time = 0
 	NewSize = (float(len(cards)-1)/4) * hold_anim_length
 	
 	
-func set_hand_size() -> void:
+func set_chand_size() -> void:
 	set("parameters/HoldBlend/TimeSeek/seek_request", CurrentSize)
 
 func player_start() -> void:
@@ -28,7 +28,7 @@ func interaction_ended() -> void:
 	state_machine.travel("Start")
 
 func _ready() -> void:
-	Game.held_hand_modified.connect(hand_modified)
+	Game.held_chand_modified.connect(chand_modified)
 	Game.player_start_turn.connect(player_start)
 	Game.interaction_ended.connect(interaction_ended)
 	Size = 0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Combo" load_steps=4 format=3 uid="uid://jposvfisc5e"]
+
+[ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_3tmgn"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_tmowh"]
+[ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="3_tmowh"]
+
+[resource]
+script = ExtResource("1_3tmgn")
+name = "spark"
+tags_needed = Array[ExtResource("2_tmowh")]([ExtResource("3_tmowh")])
+combos_removed = Array[ExtResource("1_3tmgn")]([])
+dmg = 1
+burn = 1
+poison = 0
+rejuv = 0
+heal = 0
+metadata/_custom_type_script = "uid://dr6idhc60c460"

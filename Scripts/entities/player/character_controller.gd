@@ -9,7 +9,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.001
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
-@onready var pivot: Node3D = $pivot
+@onready var pivot: Node3D = $Camera_pivot
 
 var mouse_mode_capture: bool = true
 

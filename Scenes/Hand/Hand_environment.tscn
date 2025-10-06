@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://pujqkmtdknev"]
+
+[ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="1_y4y5h"]
+[ext_resource type="PackedScene" uid="uid://31bfstnkp780" path="res://Scenes/Hand/hand.tscn" id="2_f6sjd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glv2v"]
+render_priority = 0
+shader = ExtResource("1_y4y5h")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.83
+shader_parameter/highlight_strength = 0.06
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_glv2v"]
+background_color = Color(0.52549, 0.717647, 0.901961, 1)
+background_energy_multiplier = 0.58
+ambient_light_source = 2
+ambient_light_color = Color(0.1665, 0.19485, 0.45, 1)
+ambient_light_energy = 0.37
+ssao_enabled = true
+glow_intensity = 3.48
+
+[node name="Transform" type="Node3D"]
+
+[node name="PostProcess" type="MeshInstance3D" parent="."]
+transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 0, 0.72268534, 1.3310851)
+mesh = SubResource("BoxMesh_cm0pq")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_glv2v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_glv2v")
+
+[node name="Camera2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)
+projection = 1
+size = 3.65625
+near = 0.1
+far = 100.0
+
+[node name="hand2" parent="." instance=ExtResource("2_f6sjd")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
+light_color = Color(1, 0.83, 0.32, 1)
+light_energy = 2.352
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.241

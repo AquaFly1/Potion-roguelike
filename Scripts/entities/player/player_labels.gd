@@ -1,10 +1,10 @@
 extends Control
 
 
-@onready var info: Label = $info/Label
-@onready var poison_label: Label = $poison/Label
-@onready var burn_label: Label = $burn/Label
-@onready var rejuv_label: Label = $rejuv/Label
+@onready var info: Label = $Info_bg/Info_label
+@onready var poison_label: Label = $Poison_bg/Poison_label
+@onready var burn_label: Label = $Burn_bg/Burn_label
+@onready var rejuv_label: Label = $Rejuvination_bg/Rejuvination_label
 
 
 func _process(_delta: float) -> void:

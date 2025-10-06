@@ -12,14 +12,14 @@ class_name Enemy
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var burn_label: Label = $burn/Label
-@onready var poison_label: Label = $posion/Label
-@onready var rejuv_label: Label = $rejuv/Label
-@onready var health_label: Label = $health/Label
+@onready var burn_label: Label = $Effects/Burn/Burn_label
+@onready var poison_label: Label = $Effects/Poison/Poison_label
+@onready var rejuv_label: Label = $Effects/Rejuvination/Rejuvination_label
+@onready var health_label: Label = $Effects/Health/Health_label
 
 @onready var info_panel: Panel = $info_panel
 @onready var potion_name: Label = $info_panel/potion_name
-@onready var potion_ingredients: Label = $info_panel/potion_ingredients
+
 
 func _ready() -> void:
 #	entity_sprite.texture = sprite

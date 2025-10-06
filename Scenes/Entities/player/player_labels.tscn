@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpx6lmd18v3f"]
+
+[ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://Scripts/entities/player/player_labels.gd" id="1_ljlp1"]
+
+[node name="PlayerLabels" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ljlp1")
+
+[node name="Info_bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1577.0
+offset_top = 656.0
+offset_right = 1877.0
+offset_bottom = 756.0
+
+[node name="Info_label" type="Label" parent="Info_bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "5"
+horizontal_alignment = 1
+
+[node name="Burn_bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1577.0
+offset_top = 515.0
+offset_right = 1677.0
+offset_bottom = 615.0
+color = Color(1, 0, 0, 1)
+
+[node name="Burn_label" type="Label" parent="Burn_bg"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "5"
+horizontal_alignment = 1
+
+[node name="Poison_bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1727.0
+offset_top = 365.0
+offset_right = 1827.0
+offset_bottom = 465.0
+color = Color(0, 1, 0, 1)
+
+[node name="Poison_label" type="Label" parent="Poison_bg"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "5"
+horizontal_alignment = 1
+
+[node name="Rejuvination_bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1727.0
+offset_top = 515.0
+offset_right = 1827.0
+offset_bottom = 615.0
+color = Color(1, 1, 0, 1)
+
+[node name="Rejuvination_label" type="Label" parent="Rejuvination_bg"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "5"
+horizontal_alignment = 1

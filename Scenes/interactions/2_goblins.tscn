@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm3gesrklr032"]
+[gd_scene load_steps=3 format=3 uid="uid://dm3gesrklr032"]
 
-[ext_resource type="PackedScene" uid="uid://cg651b3jwwuqk" path="res://Scenes/interaction.tscn" id="1_drgil"]
-[ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/goblin.tscn" id="2_ecm45"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0d3ml"]
-viewport_path = NodePath("3D View/ViewMasked")
+[ext_resource type="PackedScene" uid="uid://cg651b3jwwuqk" path="res://Scenes/managers/interaction.tscn" id="1_drgil"]
+[ext_resource type="PackedScene" uid="uid://bv7rugl7p8idc" path="res://Scenes/Entities/enemies/goblin.tscn" id="2_ecm45"]
 
 [node name="interaction" instance=ExtResource("1_drgil")]
 enemies = Array[PackedScene]([ExtResource("2_ecm45"), ExtResource("2_ecm45")])
-
-[node name="3D Projection" parent="Player" index="4"]
-texture = SubResource("ViewportTexture_0d3ml")

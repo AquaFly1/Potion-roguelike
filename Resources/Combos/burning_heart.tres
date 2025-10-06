@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Combo" load_steps=6 format=3 uid="uid://dlyoadwqshjjk"]
+
+[ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_texfy"]
+[ext_resource type="Resource" uid="uid://cvnw2m4qh74b7" path="res://Resources/Combos/heal.tres" id="2_kn7g3"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_rg65c"]
+[ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="4_87hmc"]
+[ext_resource type="Resource" uid="uid://dvwafr5064vxy" path="res://Resources/Tags/heart_tag.tres" id="5_sinir"]
+
+[resource]
+script = ExtResource("1_texfy")
+name = "burning heart"
+tags_needed = Array[ExtResource("2_rg65c")]([ExtResource("4_87hmc"), ExtResource("5_sinir")])
+combos_removed = Array[ExtResource("1_texfy")]([ExtResource("2_kn7g3")])
+dmg = 1
+heal = 2
+metadata/_custom_type_script = "uid://dr6idhc60c460"

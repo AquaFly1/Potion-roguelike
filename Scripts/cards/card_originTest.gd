@@ -8,7 +8,7 @@ func _ready() -> void:
 	cubic_interp = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if progress_ratio_change_check != progress_ratio:
 		time = 0
 		previous_progress_ratio = progress_ratio

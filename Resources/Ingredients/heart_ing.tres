@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://b6pgjmw77cn0j"]
+
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="1_ws3b0"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_lwaw3"]
+[ext_resource type="Texture2D" uid="uid://5k4dx1073wmy" path="res://Graphics/Sprites/HeartStone.aseprite" id="2_xlimr"]
+[ext_resource type="Resource" uid="uid://dvwafr5064vxy" path="res://Resources/Tags/heart_tag.tres" id="4_rc1rf"]
+
+[resource]
+script = ExtResource("1_ws3b0")
+name = "heart"
+tags = Array[ExtResource("2_lwaw3")]([ExtResource("4_rc1rf")])
+sprite = ExtResource("2_xlimr")
+metadata/_custom_type_script = "uid://b34khk8m7t8aq"

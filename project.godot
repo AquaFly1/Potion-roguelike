@@ -13,7 +13,7 @@ config_version=5
 config/name="potion-roguelike"
 run/main_scene="uid://cjuyi2adb48lg"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://Sprites/icon.svg"
+config/icon="res://Graphics/Sprites/icon.svg"
 
 [aseprite_importers]
 
@@ -22,7 +22,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 [autoload]
 
 Player="*res://Scripts/managers/player_manager.gd"
-Game="*res://Scenes/game_manager.tscn"
+Game="*res://Scenes/managers/game_manager.tscn"
 ComboMan="*res://Scripts/managers/combo_manager.gd"
 
 [display]
@@ -36,6 +36,41 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://3DAssets/": "red",
+"res://3DAssets/Evironnement/": "orange",
+"res://3DAssets/hand/": "yellow",
+"res://Graphics/": "yellow",
+"res://Graphics/Environnement/": "green",
+"res://Graphics/Shaders/": "teal",
+"res://Graphics/Sprites/": "blue",
+"res://Graphics/temporary_art/": "gray",
+"res://Resources/": "green",
+"res://Resources/Combos/": "teal",
+"res://Resources/Ingredients/": "blue",
+"res://Resources/Tags/": "red",
+"res://Resources/premade potions/": "purple",
+"res://Resources/rings/": "pink",
+"res://Scenes/": "teal",
+"res://Scenes/Card Stuff/": "blue",
+"res://Scenes/Entities/": "purple",
+"res://Scenes/Environnement/": "pink",
+"res://Scenes/Hand/": "red",
+"res://Scenes/Interactions/": "orange",
+"res://Scenes/managers/": "yellow",
+"res://Scripts/": "blue",
+"res://Scripts/cards/": "purple",
+"res://Scripts/entities/": "pink",
+"res://Scripts/environment/": "red",
+"res://Scripts/interaction/": "orange",
+"res://Scripts/managers/": "yellow",
+"res://Scripts/resources/": "green",
+"res://addons/": "orange",
+"res://addons/nklbdev.aseprite_importers/": "yellow"
+}
 
 [input]
 

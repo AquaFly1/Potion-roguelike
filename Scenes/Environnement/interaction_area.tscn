@@ -15,10 +15,10 @@ material = SubResource("StandardMaterial3D_xsyvp")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_4j0q4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ok3wg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Area_mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_t37yy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

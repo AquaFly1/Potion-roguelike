@@ -1,24 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=6 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
-stencil_flags = 2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_l3v4j"]
-material = SubResource("StandardMaterial3D_yhch0")
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_v0iea")
-
-[node name="Shadow" type="MeshInstance3D" parent="."]
-transparency = 1.0
-mesh = SubResource("CapsuleMesh_l3v4j")
 
 [node name="Player_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6t5aa")
@@ -32,8 +22,6 @@ current = true
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
 [node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]
-mouse_filter = 1
 
 [node name="PlayerLabels" parent="." instance=ExtResource("4_vgqql")]
 visible = false
-mouse_filter = 1

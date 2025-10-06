@@ -15,7 +15,7 @@ shader_parameter/highlight_strength = 0.06
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Environment" id="Environment_glv2v"]
+[sub_resource type="Environment" id="Environment_lkv4t"]
 background_color = Color(0.52549, 0.717647, 0.901961, 1)
 background_energy_multiplier = 0.58
 ambient_light_source = 2
@@ -33,7 +33,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_glv2v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_glv2v")
+environment = SubResource("Environment_lkv4t")
 
 [node name="Camera2" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)
@@ -50,7 +50,7 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
-light_color = Color(1, 0.83, 0.32, 1)
+light_color = Color(1, 0.7294118, 0.35686275, 1)
 light_energy = 2.352
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.241

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/player_manager.gd" id="1_4ihkx"]
 
 [node name="player_manager" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,73 +10,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4ihkx")
-
-[node name="info" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1577.0
-offset_top = 656.0
-offset_right = 1877.0
-offset_bottom = 756.0
-
-[node name="Label" type="Label" parent="info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "5"
-horizontal_alignment = 1
-
-[node name="poison" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 365.0
-offset_right = 1827.0
-offset_bottom = 465.0
-color = Color(0, 1, 0, 1)
-
-[node name="Label" type="Label" parent="poison"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
-
-[node name="burn" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1577.0
-offset_top = 515.0
-offset_right = 1677.0
-offset_bottom = 615.0
-color = Color(1, 0, 0, 1)
-
-[node name="Label" type="Label" parent="burn"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
-
-[node name="rejuv" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 515.0
-offset_right = 1827.0
-offset_bottom = 615.0
-color = Color(1, 1, 0, 1)
-
-[node name="Label" type="Label" parent="rejuv"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=7 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://3DAssets/3d_projection.tscn" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/player_manager.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/player_labels.tscn" id="4_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 
@@ -27,3 +28,6 @@ current = true
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
 [node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]
+
+[node name="PlayerLabels" parent="." instance=ExtResource("4_vgqql")]
+visible = false

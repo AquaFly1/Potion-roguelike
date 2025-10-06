@@ -7,14 +7,32 @@ extends Entity
 @export var max_mana = 10
 var mana = 10
 
-@onready var info: Label = $info/Label
-@onready var burn_label: Label = $poison/Label
-@onready var poison_label: Label = $burn/Label
-@onready var rejuv_label: Label = $rejuv/Label
+var info
+var burn_label
+var poison_label
+var rejuv_label
 
-@onready var panels: Control = $"."
+var panels
+
+var player_manager_node: Control
 
 var xp_needed = 10
+
+func _ready() -> void:
+	print(self)
+	if self == Control:
+		player_manager_node = $"."
+	else:
+		player_manager_node = find_child("player_manager",true)
+	print($".")
+	#info = player_manager_node.get_node("./info/Label")
+	#burn_label = player_manager_node.get_node("./burn/Label")
+	info = $burn/Label
+	burn_label = $rejuv/Label
+	poison_label = $burn/Label
+	rejuv_label = $rejuv/Label
+	panels = $"."
+
 
 func start_turn():
 	super()

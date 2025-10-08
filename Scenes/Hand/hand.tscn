@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://gd888fn3l3ca" path="res://Scripts/entities/player/RHandMain.gd" id="1_27gqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v30xo"]
+stencil_flags = 2
+stencil_outline_thickness = 0.066
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2lkj8"]
 resource_name = "hand_hand"

@@ -43,3 +43,6 @@ func _on_health_changed():
 
 func _on_entity_died():
 	pass
+
+func _process(_delta: float) -> void:
+	pass

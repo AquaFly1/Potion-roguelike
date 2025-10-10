@@ -2,12 +2,12 @@ extends Entity
 
 @export var gold = 0
 @export var level = 0
-@export var xp = 0
+@export var xp: int = 0
 
 @export var max_mana = 10
 var mana = 10
 
-var xp_needed = 10
+var xp_needed: int = 10
 
 func _ready() -> void:
 	pass

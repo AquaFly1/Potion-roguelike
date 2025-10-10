@@ -145,7 +145,6 @@ func draw(amount: int):
 			_update_chand_layout()
 
 func player_start():
-	print("start player turn")
 	
 	deck.shuffle()
 	use_deck = deck.duplicate()

@@ -10,7 +10,7 @@ var mana = 10
 var xp_needed = 10
 
 func _ready() -> void:
-	pass
+	super()
 
 
 func start_turn():

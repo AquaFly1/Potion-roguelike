@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/environment/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_ko3d7"]
 [ext_resource type="PackedScene" uid="uid://dfrud3pja2p47" path="res://Scenes/Environnement/interaction_area.tscn" id="3_dutty"]
-[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]
-[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="5_cmu4p"]
+[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/Interactions/2_goblins.tscn" id="4_u4kg2"]
+[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/Interactions/3_goblins.tscn" id="5_cmu4p"]
 [ext_resource type="Texture2D" uid="uid://c7jjpb7nefpbe" path="res://Graphics/Environnement/props/chest/chestBase.png" id="6_aqdgw"]
 [ext_resource type="PackedScene" uid="uid://ddwh6nj7lsv5t" path="res://3DAssets/Evironnement/chest.blend" id="7_2ayg0"]
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="8_4v86v"]
@@ -52,12 +52,8 @@ shader_parameter/alphaThreshold = 0.30000001425
 [node name="Room" type="Node3D"]
 script = ExtResource("1_g2p7x")
 
-[node name="Light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9202659, 0.32790193, 0.2135202, 0.06516121, -0.6664811, 0.7426687, 0.3858297, -0.6695396, -0.6347063, 0, 4.3956428, 0)
-shadow_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("1_ko3d7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.213772, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6832952, 5.213772, -5.254579)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
@@ -70,11 +66,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04939586, 0)
 shape = SubResource("BoxShape3D_g2p7x")
 
 [node name="Interaction_area" parent="." instance=ExtResource("3_dutty")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -10)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.488962, 0, -10)
 interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])
 
 [node name="Interaction_area2" parent="." instance=ExtResource("3_dutty")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 13)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.109861, 0, 13)
 interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])
 
 [node name="Chest_texture" type="MeshInstance3D" parent="."]
@@ -90,3 +86,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.08023277, 0.63572454, 0.055
 material_override = SubResource("ShaderMaterial_ce7yl")
 texture_filter = 2
 texture = ExtResource("9_4v86v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.7071068, 0, -0.7071068, -0.7071068, 0, 9, -4)

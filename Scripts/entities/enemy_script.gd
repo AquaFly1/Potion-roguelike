@@ -22,6 +22,7 @@ var chosen_potion = null
 
 
 func _ready() -> void:
+	super()
 #	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 

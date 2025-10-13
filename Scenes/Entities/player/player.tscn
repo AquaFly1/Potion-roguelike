@@ -33,7 +33,6 @@ current = true
 
 [node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]
 mouse_filter = 1
-max_health = 10
 
 [node name="PlayerLabels" parent="." instance=ExtResource("4_vgqql")]
 visible = false

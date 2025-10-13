@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 	burn_label.text = str(burn)
 	poison_label.text = str(poison)
 	rejuv_label.text = str(rejuv)
-	health_label.text = str(health.value)
+	health_label.text = str(health)
 	if chosen_potion:
 		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 		

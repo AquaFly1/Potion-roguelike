@@ -2,7 +2,7 @@ extends Node
 
 class_name Entity
 
-@export var max_health: int = 0
+@export var max_health = 10
 
 var health = StatPool.new()
 

@@ -47,9 +47,9 @@ func start_turn():
 
 func _process(delta: float) -> void:
 	super(delta)
-	burn_label.text = str(burn.value)
-	poison_label.text = str(poison.value)
-	rejuv_label.text = str(rejuv.value)
+	burn_label.text = str(burn)
+	poison_label.text = str(poison)
+	rejuv_label.text = str(rejuv)
 	health_label.text = str(health.value)
 	if chosen_potion:
 		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")

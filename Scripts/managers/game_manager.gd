@@ -14,6 +14,7 @@ signal end_turn()
 signal player_start_turn()
 signal interaction_ended()
 
+
 var xp_end_of_fight: int = 0
 
 func _ready() -> void:

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://nnr5bwf2p6ai"]
+
+[ext_resource type="PackedScene" uid="uid://cfalxhxdlho3i" path="res://Resources/rings/ring_template.tscn" id="1_0mwfc"]
+[ext_resource type="Script" uid="uid://fk27p0wk2yob" path="res://ring_test.gd" id="2_cxeis"]
+
+[node name="ring_test" instance=ExtResource("1_0mwfc")]
+script = ExtResource("2_cxeis")
+ring_name = "Incineration"
+description = "Burns to the touch. Infuses potions with [burn]."

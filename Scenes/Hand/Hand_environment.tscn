@@ -47,4 +47,4 @@ directional_shadow_mode = 0
 directional_shadow_split_1 = 0.241
 
 [node name="handNew" parent="." instance=ExtResource("3_p1i0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04560806, 0, -2.17538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.635727, 0, -2.17538)

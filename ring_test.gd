@@ -6,4 +6,5 @@ func start_turn():
 
 func hand_played(ings):
 	if Player.burn > 0:
-		pass
+		return "res://Resources/Tags/etincelle_tag.tres"
+	return

@@ -1,11 +1,17 @@
 extends Node
 
-var rings: Array[Ring]
+@export var rings: Array[Ring]
 
 func start_turn():
 	for ring in rings:
 		ring.start_turn()
 
 func play_hand(ings: Array[Ingredient]):
+	var extra_tags = []
+	var total_tags = []
 	for ring in rings:
-		ring.hand_played(ings)
+		extra_tags.append(ring.hand_played(ings))
+	for ing in ings:
+		total_tags.append(ing.tags)
+	total_tags.append(extra_tags)
+	return total_tags

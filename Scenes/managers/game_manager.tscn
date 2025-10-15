@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=16 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="9_y8n5u"]
 [ext_resource type="Resource" uid="uid://dlyoadwqshjjk" path="res://Resources/Combos/burning_heart.tres" id="10_5tjy5"]
 [ext_resource type="Resource" uid="uid://dlvjxfw27owt2" path="res://Resources/Combos/toxic_heart.tres" id="11_iu5vk"]
+[ext_resource type="Script" uid="uid://bba2xax2wjec4" path="res://Scripts/managers/Ring_manager.gd" id="15_tsent"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_mmt5l")
@@ -22,3 +23,7 @@ combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_h
 
 [node name="ComboManager" type="Node2D" parent="."]
 script = ExtResource("5_efn8y")
+
+[node name="RingManager" type="Node2D" parent="." node_paths=PackedStringArray("rings")]
+script = ExtResource("15_tsent")
+rings = [null]

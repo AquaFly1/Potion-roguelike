@@ -1,6 +1,6 @@
 extends Node
 
-@export var rings: Array[PackedScene]
+@export var rings: Array[Ring]
 
 func start_turn():
 	for ring in rings:

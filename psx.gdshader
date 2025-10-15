@@ -31,7 +31,7 @@ void vertex()
 	if (affine_mapping)
 	{
 		POSITION = snapped_position;
-		POSITION /= abs(POSITION.w);
+		POSITION /= abs(POSITION.w)+5.0;
 	}
 	else
 	{

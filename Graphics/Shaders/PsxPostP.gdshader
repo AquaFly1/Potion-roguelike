@@ -72,7 +72,7 @@ void fragment() {
 	float steps = float(color_steps);
 	color = floor(color * steps + 0.5) / steps;
 
-	float noise = (random(UV + TIME) - 0.5) * noise_strength;
+	float noise = (random(UV + mod(TIME,2)) - 0.5) * noise_strength;
 	color += noise;
 
 	if (enable_dither) {

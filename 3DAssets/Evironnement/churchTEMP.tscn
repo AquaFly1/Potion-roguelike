@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7hkc3xsjl3wu"]
-
-[ext_resource type="PackedScene" uid="uid://cbjt4uqgyabqp" path="res://3DAssets/Evironnement/Church.blend" id="1_esnnl"]
-
-[node name="Church" instance=ExtResource("1_esnnl")]

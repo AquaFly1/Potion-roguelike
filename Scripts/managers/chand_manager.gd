@@ -135,7 +135,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_draw_pressed() -> void:
-	print(use_deck)
 	draw(1)
 
 func draw(amount: int):

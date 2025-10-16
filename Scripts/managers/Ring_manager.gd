@@ -8,7 +8,6 @@ func start_turn():
 
 func play_hand(ings: Array[Ingredient]) -> Array[Tag]:
 	var tags: Array[Tag]
-	print(ings)
 
 	for ing in ings:
 		for tag in ing.tags:

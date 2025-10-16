@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://dlyoadwqshjjk" path="res://Resources/Combos/burning_heart.tres" id="10_5tjy5"]
 [ext_resource type="Resource" uid="uid://dlvjxfw27owt2" path="res://Resources/Combos/toxic_heart.tres" id="11_iu5vk"]
 [ext_resource type="Script" uid="uid://bba2xax2wjec4" path="res://Scripts/managers/Ring_manager.gd" id="15_tsent"]
-[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="16_xyl76"]
+[ext_resource type="PackedScene" uid="uid://nnr5bwf2p6ai" path="res://Resources/rings/ring_test.tscn" id="16_xyl76"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_mmt5l")
@@ -27,4 +27,4 @@ script = ExtResource("5_efn8y")
 
 [node name="RingManager" type="Node2D" parent="."]
 script = ExtResource("15_tsent")
-rings = Array[ExtResource("16_xyl76")]([null])
+rings = Array[PackedScene]([ExtResource("16_xyl76")])

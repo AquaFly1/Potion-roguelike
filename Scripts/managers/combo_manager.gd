@@ -9,7 +9,6 @@ func find_combos(ingredients: Array[Ingredient]):
 	for tag in RingMan.play_hand(ingredients):
 		tags.append(tag)
 	var active_combos: Array[Combo]
-	print(tags)
 #	for ingredient in ingredients: 
 #		for tag in ingredient.tags:
 #			tags.append(tag)

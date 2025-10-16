@@ -5,6 +5,7 @@ func start_turn():
 		Player.burn += 1
 
 func hand_played(ings):
+	tags = Array[Tag]
 	if Player.burn > 0:
-		return "res://Resources/Tags/etincelle_tag.tres"
-	return
+		tags.append("res://Resources/Tags/etincelle_tag.tres")
+	return tags

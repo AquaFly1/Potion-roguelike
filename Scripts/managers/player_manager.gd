@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func start_turn():
 	super()
+	RingMan.start_turn()
 	mana = max_mana
 	Game.player_start_turn.emit()
 

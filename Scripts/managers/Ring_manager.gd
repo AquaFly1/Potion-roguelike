@@ -1,20 +1,16 @@
 extends Node
 
-@export var rings: Array[PackedScene]
-
 func start_turn():
-	for ring in rings:
+	for ring in Game.rings:
 		ring.start_turn()
 
 func play_hand(ings: Array[Ingredient]) -> Array[Tag]:
 	var tags: Array[Tag]
 
 	for ing in ings:
-		for tag in ing.tags:
-			tags.append(tag)
+		tags.append_array(ing.tags)
 	
-	for ring in rings:
-		for tag in ring.hand_played(ings):
-			tag.append(tag)
-	print(tags)
+	for ring in Game.rings:
+		tags.append_array(ring.hand_played(ings))
+
 	return tags

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=18 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -14,17 +14,18 @@
 [ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="9_y8n5u"]
 [ext_resource type="Resource" uid="uid://dlyoadwqshjjk" path="res://Resources/Combos/burning_heart.tres" id="10_5tjy5"]
 [ext_resource type="Resource" uid="uid://dlvjxfw27owt2" path="res://Resources/Combos/toxic_heart.tres" id="11_iu5vk"]
+[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="14_62s7n"]
+[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Ring_test.tres" id="15_8t5yu"]
 [ext_resource type="Script" uid="uid://bba2xax2wjec4" path="res://Scripts/managers/Ring_manager.gd" id="15_tsent"]
-[ext_resource type="PackedScene" uid="uid://nnr5bwf2p6ai" path="res://Resources/rings/ring_test.tscn" id="16_xyl76"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
+rings = Array[ExtResource("14_62s7n")]([ExtResource("15_8t5yu")])
 
 [node name="ComboManager" type="Node2D" parent="."]
 script = ExtResource("5_efn8y")
 
 [node name="RingManager" type="Node2D" parent="."]
 script = ExtResource("15_tsent")
-rings = Array[PackedScene]([ExtResource("16_xyl76")])

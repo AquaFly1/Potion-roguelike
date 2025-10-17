@@ -15,7 +15,6 @@ material = SubResource("StandardMaterial3D_yhch0")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 
 [sub_resource type="Environment" id="Environment_l3v4j"]
-background_mode = 4
 ambient_light_energy = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]

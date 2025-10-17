@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://by8042g3hlhgf"]
+
+[ext_resource type="Script" uid="uid://fk27p0wk2yob" path="res://ring_test.gd" id="1_smlnf"]
+
+[resource]
+script = ExtResource("1_smlnf")
+ring_name = "Incineration"
+metadata/_custom_type_script = "uid://be0hqynu7q53f"

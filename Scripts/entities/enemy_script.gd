@@ -26,11 +26,6 @@ func _ready() -> void:
 #	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
-func _on_entity_died():
-	Player.gold += randi_range(gold_range[0], gold_range[1])
-	Game.xp_end_of_fight += xp_given
-	self.queue_free()
-
 func start_turn():
 	super()
 	
@@ -54,7 +49,8 @@ func _process(delta: float) -> void:
 	health_label.text = str(health)
 	if chosen_potion:
 		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
-		
+	if health <= 0:
+		die()
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
@@ -66,3 +62,8 @@ func _on_button_mouse_entered() -> void:
 
 func _on_button_mouse_exited() -> void:
 	info_panel.scale = Vector2(0,0)
+
+func die():
+	Player.gold += randi_range(gold_range[0], gold_range[1])
+	Game.xp_end_of_fight += xp_given
+	self.queue_free()

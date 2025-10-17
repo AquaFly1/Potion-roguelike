@@ -2,6 +2,7 @@ extends Node
 
 @export var deck: Array[Ingredient]
 @export var combos: Array[Combo]
+@export var rings: Array[Ring]
 
 signal held_chand_modified(cards: Array)
 

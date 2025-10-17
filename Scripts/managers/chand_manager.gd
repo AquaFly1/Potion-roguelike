@@ -110,6 +110,12 @@ func _on_play_pressed() -> void:
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
+		var temp_ing: Ingredient = Ingredient.new()
+		temp_ing.name = "temp_ing"
+		temp_ing.tags = RingMan.play_hand(potion, Player.rings)
+		potion.append(temp_ing)
+		for ing in potion:
+			print(ing.tags)
 		Game.current_enemy.take_potion(potion)
 		potion = []
 		has_potion = false

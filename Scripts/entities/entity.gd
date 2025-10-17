@@ -2,6 +2,7 @@ extends Node
 
 class_name Entity
 
+@export var rings: Array[Ring]
 @export var max_health = 10
 
 var health = 0

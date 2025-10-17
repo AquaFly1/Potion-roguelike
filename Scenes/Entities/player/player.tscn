@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=14 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="4_odkax"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
+[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Ring_test.tres" id="5_a74oi"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
@@ -53,6 +55,7 @@ current = true
 
 [node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]
 mouse_filter = 1
+rings = Array[ExtResource("4_odkax")]([ExtResource("5_a74oi")])
 
 [node name="PlayerLabels" parent="." instance=ExtResource("4_vgqql")]
 visible = false

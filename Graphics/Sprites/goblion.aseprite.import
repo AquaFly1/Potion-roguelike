@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5w4h7sx06uge"
-path.s3tc="res://.godot/imported/goblion.aseprite-020fca8e1df665f9be9512fec496e480.s3tc.ctex"
+path="res://.godot/imported/goblion.aseprite-020fca8e1df665f9be9512fec496e480.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Graphics/Sprites/goblion.aseprite"
-dest_files=["res://.godot/imported/goblion.aseprite-020fca8e1df665f9be9512fec496e480.s3tc.ctex"]
+dest_files=["res://.godot/imported/goblion.aseprite-020fca8e1df665f9be9512fec496e480.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

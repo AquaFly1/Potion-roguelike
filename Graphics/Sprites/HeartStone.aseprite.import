@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5k4dx1073wmy"
-path.s3tc="res://.godot/imported/HeartStone.aseprite-ac583f431ca5391587b8632c7d9bb990.s3tc.ctex"
+path="res://.godot/imported/HeartStone.aseprite-ac583f431ca5391587b8632c7d9bb990.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Graphics/Sprites/HeartStone.aseprite"
-dest_files=["res://.godot/imported/HeartStone.aseprite-ac583f431ca5391587b8632c7d9bb990.s3tc.ctex"]
+dest_files=["res://.godot/imported/HeartStone.aseprite-ac583f431ca5391587b8632c7d9bb990.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

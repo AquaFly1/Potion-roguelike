@@ -1,8 +1,8 @@
 shader_type spatial;
 //IMPORTANT NOTE: SHADOWS ARE DISABLED.
-render_mode blend_mix,
-	depth_draw_opaque,
-	cull_back,
+render_mode blend_add,
+	depth_draw_never,
+	cull_disabled,
 	diffuse_burley,
 	specular_schlick_ggx,
 	depth_prepass_alpha,
@@ -10,7 +10,7 @@ render_mode blend_mix,
 	skip_vertex_transform;
 
 varying float w_comp;
-uniform float affine_amount: hint_range(0,1);
+uniform float affine_amount: hint_range(0,1) = 0.15;
 uniform float point_size : hint_range(0,128);
 uniform float roughness : hint_range(0,1);
 uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;

@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var jump_force: float = 7
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
+@export var camera: Node3D
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
@@ -45,16 +46,17 @@ func _physics_process(delta):
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
 #region horizontal
-	if (Input.is_action_pressed("forward")
-	|| Input.is_action_pressed("backward") 
-	|| Input.is_action_pressed("left") 
-	|| Input.is_action_pressed("right")):
-			dir = Vector3(Input.get_action_strength("right") 
+	#if (Input.is_action_pressed("forward")
+	#|| Input.is_action_pressed("backward") 
+	#|| Input.is_action_pressed("left") 
+	#|| Input.is_action_pressed("right")):
+	dir = Vector3(Input.get_action_strength("right") 
 								- Input.get_action_strength("left"),
 								0,
 								Input.get_action_strength("backward") 
 								- Input.get_action_strength("forward"))
-			dir = dir.rotated(Vector3.UP, h_rot).normalized()
+	camera.rotation.z = lerp(camera.rotation.z,-dir.x/40.0,0.1)
+	dir = dir.rotated(Vector3.UP, h_rot).normalized()
 			
 	
 			

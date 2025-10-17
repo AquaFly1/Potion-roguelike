@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0xs73dtcfb0r"
-path="res://.godot/imported/ChurchSpriteSheet.png-161a01d8bbc3e781dd1364aaef12b93e.ctex"
+uid="uid://dexb1sfw66hwa"
+path="res://.godot/imported/CH_WIN.png-96d2a2c8059a3c8056a458ef902a6549.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Environnement/ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/ChurchSpriteSheet.png-161a01d8bbc3e781dd1364aaef12b93e.ctex"]
+source_file="res://Graphics/Environnement/CH_WIN.png"
+dest_files=["res://.godot/imported/CH_WIN.png-96d2a2c8059a3c8056a458ef902a6549.ctex"]
 
 [params]
 

@@ -26,16 +26,16 @@ volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 720.00003116
+shader_parameter/pixel_resolution = 1080.0
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.1
 shader_parameter/enable_dither = true
 shader_parameter/dither_strength = 0.3
 shader_parameter/enable_glow = true
-shader_parameter/glow_strength = 0.2000000095
+shader_parameter/glow_strength = 0.4
 shader_parameter/glow_spread = 0.005
 shader_parameter/enable_vintage = true
-shader_parameter/vintage_strength = 0.400000019
+shader_parameter/vintage_strength = 0.8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l3v4j"]
 
@@ -81,6 +81,7 @@ mouse_filter = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5116178, 0)
 light_energy = 0.1
 light_indirect_energy = 0.0
+shadow_enabled = true
 shadow_bias = 0.05
 shadow_blur = 0.0
 shadow_caster_mask = 4294967293

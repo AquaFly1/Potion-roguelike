@@ -10,8 +10,8 @@ var bonus_damage: int = 0
 func activate(ings: Array[Ingredient]):
 	pass
 
-func hand_played(ings: Array[Ingredient]):
-	pass
+func potion_thrown(ings: Array[Ingredient]) -> Array[Tag]:
+	return []
 	
 func start_turn():
 	pass

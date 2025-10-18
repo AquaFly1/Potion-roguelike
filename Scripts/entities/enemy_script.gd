@@ -14,13 +14,14 @@ var test_node: Node2D
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var burn_label: Label = $Effects/Burn/Burn_label
-@onready var poison_label: Label = $Effects/Poison/Poison_label
-@onready var rejuv_label: Label = $Effects/Rejuvination/Rejuvination_label
-@onready var health_label: Label = $Effects/Health/Health_label
+@onready var burn_label: Label3D = $Info/Burn_sprite/Burn_label
+@onready var poison_label: Label3D = $Info/Poison_sprite/Poison_label
+@onready var rejuv_label: Label3D = $Info/Rejuvination_Sprite/Rejuvination_label
+@onready var health_label: Label3D = $Info/Health_label
 
-@onready var info_panel: Panel = $info_panel
-@onready var potion_name: Label = $info_panel/potion_name
+
+#@onready var info_panel: Panel = $info_panel
+#@onready var potion_name: Label = $info_panel/potion_name
 
 
 func _ready() -> void:
@@ -46,20 +47,20 @@ func _process(delta: float) -> void:
 	poison_label.text = str(poison)
 	rejuv_label.text = str(rejuv)
 	health_label.text = str(health)
-	if chosen_potion:
-		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
+#	if chosen_potion:
+#		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
 
 
 func _on_button_mouse_entered() -> void:
-	info_panel.scale = Vector2(1,1)
-
+#	info_panel.scale = Vector2(1,1)
+	pass
 
 func _on_button_mouse_exited() -> void:
-	info_panel.scale = Vector2(0,0)
-
+#	info_panel.scale = Vector2(0,0)
+	pass
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
 	Game.xp_end_of_fight += xp_given

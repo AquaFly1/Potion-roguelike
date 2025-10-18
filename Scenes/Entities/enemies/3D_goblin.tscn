@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://exwqkucy428t"]
+
+[ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_h10k5"]
+[ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_5kt8h"]
+[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/resources/potion.gd" id="3_dabkw"]
+[ext_resource type="Resource" uid="uid://bgy0mnllkauw2" path="res://Resources/premade potions/fireball_potion.tres" id="4_ywdq7"]
+[ext_resource type="Resource" uid="uid://b8q4rvr7t6aao" path="res://Resources/premade potions/Heal_potion.tres" id="5_u6ucp"]
+[ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="6_gfiu8"]
+[ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="7_nt7bi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26ml8"]
+render_priority = 0
+shader = ExtResource("6_gfiu8")
+shader_parameter/sprite_texture = ExtResource("2_5kt8h")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/glowSize = 1.0000000475
+shader_parameter/glowDensity = 1
+shader_parameter/glowRadialCoverage = 4
+shader_parameter/glowAngle = 0.0
+shader_parameter/glowSharpness = 0.0
+shader_parameter/alphaThreshold = 0.30000001425
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_h10k5")
+sprite = ExtResource("2_5kt8h")
+gold_range = Array[int]([1, 3])
+xp_given = 5
+potions = Array[ExtResource("3_dabkw")]([ExtResource("4_ywdq7"), ExtResource("5_u6ucp")])
+
+[node name="AnimatedSprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("ShaderMaterial_26ml8")
+texture = ExtResource("2_5kt8h")
+
+[node name="Info" type="Node3D" parent="."]
+
+[node name="Burn_sprite" type="Sprite3D" parent="Info"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.11713207, 0.16377348, 0)
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("7_nt7bi")
+
+[node name="Burn_label" type="Label3D" parent="Info/Burn_sprite"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0010321122, 0, 0.0029127188)
+text = "3"
+font_size = 16
+outline_size = 0
+
+[node name="Poison_sprite" type="Sprite3D" parent="Info"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0030923858, 0.16377348, 0)
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("7_nt7bi")
+
+[node name="Poison_label" type="Label3D" parent="Info/Poison_sprite"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0004105121, 0, 0.0029127188)
+text = "3"
+font_size = 16
+outline_size = 0
+
+[node name="Rejuvination_Sprite" type="Sprite3D" parent="Info"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.12037297, 0.16377348, 0)
+modulate = Color(1, 1, 0, 1)
+texture = ExtResource("7_nt7bi")
+
+[node name="Rejuvination_label" type="Label3D" parent="Info/Rejuvination_Sprite"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.158301e-05, 0, 0.0029127188)
+modulate = Color(0, 0, 0, 1)
+text = "3"
+font_size = 16
+outline_size = 0
+
+[node name="Health_label" type="Label3D" parent="Info"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.004734434, 0.05755332, 0.011650875)
+modulate = Color(0, 0, 0, 1)
+text = "3"
+font_size = 16
+outline_size = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.39063144)

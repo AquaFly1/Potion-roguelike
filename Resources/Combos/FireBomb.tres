@@ -13,7 +13,4 @@ tags_needed = Array[ExtResource("2_krxfj")]([ExtResource("3_1amju"), ExtResource
 combos_removed = Array[ExtResource("1_u3qsu")]([ExtResource("2_1r8m6")])
 dmg = 3
 burn = 3
-poison = 0
-rejuv = 0
-heal = 0
 metadata/_custom_type_script = "uid://dr6idhc60c460"

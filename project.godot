@@ -25,6 +25,7 @@ Player="*res://Scripts/managers/player_manager.gd"
 Game="*res://Scenes/managers/game_manager.tscn"
 ComboMan="*res://Scripts/managers/combo_manager.gd"
 RingMan="*res://Scripts/managers/Ring_manager.gd"
+PotionMan="*res://Scripts/managers/potion_manager.gd"
 
 [display]
 

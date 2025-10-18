@@ -7,4 +7,4 @@ class_name Ingredient
 @export var sprite: Texture2D
 
 func _to_string() -> String:
-	return name
+	return "Ingredient(%s)" % name

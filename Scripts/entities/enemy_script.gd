@@ -6,6 +6,8 @@ class_name Enemy
 
 #@onready var entity_sprite: Sprite2D = $Sprite2D
 
+var test_node: Node2D
+
 @export var gold_range: Array[int]
 @export var xp_given = 0
 
@@ -31,12 +33,10 @@ func start_turn():
 	
 	#animation
 	
-	var chosen_potion_ingredients = chosen_potion.ingredients
-	
 	if chosen_potion.heal == true:
-		self.take_potion(chosen_potion_ingredients)
+		PotionMan.throw_potion(self, test_node, chosen_potion.ingredients, rings)
 	else:
-		Player.take_potion(chosen_potion_ingredients)
+		PotionMan.throw_potion(Player, test_node, chosen_potion.ingredients, rings)
 	chosen_potion = potions.pick_random()
 
 

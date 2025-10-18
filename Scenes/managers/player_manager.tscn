@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3rktbxstbuhc"]
+[gd_scene load_steps=4 format=3 uid="uid://d3rktbxstbuhc"]
 
 [ext_resource type="Script" uid="uid://clcrv6y64c60r" path="res://Scripts/managers/player_manager.gd" id="1_28b6w"]
+[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="2_7bb7t"]
+[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Ring_test.tres" id="3_l12e7"]
 
 [node name="Player_manager" type="Control"]
 layout_mode = 3
@@ -10,3 +12,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28b6w")
+rings = Array[ExtResource("2_7bb7t")]([ExtResource("3_l12e7")])

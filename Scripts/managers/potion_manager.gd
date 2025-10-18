@@ -1,7 +1,7 @@
 extends Node
 
 func activate_rings(ings: Array[Ingredient], rings: Array[Ring]) -> Array[Tag]:
-	var new_tags = [Tag]
+	var new_tags: Array[Tag] = []
 	for ring in rings:
 		new_tags.append(ring.potion_thrown(ings))
 	
@@ -11,20 +11,17 @@ func transfer_ingredients(ings: Array[Ingredient], rings: Array[Ring]) -> Array[
 	var tags = []
 	for ingredient in ings: 
 		tags.append_array(ingredient.tags)
-	
 	tags.append_array(activate_rings(ings, rings))
-	
 	var unique_tags: Array[Tag]
 	for i in tags:
 		if i not in unique_tags:
 			unique_tags.append(i)
-
 	return unique_tags
 
 func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 	var tags = transfer_ingredients(ings, rings)
-	
 	var active_combos = []
+	print(tags)
 	for combo in Game.combos:
 		var enabled = true
 		for tag in combo.tags_needed:
@@ -35,7 +32,7 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 			for deleted in combo.combos_removed:
 				if deleted in active_combos:
 					active_combos.erase(deleted)
-		return active_combos
+	return active_combos
 
 func throw_potion(entity: Entity, target: Node2D, ingredients: Array[Ingredient], rings: Array[Ring]):
 	var dmg = 0
@@ -50,7 +47,7 @@ func throw_potion(entity: Entity, target: Node2D, ingredients: Array[Ingredient]
 		poison += combo.poison
 		rejuv += combo.rejuv
 		heal += combo.heal
-	
+
 	entity.health -= dmg
 	entity.burn += burn
 	entity.poison += poison

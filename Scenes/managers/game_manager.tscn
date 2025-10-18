@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=17 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="3_yqty0"]
 [ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="4_71d4j"]
-[ext_resource type="Script" uid="uid://ckd7drxnl2rx0" path="res://Scripts/managers/combo_manager.gd" id="5_efn8y"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="5_i4mau"]
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="6_i4mau"]
 [ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="7_b5cn8"]
@@ -23,9 +22,6 @@ script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
 rings = Array[ExtResource("14_62s7n")]([ExtResource("15_8t5yu")])
-
-[node name="ComboManager" type="Node2D" parent="."]
-script = ExtResource("5_efn8y")
 
 [node name="RingManager" type="Node2D" parent="."]
 script = ExtResource("15_tsent")

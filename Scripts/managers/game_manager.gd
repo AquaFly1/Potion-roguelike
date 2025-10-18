@@ -37,20 +37,6 @@ func player_start_turn_func():
 func interaction_end_func():
 	pass
 
-func apply_potion(ingredients: Array[Ingredient]):
-	var active_combos = ComboMan.find_combos(ingredients)
-	var dmg = 0
-	var burn = 0
-	var poison = 0
-	var rejuv = 0
-	var heal = 0
-	for combo in active_combos:
-		dmg += combo.dmg
-		burn += combo.burn
-		poison += combo.poison
-		rejuv += combo.rejuv
-		heal += combo.heal
-	return[dmg, burn, poison, rejuv, heal]
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):

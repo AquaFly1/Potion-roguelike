@@ -12,6 +12,8 @@ var card_order: Array[Card] #card order for making sure we click the right card
 
 var has_potion = false
 
+var test_node: Node2D
+
 @onready var mana_bar: TextureProgressBar = $Mana_bar
 
 
@@ -110,13 +112,7 @@ func _on_play_pressed() -> void:
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
-		var temp_ing: Ingredient = Ingredient.new()
-		temp_ing.name = "temp_ing"
-		temp_ing.tags = RingMan.play_hand(potion, Player.rings)
-		potion.append(temp_ing)
-		for ing in potion:
-			print(ing.tags)
-		Game.current_enemy.take_potion(potion)
+		PotionMan.throw_potion(Game.current_enemy, test_node, potion, Player.rings)
 		potion = []
 		has_potion = false
 
@@ -126,7 +122,7 @@ func _on_end_turn_pressed() -> void:
 	
 
 func _on_throw_self_pressed() -> void:
-	Player.take_potion(potion)
+	PotionMan.throw_potion(Player, test_node, potion, Player.rings)
 	potion = []
 	has_potion = false
 

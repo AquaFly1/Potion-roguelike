@@ -6,18 +6,9 @@ class_name Entity
 @export var max_health = 10
 
 var health = 0
-
 var burn = 0
 var poison = 0
 var rejuv = 0
-
-func take_potion(potion):
-	var damages = Game.apply_potion(potion)
-	health -= damages[0]
-	burn += damages[1]
-	poison += damages[2]
-	rejuv += damages[3]
-	health += damages[4]
 
 func _ready() -> void:
 	health = max_health

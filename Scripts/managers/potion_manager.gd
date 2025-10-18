@@ -3,7 +3,7 @@ extends Node
 func activate_rings(ings: Array[Ingredient], rings: Array[Ring]) -> Array[Tag]:
 	var new_tags: Array[Tag] = []
 	for ring in rings:
-		new_tags.append(ring.potion_thrown(ings))
+		new_tags.append_array(ring.potion_thrown(ings))
 	
 	return new_tags
 
@@ -21,7 +21,7 @@ func transfer_ingredients(ings: Array[Ingredient], rings: Array[Ring]) -> Array[
 func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 	var tags = transfer_ingredients(ings, rings)
 	var active_combos = []
-	print(tags)
+
 	for combo in Game.combos:
 		var enabled = true
 		for tag in combo.tags_needed:

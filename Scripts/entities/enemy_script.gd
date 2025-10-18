@@ -30,7 +30,6 @@ func _ready() -> void:
 
 func start_turn():
 	super()
-	
 	#animation
 	
 	if chosen_potion.heal == true:
@@ -49,8 +48,6 @@ func _process(delta: float) -> void:
 	health_label.text = str(health)
 	if chosen_potion:
 		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
-	if health <= 0:
-		die()
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self

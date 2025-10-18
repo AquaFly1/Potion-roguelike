@@ -11,7 +11,6 @@ var xp_needed = 10
 
 func _ready() -> void:
 	super()
-	print(Player.rings)
 
 
 func start_turn():

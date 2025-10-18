@@ -20,10 +20,15 @@ func start_turn():
 	if poison > 0:
 		health -= 1
 		poison -= 1
-
+	if health <= 0:
+		die()
 	if rejuv > 0:
 		health += 1
 		rejuv -= 1
-
+	
 func _process(_delta: float) -> void:
+	if health <= 0:
+		die()
+
+func die():
 	pass

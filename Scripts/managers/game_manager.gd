@@ -24,6 +24,8 @@ func _ready() -> void:
 	end_turn.connect(end_turn_func)
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
+	
+	Player.rings = [load("res://Resources/rings/Ring_test.tres")]
 
 
 func chand_modified(_cards: Array):

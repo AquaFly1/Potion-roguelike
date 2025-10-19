@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=13 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -12,8 +12,13 @@ stencil_flags = 2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l3v4j"]
 material = SubResource("StandardMaterial3D_yhch0")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l3v4j"]
+height = 0.5
+radius = 0.25
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 radius = 0.25
+height = 1.75
 
 [sub_resource type="Environment" id="Environment_l3v4j"]
 background_mode = 1
@@ -22,6 +27,8 @@ ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
 volumetric_fog_temporal_reprojection_enabled = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l3v4j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
@@ -36,8 +43,6 @@ shader_parameter/glow_spread = 0.005
 shader_parameter/enable_vintage = true
 shader_parameter/vintage_strength = 0.400000019
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_l3v4j"]
-
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 collision_layer = 17
 collision_mask = 17
@@ -49,15 +54,33 @@ camera = NodePath("Camera_pivot/Camera")
 transparency = 1.0
 mesh = SubResource("CapsuleMesh_l3v4j")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+shape = SubResource("CylinderShape3D_l3v4j")
+
 [node name="Player_collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6t5aa")
 
 [node name="Camera_pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54748803, -0.09236109)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
 [node name="Camera" type="Camera3D" parent="Camera_pivot"]
 environment = SubResource("Environment_l3v4j")
 current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera_pivot"]
+light_energy = 0.1
+light_indirect_energy = 0.0
+shadow_bias = 0.05
+shadow_blur = 0.0
+shadow_caster_mask = 4294967293
+omni_range = 20.0
+omni_attenuation = 1.25
+
+[node name="Test" type="MeshInstance3D" parent="Camera_pivot/OmniLight3D"]
+transform = Transform3D(14.69134, 0, 0, 0, 14.69134, 0, 0, 0, 14.69134, 0, -1.5235988, 0)
+visible = false
+mesh = SubResource("PlaneMesh_l3v4j")
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
@@ -77,18 +100,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5116178, 0)
-light_energy = 0.1
-light_indirect_energy = 0.0
-shadow_bias = 0.05
-shadow_blur = 0.0
-shadow_caster_mask = 4294967293
-omni_range = 20.0
-omni_attenuation = 1.25
-
-[node name="Test" type="MeshInstance3D" parent="OmniLight3D"]
-transform = Transform3D(14.69134, 0, 0, 0, 14.69134, 0, 0, 0, 14.69134, 0, -1.5235988, 0)
-visible = false
-mesh = SubResource("PlaneMesh_l3v4j")

@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/environment/dungeon.gd" id="1_g2p7x"]
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_ko3d7"]
 [ext_resource type="PackedScene" uid="uid://dfrud3pja2p47" path="res://Scenes/Environnement/interaction_area.tscn" id="3_dutty"]
-[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="4_u4kg2"]
-[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="5_cmu4p"]
+[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/Interactions/2_goblins.tscn" id="4_u4kg2"]
+[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/Interactions/3_goblins.tscn" id="5_cmu4p"]
 [ext_resource type="PackedScene" uid="uid://ddwh6nj7lsv5t" path="res://3DAssets/Evironnement/chest.blend" id="7_2ayg0"]
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="8_4v86v"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="9_4v86v"]
-[ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="10_ce7yl"]
+[ext_resource type="PackedScene" path="res://Scenes/Environnement/transition_block.tscn" id="10_ce7yl"]
 [ext_resource type="PackedScene" uid="uid://cbjt4uqgyabqp" path="res://3DAssets/Evironnement/Church.blend" id="12_pwss2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_u4kg2"]
@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04939586, 0)
 shape = SubResource("BoxShape3D_g2p7x")
 
 [node name="Interaction_area" parent="." instance=ExtResource("3_dutty")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.488962, 0, -10)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 10.488962, 0, -10)
 interactions = Array[PackedScene]([ExtResource("4_u4kg2"), ExtResource("5_cmu4p")])
 
 [node name="Interaction_area2" parent="." instance=ExtResource("3_dutty")]

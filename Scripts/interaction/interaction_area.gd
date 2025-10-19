@@ -3,7 +3,7 @@ extends Area3D
 @export_file("*.tscn") var pkd_interaction_str: Array[String]
 
 var next_interaction = null
-
+var inter = null
 @export var enemies_num = 3
 @onready var enemies_parent: Node3D = $enemies_parent
 @export var goblin_scene: PackedScene
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func choose_next_interaction():
 	next_interaction = pkd_interaction_str.pick_random()
-	print(next_interaction)
+
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		if interactions != []:

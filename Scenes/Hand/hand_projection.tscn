@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drhlo4inut523"]
+[gd_scene load_steps=14 format=3 uid="uid://drhlo4inut523"]
 
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="2_b7dpg"]
 [ext_resource type="PackedScene" uid="uid://pujqkmtdknev" path="res://Scenes/Hand/Hand_environment.tscn" id="2_v6xcv"]
@@ -9,9 +9,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b7dpg"]
 shader = ExtResource("3_b7dpg")
 shader_parameter/colorForDelete = Color(0, 0, 0, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_qaiqp"]
-viewport_path = NodePath("3D View/ViewBack")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6xcv"]
 shader = ExtResource("4_58i8l")
@@ -45,11 +42,6 @@ z_index = -10
 texture_filter = 1
 material = SubResource("ShaderMaterial_b7dpg")
 scale = Vector2(6, 6)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(160.16667, 89.833336)
-texture = SubResource("ViewportTexture_qaiqp")
 
 [node name="ProjMask" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -92,6 +84,7 @@ size_2d_override = Vector2i(1920, 1080)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4911, -156.86188, 0)
 
 [node name="Palette" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-121.83334, -35.666664)
 scale = Vector2(3.6249998, 65.66667)
 texture = ExtResource("2_b7dpg")

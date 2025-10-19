@@ -13,7 +13,6 @@ stencil_flags = 2
 material = SubResource("StandardMaterial3D_yhch0")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
-radius = 0.25
 
 [sub_resource type="Environment" id="Environment_l3v4j"]
 background_mode = 1
@@ -42,7 +41,6 @@ shader_parameter/vintage_strength = 0.400000019
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_v0iea")
-walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
 
 [node name="Shadow" type="MeshInstance3D" parent="."]
@@ -69,7 +67,6 @@ visible = false
 mouse_filter = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
 z_index = 100
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15

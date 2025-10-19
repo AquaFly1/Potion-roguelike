@@ -13,7 +13,6 @@ extends CharacterBody3D
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
-
 var mouse_mode_capture: bool = true
 
 @onready var hand_display: Node2D = $"3D Projection"
@@ -61,12 +60,15 @@ func _physics_process(delta):
 	
 			
 	dir = dir.normalized()
+	
+		
 	horizontal_velocity = horizontal_velocity.lerp(
 		dir.normalized() * walk_speed, 
 		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
 	velocity.z = horizontal_velocity.z
 	
 	velocity.x = horizontal_velocity.x
+		
 #endregion
 
 #region vertical

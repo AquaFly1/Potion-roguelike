@@ -29,8 +29,9 @@ func start_turn():
 		rejuv -= 1
 	
 func _process(_delta: float) -> void:
-	if health <= 0:
-		die()
+	if health:
+		if health <= 0:
+			die()
 
 func die():
 	pass

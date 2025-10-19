@@ -76,3 +76,25 @@ outline_size = 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.39063144)
+
+[node name="Info_but" type="Button" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 0.22800002
+anchor_bottom = 0.209
+offset_right = 3.2399597
+offset_bottom = 2.2799988
+
+[node name="Intention" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4219767, 0, 0.09433746)
+visible = false
+text = "This enemy 
+intends to 
+attack"
+font_size = 16
+
+[node name="info_but_pos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.053463772, 0.05910322)
+
+[connection signal="mouse_entered" from="Info_but" to="." method="_on_info_but_mouse_entered"]
+[connection signal="mouse_exited" from="Info_but" to="." method="_on_info_but_mouse_exited"]

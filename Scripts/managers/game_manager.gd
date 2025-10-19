@@ -8,6 +8,8 @@ signal held_chand_modified(cards: Array)
 
 var current_enemy: Enemy = null
 
+var camera = null
+
 var is_in_combat: bool = false
 
 signal card_selected(card: Card)
@@ -19,6 +21,7 @@ signal interaction_ended()
 var xp_end_of_fight: int = 0
 
 func _ready() -> void:
+	camera = get_viewport().get_camera_3d()
 	held_chand_modified.connect(chand_modified)
 	card_selected.connect(card_selected_func)
 	end_turn.connect(end_turn_func)

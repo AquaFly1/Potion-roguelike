@@ -22,10 +22,15 @@ var chosen_potion = null
 
 #@onready var info_panel: Panel = $info_panel
 #@onready var potion_name: Label = $info_panel/potion_name
+@onready var info_panel: Button = $Info_but
+@onready var intention: Label3D = $Intention
+@onready var info_but_pos: Node3D = $info_but_pos
+
 
 
 func _ready() -> void:
 	super()
+	
 #	entity_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
@@ -43,25 +48,34 @@ func start_turn():
 
 func _process(delta: float) -> void:
 	super(delta)
+#	info_panel.position = Game.camera.unproject_position(info_but_pos)
 	burn_label.text = str(burn)
 	poison_label.text = str(poison)
 	rejuv_label.text = str(rejuv)
 	health_label.text = str(health)
-#	if chosen_potion:
-#		potion_name.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
+	if chosen_potion:
+		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
 
 
 func _on_button_mouse_entered() -> void:
-#	info_panel.scale = Vector2(1,1)
+	info_panel.scale = Vector2(1,1)
 	pass
 
 func _on_button_mouse_exited() -> void:
-#	info_panel.scale = Vector2(0,0)
+#	
 	pass
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
 	Game.xp_end_of_fight += xp_given
 	self.queue_free()
+
+
+func _on_info_but_mouse_entered() -> void:
+	info_panel.scale = Vector2(0,0)
+
+
+func _on_info_but_mouse_exited() -> void:
+	info_panel.scale = Vector2(1,1)

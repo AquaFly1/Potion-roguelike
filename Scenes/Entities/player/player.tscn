@@ -68,8 +68,7 @@ mouse_filter = 1
 visible = false
 mouse_filter = 1
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
+[node name="PostProcessing" type="ColorRect" parent="."]
 z_index = 100
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15

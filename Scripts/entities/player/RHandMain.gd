@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var CardPathStart3D: Node3D = $CardPathStart
 @onready var CardPathEnd3D: Node3D = $CardPathEnd
+@onready var camera: Node3D = get_viewport().get_camera_3d()
 
 signal card_path_end_2D_pos(pos: Vector2)
 signal card_path_start_2D_pos(pos: Vector2)
@@ -13,12 +14,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 
 	card_path_end_2D_pos.emit(
-		get_viewport()
-		.get_camera_3d()
+		camera
 		.unproject_position(CardPathEnd3D.global_position)
 							)
 	card_path_start_2D_pos.emit(
-		get_viewport()
-		.get_camera_3d()
+		camera
 		.unproject_position(CardPathStart3D.global_position)
 							)

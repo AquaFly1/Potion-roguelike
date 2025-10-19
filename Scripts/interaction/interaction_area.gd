@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func choose_next_interaction():
 	next_interaction = pkd_interaction_str.pick_random()
-
+	print(next_interaction)
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		if interactions != []:

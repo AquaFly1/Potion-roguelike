@@ -139,7 +139,7 @@ script = ExtResource("1_g2p7x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2845087, 0)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.2209413, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.050096273, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("PlaneMesh_ko3d7")
@@ -178,8 +178,8 @@ material_override = SubResource("ShaderMaterial_ce7yl")
 texture_filter = 2
 texture = ExtResource("9_4v86v")
 
-[node name="Church2" parent="." instance=ExtResource("12_pwss2")]
+[node name="Church2" type="Node3D" parent="." instance=ExtResource("12_pwss2")]
 
 [node name="Transition" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_ce7yl")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 1, -6)
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
 player = NodePath("../Player")

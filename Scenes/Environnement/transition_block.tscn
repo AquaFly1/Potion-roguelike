@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/RoomTransition.gd" id="2_ha7ph"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8lxq"]
-size = Vector3(1, 1, 0.3)
+size = Vector3(1, 1, 0.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwss2"]
 transparency = 4
@@ -21,10 +21,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_y8lxq"]
 material = SubResource("StandardMaterial3D_y8lxq")
 
-[node name="Transition" type="Node3D" node_paths=PackedStringArray("player")]
+[node name="Transition" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_6v614")
-player = NodePath("")
 
 [node name="Side1Area" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

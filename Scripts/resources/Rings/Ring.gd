@@ -4,6 +4,7 @@ class_name Ring
 
 @export var ring_name: String
 @export_multiline var description: String
+@export var icon: Texture2D
 
 var bonus_damage: int = 0
 

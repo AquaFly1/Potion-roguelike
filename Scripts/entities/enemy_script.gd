@@ -49,11 +49,12 @@ func start_turn():
 func _process(delta: float) -> void:
 	super(delta)
 #	info_panel.position = Game.camera.unproject_position(info_but_pos)
-	burn_label.text = str(burn)
-	poison_label.text = str(poison)
-	rejuv_label.text = str(rejuv)
-	health_label.text = str(health)
-	if chosen_potion:
+	if burn_label and poison_label and rejuv_label and health_label:
+		burn_label.text = str(burn)
+		poison_label.text = str(poison)
+		rejuv_label.text = str(rejuv)
+		health_label.text = str(health)
+	if chosen_potion and intention:
 		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 
 func _on_button_pressed() -> void:

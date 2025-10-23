@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=3 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
-[ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_aft1i"]
 [ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="3_5faar"]
 
 [node name="3dEnemy" type="Node3D"]
 script = ExtResource("1_vtixw")
 
 [node name="Enemy_sprite" type="Sprite3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 0, 76, 68, 0)
-texture = ExtResource("2_aft1i")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+texture_filter = 0
 
 [node name="Effects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15089104, -0.18075147, 0.071805924)
 
 [node name="Burn" type="Node3D" parent="Effects"]
 
@@ -69,3 +69,6 @@ outline_size = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12487309, 0.27555496, 0)
 billboard = 1
 text = "0"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1359824, 0.18134028, 0.35236084)

@@ -10,3 +10,7 @@
 sprite = ExtResource("2_airuq")
 gold_range = Array[int]([1, 3])
 potions = Array[ExtResource("3_k8ixw")]([ExtResource("4_1wrfg"), ExtResource("5_fjvxl")])
+max_health = 5
+
+[node name="Camera3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

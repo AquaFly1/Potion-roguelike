@@ -5,6 +5,7 @@ class_name Enemy
 @export var sprite: Texture
 
 #@onready var entity_sprite: Sprite2D = $Sprite2D
+@onready var enemy_sprite: Sprite3D = $Enemy_sprite
 
 var test_node: Node2D
 
@@ -31,7 +32,7 @@ var chosen_potion = null
 func _ready() -> void:
 	super()
 	
-#	entity_sprite.texture = sprite
+	enemy_sprite.texture = sprite
 	chosen_potion = potions.pick_random()
 
 func start_turn():
@@ -60,25 +61,7 @@ func _process(delta: float) -> void:
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
 
-
-func _on_button_mouse_entered() -> void:
-#	info_panel.scale = Vector2(1,1)
-	pass
-
-func _on_button_mouse_exited() -> void:
-#	
-	pass
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
 	Game.xp_end_of_fight += xp_given
 	self.queue_free()
-
-
-func _on_info_but_mouse_entered() -> void:
-#	info_panel.scale = Vector2(0,0)
-	pass
-
-
-func _on_info_but_mouse_exited() -> void:
-#	info_panel.scale = Vector2(1,1)
-	pass

@@ -14,17 +14,17 @@ var test_node: Node2D
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var burn_label: Label3D = $Info/Burn_sprite/Burn_label
-@onready var poison_label: Label3D = $Info/Poison_sprite/Poison_label
-@onready var rejuv_label: Label3D = $Info/Rejuvination_Sprite/Rejuvination_label
-@onready var health_label: Label3D = $Info/Health_label
+@onready var burn_label: Label3D = $Effects/Burn/Burn_icon/Burn_label
+@onready var poison_label: Label3D = $Effects/Poison/Poison_icon/Poison_label
+@onready var rejuv_label: Label3D = $Effects/Rejuvination/Rejuvination_icon/Rejuvination_label
+@onready var health_label: Label3D = $Effects/Health/Health_label
 
 
 #@onready var info_panel: Panel = $info_panel
 #@onready var potion_name: Label = $info_panel/potion_name
-@onready var info_panel: Button = $Info_but
-@onready var intention: Label3D = $Intention
-@onready var info_but_pos: Node3D = $info_but_pos
+#@onready var info_panel: Button = $Info_but
+#@onready var intention: Label3D = $Intention
+#@onready var info_but_pos: Node3D = $info_but_pos
 
 
 
@@ -49,20 +49,20 @@ func start_turn():
 func _process(delta: float) -> void:
 	super(delta)
 #	info_panel.position = Game.camera.unproject_position(info_but_pos)
-	if burn_label and poison_label and rejuv_label and health_label:
-		burn_label.text = str(burn)
-		poison_label.text = str(poison)
-		rejuv_label.text = str(rejuv)
-		health_label.text = str(health)
-	if chosen_potion and intention:
-		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
+
+	burn_label.text = str(burn)
+	poison_label.text = str(poison)
+	rejuv_label.text = str(rejuv)
+	health_label.text = str(health)
+#	if chosen_potion and intention:
+#		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self
 
 
 func _on_button_mouse_entered() -> void:
-	info_panel.scale = Vector2(1,1)
+#	info_panel.scale = Vector2(1,1)
 	pass
 
 func _on_button_mouse_exited() -> void:
@@ -75,8 +75,10 @@ func die():
 
 
 func _on_info_but_mouse_entered() -> void:
-	info_panel.scale = Vector2(0,0)
+#	info_panel.scale = Vector2(0,0)
+	pass
 
 
 func _on_info_but_mouse_exited() -> void:
-	info_panel.scale = Vector2(1,1)
+#	info_panel.scale = Vector2(1,1)
+	pass

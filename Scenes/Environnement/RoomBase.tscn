@@ -116,13 +116,13 @@ shader_parameter/alphaThreshold = 0.30000001425
 [node name="Player-nx" parent="." instance=ExtResource("1_ko3d7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2845087, 0)
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor-nx" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.050096273, 0)
 
-[node name="FloorShape" type="MeshInstance3D" parent="Floor"]
+[node name="FloorShape" type="MeshInstance3D" parent="Floor-nx"]
 mesh = SubResource("PlaneMesh_ko3d7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor-nx"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04939586, 0)
 shape = SubResource("BoxShape3D_g2p7x")
 
@@ -160,5 +160,5 @@ texture = ExtResource("9_4v86v")
 transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
 player = NodePath("../Player-nx")
 
-[node name="candle" parent="." instance=ExtResource("11_cbaah")]
+[node name="candle" type="Node3D" parent="." instance=ExtResource("11_cbaah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0996923, 0.08928906, -0.3002298)

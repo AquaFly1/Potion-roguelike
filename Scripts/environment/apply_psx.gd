@@ -20,15 +20,27 @@ func _ready() -> void:
 						"albedo",surface_initial.get("albedo_color") )
 					psx_instance.set_shader_parameter(
 						"texture_roughness",surface_initial.get("roughness_texture") )
+					psx_instance.set_shader_parameter(
+						"emission",surface_initial.get("emission") )
+					psx_instance.set_shader_parameter(
+						"emission_energy",surface_initial.get("emission_energy_multiplier") )
 					if surface_initial.get("normal_texture"):
 						psx_instance.set_shader_parameter(
 						"texture_normal",surface_initial.get("normal_texture") )
-				
 					i.set_surface_override_material(
 						surface,
 						psx_instance
 					)
-			pass
+				elif surface_initial.shader == psx_material.shader:
+					for parameter in ["affine_amount","jitter"]:
+						surface_initial.set_shader_parameter(
+							parameter,
+							psx_material.get_shader_parameter(parameter)
+							)
+			
+					
+					
+					
 
 func get_all_children(node) -> Array:
 	var nodes : Array = []

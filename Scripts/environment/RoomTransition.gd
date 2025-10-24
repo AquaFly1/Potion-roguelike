@@ -6,7 +6,7 @@ extends Area3D
 @export var zone: CollisionShape3D
 var fade_target_value: float = 0
 var fading: bool = false
-
+@onready var transition_parent: Node3D = $".."
 
 func _ready() -> void:
 	connect("body_entered",on_body_entered)
@@ -30,8 +30,8 @@ func on_body_exited(_body: Node3D) -> void:
 	if _body == parent.player:
 		if not fading:
 			parent.player.dir = Vector3.ZERO
-		print(area_other.global_position.distance_to(parent.player.global_position))
-		if area_other.global_position.distance_to(parent.player.global_position) > 2:
+		#print(area_other.global_position.distance_to(parent.player.global_position))
+		if area_other.global_position.distance_to(parent.player.global_position) > transition_parent.scale.x:
 			
 			fade_mesh_other.transparency = 1
 	

@@ -21,7 +21,7 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_y8lxq"]
 material = SubResource("StandardMaterial3D_y8lxq")
 
-[node name="Transition" type="Node3D"]
+[node name="Transition-nx" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_6v614")
 

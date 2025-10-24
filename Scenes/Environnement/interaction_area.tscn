@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfrud3pja2p47"]
 
 [ext_resource type="Script" uid="uid://bdj1xb40m0f4b" path="res://Scripts/interaction/interaction_area.gd" id="1_4j0q4"]
-[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/Interactions/2_goblins.tscn" id="2_t37yy"]
-[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/Interactions/3_goblins.tscn" id="3_648ku"]
+[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/interactions/2_goblins.tscn" id="2_t37yy"]
+[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/interactions/3_goblins.tscn" id="3_648ku"]
 [ext_resource type="PackedScene" uid="uid://bx0v1xfgdcqa2" path="res://Scenes/Entities/enemies/goblin_3d.tscn" id="4_t37yy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ok3wg"]
@@ -14,7 +14,7 @@ albedo_color = Color(0, 1, 1, 0.29803923)
 [sub_resource type="BoxMesh" id="BoxMesh_t37yy"]
 material = SubResource("StandardMaterial3D_xsyvp")
 
-[node name="Interaction_area" type="Area3D"]
+[node name="Interaction_area-nx" type="Area3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_4j0q4")
 interactions = Array[PackedScene]([ExtResource("2_t37yy"), ExtResource("3_648ku")])

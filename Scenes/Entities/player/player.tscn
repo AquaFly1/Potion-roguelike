@@ -43,7 +43,7 @@ shader_parameter/glow_spread = 0.005
 shader_parameter/enable_vintage = true
 shader_parameter/vintage_strength = 0.400000019
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="Player-npsx" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_v0iea")

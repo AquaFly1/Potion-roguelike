@@ -1,18 +1,14 @@
 extends Node3D
 
-@export var psx_blacklist: Array[Node3D]
+@export var psx_backlist_suffix: String = "-nx"
 @export var psx_material: ShaderMaterial
 @onready var psx_blacklist_name: Array[String] = []
 var psx_instance: ShaderMaterial
 var surface_initial
 
 func _ready() -> void:
-	for i in psx_blacklist:
-		psx_blacklist_name.append(i.name)
-	
-		
-	print(psx_blacklist_name)
-	for i in get_all_children(self):
+
+	for i in get_all_children(get_parent()):
 		if i is MeshInstance3D:
 			for surface in i.get_mesh().get_surface_count():
 				psx_instance = psx_material.duplicate()
@@ -38,10 +34,17 @@ func get_all_children(node) -> Array:
 	var nodes : Array = []
 
 	for N in node.get_children():
-		if N.name not in psx_blacklist_name:
-			if N.get_child_count() > 0:
-				nodes.append(N)
-				nodes.append_array(get_all_children(N))
-			else:
-				nodes.append(N)
+			if psx_backlist_suffix not in N.name:
+				
+				if N.get_child_count() > 0:
+					nodes.append(N)
+					nodes.append_array(get_all_children(N))
+				else:
+					nodes.append(N)
+		#if N.name not in psx_blacklist_name:
+			#if N.get_child_count() > 0:
+				#nodes.append(N)
+				#nodes.append_array(get_all_children(N))
+			#else:
+				#nodes.append(N)
 	return nodes

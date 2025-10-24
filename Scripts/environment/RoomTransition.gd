@@ -31,7 +31,7 @@ func on_body_exited(_body: Node3D) -> void:
 		if not fading:
 			parent.player.dir = Vector3.ZERO
 		#print(area_other.global_position.distance_to(parent.player.global_position))
-		if area_other.global_position.distance_to(parent.player.global_position) > transition_parent.scale.x:
+		if area_other.global_position.distance_to(parent.player.global_position) > transition_parent.scale.z:
 			
 			fade_mesh_other.transparency = 1
 	

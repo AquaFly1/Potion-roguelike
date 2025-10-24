@@ -23,31 +23,13 @@ fractal_type = 2
 noise = SubResource("FastNoiseLite_u4kg2")
 as_normal_map = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwss2"]
-render_priority = 0
-shader = ExtResource("11_y8lxq")
-shader_parameter/affine_amount = 0.0010000000475
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/albedo = Color(0.19829273, 0.40388742, 0.3511611, 1)
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_ce7yl")
-shader_parameter/normal_strength = 1.0
-shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/affine_mapping = true
-shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.25
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwss2"]
+albedo_color = Color(0.4627451, 0.63529414, 0.54901963, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ce7yl")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ko3d7"]
-material = SubResource("ShaderMaterial_pwss2")
+material = SubResource("StandardMaterial3D_pwss2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2p7x"]
 size = Vector3(2, 0.1, 2)

@@ -4,6 +4,7 @@ extends Node3D
 @export var psx_material: ShaderMaterial
 @onready var psx_blacklist_name: Array[String] = []
 var psx_instance: ShaderMaterial
+var surface_initial
 
 func _ready() -> void:
 	for i in psx_blacklist:
@@ -13,16 +14,24 @@ func _ready() -> void:
 	print(psx_blacklist_name)
 	for i in get_all_children(self):
 		if i is MeshInstance3D:
-			psx_instance = psx_material.duplicate()
 			for surface in i.get_mesh().get_surface_count():
+				psx_instance = psx_material.duplicate()
+				surface_initial = i.get_mesh().surface_get_material(surface)
+				if surface_initial is StandardMaterial3D:
+					psx_instance.set_shader_parameter(
+						"texture_albedo",surface_initial.get("albedo_texture") )
+					psx_instance.set_shader_parameter(
+						"albedo",surface_initial.get("albedo_color") )
+					psx_instance.set_shader_parameter(
+						"texture_roughness",surface_initial.get("roughness_texture") )
+					if surface_initial.get("normal_texture"):
+						psx_instance.set_shader_parameter(
+						"texture_normal",surface_initial.get("normal_texture") )
 				
-				i.set_surface_override_material(
-					surface,
-					psx_material
-				)
-				surface = i.get_mesh().surface_get_material(surface)
-				
-				
+					i.set_surface_override_material(
+						surface,
+						psx_instance
+					)
 			pass
 
 func get_all_children(node) -> Array:

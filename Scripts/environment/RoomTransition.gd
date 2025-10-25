@@ -16,12 +16,13 @@ func on_body_entered(_body: Node3D) -> void:
 	#first half
 	if _body == parent.player:
 		
-		#if fade_mesh.transparency != 0:
-		fade_mesh_other.transparency = 0
+		if fade_mesh.transparency == 1:
+			fade_mesh_other.transparency = 0
 		
 			
 		else:
 			area_other.fading = true
+			fading = false
 			parent.player.horizontal_velocity = Vector3.ZERO
 			parent.player.velocity = Vector3.ZERO
 	

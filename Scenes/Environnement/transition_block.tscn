@@ -78,6 +78,7 @@ skeleton = NodePath("../../Enemy_test")
 [node name="Shadow" type="OmniLight3D" parent="Black"]
 light_negative = true
 shadow_enabled = true
+shadow_bias = 0.01
 shadow_caster_mask = 4294967294
 distance_fade_enabled = true
 distance_fade_begin = 0.1

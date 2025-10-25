@@ -303,7 +303,6 @@ metadata/extras = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChurchParent/Church_Imported/Church/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fmpap")
-disabled = true
 
 [node name="Ray-nx" type="MeshInstance3D" parent="ChurchParent/Church_Imported"]
 material_override = ExtResource("13_pwss2")

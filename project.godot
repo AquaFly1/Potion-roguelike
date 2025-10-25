@@ -38,7 +38,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray("res://addons/blender_godot_pipeline/plugin.cfg", "res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 [file_customization]
 
@@ -74,6 +74,12 @@ folder_colors={
 "res://Scripts/resources/Rings/": "teal",
 "res://addons/": "orange",
 "res://addons/nklbdev.aseprite_importers/": "yellow"
+}
+
+[importer_defaults]
+
+scene={
+&"import_script/path": "uid://dk5pujb3sxea8"
 }
 
 [input]

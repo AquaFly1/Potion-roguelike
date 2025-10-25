@@ -16,8 +16,8 @@ func on_body_entered(_body: Node3D) -> void:
 	#first half
 	if _body == parent.player:
 		
-		if fade_mesh.transparency != 0:
-			fade_mesh_other.transparency = 0
+		#if fade_mesh.transparency != 0:
+		fade_mesh_other.transparency = 0
 		
 			
 		else:
@@ -28,12 +28,14 @@ func on_body_entered(_body: Node3D) -> void:
 
 func on_body_exited(_body: Node3D) -> void:
 	if _body == parent.player:
-		if not fading:
+		if area_other.fading:
 			parent.player.dir = Vector3.ZERO
-		#print(area_other.global_position.distance_to(parent.player.global_position))
+
 		if area_other.global_position.distance_to(parent.player.global_position) > transition_parent.scale.z:
-			
 			fade_mesh_other.transparency = 1
+			fade_mesh.transparency = 1
+		
+		
 	
 func _physics_process(_delta: float) -> void:
 	if fading:

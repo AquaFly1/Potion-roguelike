@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/RoomTransition.gd" id="2_ha7ph"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8lxq"]
-size = Vector3(1, 1, 0.4)
+size = Vector3(1, 1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwss2"]
 transparency = 4
@@ -78,8 +78,10 @@ skeleton = NodePath("../../Enemy_test")
 [node name="Shadow" type="OmniLight3D" parent="Black"]
 light_negative = true
 shadow_enabled = true
-shadow_bias = 0.05
 shadow_caster_mask = 4294967294
 distance_fade_enabled = true
+distance_fade_begin = 0.1
+distance_fade_shadow = 3.0
+distance_fade_length = 2.0
 omni_range = 21.856
 omni_attenuation = -5.583

@@ -24,6 +24,8 @@ func _ready() -> void:
 						"emission",surface_initial.get("emission") )
 					psx_instance.set_shader_parameter(
 						"emission_energy",surface_initial.get("emission_energy_multiplier") )
+					psx_instance.set_shader_parameter(
+						"texture_emission",surface_initial.get("emission_texture") )
 					if surface_initial.get("normal_texture"):
 						psx_instance.set_shader_parameter(
 						"texture_normal",surface_initial.get("normal_texture") )

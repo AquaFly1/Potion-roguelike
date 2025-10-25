@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://yf6jb6b0ryyr"]
+
+[ext_resource type="Texture2D" uid="uid://dexb1sfw66hwa" path="res://Graphics/Environnement/CH_WIN.png" id="1_2phs8"]
+
+[resource]
+resource_name = "Glass"
+albedo_texture = ExtResource("1_2phs8")
+emission_enabled = true
+emission_texture = ExtResource("1_2phs8")
+texture_filter = 2
+metadata/extras = {
+"ps_mat_data": {}
+}

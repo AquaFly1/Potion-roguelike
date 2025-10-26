@@ -45,8 +45,10 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_mode_capture = true
 func _physics_process(delta):
-	
-	print(ray_cast.get_collider())
+	interact_text.visible = false
+	if ray_cast.get_collider():
+		if ray_cast.get_collider().get_parent().name == "Candle":
+			interact_text.visible = true
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y

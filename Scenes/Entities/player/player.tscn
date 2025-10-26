@@ -68,6 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 environment = SubResource("Environment_l3v4j")
 current = true
 
+[node name="RayCast" type="RayCast3D" parent="Camera_pivot/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042684376, 0)
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera_pivot"]
 light_energy = 0.1
 light_indirect_energy = 0.0
@@ -81,11 +86,6 @@ omni_attenuation = 1.25
 transform = Transform3D(14.69134, 0, 0, 0, 14.69134, 0, 0, 0, 14.69134, 0, -1.5235988, 0)
 visible = false
 mesh = SubResource("PlaneMesh_l3v4j")
-
-[node name="RayCast" type="RayCast3D" parent="Camera_pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042684376, 0)
-target_position = Vector3(0, 0, -3)
-collide_with_areas = true
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 

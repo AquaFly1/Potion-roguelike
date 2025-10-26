@@ -8,10 +8,10 @@ extends Node
 func _ready() -> void:
 	armature.visible = false
 	point.visible = false
-	animation_player.autoplay = "0"
+	#animation_player.autoplay = "0"
 	
 
 
 func light_candle():
-	armature.visible = true
-	point.visible = true
+	armature.visible = not armature.visible
+	point.visible = not point.visible

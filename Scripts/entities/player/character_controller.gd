@@ -11,8 +11,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
 @onready var interact_text: Label = $Interact_text
-@onready var ray_cast: RayCast3D = $Camera_pivot/RayCast
-
+@onready var ray_cast: RayCast3D = $Camera_pivot/Camera/RayCast
 var candle_look = Node3D
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0

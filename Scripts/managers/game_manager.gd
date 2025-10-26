@@ -4,7 +4,7 @@ extends Node
 @export var combos: Array[Combo]
 @export var rings: Array[Ring]
 
-signal held_chand_modified(cards: Array)
+
 
 var current_enemy: Enemy = null
 
@@ -16,6 +16,8 @@ signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()
 signal interaction_ended()
+signal held_chand_modified(cards: Array)
+signal look_candle(candle: Node3D)
 
 
 var xp_end_of_fight: int = 0
@@ -27,10 +29,11 @@ func _ready() -> void:
 	end_turn.connect(end_turn_func)
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
-	
+	look_candle.connect(player_look_candle)
 	Player.rings = [load("res://Resources/rings/Ring_test.tres")]
 
-
+func player_look_candle(_candle):
+	pass
 func chand_modified(_cards: Array):
 	pass
 func card_selected_func(_card):

@@ -18,7 +18,7 @@ func choose_next_interaction():
 	next_interaction = pkd_interaction_str.pick_random()
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
+	if body.name == "Player-nx":
 		if interactions != []:
 			var pos = -0.4
 			for i in range(enemies_num):

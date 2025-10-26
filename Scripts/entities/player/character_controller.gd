@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
+@onready var interact_text: Label = $Interact_text
+@onready var ray_cast: RayCast3D = $Camera_pivot/RayCast
+
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
@@ -42,6 +45,9 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_mode_capture = true
 func _physics_process(delta):
+	
+	print(ray_cast.get_collider())
+	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
 #region horizontal
@@ -103,3 +109,6 @@ func _physics_process(delta):
 #endregion
 	# Move character
 	move_and_slide()
+
+func ray_cast_collide(candle):
+	pass

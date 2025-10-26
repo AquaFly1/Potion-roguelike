@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2tbmicm44hji"]
 
-[ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://interaction.gd" id="1_akt8v"]
+[ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://interaction_3D.gd" id="1_akt8v"]
 [ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/Interactions/2_goblins.tscn" id="2_45s6o"]
 [ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/Interactions/3_goblins.tscn" id="3_12pu6"]
 

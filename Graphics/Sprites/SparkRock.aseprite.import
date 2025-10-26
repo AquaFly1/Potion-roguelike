@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dudoidhqi2x68"
-path="res://.godot/imported/SparkRock.aseprite-30d24ea86aa5c57c06e2d010d5480ada.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Graphics/Sprites/SparkRock.aseprite"
-dest_files=["res://.godot/imported/SparkRock.aseprite-30d24ea86aa5c57c06e2d010d5480ada.ctex"]
 
 [params]
 

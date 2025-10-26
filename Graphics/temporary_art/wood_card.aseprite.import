@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xopt78yljg7h"
-path="res://.godot/imported/wood_card.aseprite-c8b0141f7cabb159c551b8768befe09a.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Graphics/temporary_art/wood_card.aseprite"
-dest_files=["res://.godot/imported/wood_card.aseprite-c8b0141f7cabb159c551b8768befe09a.ctex"]
 
 [params]
 

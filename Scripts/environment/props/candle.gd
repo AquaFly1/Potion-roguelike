@@ -1,7 +1,7 @@
 extends Node
 
-@onready var armature: Node3D = $Armature
-@onready var point: OmniLight3D = $Point
+@onready var armature: Node3D = $candle/Armature
+@onready var point: OmniLight3D = $candle/Point
 
 
 func _ready() -> void:

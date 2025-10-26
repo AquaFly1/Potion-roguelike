@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=14 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
@@ -36,7 +37,7 @@ shader_parameter/pixel_resolution = 720.00003116
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.1
 shader_parameter/enable_dither = true
-shader_parameter/dither_strength = 0.3
+shader_parameter/dither_strength = 0.10000000475
 shader_parameter/enable_glow = true
 shader_parameter/glow_strength = 0.2000000095
 shader_parameter/glow_spread = 0.005
@@ -70,8 +71,13 @@ current = true
 
 [node name="RayCast" type="RayCast3D" parent="Camera_pivot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.042684376, 0)
-target_position = Vector3(0, 0, -3)
+target_position = Vector3(0, 0, -1.425)
+collision_mask = 4
+hit_from_inside = true
+hit_back_faces = false
 collide_with_areas = true
+debug_shape_thickness = 1
+script = ExtResource("2_g154t")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera_pivot"]
 light_energy = 0.1
@@ -97,7 +103,6 @@ visible = false
 mouse_filter = 1
 
 [node name="PostProcessing" type="ColorRect" parent="."]
-visible = false
 z_index = 100
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15

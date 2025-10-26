@@ -10,9 +10,7 @@ extends CharacterBody3D
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
-@onready var interact_text: Label = $Interact_text
-@onready var ray_cast: RayCast3D = $Camera_pivot/Camera/RayCast
-var candle_look = Node3D
+
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
@@ -31,14 +29,14 @@ func _ready() -> void:
 	mouse_mode_capture = true
 
 func _unhandled_input(event):
-	candle_look = null
+	
 	if event is InputEventMouseMotion:
 		# Yaw on Player
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		# Pitch on Pivot
 		pivot.rotate_x(-event.relative.y * mouse_sensitivity)
 		# Clamp pitch to avoid flipping
-		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-85), deg_to_rad(75))
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		mouse_mode_capture = false
@@ -46,11 +44,6 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_mode_capture = true
 func _physics_process(delta):
-	interact_text.visible = false
-	if ray_cast.get_collider():
-		if ray_cast.get_collider().get_parent().name == "Candle":
-			interact_text.visible = true
-			candle_look = ray_cast.get_collider().get_parent()
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
@@ -113,10 +106,3 @@ func _physics_process(delta):
 #endregion
 	# Move character
 	move_and_slide()
-
-func _input(event: InputEvent) -> void:
-	
-	if event.is_action_pressed("interact"):
-		if candle_look:
-			print(event.as_text())
-			candle_look.light_candle()

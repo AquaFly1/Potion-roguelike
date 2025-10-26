@@ -82,6 +82,11 @@ transform = Transform3D(14.69134, 0, 0, 0, 14.69134, 0, 0, 0, 14.69134, 0, -1.52
 visible = false
 mesh = SubResource("PlaneMesh_l3v4j")
 
+[node name="RayCast" type="RayCast3D" parent="Camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19405776, 0)
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
 [node name="player_manager" parent="." instance=ExtResource("3_6t5aa")]

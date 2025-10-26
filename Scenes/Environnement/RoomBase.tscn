@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="8_4v86v"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="9_4v86v"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="10_ce7yl"]
-[ext_resource type="PackedScene" uid="uid://iq15815fodyu" path="res://Graphics/Environnement/props/candle.blend" id="11_cbaah"]
+[ext_resource type="PackedScene" uid="uid://dcx8mdf5etbcd" path="res://Graphics/Environnement/props/candle.blend" id="11_cbaah"]
 [ext_resource type="Texture2D" uid="uid://cu50xlkjlrwor" path="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png" id="11_pwss2"]
 [ext_resource type="Shader" uid="uid://ctfnnu8wxax4j" path="res://Graphics/Shaders/psx.gdshader" id="11_y8lxq"]
 [ext_resource type="Texture2D" uid="uid://bcb85mgwcf76l" path="res://3DAssets/Evironnement/Church_CH_WIN.png" id="12_buf24"]
@@ -309,9 +309,6 @@ texture = ExtResource("9_4v86v")
 transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
 player = NodePath("../Player-nx")
 
-[node name="candle" parent="." instance=ExtResource("11_cbaah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0996923, 0.08928906, -0.3002298)
-
 [node name="ChurchParent" type="Node3D" parent="."]
 
 [node name="Church" parent="ChurchParent" instance=ExtResource("12_pwss2")]
@@ -357,3 +354,6 @@ metadata/extras = {
 "material_0": "res://Graphics/Shaders/light_ray.tres"
 }
 metadata/material_0 = "res://Graphics/Shaders/light_ray.tres"
+
+[node name="candle" parent="." instance=ExtResource("11_cbaah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02263534, 0.026429296)

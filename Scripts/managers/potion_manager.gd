@@ -34,7 +34,7 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 					active_combos.erase(deleted)
 	return active_combos
 
-func throw_potion(entity: Entity, target: Node2D, ingredients: Array[Ingredient], rings: Array[Ring]):
+func throw_potion(entity: Entity, ingredients: Array[Ingredient], rings: Array[Ring]):
 	var dmg = 0
 	var burn = 0
 	var poison = 0

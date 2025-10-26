@@ -8,10 +8,10 @@ class_name Ring
 
 var bonus_damage: int = 0
 
-func activate(ings: Array[Ingredient]):
+func activate(_ings: Array[Ingredient]):
 	pass
 
-func potion_thrown(ings: Array[Ingredient]) -> Array[Tag]:
+func potion_thrown(_ings: Array[Ingredient]) -> Array[Tag]:
 	return []
 	
 func start_turn():

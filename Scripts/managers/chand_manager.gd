@@ -112,7 +112,7 @@ func _on_play_pressed() -> void:
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
-		PotionMan.throw_potion(Game.current_enemy, test_node, potion, Player.rings)
+		PotionMan.throw_potion(Game.current_enemy, potion, Player.rings)
 		potion = []
 		has_potion = false
 
@@ -122,7 +122,7 @@ func _on_end_turn_pressed() -> void:
 	
 
 func _on_throw_self_pressed() -> void:
-	PotionMan.throw_potion(Player, test_node, potion, Player.rings)
+	PotionMan.throw_potion(Player, potion, Player.rings)
 	potion = []
 	has_potion = false
 

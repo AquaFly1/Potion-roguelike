@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=20 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
+[ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
+[ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="8_iloc2"]
+[ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
+[ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
 stencil_flags = 2
@@ -43,6 +47,16 @@ shader_parameter/glow_strength = 0.2000000095
 shader_parameter/glow_spread = 0.005
 shader_parameter/enable_vintage = true
 shader_parameter/vintage_strength = 0.400000019
+
+[sub_resource type="Curve2D" id="Curve2D_7u22i"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector2Array(41.253006, 12.014827, -41.253006, -12.014827, 1601, 773, 46.48668, -63.01541, -46.48668, 63.01541, 1430, 851)
+}
+point_count = 2
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sefq3"]
+size = Vector2(47, 39)
 
 [node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 collision_layer = 17
@@ -119,3 +133,37 @@ offset_right = 1032.0
 offset_bottom = 777.0
 theme_override_font_sizes/font_size = 30
 text = "[E]: Light candle"
+
+[node name="HandShape" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7u22i")
+script = ExtResource("7_a74oi")
+
+[node name="CardPathStart" type="Node2D" parent="HandShape"]
+script = ExtResource("8_iloc2")
+
+[node name="Sprite2D" type="Sprite2D" parent="HandShape/CardPathStart"]
+visible = false
+position = Vector2(-1.9073495e-06, 0)
+texture = SubResource("PlaceholderTexture2D_sefq3")
+
+[node name="CardPathEnd" type="Node2D" parent="HandShape"]
+visible = false
+script = ExtResource("8_iloc2")
+end_segment = true
+
+[node name="Sprite2D" type="Sprite2D" parent="HandShape/CardPathEnd"]
+position = Vector2(-1.9073495e-06, 0)
+scale = Vector2(1.01, 1.01)
+texture = SubResource("PlaceholderTexture2D_sefq3")
+
+[node name="hand" parent="." node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+path_scene = ExtResource("10_sefq3")
+chand_path = NodePath("../HandShape")

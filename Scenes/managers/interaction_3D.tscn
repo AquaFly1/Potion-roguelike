@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://2tbmicm44hji"]
+
+[ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://interaction.gd" id="1_akt8v"]
+[ext_resource type="PackedScene" uid="uid://dm3gesrklr032" path="res://Scenes/Interactions/2_goblins.tscn" id="2_45s6o"]
+[ext_resource type="PackedScene" uid="uid://daadyt14cqlty" path="res://Scenes/Interactions/3_goblins.tscn" id="3_12pu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cdvjk"]
+
+[node name="interaction" type="Node3D"]
+script = ExtResource("1_akt8v")
+possible_interactions = Array[PackedScene]([ExtResource("2_45s6o"), ExtResource("3_12pu6")])
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_cdvjk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

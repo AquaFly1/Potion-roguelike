@@ -17,6 +17,7 @@ var h_rot: float = 0
 var mouse_mode_capture: bool = true
 
 @onready var hand_display: Node2D = $"3D Projection"
+@onready var hand: Control = $hand
 
 var horizontal_velocity: Vector3
 var vertical_velocity: Vector3
@@ -25,12 +26,13 @@ var anim_y: float = 0
 var anim_time: float = 0
 #endregion
 func _ready() -> void:
+	Game.interaction_started.connect(start_interaction)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_mode_capture = true
 
 func _unhandled_input(event):
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not Game.is_in_combat:
 		# Yaw on Player
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		# Pitch on Pivot
@@ -44,7 +46,8 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_mode_capture = true
 func _physics_process(delta):
-	
+	if Game.is_in_combat:
+		return
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
 #region horizontal
@@ -105,4 +108,10 @@ func _physics_process(delta):
 	hand_display.transform.origin.y = anim_y
 #endregion
 	# Move character
+	
 	move_and_slide()
+
+func start_interaction():
+	Game.is_in_combat = true
+	hand.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

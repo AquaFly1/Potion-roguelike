@@ -39,24 +39,24 @@ texture = SubResource("GradientTexture2D_7pwvw")
 
 [node name="Player" parent="." instance=ExtResource("3_jml13")]
 
-[node name="HandShape" type="Path2D" parent="Player"]
+[node name="HandShape2" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_0d3ml")
 script = ExtResource("5_0npaa")
 
-[node name="CardPathStart" type="Node2D" parent="Player/HandShape"]
+[node name="CardPathStart" type="Node2D" parent="Player/HandShape2"]
 script = ExtResource("6_hm0mp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/HandShape/CardPathStart"]
+[node name="Sprite2D" type="Sprite2D" parent="Player/HandShape2/CardPathStart"]
 visible = false
 position = Vector2(-1.9073495e-06, 0)
 texture = SubResource("PlaceholderTexture2D_45lrk")
 
-[node name="CardPathEnd" type="Node2D" parent="Player/HandShape"]
+[node name="CardPathEnd" type="Node2D" parent="Player/HandShape2"]
 visible = false
 script = ExtResource("6_hm0mp")
 end_segment = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/HandShape/CardPathEnd"]
+[node name="Sprite2D" type="Sprite2D" parent="Player/HandShape2/CardPathEnd"]
 position = Vector2(-1.9073495e-06, 0)
 scale = Vector2(1.01, 1.01)
 texture = SubResource("PlaceholderTexture2D_45lrk")

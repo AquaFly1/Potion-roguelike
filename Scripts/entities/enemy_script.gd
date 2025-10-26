@@ -40,9 +40,9 @@ func start_turn():
 	#animation
 	
 	if chosen_potion.heal == true:
-		PotionMan.throw_potion(self, test_node, chosen_potion.ingredients, rings)
+		PotionMan.throw_potion(self, chosen_potion.ingredients, rings)
 	else:
-		PotionMan.throw_potion(Player, test_node, chosen_potion.ingredients, rings)
+		PotionMan.throw_potion(Player, chosen_potion.ingredients, rings)
 	chosen_potion = potions.pick_random()
 
 

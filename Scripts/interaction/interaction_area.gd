@@ -20,6 +20,7 @@ func choose_next_interaction():
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player-nx":
 		if interactions != []:
+			Player.start_turn()
 			var pos = -0.4
 			for i in range(enemies_num):
 				var enemy_inst = goblin_scene.instantiate()

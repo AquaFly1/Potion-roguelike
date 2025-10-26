@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var interact_text: Label = $Interact_text
 @onready var ray_cast: RayCast3D = $Camera_pivot/RayCast
 
+var candle_look = Node3D
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
@@ -31,6 +32,7 @@ func _ready() -> void:
 	mouse_mode_capture = true
 
 func _unhandled_input(event):
+	candle_look = null
 	if event is InputEventMouseMotion:
 		# Yaw on Player
 		rotate_y(-event.relative.x * mouse_sensitivity)
@@ -49,6 +51,7 @@ func _physics_process(delta):
 	if ray_cast.get_collider():
 		if ray_cast.get_collider().get_parent().name == "Candle":
 			interact_text.visible = true
+			candle_look = ray_cast.get_collider().get_parent()
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
@@ -112,5 +115,7 @@ func _physics_process(delta):
 	# Move character
 	move_and_slide()
 
-func ray_cast_collide(candle):
-	pass
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		if candle_look:
+			candle_look.light_candle()

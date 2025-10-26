@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=36 format=4 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_ko3d7"]
 [ext_resource type="PackedScene" uid="uid://dfrud3pja2p47" path="res://Scenes/Environnement/interaction_area.tscn" id="3_dutty"]
@@ -262,6 +262,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3wvae")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwss2"]
+size = Vector3(2, 2.5, 1)
+
 [node name="Room" type="Node3D"]
 
 [node name="Player-nx" parent="." instance=ExtResource("1_ko3d7")]
@@ -355,5 +358,12 @@ metadata/extras = {
 }
 metadata/material_0 = "res://Graphics/Shaders/light_ray.tres"
 
-[node name="Candle" parent="." instance=ExtResource("14_buf24")]
+[node name="Candle" parent="." node_paths=PackedStringArray("doors") instance=ExtResource("14_buf24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08873415, 0)
+doors = [NodePath("../Door")]
+
+[node name="Door" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.992, 1.2654641, -5.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+shape = SubResource("BoxShape3D_pwss2")

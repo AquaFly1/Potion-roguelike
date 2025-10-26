@@ -4,6 +4,7 @@ extends Node
 @onready var point: OmniLight3D = $StaticBody3D/candle/Point
 @onready var animation_player: AnimationPlayer = $StaticBody3D/candle/AnimationPlayer
 @onready var base_energy = point.light_energy
+@export var doors: Array[StaticBody3D]
 var size_tween: Tween
 var active: bool = false
 @onready var base_pos = armature.position
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func light_candle():
 	active = not active
+	
 	#armature.visible = not armature.visible
 	#point.visible = not point.visible
 	if size_tween: size_tween.stop()
@@ -39,5 +41,6 @@ func light_candle():
 		size_tween.tween_property(armature,"rotation",base_pos + Vector3(0,0,-0.2),0.05)
 		size_tween.tween_property(point,"light_energy",0,0.05)
 		size_tween.chain().tween_property(armature,"scale",Vector3.ZERO,0)
-		
+	for door in doors:
+		door.get_child(0).disabled = not door.get_child(0).disabled
 	#point.light_energy = armature.scale.x * base_energy

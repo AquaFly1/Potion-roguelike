@@ -15,24 +15,17 @@ var test_node: Node2D
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var burn_label: Label3D = $Effects/Burn/Burn_icon/Burn_label
-@onready var poison_label: Label3D = $Effects/Poison/Poison_icon/Poison_label
-@onready var rejuv_label: Label3D = $Effects/Rejuvination/Rejuvination_icon/Rejuvination_label
-@onready var health_label: Label3D = $Effects/Health/Health_label
-
-
-#@onready var info_panel: Panel = $info_panel
-#@onready var potion_name: Label = $info_panel/potion_name
-#@onready var info_panel: Button = $Info_but
-#@onready var intention: Label3D = $Intention
-#@onready var info_but_pos: Node3D = $info_but_pos
-
-
+@onready var burn_label: Label = $Effects/Gurn_icon/Burn_label
+@onready var poison_label: Label = $Effects/Poison_icon/Poison_label
+@onready var rejuv_label: Label = $Effects/Rejuvination_icon/Rejuvination_label
+@onready var health_label: Label = $Effects/Health_icon/Health_label
+@onready var gui_origin: Marker3D = $gui_origin
+@onready var gui_parent: Control = $Effects
 
 func _ready() -> void:
 	super()
-	
 	enemy_sprite.texture = sprite
+	
 	chosen_potion = potions.pick_random()
 
 func start_turn():
@@ -50,6 +43,10 @@ func start_turn():
 func _process(delta: float) -> void:
 	super(delta)
 #	info_panel.position = Game.camera.unproject_position(info_but_pos)
+	gui_parent.visible = not get_viewport().get_camera_3d().is_position_behind(gui_origin.global_position)
+	gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
+	
+
 
 	burn_label.text = str(burn)
 	poison_label.text = str(poison)

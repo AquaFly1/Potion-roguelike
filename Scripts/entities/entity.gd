@@ -32,6 +32,8 @@ func _process(_delta: float) -> void:
 	if health:
 		if health <= 0:
 			die()
+	if health > max_health:
+		health = max_health
 
 func die():
 	pass

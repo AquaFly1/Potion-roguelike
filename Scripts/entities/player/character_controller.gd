@@ -26,6 +26,7 @@ var anim_y: float = 0
 var anim_time: float = 0
 #endregion
 func _ready() -> void:
+	Game.interaction_ended.connect(end_interaction)
 	Game.interaction_started.connect(start_interaction)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_mode_capture = true
@@ -115,3 +116,6 @@ func start_interaction():
 	Game.is_in_combat = true
 	hand.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func end_interaction():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hand.visible = false

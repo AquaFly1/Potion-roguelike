@@ -15,9 +15,10 @@ func _ready() -> void:
 
 func start_turn():
 	super()
+	Game.player_start_turn.emit()
 	RingMan.start_turn()
 	mana = max_mana
-	Game.player_start_turn.emit()
+
 
 func _process(_delta: float) -> void:
 	if xp >= xp_needed:

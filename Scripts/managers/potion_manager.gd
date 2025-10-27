@@ -48,7 +48,7 @@ func throw_potion(entity: Entity, ingredients: Array[Ingredient], rings: Array[R
 		rejuv += combo.rejuv
 		heal += combo.heal
 
-	entity.health -= dmg
+	entity.take_damage(dmg)
 	entity.burn += burn
 	entity.poison += poison
 	entity.rejuv += rejuv

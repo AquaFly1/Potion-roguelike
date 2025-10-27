@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://daadyt14cqlty"]
-
-[ext_resource type="PackedScene" uid="uid://cg651b3jwwuqk" path="res://Scenes/managers/interaction.tscn" id="1_nfud5"]
-[ext_resource type="PackedScene" uid="uid://bx0v1xfgdcqa2" path="res://Scenes/Entities/enemies/goblin_3d.tscn" id="2_qeku8"]
-
-[node name="interaction" instance=ExtResource("1_nfud5")]
-goblin_scene = ExtResource("2_qeku8")
-enemies = Array[PackedScene]([ExtResource("2_qeku8"), ExtResource("2_qeku8"), ExtResource("2_qeku8")])

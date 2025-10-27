@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwpkll6jqn6yd"
-path="res://.godot/imported/sky.aseprite-9f164b9ebb6c9ba6d95cdfd88b08fd3f.ctex"
+uid="uid://dcafbd0gtwm8d"
+path="res://.godot/imported/grass.aseprite-4f88c33ce47242e6b9cffc580ab8ca89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/temporary_art/sky.aseprite"
-dest_files=["res://.godot/imported/sky.aseprite-9f164b9ebb6c9ba6d95cdfd88b08fd3f.ctex"]
+source_file="res://Graphics/Environnement/Details/grass.aseprite"
+dest_files=["res://.godot/imported/grass.aseprite-4f88c33ce47242e6b9cffc580ab8ca89.ctex"]
 
 [params]
 

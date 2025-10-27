@@ -1,7 +1,7 @@
 extends RayCast3D
 
 var candle_look = Node3D
-
+var break_chance: int = 10
 @onready var interact_text: Label = $"../../../Interact_text"
 
 func _physics_process(_delta: float) -> void:
@@ -16,6 +16,6 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_key_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
-		if candle_look:
+		if candle_look and randi_range(1,break_chance) != break_chance:
 			candle_look.light_candle()
 	

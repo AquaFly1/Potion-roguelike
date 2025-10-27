@@ -77,6 +77,10 @@ folder_colors={
 "res://addons/nklbdev.aseprite_importers/": "yellow"
 }
 
+[gui]
+
+theme/custom_font="uid://640y2inv02kw"
+
 [importer_defaults]
 
 scene={

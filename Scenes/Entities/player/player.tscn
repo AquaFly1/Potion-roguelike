@@ -227,4 +227,4 @@ horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.517
 script = ExtResource("13_en4d4")
-letters_per_sec = 200.0
+letters_per_sec = 50.0

@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 		
 	else:
 		if candle_look:
-			popup_label.clear_text()
+			popup_label.clear_text("[E]: Light candle")
 		candle_look = null
 		
 		

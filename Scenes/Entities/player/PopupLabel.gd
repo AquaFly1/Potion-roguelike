@@ -1,6 +1,6 @@
 extends Label
 
-var interact_text: String = ""
+var interact_text: Array[String] = [""]
 var text_tween: Tween
 var erase_tween: Tween
 @onready var interact_ray_active: int = 0
@@ -12,7 +12,7 @@ var is_exit: bool
 
 
 func add_text(input_text) -> void:
-	interact_text = input_text
+	interact_text.append(input_text)
 		
 	#tally how many objects say theyre being viewed, value is basically always 0 or 1 but
 	#when the viewd object switches it might fuck up a bool if the exit call happens
@@ -22,7 +22,7 @@ func add_text(input_text) -> void:
 	#basically as long as the text isnt already there, avoid erasing just to put the
 	#same thing again
 	visible = true
-	if text != interact_text or erase_tween:
+	if text != interact_text[-1] or erase_tween:
 		#new anim
 		text_tween = create_tween()#.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		#kill erasing animations if were switching from nothing
@@ -34,20 +34,20 @@ func add_text(input_text) -> void:
 		
 		
 		#switch the text
-		text_tween.tween_property(self,"text",interact_text,0)
+		text_tween.tween_property(self,"text",interact_text[-1],0)
 		
 		#retype the new text
-		anim_time = len(interact_text)/letters_per_sec
+		anim_time = len(interact_text[-1])/letters_per_sec
 		text_tween.tween_property(self,"visible_ratio",1,anim_time)
 			
 	#if looking at nothing
 	
 
-func clear_text() -> void:
+func clear_text(input_text) -> void:
 	interact_ray_active -=1
+	interact_text.erase(input_text)
 	
 	if interact_ray_active == 0:
-		interact_text = ""
 		if text_tween: text_tween.kill()
 		erase_tween = create_tween()#.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 		

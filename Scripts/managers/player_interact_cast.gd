@@ -2,7 +2,7 @@ extends RayCast3D
 
 var candle_look = Node3D
 var break_chance: int = 10
-@onready var interact_text: Label = $"../../../Interact_text"
+@onready var interact_text: Label = $"../../../2D/Interact_text"
 
 func _physics_process(_delta: float) -> void:
 	

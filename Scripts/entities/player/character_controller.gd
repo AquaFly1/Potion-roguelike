@@ -17,7 +17,7 @@ var h_rot: float = 0
 var mouse_mode_capture: bool = true
 
 @onready var hand_display: Node2D = $"3D Projection"
-@onready var hand: Control = $hand
+@onready var hand: Control = $"2D/hand"
 
 var horizontal_velocity: Vector3
 var vertical_velocity: Vector3

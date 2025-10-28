@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=22 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -9,7 +9,6 @@
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
-[ext_resource type="FontFile" uid="uid://640y2inv02kw" path="res://Graphics/Fonts/BitPotion.fnt" id="8_8g4m7"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="8_iloc2"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
@@ -38,7 +37,7 @@ volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 720.00003116
+shader_parameter/pixel_resolution = 1080.0
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.1
 shader_parameter/enable_dither = true
@@ -55,10 +54,6 @@ shader_parameter/aberration_intensity = 1.0
 shader_parameter/r_displacement = Vector2(1, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_en4d4"]
-font = ExtResource("8_8g4m7")
-font_size = 64
 
 [sub_resource type="Curve2D" id="Curve2D_7u22i"]
 bake_interval = 1.0
@@ -147,6 +142,7 @@ mouse_filter = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="PostP"]
 
 [node name="PostProcessing2" type="ColorRect" parent="PostP/CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_8g4m7")
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,9 +159,7 @@ anchor_right = 0.5
 anchor_bottom = 0.716
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
 text = "[E]: Light candle"
-label_settings = SubResource("LabelSettings_en4d4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -212,8 +206,6 @@ visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 path_scene = ExtResource("10_sefq3")

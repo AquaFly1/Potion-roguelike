@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccn7rphveje3s"]
+
+[ext_resource type="FontFile" uid="uid://bf5xc6m8od5p6" path="res://Graphics/Fonts/ModernAntiqua-Regular.ttf" id="1_he3nu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he3nu"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.0627451)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytgyl"]
+bg_color = Color(1, 1, 1, 0.007843138)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yjtp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0p7b"]
+bg_color = Color(0, 0, 0, 0.105882354)
+
+[resource]
+default_font = ExtResource("1_he3nu")
+default_font_size = 32
+Button/styles/focus = SubResource("StyleBoxFlat_he3nu")
+Button/styles/hover = SubResource("StyleBoxFlat_ytgyl")
+Button/styles/normal = SubResource("StyleBoxFlat_6yjtp")
+Button/styles/pressed = SubResource("StyleBoxFlat_f0p7b")

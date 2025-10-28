@@ -162,6 +162,7 @@ mouse_filter = 1
 layer = 100
 
 [node name="PostProcessing" type="ColorRect" parent="2D/PostP"]
+visible = false
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,7 +210,6 @@ horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.517
 script = ExtResource("13_en4d4")
-letters_per_sec = 90.0
 
 [node name="ColorRect" type="ColorRect" parent="2D/PopupLabel"]
 visible = false

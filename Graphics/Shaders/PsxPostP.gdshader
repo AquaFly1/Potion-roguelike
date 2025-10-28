@@ -61,7 +61,8 @@ vec3 apply_black_vintage_edges(vec3 color, vec2 uv) {
 }
 
 void fragment() {
-	vec2 pixel_uv = floor(UV * pixel_resolution) / pixel_resolution;
+	vec2 pixel_uv = round(UV * pixel_resolution) / pixel_resolution;
+	//pixel_uv = UV;
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
 
 	if (enable_glow) {

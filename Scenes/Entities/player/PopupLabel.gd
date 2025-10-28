@@ -21,6 +21,7 @@ func add_text(input_text) -> void:
 	
 	#basically as long as the text isnt already there, avoid erasing just to put the
 	#same thing again
+	visible = true
 	if text != interact_text or erase_tween:
 		#new anim
 		text_tween = create_tween()#.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
@@ -52,6 +53,7 @@ func clear_text() -> void:
 		
 		erase_tween.tween_property(self,"visible_ratio",0,anim_time)
 		erase_tween.tween_property(self,"text","",0)
+		erase_tween.tween_property(self,"visible",false,0)
 		erase_tween.tween_property(self,"visible_ratio",1,0)
 	
 	elif interact_ray_active < 0:

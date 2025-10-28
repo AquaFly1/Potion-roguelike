@@ -2,7 +2,7 @@ extends RayCast3D
 
 var candle_look: Node3D = null
 var break_chance: int = 10
-@onready var popup_label: Label = $"../../../2D/PopupLabel"
+@export var popup_label: Label
 
 func _physics_process(_delta: float) -> void:
 	

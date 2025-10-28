@@ -3,12 +3,11 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://dxwr7dyusaf7v"
-path="res://.godot/imported/BitPotion_Black.fnt-f7e1f63c184e614d59731d80344ff637.fontdata"
+valid=false
 
 [deps]
 
 source_file="res://Graphics/Fonts/BitPotion_Black.fnt"
-dest_files=["res://.godot/imported/BitPotion_Black.fnt-f7e1f63c184e614d59731d80344ff637.fontdata"]
 
 [params]
 

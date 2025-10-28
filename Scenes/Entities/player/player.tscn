@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=25 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="8_iloc2"]
+[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="8_yicnn"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scenes/Entities/player/PopupLabel.gd" id="13_en4d4"]
@@ -167,6 +168,7 @@ mouse_filter = 2
 [node name="player_manager" parent="2D" instance=ExtResource("3_6t5aa")]
 layout_mode = 1
 mouse_filter = 1
+rings = Array[ExtResource("8_yicnn")]([])
 
 [node name="PlayerLabels" parent="2D" instance=ExtResource("4_vgqql")]
 visible = false

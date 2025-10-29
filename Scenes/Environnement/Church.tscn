@@ -302,9 +302,11 @@ material_override = SubResource("ShaderMaterial_ce7yl")
 texture_filter = 2
 texture = ExtResource("9_4v86v")
 
-[node name="Transition-nx" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_ce7yl")]
+[node name="Transition-nx" parent="." node_paths=PackedStringArray("player", "Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
 transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
 player = NodePath("../Player-nx")
+Side1Candle = NodePath("../Candle")
+Side2Candle = NodePath("../Candle2")
 
 [node name="ChurchParent" type="Node3D" parent="."]
 
@@ -364,3 +366,6 @@ shape = SubResource("BoxShape3D_pwss2")
 
 [node name="interaction" parent="." instance=ExtResource("14_a3qpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
+
+[node name="Candle2" parent="." instance=ExtResource("14_buf24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.419603, 0, -11.606251)

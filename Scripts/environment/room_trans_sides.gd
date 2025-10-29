@@ -6,9 +6,15 @@ extends Area3D
 @export var zone: CollisionShape3D
 var fade_target_value: float = 0
 var fading: bool = false
-@onready var transition_parent: Node3D = $".."
+
+var candle: Node3D
 
 func _ready() -> void:
+	if name == "Side1Area":
+		candle = parent.Side1Candle
+	else:
+		candle = parent.Side2Candle
+	print(candle)
 	connect("body_entered",on_body_entered)
 	connect("body_exited",on_body_exited)
 	
@@ -25,14 +31,22 @@ func on_body_entered(_body: Node3D) -> void:
 			fading = false
 			parent.player.horizontal_velocity = Vector3.ZERO
 			parent.player.velocity = Vector3.ZERO
+
+			if candle:
+				candle.affect_player_light = true
+				if area_other.candle: area_other.candle.affect_player_light = false
+				candle.update_player_light()
 	
 
 func on_body_exited(_body: Node3D) -> void:
-	if _body == parent.player:
-		if area_other.fading:
-			parent.player.dir = Vector3.ZERO
+	if _body.name == Player.node.name:
+		#if area_other.fading:
+			#if area_other.candle and not area_other.candle.active:
+				#area_other.candle.affect_player_light = true
+				#area_other.candle.update_player_light()
+			#candle.affect_player_light = false
 
-		if area_other.global_position.distance_to(parent.player.global_position) > transition_parent.scale.z:
+		if area_other.global_position.distance_to(parent.player.global_position) > parent.scale.z:
 			fade_mesh_other.transparency = 1
 			fade_mesh.transparency = 1
 		

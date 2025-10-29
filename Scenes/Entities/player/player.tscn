@@ -85,6 +85,16 @@ script = ExtResource("1_v0iea")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
 
+[node name="Self_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+light_energy = 0.1
+light_indirect_energy = 0.0
+shadow_bias = 0.05
+shadow_blur = 0.0
+shadow_caster_mask = 4294967293
+omni_range = 20.0
+omni_attenuation = 1.25
+
 [node name="Shadow" type="MeshInstance3D" parent="."]
 transparency = 1.0
 mesh = SubResource("CapsuleMesh_l3v4j")
@@ -122,15 +132,6 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0, 0.53, 0.45049992, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_en4d4")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Camera_pivot"]
-light_energy = 0.1
-light_indirect_energy = 0.0
-shadow_bias = 0.05
-shadow_blur = 0.0
-shadow_caster_mask = 4294967293
-omni_range = 20.0
-omni_attenuation = 1.25
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 

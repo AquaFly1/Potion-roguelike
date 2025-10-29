@@ -8,6 +8,8 @@ extends Node
 var size_tween: Tween
 var active: bool = false
 @onready var base_pos = armature.position
+var affect_player_light: bool = false
+@onready var player_light: OmniLight3D = Player.node.get_child(0)
 
 func _ready() -> void:
 	#armature.visible = false
@@ -17,7 +19,7 @@ func _ready() -> void:
 	animation_player.speed_scale = 0.5
 	animation_player.get_animation("ArmatureAction").loop_mode = Animation.LOOP_LINEAR
 	
-	
+
 
 
 func light_candle():
@@ -44,3 +46,9 @@ func light_candle():
 	for door in doors:
 		door.get_child(0).disabled = not door.get_child(0).disabled
 	#point.light_energy = armature.scale.x * base_energy
+	update_player_light()
+
+func update_player_light() -> void:
+	print(affect_player_light)
+	if affect_player_light:
+		player_light.visible = active

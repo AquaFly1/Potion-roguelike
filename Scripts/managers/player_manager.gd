@@ -7,6 +7,8 @@ extends Entity
 @export var max_mana = 10
 var mana = 10
 
+@onready var node: CharacterBody3D
+
 var xp_needed = 10
 
 func _ready() -> void:

@@ -6,7 +6,7 @@ var break_chance: int = 10
 
 func _physics_process(_delta: float) -> void:
 	
-	if get_collider() and get_collider().get_parent().name == "Candle":
+	if get_collider() and "Candle" in get_collider().get_parent().name:
 		if candle_look != get_collider().get_parent():
 			#popup_label.interact_text = "[E]: Light candle"
 			popup_label.add_text("[E]: Light candle")

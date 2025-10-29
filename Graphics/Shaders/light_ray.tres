@@ -4,7 +4,7 @@
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0, 0.65, 0.65, 0.003921569)
+albedo_color = Color(0, 0.45, 0.45, 0.003921569)
 proximity_fade_enabled = true
 proximity_fade_distance = 0.1
 distance_fade_mode = 2

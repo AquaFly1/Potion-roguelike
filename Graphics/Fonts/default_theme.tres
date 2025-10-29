@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://ccn7rphveje3s"]
 
-[ext_resource type="FontFile" uid="uid://xq2s47mety1j" path="res://Graphics/Fonts/MartianMono-SemiBold.ttf" id="1_he3nu"]
+[ext_resource type="FontFile" uid="uid://drikrrt8seobl" path="res://Graphics/Fonts/alagard.ttf" id="1_he3nu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he3nu"]
 bg_color = Color(1, 1, 1, 0)
@@ -22,7 +22,7 @@ bg_color = Color(0, 0, 0, 0.105882354)
 
 [resource]
 default_font = ExtResource("1_he3nu")
-default_font_size = 24
+default_font_size = 36
 Button/styles/focus = SubResource("StyleBoxFlat_he3nu")
 Button/styles/hover = SubResource("StyleBoxFlat_ytgyl")
 Button/styles/normal = SubResource("StyleBoxFlat_6yjtp")

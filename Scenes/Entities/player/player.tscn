@@ -189,6 +189,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="2D/PostP"]
+layer = 110
 
 [node name="PostProcessing2" type="ColorRect" parent="2D/PostP/CanvasLayer"]
 material = SubResource("ShaderMaterial_8g4m7")
@@ -211,7 +212,7 @@ path_scene = ExtResource("10_sefq3")
 chand_path = NodePath("../../HandShape")
 
 [node name="Ignore Post P" type="CanvasLayer" parent="2D"]
-layer = 2
+layer = 105
 
 [node name="PopupLabel" type="Label" parent="2D/Ignore Post P"]
 visible = false

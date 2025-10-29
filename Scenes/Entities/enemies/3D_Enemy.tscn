@@ -126,14 +126,14 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Gurn_icon" type="TextureRect" parent="Effects"]
+[node name="Burn_icon" type="TextureRect" parent="Effects"]
 layout_mode = 0
 offset_left = -33.0
 offset_right = -1.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture1D_vtixw")
 
-[node name="Burn_label" type="Label" parent="Effects/Gurn_icon"]
+[node name="Burn_label" type="Label" parent="Effects/Burn_icon"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0

@@ -22,7 +22,7 @@ bg_color = Color(0, 0, 0, 0.105882354)
 
 [resource]
 default_font = ExtResource("1_he3nu")
-default_font_size = 36
+default_font_size = 32
 Button/styles/focus = SubResource("StyleBoxFlat_he3nu")
 Button/styles/hover = SubResource("StyleBoxFlat_ytgyl")
 Button/styles/normal = SubResource("StyleBoxFlat_6yjtp")

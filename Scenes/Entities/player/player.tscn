@@ -166,16 +166,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="player_manager" parent="2D" instance=ExtResource("3_6t5aa")]
-layout_mode = 1
-mouse_filter = 1
-rings = Array[ExtResource("8_yicnn")]([])
-
-[node name="PlayerLabels" parent="2D" instance=ExtResource("4_vgqql")]
-visible = false
-layout_mode = 0
-mouse_filter = 1
-
 [node name="PostP" type="CanvasLayer" parent="2D"]
 layer = 100
 
@@ -210,6 +200,16 @@ grow_horizontal = 1
 grow_vertical = 1
 path_scene = ExtResource("10_sefq3")
 chand_path = NodePath("../../HandShape")
+
+[node name="PlayerLabels" parent="2D" instance=ExtResource("4_vgqql")]
+visible = false
+layout_mode = 0
+mouse_filter = 1
+
+[node name="player_manager" parent="2D" instance=ExtResource("3_6t5aa")]
+layout_mode = 1
+mouse_filter = 1
+rings = Array[ExtResource("8_yicnn")]([])
 
 [node name="Ignore Post P" type="CanvasLayer" parent="2D"]
 layer = 105

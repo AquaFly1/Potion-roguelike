@@ -15,7 +15,7 @@ var test_node: Node2D
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var burn_label: Label = $Effects/Gurn_icon/Burn_label
+@onready var burn_label: Label = $Effects/Burn_icon/Burn_label
 @onready var poison_label: Label = $Effects/Poison_icon/Poison_label
 @onready var rejuv_label: Label = $Effects/Rejuvination_icon/Rejuvination_label
 @onready var health_label: Label = $Effects/Health_icon/Health_label

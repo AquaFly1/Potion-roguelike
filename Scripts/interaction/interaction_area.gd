@@ -18,7 +18,7 @@ func choose_next_interaction():
 	next_interaction = pkd_interaction_str.pick_random()
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.name == "Player-nx":
+	if body == Player.node:
 		if interactions != []:
 			Game.interaction_started.emit()
 			Player.start_turn()

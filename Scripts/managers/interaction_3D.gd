@@ -40,7 +40,7 @@ func start_interaction():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.name == "Player-nx":
+	if body == Player.node:
 		Game.interaction_started.emit()
 		
 func _process(_delta: float) -> void:

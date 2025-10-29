@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 func on_body_entered(_body: Node3D) -> void:
 	#first half
-	if _body == parent.player:
+	if _body == Player.node:
 		
 		if fade_mesh.transparency == 1:
 			fade_mesh_other.transparency = 0
@@ -29,8 +29,8 @@ func on_body_entered(_body: Node3D) -> void:
 		else:
 			area_other.fading = true
 			fading = false
-			parent.player.horizontal_velocity = Vector3.ZERO
-			parent.player.velocity = Vector3.ZERO
+			Player.node.horizontal_velocity = Vector3.ZERO
+			Player.node.velocity = Vector3.ZERO
 
 			if candle:
 				candle.affect_player_light = true
@@ -39,14 +39,14 @@ func on_body_entered(_body: Node3D) -> void:
 	
 
 func on_body_exited(_body: Node3D) -> void:
-	if _body.name == Player.node.name:
+	if _body == Player.node:
 		#if area_other.fading:
 			#if area_other.candle and not area_other.candle.active:
 				#area_other.candle.affect_player_light = true
 				#area_other.candle.update_player_light()
 			#candle.affect_player_light = false
 
-		if area_other.global_position.distance_to(parent.player.global_position) > parent.scale.z:
+		if area_other.global_position.distance_to(Player.node.global_position) > parent.scale.z:
 			fade_mesh_other.transparency = 1
 			fade_mesh.transparency = 1
 		

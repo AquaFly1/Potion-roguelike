@@ -49,6 +49,5 @@ func light_candle():
 	update_player_light()
 
 func update_player_light() -> void:
-	print(affect_player_light)
 	if affect_player_light:
 		player_light.visible = active

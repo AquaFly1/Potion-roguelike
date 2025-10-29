@@ -14,7 +14,6 @@ func _ready() -> void:
 		candle = parent.Side1Candle
 	else:
 		candle = parent.Side2Candle
-	print(candle)
 	connect("body_entered",on_body_entered)
 	connect("body_exited",on_body_exited)
 	

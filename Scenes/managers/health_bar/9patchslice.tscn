@@ -6,9 +6,14 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1.0
-offset_bottom = -470.0
+offset_right = -1845.2
+offset_bottom = -1067.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(10, 10)
 texture = ExtResource("1_4uflj")
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(0, 0.017980099, 8.962275, 8.982019)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

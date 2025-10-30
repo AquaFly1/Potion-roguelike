@@ -14,8 +14,14 @@ uniform float glow_spread : hint_range(0.001, 0.01) = 0.005;
 uniform bool enable_vintage = true;  // 🔥 Toggle
 uniform float vintage_strength : hint_range(0.0, 1.0) = 0.8;
 
+const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
+
 float random(vec2 co) {
 	return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+float ign(vec2 uv) {
+    return fract(magic.z * fract(dot(uv, magic.xy)))-0.5;
 }
 
 float bayer_dither(vec2 pos) {
@@ -65,13 +71,16 @@ void fragment() {
 	//pixel_uv = UV;
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
 
+	
+
+	float steps = float(color_steps);
+	color = color + ign(FRAGCOORD.xy)*0.02;
+	color = floor(color * steps + 0.5) / steps;
+
 	if (enable_glow) {
 		vec3 blurred = get_glow(UV);
 		color += blurred * glow_strength;
 	}
-
-	float steps = float(color_steps);
-	color = floor(color * steps + 0.5) / steps;
 
 	float noise = (random(UV + mod(TIME,2)) - 0.5) * noise_strength;
 	color += noise;

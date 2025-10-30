@@ -51,8 +51,8 @@ size = Vector2(47, 39)
 shader = ExtResource("5_l3v4j")
 shader_parameter/pixel_resolution = 1080.0
 shader_parameter/color_steps = 24
-shader_parameter/noise_strength = 0.1
-shader_parameter/enable_dither = true
+shader_parameter/noise_strength = 0.050000002375
+shader_parameter/enable_dither = false
 shader_parameter/dither_strength = 0.10000000475
 shader_parameter/enable_glow = true
 shader_parameter/glow_strength = 0.2000000095
@@ -182,6 +182,7 @@ mouse_filter = 2
 layer = 110
 
 [node name="PostProcessing2" type="ColorRect" parent="2D/PostP/CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_8g4m7")
 anchors_preset = 15
 anchor_right = 1.0

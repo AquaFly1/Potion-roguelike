@@ -4,6 +4,9 @@ class_name Entity
 
 @export var rings: Array[Ring]
 @export var max_health = 10
+
+var effects = {}
+
 var shield = 0
 
 var health = 0
@@ -45,7 +48,8 @@ func start_turn():
 	
 	if freeze > 0:
 		freeze -= 1
-		return
+	
+	RingMan.start_turn(self)
 
 
 

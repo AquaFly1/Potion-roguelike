@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://r7bx2y1fm66f"]
+
+[ext_resource type="Script" uid="uid://bhowhqnu7ipvj" path="res://Scripts/resources/Effects/Rejuvination.gd" id="1_nk8ua"]
+
+[resource]
+script = ExtResource("1_nk8ua")
+effect_name = "Rejuvination"
+metadata/_custom_type_script = "uid://drdvri37lj73w"

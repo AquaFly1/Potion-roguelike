@@ -6,7 +6,7 @@ extends Control
 @onready var rejuv: ColorRect = $Rejuv
 @onready var shield: ColorRect = $Shield
 
-@export var entity: Entity
+var entity: Entity
 
 var max_size: float
 

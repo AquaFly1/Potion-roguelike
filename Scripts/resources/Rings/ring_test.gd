@@ -1,8 +1,8 @@
 extends Ring
 
 func start_turn():
-	if Player.burn == 0:
-		Player.burn += 1
+	if Player.effects[1] == 0:
+		Player.effects[1] += 1
 
 func potion_thrown(_ings):
 	var tags: Array[Tag]

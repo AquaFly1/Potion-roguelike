@@ -5,50 +5,37 @@ class_name Entity
 @export var rings: Array[Ring]
 @export var max_health = 10
 
-var effects = {}
-
-var shield = 0
+"""
+effect order:
+0 damage
+1 burn
+2 poison
+3 rejuv
+4 shield
+5 strenght
+6 weakness
+7 fragility
+8 frost
+9 fuel
+"""
+var effects = [0,0,0,0,0,0,0,0,0,0,0]
 
 var health = 0
-var burn = 0
-var poison = 0
-var rejuv = 0
-var freeze = 0
-var block = 0
+
 
 func _ready() -> void:
 	health = max_health
 
 func take_damage(amount):
-	var amount_left = amount - shield
-	shield -= amount
-	if shield < 0:
-		shield = 0
+	var amount_left = amount - effects[4]
+	effects[4] -= amount
+	if effects[4] < 0:
+		effects[4] = 0
 	health -= amount_left
 	
 
 func start_turn():
-	health -= burn
-	burn = 0
-
-	if poison > 0:
-		health -= poison
-		poison -= 1
-
-	if health <= 0:
-		die()
-	
-	if block > 0:
-		shield = block
-		block = 0
-
-	if rejuv > 0:
-		health += 1
-		rejuv -= 1
-	
-	if freeze > 0:
-		freeze -= 1
-	
+	EffectMan.start_turn(self)
 	RingMan.start_turn(self)
 
 

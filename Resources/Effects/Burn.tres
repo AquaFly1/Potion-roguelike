@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kqc8bglj7e23"]
+
+[ext_resource type="Script" uid="uid://dsa17gmp3cr0j" path="res://Scripts/resources/Effects/Burn.gd" id="1_6m71w"]
+
+[resource]
+script = ExtResource("1_6m71w")
+effect_name = "Burn"
+metadata/_custom_type_script = "uid://drdvri37lj73w"

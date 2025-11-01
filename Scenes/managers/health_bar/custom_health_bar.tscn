@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://umsrccqr4yaa"]
 
-[ext_resource type="Script" uid="uid://co5qov7uwcl5p" path="res://custom_health_bar.gd" id="1_3w5jn"]
+[ext_resource type="Script" uid="uid://co5qov7uwcl5p" path="res://Scripts/managers/health_bar/custom_health_bar.gd" id="1_3w5jn"]
 
 [node name="Control" type="HBoxContainer"]
 anchors_preset = 15

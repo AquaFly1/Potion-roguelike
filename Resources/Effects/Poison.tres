@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bohvvi81lc8xh"]
+
+[ext_resource type="Script" uid="uid://okw2v04rh4ui" path="res://Scripts/resources/Effects/Poison.gd" id="1_ot2oc"]
+
+[resource]
+script = ExtResource("1_ot2oc")
+effect_name = "Poison"
+metadata/_custom_type_script = "uid://drdvri37lj73w"

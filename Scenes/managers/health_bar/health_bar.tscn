@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsrc1ojniam15"]
 
 [ext_resource type="PackedScene" uid="uid://c4eydgphhqu24" path="res://Scenes/managers/health_bar/9patchslice.tscn" id="1_krehl"]
-[ext_resource type="Script" uid="uid://c312bkw332gaj" path="res://Scenes/managers/health_bar/health_bar.gd" id="1_pjkch"]
+[ext_resource type="Script" uid="uid://c312bkw332gaj" path="res://Scripts/managers/health_bar/health_bar.gd" id="1_pjkch"]
 
 [node name="Health_bar" type="Control"]
 layout_mode = 3

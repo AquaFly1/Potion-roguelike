@@ -302,9 +302,8 @@ material_override = SubResource("ShaderMaterial_ce7yl")
 texture_filter = 2
 texture = ExtResource("9_4v86v")
 
-[node name="Transition-nx" parent="." node_paths=PackedStringArray("player", "Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
+[node name="Transition-nx" parent="." node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
 transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
-player = NodePath("../Player-nx")
 Side1Candle = NodePath("../Candle")
 Side2Candle = NodePath("../Candle2")
 

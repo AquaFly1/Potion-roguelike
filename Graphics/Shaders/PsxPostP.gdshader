@@ -21,7 +21,8 @@ float random(vec2 co) {
 }
 
 float ign(vec2 uv) {
-    return fract(magic.z * fract(dot(uv, magic.xy)))-0.5;
+    return fract(52.9829189 * fract(
+		dot(uv, vec2(0.06711056,0.00583715))))-0.5;
 }
 
 float bayer_dither(vec2 pos) {
@@ -75,6 +76,7 @@ void fragment() {
 
 	float steps = float(color_steps);
 	color = color + ign(FRAGCOORD.xy)*0.02;
+	//color = vec3(1) * ign(FRAGCOORD.xy);
 	color = floor(color * steps + 0.5) / steps;
 
 	if (enable_glow) {

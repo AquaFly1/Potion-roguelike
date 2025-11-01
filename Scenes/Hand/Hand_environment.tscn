@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=4 uid="uid://pujqkmtdknev"]
+[gd_scene load_steps=30 format=4 uid="uid://pujqkmtdknev"]
 
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="1_y4y5h"]
 [ext_resource type="Environment" uid="uid://bgv7avnm6jp1i" path="res://Scenes/Hand/Hand_environment_preset.tres" id="2_uujy1"]
-[ext_resource type="PackedScene" uid="uid://l0qk45pib3v3" path="res://3DAssets/hand/handNew.blend" id="3_p1i0i"]
 [ext_resource type="Script" uid="uid://gd888fn3l3ca" path="res://Scripts/entities/player/RHandMain.gd" id="3_x1q8k"]
 [ext_resource type="Script" uid="uid://c2fcvriv3c3s0" path="res://Scripts/entities/player/HandAnimationController.gd" id="4_a48xy"]
 
@@ -12,11 +11,11 @@
 render_priority = 0
 shader = ExtResource("1_y4y5h")
 shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
+shader_parameter/highlights_enabled = false
 shader_parameter/shadow_strength = 0.83
 shader_parameter/highlight_strength = 0.06
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(2.9329676e-08, 0, 0.058501996, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v30xo"]
 albedo_color = Color(0.7372549, 0.49411765, 0.4745098, 1)
@@ -1437,6 +1436,3 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -0.50219, 0.864757, 0, -0.864757, -0.50219, 0, 3.51133, -1.39321)
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.241
-
-[node name="handNew" parent="." instance=ExtResource("3_p1i0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.635727, 0, -2.17538)

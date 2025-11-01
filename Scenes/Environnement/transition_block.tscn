@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxewjyxiyo7my"]
+[gd_scene load_steps=11 format=3 uid="uid://cxewjyxiyo7my"]
 
 [ext_resource type="Script" uid="uid://6frvg0obaj15" path="res://Scripts/environment/room_trans_main.gd" id="1_6v614"]
 [ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/room_trans_sides.gd" id="2_ha7ph"]
@@ -13,6 +13,14 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_buf24"]
 material = SubResource("StandardMaterial3D_pwss2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb8l8"]
+cull_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_wb8l8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q0dg"]
+cull_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8lxq"]
 shading_mode = 0
@@ -41,10 +49,19 @@ debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
 
 [node name="Side1" type="MeshInstance3D" parent="Side1Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.24)
-layers = 2
+layers = 32
 transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("BoxMesh_buf24")
+skeleton = NodePath("../Enemy_test")
+
+[node name="playerlightBlock" type="MeshInstance3D" parent="Side1Area/Side1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+layers = 32
+material_override = SubResource("StandardMaterial3D_wb8l8")
+cast_shadow = 3
+mesh = SubResource("BoxMesh_wb8l8")
 skeleton = NodePath("../Enemy_test")
 
 [node name="Side2Area" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
@@ -63,10 +80,19 @@ debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
 
 [node name="Side2" type="MeshInstance3D" parent="Side2Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, -0.24)
-layers = 2
+layers = 32
 transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("BoxMesh_buf24")
+skeleton = NodePath("../Enemy_test")
+
+[node name="playerlightBlock" type="MeshInstance3D" parent="Side2Area/Side2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+visible = false
+layers = 32
+material_override = SubResource("StandardMaterial3D_4q0dg")
+cast_shadow = 3
+mesh = SubResource("BoxMesh_wb8l8")
 skeleton = NodePath("../Enemy_test")
 
 [node name="Black" type="MeshInstance3D" parent="."]
@@ -79,7 +105,7 @@ skeleton = NodePath("../../Enemy_test")
 light_negative = true
 shadow_enabled = true
 shadow_bias = 0.01
-shadow_caster_mask = 4294967294
+shadow_caster_mask = 4294967262
 distance_fade_enabled = true
 distance_fade_begin = 0.1
 distance_fade_shadow = 3.0

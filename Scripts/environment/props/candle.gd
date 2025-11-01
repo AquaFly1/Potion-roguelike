@@ -10,6 +10,7 @@ var active: bool = false
 @onready var base_pos = armature.position
 var affect_player_light: bool = false
 @onready var player_light: OmniLight3D = Player.node.get_child(0)
+@onready var player_light_base_energy: float = player_light.light_energy
 
 func _ready() -> void:
 	#armature.visible = false
@@ -50,4 +51,9 @@ func light_candle():
 
 func update_player_light() -> void:
 	if affect_player_light:
-		player_light.visible = active
+		var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		if active:
+			tween.tween_property(player_light,"light_energy",player_light_base_energy,0.25)
+		else:
+			tween.tween_property(player_light,"light_energy",player_light_base_energy/100,0.25)
+		

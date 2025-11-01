@@ -6,7 +6,7 @@ extends Area3D
 @export var zone: CollisionShape3D
 var fade_target_value: float = 0
 var fading: bool = false
-
+@onready var block_player_light: Node3D = fade_mesh.get_child(0)
 var candle: Node3D
 
 func _ready() -> void:
@@ -34,6 +34,8 @@ func on_body_entered(_body: Node3D) -> void:
 			if candle:
 				candle.affect_player_light = true
 				if area_other.candle: area_other.candle.affect_player_light = false
+				if not candle.active:
+					block_player_light.visible = true
 				candle.update_player_light()
 	
 
@@ -59,4 +61,5 @@ func _physics_process(_delta: float) -> void:
 		if abs(fade_mesh.transparency-fade_target_value) < 0.05:
 			fade_mesh.transparency = 0
 			fade_mesh_other.transparency = 1
+			area_other.block_player_light.visible = false
 			fading = false

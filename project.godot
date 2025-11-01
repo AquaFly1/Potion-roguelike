@@ -138,6 +138,12 @@ interact={
 
 sensors/enable_gravity=true
 
+[layer_names]
+
+3d_render/layer_1="Default_lights"
+3d_render/layer_2="transition_black_light"
+3d_render/layer_6="Player_light"
+
 [physics]
 
 common/physics_interpolation=true

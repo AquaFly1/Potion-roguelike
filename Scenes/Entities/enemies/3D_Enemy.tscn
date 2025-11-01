@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=13 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
+[ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_aft1i"]
 [ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="3_5faar"]
+[ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="4_5faar"]
 
 [sub_resource type="Gradient" id="Gradient_faj7i"]
 interpolation_mode = 1
@@ -45,6 +47,7 @@ script = ExtResource("1_vtixw")
 [node name="Enemy_sprite" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 0
+texture = ExtResource("2_aft1i")
 
 [node name="EffectsOLD" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15089104, -0.18075147, 0.071805924)
@@ -176,3 +179,10 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 text = "vsdv"
+
+[node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
+layout_mode = 1
+offset_left = -149.0
+offset_top = -179.00003
+offset_right = -149.0
+offset_bottom = -179.00003

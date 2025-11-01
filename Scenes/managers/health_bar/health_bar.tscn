@@ -10,13 +10,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.16000023, 0.19999999)
 script = ExtResource("1_pjkch")
 
 [node name="Health" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 573.00006
 offset_top = 20.0
-offset_right = 1415.0
+offset_right = 1414.9998
 offset_bottom = 114.0
 color = Color(1, 0, 0, 1)
 
@@ -29,7 +30,6 @@ offset_bottom = 114.0
 color = Color(1, 0.3254902, 0, 1)
 
 [node name="Poison" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 573.00006
 offset_top = 20.0
@@ -38,7 +38,6 @@ offset_bottom = 114.0
 color = Color(0, 1, 0, 1)
 
 [node name="Rejuv" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 573.00006
 offset_top = 20.0
@@ -47,11 +46,10 @@ offset_bottom = 114.0
 color = Color(1, 1, 0, 1)
 
 [node name="Shield" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 573.00006
+offset_left = 1434.0
 offset_top = 20.0
-offset_right = 1415.0
+offset_right = 2276.0056
 offset_bottom = 114.0
 color = Color(0, 0, 1, 1)
 

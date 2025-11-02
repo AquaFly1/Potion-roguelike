@@ -35,6 +35,8 @@ background_color = Color(0.044239994, 0.0378, 0.07, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
+ssao_intensity = 16.0
+glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="Curve2D" id="Curve2D_7u22i"]
@@ -92,7 +94,7 @@ light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_blur = 0.0
-shadow_caster_mask = 4294967293
+shadow_caster_mask = 4293918752
 omni_range = 20.0
 omni_attenuation = 1.25
 

@@ -32,11 +32,15 @@ func on_body_entered(_body: Node3D) -> void:
 			Player.node.velocity = Vector3.ZERO
 
 			if candle:
+				print(candle.name)
 				candle.affect_player_light = true
 				if area_other.candle: area_other.candle.affect_player_light = false
 				if not candle.active:
+					print(block_player_light.name, " on")
 					block_player_light.visible = true
 				candle.update_player_light()
+			if area_other.candle and not area_other.candle.active:
+				area_other.block_player_light.visible = true
 	
 
 func on_body_exited(_body: Node3D) -> void:
@@ -62,4 +66,5 @@ func _physics_process(_delta: float) -> void:
 			fade_mesh.transparency = 0
 			fade_mesh_other.transparency = 1
 			area_other.block_player_light.visible = false
+			block_player_light.visible = false
 			fading = false

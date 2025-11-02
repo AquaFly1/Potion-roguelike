@@ -126,6 +126,7 @@ metadata/extras = {
 resource_name = "Glass"
 albedo_texture = ExtResource("12_buf24")
 emission_enabled = true
+emission_energy_multiplier = 0.8
 emission_texture = ExtResource("12_buf24")
 texture_filter = 2
 metadata/extras = {
@@ -298,12 +299,13 @@ skeleton = NodePath("")
 
 [node name="Enemy_test" type="Sprite3D" parent="."]
 transform = Transform3D(0.08824227, 0, 9.25958, 0, 9.26, 0, -9.25958, 0, 0.08824227, -7.9709272, 1.6746638, 0.05548954)
+visible = false
 material_override = SubResource("ShaderMaterial_ce7yl")
 texture_filter = 2
 texture = ExtResource("9_4v86v")
 
 [node name="Transition-nx" parent="." node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
-transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, 1.25, -6)
+transform = Transform3D(2.1, 0, 0, 0, 2.625, 0, 0, 0, 2.1, -4, 1.25, -6)
 Side1Candle = NodePath("../Candle")
 Side2Candle = NodePath("../Candle2")
 

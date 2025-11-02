@@ -15,7 +15,7 @@ var max_size: float
 func _ready() -> void:
 	max_size = health.size.x
 	if is_player:
-		entity = Player
+		entity = get_parent()
 	else:
 		entity = get_parent().get_parent()
 

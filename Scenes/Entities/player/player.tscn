@@ -47,6 +47,17 @@ point_count = 2
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sefq3"]
 size = Vector2(47, 39)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
+bg_color = Color(0, 0, 0, 0.3529412)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
 shader_parameter/pixel_resolution = 1080.0
@@ -66,17 +77,6 @@ shader_parameter/aberration_intensity = 1.0
 shader_parameter/r_displacement = Vector2(1, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
-bg_color = Color(0, 0, 0, 0.3529412)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 collision_layer = 17
@@ -167,31 +167,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PostP" type="CanvasLayer" parent="2D"]
-layer = 100
-
-[node name="PostProcessing" type="ColorRect" parent="2D/PostP"]
-material = SubResource("ShaderMaterial_g154t")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="2D/PostP"]
-layer = 110
-
-[node name="PostProcessing2" type="ColorRect" parent="2D/PostP/CanvasLayer"]
-visible = false
-material = SubResource("ShaderMaterial_8g4m7")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="hand" parent="2D" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
 visible = false
 layout_mode = 0
@@ -217,6 +192,15 @@ xp = 0
 max_mana = 10
 max_health = 10
 
+[node name="Health_bar" parent="2D/player_manager" instance=ExtResource("14_yicnn")]
+layout_mode = 1
+offset_left = -318.0
+offset_top = 13.999999
+offset_right = -296.125
+offset_bottom = -896.0
+scale = Vector2(0.64, 0.8)
+is_player = true
+
 [node name="Ignore Post P" type="CanvasLayer" parent="2D"]
 layer = 105
 
@@ -239,11 +223,27 @@ visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
-[node name="Health_bar" parent="2D" instance=ExtResource("14_yicnn")]
-layout_mode = 1
-offset_left = -303.99997
-offset_top = 13.999999
-offset_right = -304.0
-offset_bottom = 14.0
-scale = Vector2(0.64, 0.8)
-is_player = true
+[node name="PostP" type="CanvasLayer" parent="2D"]
+layer = 100
+
+[node name="PostProcessing" type="ColorRect" parent="2D/PostP"]
+material = SubResource("ShaderMaterial_g154t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="2D/PostP"]
+layer = 110
+
+[node name="PostProcessing2" type="ColorRect" parent="2D/PostP/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_8g4m7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

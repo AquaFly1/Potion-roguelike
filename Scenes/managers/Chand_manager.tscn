@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_riyg6")
 card_scene = ExtResource("2_jjkdi")
 deck = Array[ExtResource("3_f1178")]([ExtResource("4_06x3b"), ExtResource("4_06x3b"), ExtResource("5_v334f"), ExtResource("5_v334f"), ExtResource("6_iyafx"), ExtResource("7_3roop"), ExtResource("7_3roop"), ExtResource("8_drrq4"), ExtResource("8_drrq4")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xwd75vy5re77"]
+[gd_scene load_steps=12 format=3 uid="uid://xwd75vy5re77"]
 
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/managers/chand_manager.gd" id="1_riyg6"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card Stuff/Card.tscn" id="2_jjkdi"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="8_drrq4"]
 [ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Graphics/temporary_art/potion_bar_empty.aseprite" id="9_63gbn"]
 [ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Graphics/temporary_art/potion_bar.aseprite" id="10_25dlp"]
+[ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Graphics/temporary_art/potion.aseprite" id="11_jjkdi"]
 
 [node name="CHand" type="Control"]
 layout_mode = 3
@@ -83,6 +84,21 @@ max_value = 5.0
 rounded = true
 texture_under = ExtResource("9_63gbn")
 texture_progress = ExtResource("10_25dlp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 514.0
+offset_right = 549.0
+offset_bottom = 908.0
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -122.0
+offset_right = 536.0
+offset_bottom = 423.0
+texture = ExtResource("11_jjkdi")
 
 [connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
 [connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]

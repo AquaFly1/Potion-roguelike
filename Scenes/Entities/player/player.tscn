@@ -58,7 +58,7 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 1080.0
+shader_parameter/pixel_resolution = 720.00003116
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.0
 shader_parameter/enable_dither = false
@@ -181,6 +181,7 @@ max_mana = 10
 max_health = 10
 
 [node name="Health_bar" parent="2D/player_manager" instance=ExtResource("14_yicnn")]
+visible = false
 layout_mode = 1
 offset_left = -318.0
 offset_top = 13.999999

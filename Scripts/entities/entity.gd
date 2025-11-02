@@ -19,12 +19,15 @@ effect order:
 9 fuel
 
 """
-var effects = [0,0,0,0,0,0,0,0,0,0,0]
+@onready var effects: Array
+
 
 var health = 0
 
 
 func _ready() -> void:
+	effects.resize(50)
+	effects.fill(0.0)
 	health = max_health
 
 func take_damage(amount):

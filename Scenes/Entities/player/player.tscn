@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=24 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
+[ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="6_yicnn"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
-[ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="8_iloc2"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scenes/Entities/player/PopupLabel.gd" id="13_en4d4"]
@@ -39,15 +39,11 @@ ssao_intensity = 16.0
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
 
-[sub_resource type="Curve2D" id="Curve2D_7u22i"]
-bake_interval = 1.0
+[sub_resource type="Curve2D" id="Curve2D_en4d4"]
 _data = {
-"points": PackedVector2Array(41.253006, 12.014827, -41.253006, -12.014827, 1601, 773, 46.48668, -63.01541, -46.48668, 63.01541, 1430, 851)
+"points": PackedVector2Array(86.04938, 42.46979, -86.04938, -42.46979, 347, -102, 22.458641, -28.445454, -22.458641, 28.445454, 0, 0)
 }
 point_count = 2
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sefq3"]
-size = Vector2(47, 39)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
 bg_color = Color(0, 0, 0, 0.3529412)
@@ -86,6 +82,7 @@ collision_mask = 17
 script = ExtResource("1_v0iea")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
+metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
@@ -139,26 +136,15 @@ script = ExtResource("3_en4d4")
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
 
 [node name="HandShape" type="Path2D" parent="."]
-curve = SubResource("Curve2D_7u22i")
+curve = SubResource("Curve2D_en4d4")
 script = ExtResource("7_a74oi")
 
 [node name="CardPathStart" type="Node2D" parent="HandShape"]
-script = ExtResource("8_iloc2")
-
-[node name="Sprite2D" type="Sprite2D" parent="HandShape/CardPathStart"]
-visible = false
-position = Vector2(-1.9073495e-06, 0)
-texture = SubResource("PlaceholderTexture2D_sefq3")
+script = ExtResource("6_yicnn")
 
 [node name="CardPathEnd" type="Node2D" parent="HandShape"]
-visible = false
-script = ExtResource("8_iloc2")
+script = ExtResource("6_yicnn")
 end_segment = true
-
-[node name="Sprite2D" type="Sprite2D" parent="HandShape/CardPathEnd"]
-position = Vector2(-1.9073495e-06, 0)
-scale = Vector2(1.01, 1.01)
-texture = SubResource("PlaceholderTexture2D_sefq3")
 
 [node name="2D" type="Control" parent="."]
 layout_mode = 3
@@ -187,7 +173,7 @@ mouse_filter = 1
 
 [node name="player_manager" parent="2D" instance=ExtResource("3_6t5aa")]
 layout_mode = 1
-mouse_filter = 1
+mouse_filter = 2
 gold = 0
 level = 0
 xp = 0

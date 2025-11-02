@@ -32,11 +32,9 @@ func on_body_entered(_body: Node3D) -> void:
 			Player.node.velocity = Vector3.ZERO
 
 			if candle:
-				print(candle.name)
 				candle.affect_player_light = true
 				if area_other.candle: area_other.candle.affect_player_light = false
 				if not candle.active:
-					print(block_player_light.name, " on")
 					block_player_light.visible = true
 				candle.update_player_light()
 			if area_other.candle and not area_other.candle.active:

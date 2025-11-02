@@ -30,6 +30,7 @@ offset_left = 573.00006
 offset_top = 20.0
 offset_right = 873.00006
 offset_bottom = 114.0
+scale = Vector2(-1, 1)
 color = Color(1, 0.3254902, 0, 1)
 
 [node name="Poison" type="ColorRect" parent="."]
@@ -38,6 +39,7 @@ offset_left = 573.00006
 offset_top = 20.0
 offset_right = 1415.0
 offset_bottom = 114.0
+scale = Vector2(-1, 1)
 color = Color(0, 1, 0, 1)
 
 [node name="Rejuv" type="ColorRect" parent="."]

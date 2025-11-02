@@ -6,13 +6,18 @@ extends Control
 @onready var rejuv: ColorRect = $Rejuv
 @onready var shield: ColorRect = $Shield
 
+@export var is_player = false
+
 var entity: Entity
 
 var max_size: float
 
 func _ready() -> void:
 	max_size = health.size.x
-	entity = get_parent().get_parent()
+	if is_player:
+		entity = Player
+	else:
+		entity = get_parent().get_parent()
 
 func _process(_delta: float) -> void:
 	health.size.x = (entity.health/entity.max_health) * max_size

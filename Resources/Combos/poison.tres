@@ -8,10 +8,5 @@
 script = ExtResource("1_2sa13")
 name = "poison"
 tags_needed = Array[ExtResource("2_0qe6f")]([ExtResource("3_0qe6f")])
-combos_removed = Array[ExtResource("1_2sa13")]([])
-dmg = 0
-burn = 0
-poison = 2
-rejuv = 0
-heal = 0
+effects = [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
 metadata/_custom_type_script = "uid://dr6idhc60c460"

@@ -11,6 +11,5 @@ script = ExtResource("1_texfy")
 name = "burning heart"
 tags_needed = Array[ExtResource("2_rg65c")]([ExtResource("4_87hmc"), ExtResource("5_sinir")])
 combos_removed = Array[ExtResource("1_texfy")]([ExtResource("2_kn7g3")])
-dmg = 1
-heal = 2
+effects = [0, 1, 0, 0, 2, 0, 0, 0, 0, 0]
 metadata/_custom_type_script = "uid://dr6idhc60c460"

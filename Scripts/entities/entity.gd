@@ -17,6 +17,7 @@ effect order:
 7 fragility
 8 frost
 9 fuel
+
 """
 var effects = [0,0,0,0,0,0,0,0,0,0,0]
 

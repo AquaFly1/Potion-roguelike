@@ -11,6 +11,5 @@ script = ExtResource("1_2f560")
 name = "toxic heart"
 tags_needed = Array[ExtResource("2_wyu8r")]([ExtResource("4_3xo80"), ExtResource("5_71xbp")])
 combos_removed = Array[ExtResource("1_2f560")]([ExtResource("2_irs2g")])
-poison = 1
-heal = 2
+effects = [0, 0, 1, 3, 0, 0, 0, 0, 0, 0]
 metadata/_custom_type_script = "uid://dr6idhc60c460"

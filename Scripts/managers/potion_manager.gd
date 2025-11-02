@@ -35,21 +35,9 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 	return active_combos
 
 func throw_potion(entity: Entity, ingredients: Array[Ingredient], rings: Array[Ring]):
-	var dmg = 0
-	var burn = 0
-	var poison = 0
-	var rejuv = 0
-	var heal = 0
-
+	var effects = [0,0,0,0,0,0,0,0,0,0,0]
 	for combo in calculate_combos(ingredients, rings):
-		dmg += combo.dmg
-		burn += combo.burn
-		poison += combo.poison
-		rejuv += combo.rejuv
-		heal += combo.heal
+		effects += combo.effects
 
-	entity.take_damage(dmg)
-	entity.burn += burn
-	entity.poison += poison
-	entity.rejuv += rejuv
-	entity.health += heal
+	entity.effects += effects
+	EffectMan.take_damage(entity)

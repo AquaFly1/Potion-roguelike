@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcv1cygs7dufl"
-valid=false
+path="res://.godot/imported/fire_ring.aseprite-28b4ecb4bb0f749f29312bfc47b712e7.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Graphics/temporary_art/fire_ring.aseprite"
+dest_files=["res://.godot/imported/fire_ring.aseprite-28b4ecb4bb0f749f29312bfc47b712e7.ctex"]
 
 [params]
 

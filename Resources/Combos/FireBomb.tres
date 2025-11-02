@@ -11,6 +11,5 @@ script = ExtResource("1_u3qsu")
 name = "Fire Bomb"
 tags_needed = Array[ExtResource("2_krxfj")]([ExtResource("3_1amju"), ExtResource("4_1amju")])
 combos_removed = Array[ExtResource("1_u3qsu")]([ExtResource("2_1r8m6")])
-dmg = 3
-burn = 3
+effects = [2, 3, 0, 0, 0, 0, 0, 0, 0, 0]
 metadata/_custom_type_script = "uid://dr6idhc60c460"

@@ -8,10 +8,5 @@
 script = ExtResource("1_3tmgn")
 name = "spark"
 tags_needed = Array[ExtResource("2_tmowh")]([ExtResource("3_tmowh")])
-combos_removed = Array[ExtResource("1_3tmgn")]([])
-dmg = 1
-burn = 1
-poison = 0
-rejuv = 0
-heal = 0
+effects = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
 metadata/_custom_type_script = "uid://dr6idhc60c460"

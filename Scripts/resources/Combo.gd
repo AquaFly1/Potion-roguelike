@@ -6,11 +6,7 @@ class_name Combo
 @export var tags_needed: Array[Tag]
 @export var combos_removed: Array[Combo]
 
-@export var dmg: int = 0
-@export var burn: int
-@export var poison: int
-@export var rejuv: int
-@export var heal: int
+@export var effects = [0,0,0,0,0,0,0,0,0,0]
 
 func _to_string() -> String:
 	return "Ingredient(%s)" % name

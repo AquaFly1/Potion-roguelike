@@ -66,9 +66,11 @@ func _update_chand_layout():
 		cards[i].move_to_position()
 		
 	card_order = []				#card array with cards and selected_cards, selected_cards coming first and removing duplicates
+	
 	for i in selected_cards+cards:
 		if not card_order.has(i):
 			card_order.append(i)
+	cards = card_order # cards list now in order
 	for i in len(card_order):				#card selection based on order in node tree (end is better)
 		move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
 	Game.held_chand_modified.emit(cards)

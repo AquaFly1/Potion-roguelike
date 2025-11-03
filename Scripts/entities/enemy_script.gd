@@ -21,6 +21,7 @@ var chosen_potion = null
 @onready var health_label: Label = $Effects/Health_icon/Health_label
 @onready var gui_origin: Marker3D = $gui_origin
 @onready var gui_parent: Control = $Effects
+#@onready var attack_button: Marker3D = $attack_origin
 
 func _ready() -> void:
 	super()

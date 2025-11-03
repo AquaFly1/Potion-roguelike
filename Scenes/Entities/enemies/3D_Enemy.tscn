@@ -115,6 +115,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1359824, 0.18134028, 0.3523
 
 [node name="gui_origin" type="Marker3D" parent="."]
 
+[node name="attack_origin" type="Marker3D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Effects" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -171,6 +177,7 @@ offset_bottom = 32.0
 text = "aaa"
 
 [node name="Health_icon" type="TextureRect" parent="Effects"]
+visible = false
 layout_mode = 0
 offset_left = -64.0
 offset_top = 10.0

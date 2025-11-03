@@ -2,7 +2,7 @@ extends Node
 
 @export var deck: Array[Ingredient]
 @export var combos: Array[Combo]
-
+@export var effects: Array[Effect]
 
 
 var current_enemy: Enemy = null

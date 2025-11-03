@@ -19,6 +19,7 @@ effect order:
 9 fuel
 
 """
+
 @onready var effects: Array
 
 

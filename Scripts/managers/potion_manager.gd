@@ -34,10 +34,13 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 					active_combos.erase(deleted)
 	return active_combos
 
-func throw_potion(entity: Entity, ingredients: Array[Ingredient], rings: Array[Ring]):
-	var effects = [0,0,0,0,0,0,0,0,0,0,0]
+func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity = null):
 	for combo in calculate_combos(ingredients, rings):
-		effects += combo.effects
+		print(combo.name)
+	if entity == null:
+		pass
+	elif entity is Entity:
+		entity.take_damage(1)
 
-	entity.effects += effects
+
 	EffectMan.take_damage(entity)

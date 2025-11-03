@@ -56,3 +56,7 @@ func _on_button_mouse_exited() -> void:
 	lift_tween.set_trans(Tween.TRANS_QUAD)
 	lift_tween.tween_property(card_sprite,"position",base_sprite_pos +  Vector2(0,0),0.1)
 	set("z_index",-11-path_pos_index)
+
+
+func _on_card_button_down() -> void:
+	Game.card_pressed.emit(self)

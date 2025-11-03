@@ -11,6 +11,7 @@ var camera = null
 
 var is_in_combat: bool = false
 
+signal card_pressed(card: Card)
 signal card_selected(card: Card)
 signal end_turn()
 signal player_start_turn()
@@ -27,6 +28,7 @@ func _ready() -> void:
 	interaction_started.connect(interaction_start_func)
 	held_chand_modified.connect(chand_modified)
 	card_selected.connect(card_selected_func)
+	card_pressed.connect(card_pressed_func)
 	end_turn.connect(end_turn_func)
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
@@ -46,6 +48,8 @@ func player_start_turn_func():
 func interaction_end_func():
 	pass
 func interaction_start_func():
+	pass
+func card_pressed_func(_card):
 	pass
 
 func _process(_delta: float) -> void:

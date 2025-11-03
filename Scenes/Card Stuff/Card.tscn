@@ -46,6 +46,7 @@ offset_right = 118.0
 offset_bottom = 140.0
 mouse_default_cursor_shape = 2
 
+[connection signal="button_down" from="Card_control/Card_button" to="." method="_on_card_button_down"]
 [connection signal="mouse_entered" from="Card_control/Card_button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Card_control/Card_button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Card_control/Card_button" to="." method="_on_button_pressed"]

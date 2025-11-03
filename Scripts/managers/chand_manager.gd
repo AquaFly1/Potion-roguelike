@@ -6,6 +6,9 @@ extends Control
 @export var card_scene: PackedScene
 @export var path_scene: PackedScene
 
+var mouse_on_potion: bool = false
+var is_dragging: bool = false
+
 var selected_cards: Array[Card]
 var cards: Array[Card]
 var card_order: Array[Card] #card order for making sure we click the right card
@@ -28,6 +31,7 @@ var potion: Array[Ingredient]
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
 	Game.card_selected.connect(on_selected_cards)
+	Game.card_pressed.connect(on_card_pressed)
 	
 
 	
@@ -94,27 +98,28 @@ func on_selected_cards(card):
 		card.path_pos_index = len(selected_cards)
 		_update_chand_layout()
 
+func on_card_pressed(_card: Card):
+	if _card in selected_cards:
+		is_dragging = true
+
 func _on_play_pressed() -> void:
 	var played_cards = 0
-	if has_potion:
-		if Player.mana > 0:
-			if selected_cards:
-				for i in selected_cards:
-					potion.append(i.ingredient)
-					remove_card(i)
-					Player.mana -= 1
-					played_cards += 1
-					for j in cards:
-						j.path_pos_index -= 1.0
-				draw(played_cards)
+	if has_potion and Player.mana > 0 and selected_cards:
+		for i in selected_cards:
+			potion.append(i.ingredient)
+			remove_card(i)
+			Player.mana -= 1
+			played_cards += 1
+			for j in cards:
+				j.path_pos_index -= 1.0
+		draw(played_cards)
+		selected_cards = []
 
-				selected_cards = []
-	
 	_update_chand_layout()
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
-		PotionMan.throw_potion(Game.current_enemy, potion, Player.rings)
+		PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
 		potion = []
 		has_potion = false
 
@@ -124,7 +129,7 @@ func _on_end_turn_pressed() -> void:
 	
 
 func _on_throw_self_pressed() -> void:
-	PotionMan.throw_potion(Player, potion, Player.rings)
+	PotionMan.throw_potion(potion, Player.rings)
 	potion = []
 	has_potion = false
 
@@ -160,3 +165,35 @@ func player_start():
 	draw(5)
 	_on_get_potion_pressed()
 	selected_cards = []
+
+
+func _on_potion_mouse_entered() -> void:
+	mouse_on_potion = true
+
+func _on_potion_mouse_exited() -> void:
+	mouse_on_potion = false
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if not event.is_pressed():
+				if is_dragging:
+					if mouse_on_potion:
+						play_selected_cards()
+					else:
+						is_dragging = false
+						
+func play_selected_cards():
+	var played_cards = 0
+	if has_potion and Player.mana > 0 and selected_cards:
+		for i in selected_cards:
+			potion.append(i.ingredient)
+			remove_card(i)
+			Player.mana -= 1
+			played_cards += 1
+			for j in cards:
+				j.path_pos_index -= 1.0
+		draw(played_cards)
+		selected_cards = []
+	_update_chand_layout()

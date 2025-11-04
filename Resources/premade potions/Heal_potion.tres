@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_obbk8")
 ingredients = Array[ExtResource("1_rr4ui")]([ExtResource("2_5husg")])
-heal = true
+drink = true
 name = "Heal"
 intention = "heal"
 metadata/_custom_type_script = "uid://dot6hntkybv0w"

@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		else:
 			self.visible = false
 	if info:
-		info.text = "health: %d gold: %d \nxp: %d level: %d " % [Player.health, Player.gold, Player.xp, Player.level]
+		info.text = "health: %d gold: %d \nxp: %d level: %d \ndamage: %d " % [Player.health, Player.gold, Player.xp, Player.level, Player.effects[0]]
 	if burn_label and poison_label and rejuv_label:
 		burn_label.text = str(Player.effects[1])
 		poison_label.text = str(Player.effects[2])

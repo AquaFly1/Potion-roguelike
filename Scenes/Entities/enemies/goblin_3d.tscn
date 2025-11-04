@@ -16,7 +16,6 @@ potions = Array[ExtResource("3_k8ixw")]([ExtResource("4_1wrfg"), ExtResource("5_
 
 [node name="Enemy_sprite" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21802379, 0)
-texture = ExtResource("2_airuq")
 
 [node name="Camera3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -27,7 +26,7 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_nqjfx")
 
-[node name="Effects" parent="." index="5"]
+[node name="Effects" parent="." index="6"]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0

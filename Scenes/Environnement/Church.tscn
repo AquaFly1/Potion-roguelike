@@ -1,10 +1,8 @@
-[gd_scene load_steps=36 format=4 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=33 format=4 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_ko3d7"]
 [ext_resource type="Texture2D" uid="uid://c7jjpb7nefpbe" path="res://Graphics/Environnement/props/chest/chestBase.png" id="6_buf24"]
 [ext_resource type="Texture2D" uid="uid://b1l06rfi5v8pd" path="res://Graphics/Environnement/props/chest/chestRM.png" id="7_a3qpn"]
-[ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="8_4v86v"]
-[ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="9_4v86v"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="10_ce7yl"]
 [ext_resource type="Texture2D" uid="uid://cu50xlkjlrwor" path="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png" id="11_pwss2"]
 [ext_resource type="Shader" uid="uid://ctfnnu8wxax4j" path="res://Graphics/Shaders/psx.gdshader" id="11_y8lxq"]
@@ -101,18 +99,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vykp8")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce7yl"]
-render_priority = 0
-shader = ExtResource("8_4v86v")
-shader_parameter/sprite_texture = ExtResource("9_4v86v")
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/glowSize = 1.0000000475
-shader_parameter/glowDensity = 1
-shader_parameter/glowRadialCoverage = 4
-shader_parameter/glowAngle = 0.0
-shader_parameter/glowSharpness = 0.0
-shader_parameter/alphaThreshold = 0.30000001425
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c78vh"]
 resource_name = "Wood"
@@ -296,13 +282,6 @@ transform = Transform3D(-0.050104886, 0, -0.998744, 0, 1, 0, 0.998744, 0, -0.050
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_nfyu7")
 skeleton = NodePath("")
-
-[node name="Enemy_test" type="Sprite3D" parent="."]
-transform = Transform3D(0.08824227, 0, 9.25958, 0, 9.26, 0, -9.25958, 0, 0.08824227, -7.9709272, 1.6746638, 0.05548954)
-visible = false
-material_override = SubResource("ShaderMaterial_ce7yl")
-texture_filter = 2
-texture = ExtResource("9_4v86v")
 
 [node name="Transition-nx" parent="." node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
 transform = Transform3D(2.1, 0, 0, 0, 2.625, 0, 0, 0, 2.1, -4, 1.25, -6)

@@ -37,10 +37,20 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 
 ## Recieves a list of  
 func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: Entity, drank: bool = false):
+	var total_effects: Array
+	total_effects.resize(Effect.get_length())
+	total_effects.fill(0.0)
+	print(entity.health)
 	for combo in calculate_combos(ingredients, rings):
+		var combo_effects = combo.effect_values()
 		for i in range(Effect.get_length()):
-			entity.effects[i] += combo.effect_values()[i]
-	if not drank:
-		entity.effects[0] += 1
+			total_effects[i] +=combo_effects[i]
 	
-	Effect.call_afflict_effect(entity)
+	if not drank:
+		total_effects[0] += 1
+	
+	
+	Effect.afflict(entity, total_effects)
+	print(entity.health)
+	
+	

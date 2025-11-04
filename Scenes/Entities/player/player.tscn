@@ -178,7 +178,7 @@ gold = 0
 level = 0
 xp = 0
 max_mana = 10
-max_health = 20
+max_health = 10.0
 
 [node name="Health_bar" parent="2D/player_manager" instance=ExtResource("14_yicnn")]
 layout_mode = 1

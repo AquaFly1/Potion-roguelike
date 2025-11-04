@@ -4,6 +4,7 @@ extends Node
 @export var combos: Array[Combo]
 @export var effects: Array[Effect]
 
+var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 
 var current_enemy: Enemy = null
 
@@ -13,8 +14,9 @@ var is_in_combat: bool = false
 
 signal card_pressed(card: Card)
 signal card_selected(card: Card)
-signal end_turn()
+signal turn_ended() ##Gets called when an [member entity] finishes it's turn
 signal player_start_turn()
+signal enemy_start_turn()
 signal interaction_started()
 signal interaction_ended()
 signal held_chand_modified(cards: Array)
@@ -29,11 +31,29 @@ func _ready() -> void:
 	held_chand_modified.connect(chand_modified)
 	card_selected.connect(card_selected_func)
 	card_pressed.connect(card_pressed_func)
-	end_turn.connect(end_turn_func)
+	turn_ended.connect(turn_ended_func) 
 	interaction_ended.connect(interaction_end_func)
-	player_start_turn.connect(player_start_turn_func)
+	player_start_turn.connect(call_player_turn)
+	enemy_start_turn.connect(call_enemies_turn)
 	look_candle.connect(player_look_candle)
 	Effect.define_effects(effects)
+
+##Iterates through all [member enemies] in 
+##[member enemy_list] and starts their turn 
+func call_enemies_turn():
+	for i in enemy_list.duplicate():
+		await i.start_turn()
+	if enemy_list.size() != 0:
+		player_start_turn.emit()
+	else:
+		interaction_ended.emit()
+
+func call_player_turn():
+	if enemy_list.size() != 0:
+		Player.start_turn()
+		await turn_ended
+		enemy_start_turn.emit()
+	
 
 func player_look_candle(_candle):
 	pass
@@ -41,14 +61,14 @@ func chand_modified(_cards: Array):
 	pass
 func card_selected_func(_card):
 	pass
-func end_turn_func():
-	pass
-func player_start_turn_func():
+func turn_ended_func():
 	pass
 func interaction_end_func():
-	pass
+	is_in_combat = false
+	Player.xp += xp_end_of_fight
+	xp_end_of_fight = 0
 func interaction_start_func():
-	pass
+	player_start_turn.emit()
 func card_pressed_func(_card):
 	pass
 

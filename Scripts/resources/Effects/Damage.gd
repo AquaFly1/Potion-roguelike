@@ -1,6 +1,9 @@
 extends Effect
 
-func afflict_effect(_entity):
-	if _entity is Player: print(_entity.effects[0])
-	_entity.health -= _entity.effects[0]
-	_entity.effects[0] = 0
+func on_hit(entity):
+	entity.effects[0] = entity.effects[0] - entity.effects[4]
+	entity.effects[4] -= min(entity.effects[0],0)
+	
+	entity.health -= entity.effects[0] * 20
+	entity.effects[0] = 0
+	

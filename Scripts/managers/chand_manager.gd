@@ -26,7 +26,7 @@ var test_node: Node2D
 
 
 var use_deck: Array[Ingredient]
-var potion: Array[Ingredient]
+var potion: Array[Ingredient] = []
 
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
@@ -119,17 +119,20 @@ func _on_play_pressed() -> void:
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
-		PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
+		await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
 		potion = []
+		Game.current_enemy = null
 		has_potion = false
-		Game.end_turn.emit()
+		await get_tree().create_timer(1.0).timeout
+		Game.turn_ended.emit()
 	
 
 func _on_throw_self_pressed() -> void:
-	PotionMan.throw_potion(potion, Player.rings, Player, true)
+	await PotionMan.throw_potion(potion, Player.rings, Player, true)
 	potion = []
 	has_potion = false
-	Game.end_turn.emit()
+	await get_tree().create_timer(1.0).timeout
+	Game.turn_ended.emit()
 
 func _on_get_potion_pressed() -> void:
 	if Player.mana > 0:
@@ -151,8 +154,7 @@ func draw(amount: int):
 	_update_chand_layout()
 
 func player_start():
-	pass
-	
+	Player.mana = Player.max_mana
 	deck.shuffle()
 	use_deck = deck.duplicate()
 	var cards_to_remove = cards.duplicate()

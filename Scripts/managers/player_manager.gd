@@ -22,8 +22,8 @@ func _ready() -> void:
 
 func start_turn():
 	super()
-	Game.player_start_turn.emit()
-	mana = max_mana
+	
+	
 
 
 func _process(_delta: float) -> void:

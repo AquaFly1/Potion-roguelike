@@ -1,6 +1,11 @@
 extends Effect
 
-func start_turn(_entity):
-	if _entity.effects[3] > 0:
-		#_entity.health += 1
-		_entity.effects[3] -= 1
+func on_hit(entity):
+	print(self.name, "hitting")
+	entity.health = min(entity.health+1,entity.max_health)
+	entity.effects[3] = max(
+		min(
+			entity.effects[3],
+			entity.max_health-entity.health
+			)  -  1,
+		0)

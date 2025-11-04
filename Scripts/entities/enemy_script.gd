@@ -21,6 +21,7 @@ var chosen_potion = null
 @onready var health_label: Label = $Effects/Health_icon/Health_label
 @onready var gui_origin: Marker3D = $gui_origin
 @onready var gui_parent: Control = $Effects
+var preparing: int = 1
 #@onready var attack_button: Marker3D = $attack_origin
 
 func _ready() -> void:
@@ -30,14 +31,28 @@ func _ready() -> void:
 	chosen_potion = potions.pick_random()
 
 func start_turn():
-	super()
-	#animation
-	if chosen_potion.heal == true:
-		PotionMan.throw_potion(chosen_potion.ingredients, rings, self)
-	else:
-		PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
-	chosen_potion = potions.pick_random()
-
+	
+	await super()
+	#await get_tree().create_timer(0.5).timeout
+	if not is_queued_for_deletion(): 
+		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
+		if chosen_potion.drink == true:
+			await PotionMan.throw_potion(chosen_potion.ingredients, rings, self, true)
+			enemy_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			chosen_potion = potions.pick_random()
+			preparing = 1
+			
+		else:
+			if preparing != 0:
+				enemy_sprite.modulate = Color(0.813, 0.0, 0.092, 1.0)
+				preparing -= 1
+			else:
+				await PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
+				enemy_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				chosen_potion = potions.pick_random()
+				preparing = 1
+		
+		end_turn()
 
 
 func _process(delta: float) -> void:
@@ -61,4 +76,9 @@ func _on_button_pressed() -> void:
 func die():
 	Player.gold += randi_range(gold_range[0], gold_range[1])
 	Game.xp_end_of_fight += xp_given
-	self.queue_free()
+	
+	while Game.enemy_list.has(self):
+		Game.enemy_list.erase(self)
+	
+	queue_free()
+	

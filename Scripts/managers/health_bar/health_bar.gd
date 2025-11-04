@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	health.size.x = (entity.health/entity.max_health) * max_size
 	burn.size.x = (entity.effects[1]/entity.max_health) * max_size
 	burn.position.x = health.position.x + health.size.x
-	poison.size.x = entity.effects[2]/entity.max_health * max_size
+	poison.size.x = min(entity.effects[2],entity.health)/entity.max_health * max_size
 	poison.position.x = burn.position.x
 	rejuv.size.x = entity.effects[3]/entity.max_health * max_size
 	rejuv.position.x = health.position.x + health.size.x

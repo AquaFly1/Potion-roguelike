@@ -6,7 +6,11 @@ class_name Ring
 @export_multiline var description: String
 @export var icon: Texture2D
 
+
+
 var bonus_damage: int = 0
+
+
 
 func activate(_ings: Array[Ingredient]):
 	pass

@@ -25,6 +25,7 @@
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
+effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu")])
 
 [node name="RingManager" type="Node2D" parent="."]
 script = ExtResource("15_tsent")

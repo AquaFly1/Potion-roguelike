@@ -2,6 +2,9 @@ extends Node
 
 @export var effects: Array[Effect]
 
+
+
+
 func start_turn(entity):
 	for effect in effects:
 		if entity.effects[effects[effect]] != 0:

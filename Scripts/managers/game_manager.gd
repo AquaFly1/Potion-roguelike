@@ -34,6 +34,7 @@ func _ready() -> void:
 	player_start_turn.connect(player_start_turn_func)
 	look_candle.connect(player_look_candle)
 	Player.rings = [load("res://Resources/rings/Ring_test.tres")]
+	Effect.define_effects(effects)
 
 func player_look_candle(_candle):
 	pass

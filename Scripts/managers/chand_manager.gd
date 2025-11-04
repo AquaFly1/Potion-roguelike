@@ -56,9 +56,10 @@ func add_card(card_ing):
 func remove_card(card):
 	card.path.queue_free()
 	
+	selected_cards.erase(card)
 	cards.erase(card)
 	card.queue_free()
-		
+	
 	_update_chand_layout()
 
 func _update_chand_layout():
@@ -75,7 +76,7 @@ func _update_chand_layout():
 		if not card_order.has(i):
 			card_order.append(i)
 	cards = card_order # cards list now in order
-	for i in len(card_order):				#card selection based on order in node tree (end is better)
+	for i in len(card_order):			#card selection based on order in node tree (end is better)
 		move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
 	Game.held_chand_modified.emit(cards)
 	
@@ -84,6 +85,7 @@ func on_selected_cards(card):
 	if not selected_cards.has(card):
 		selected_cards.append(card)
 		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
+
 		for i in cards:
 			if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
 				i.path_pos_index += 1.0
@@ -105,7 +107,7 @@ func on_card_pressed(_card: Card):
 func _on_play_pressed() -> void:
 	var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
-		for i in selected_cards:
+		for i in selected_cards.duplicate():
 			potion.append(i.ingredient)
 			remove_card(i)
 			Player.mana -= 1
@@ -114,8 +116,6 @@ func _on_play_pressed() -> void:
 				j.path_pos_index -= 1.0
 		draw(played_cards)
 		selected_cards = []
-
-	_update_chand_layout()
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -150,7 +150,7 @@ func draw(amount: int):
 	for i in amount:
 		if use_deck != []:
 			add_card(use_deck[0])
-			_update_chand_layout()
+	_update_chand_layout()
 
 func player_start():
 	pass

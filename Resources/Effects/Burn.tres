@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_6m71w")
-effect_name = "Burn"
+name = "Burn"
 metadata/_custom_type_script = "uid://drdvri37lj73w"

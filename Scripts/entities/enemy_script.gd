@@ -32,9 +32,8 @@ func _ready() -> void:
 func start_turn():
 	super()
 	#animation
-	
 	if chosen_potion.heal == true:
-		PotionMan.throw_potion(chosen_potion.ingredients, rings)
+		PotionMan.throw_potion(chosen_potion.ingredients, rings, self)
 	else:
 		PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
 	chosen_potion = potions.pick_random()

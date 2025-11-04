@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=6 format=3 uid="uid://cvnw2m4qh74b7"]
+[gd_resource type="Resource" script_class="Combo" load_steps=7 format=3 uid="uid://cvnw2m4qh74b7"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_qkuqa"]
 [ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_7byod"]
 [ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="2_pjgof"]
 [ext_resource type="Resource" uid="uid://dvwafr5064vxy" path="res://Resources/Tags/heart_tag.tres" id="3_pjgof"]
 [ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="3_pmlnf"]
+[ext_resource type="Resource" uid="uid://r7bx2y1fm66f" path="res://Resources/Effects/Rejuvination.tres" id="4_fhifj"]
 
 [resource]
 script = ExtResource("1_qkuqa")
 name = "heal"
 tags_needed = Array[ExtResource("2_7byod")]([ExtResource("3_pjgof")])
 combos_removed = Array[ExtResource("1_qkuqa")]([ExtResource("2_pjgof"), ExtResource("3_pmlnf")])
-effects = [0, 0, 0, 1, 3, 0, 0, 0, 0, 0]
+effects = {
+ExtResource("4_fhifj"): 2.0
+}
 metadata/_custom_type_script = "uid://dr6idhc60c460"

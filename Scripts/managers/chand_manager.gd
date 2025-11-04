@@ -122,16 +122,14 @@ func _on_throw_pot_pressed() -> void:
 		PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
 		potion = []
 		has_potion = false
-
-func _on_end_turn_pressed() -> void:
-	has_potion = false
-	Game.end_turn.emit()
+		Game.end_turn.emit()
 	
 
 func _on_throw_self_pressed() -> void:
-	PotionMan.throw_potion(potion, Player.rings)
+	PotionMan.throw_potion(potion, Player.rings, Player, true)
 	potion = []
 	has_potion = false
+	Game.end_turn.emit()
 
 func _on_get_potion_pressed() -> void:
 	if Player.mana > 0:

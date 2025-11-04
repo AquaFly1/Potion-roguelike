@@ -33,7 +33,6 @@ func _ready() -> void:
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(player_start_turn_func)
 	look_candle.connect(player_look_candle)
-	Player.rings = [load("res://Resources/rings/Ring_test.tres")]
 	Effect.define_effects(effects)
 
 func player_look_candle(_candle):

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_nk8ua")
-effect_name = "Rejuvination"
+name = "Rejuvination"
 metadata/_custom_type_script = "uid://drdvri37lj73w"

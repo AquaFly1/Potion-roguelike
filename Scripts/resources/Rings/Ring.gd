@@ -10,7 +10,9 @@ class_name Ring
 
 var bonus_damage: int = 0
 
-
+static func call_start_turn(entity: Entity):
+	for ring in entity.rings:
+		ring.start_turn(entity)
 
 func activate(_ings: Array[Ingredient]):
 	pass
@@ -18,5 +20,5 @@ func activate(_ings: Array[Ingredient]):
 func potion_thrown(_ings: Array[Ingredient]) -> Array[Tag]:
 	return []
 	
-func start_turn():
+func start_turn(_entity):
 	pass

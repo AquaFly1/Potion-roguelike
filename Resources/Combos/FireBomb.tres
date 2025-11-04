@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=6 format=3 uid="uid://bfnfpccw8rf5l"]
+[gd_resource type="Resource" script_class="Combo" load_steps=8 format=3 uid="uid://bfnfpccw8rf5l"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_u3qsu"]
 [ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="2_1r8m6"]
 [ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_krxfj"]
 [ext_resource type="Resource" uid="uid://cfvm3alspeqe4" path="res://Resources/Tags/bois_tag.tres" id="3_1amju"]
+[ext_resource type="Resource" uid="uid://dt7x6f3u5k6m" path="res://Resources/Effects/Damage.tres" id="3_vikba"]
 [ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="4_1amju"]
+[ext_resource type="Resource" uid="uid://kqc8bglj7e23" path="res://Resources/Effects/Burn.tres" id="4_eu1br"]
 
 [resource]
 script = ExtResource("1_u3qsu")
 name = "Fire Bomb"
 tags_needed = Array[ExtResource("2_krxfj")]([ExtResource("3_1amju"), ExtResource("4_1amju")])
 combos_removed = Array[ExtResource("1_u3qsu")]([ExtResource("2_1r8m6")])
-effects = [2, 3, 0, 0, 0, 0, 0, 0, 0, 0]
+effects = {
+ExtResource("3_vikba"): 2.0,
+ExtResource("4_eu1br"): 3.0
+}
 metadata/_custom_type_script = "uid://dr6idhc60c460"

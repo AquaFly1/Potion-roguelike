@@ -32,15 +32,15 @@ func calculate_combos(ings: Array[Ingredient], rings: Array[Ring]):
 			for deleted in combo.combos_removed:
 				if deleted in active_combos:
 					active_combos.erase(deleted)
+					
 	return active_combos
 
-func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity = null):
+## Recieves a list of  
+func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: Entity, drank: bool = false):
 	for combo in calculate_combos(ingredients, rings):
-		print(combo.name)
-	if entity == null:
-		pass
-	elif entity is Entity:
-		entity.take_damage(1)
-
-
-	EffectMan.take_damage(entity)
+		for i in range(Effect.get_length()):
+			entity.effects[i] += combo.effect_values()[i]
+	if not drank:
+		entity.effects[0] += 1
+	
+	Effect.call_afflict_effect(entity)

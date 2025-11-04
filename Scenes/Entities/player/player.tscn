@@ -178,7 +178,7 @@ gold = 0
 level = 0
 xp = 0
 max_mana = 10
-max_health = 10
+max_health = 20
 
 [node name="Health_bar" parent="2D/player_manager" instance=ExtResource("14_yicnn")]
 layout_mode = 1
@@ -187,6 +187,7 @@ offset_top = 13.999999
 offset_right = -296.125
 offset_bottom = -896.0
 scale = Vector2(0.64, 0.8)
+mouse_filter = 2
 is_player = true
 
 [node name="Ignore Post P" type="CanvasLayer" parent="2D"]

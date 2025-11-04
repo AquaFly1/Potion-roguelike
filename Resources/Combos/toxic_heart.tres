@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=6 format=3 uid="uid://dlvjxfw27owt2"]
+[gd_resource type="Resource" script_class="Combo" load_steps=8 format=3 uid="uid://dlvjxfw27owt2"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_2f560"]
 [ext_resource type="Resource" uid="uid://cvnw2m4qh74b7" path="res://Resources/Combos/heal.tres" id="2_irs2g"]
 [ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_wyu8r"]
+[ext_resource type="Resource" uid="uid://bohvvi81lc8xh" path="res://Resources/Effects/Poison.tres" id="3_rvvuq"]
 [ext_resource type="Resource" uid="uid://dvwafr5064vxy" path="res://Resources/Tags/heart_tag.tres" id="4_3xo80"]
+[ext_resource type="Resource" uid="uid://r7bx2y1fm66f" path="res://Resources/Effects/Rejuvination.tres" id="4_hoyki"]
 [ext_resource type="Resource" uid="uid://bd3x5epqsyy7k" path="res://Resources/Tags/poison_tag.tres" id="5_71xbp"]
 
 [resource]
@@ -11,5 +13,8 @@ script = ExtResource("1_2f560")
 name = "toxic heart"
 tags_needed = Array[ExtResource("2_wyu8r")]([ExtResource("4_3xo80"), ExtResource("5_71xbp")])
 combos_removed = Array[ExtResource("1_2f560")]([ExtResource("2_irs2g")])
-effects = [0, 0, 1, 3, 0, 0, 0, 0, 0, 0]
+effects = {
+ExtResource("3_rvvuq"): 1.0,
+ExtResource("4_hoyki"): 3.0
+}
 metadata/_custom_type_script = "uid://dr6idhc60c460"

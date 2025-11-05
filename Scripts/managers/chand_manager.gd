@@ -6,8 +6,12 @@ extends Control
 @export var card_scene: PackedScene
 @export var path_scene: PackedScene
 
+
+
 var mouse_on_potion: bool = false
 var is_dragging: bool = false
+var distance_for_drag := 50.0
+var mouse_start_pos: Vector2
 
 var selected_cards: Array[Card]
 var cards: Array[Card]
@@ -81,7 +85,31 @@ func _update_chand_layout():
 	Game.held_chand_modified.emit(cards)
 	
 
-func on_selected_cards(card):
+func on_selected_cards(card):	
+	_update_chand_layout()
+	
+	#if not selected_cards.has(card):
+		#selected_cards.append(card)
+		#card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
+#
+		#for i in cards:
+			#if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
+				#i.path_pos_index += 1.0
+		#card.path_pos_index = len(selected_cards)-1
+		#_update_chand_layout()
+	#else:
+		#if not is_dragging:
+			#selected_cards.erase(card)
+			#card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,0))
+			#for i in selected_cards:
+				#if i.path_pos_index > card.path_pos_index:
+					#i.path_pos_index -= 1
+			#card.path_pos_index = len(selected_cards)
+			#_update_chand_layout()
+	pass
+
+func on_card_pressed(card: Card):
+	mouse_start_pos = get_local_mouse_position()
 	if not selected_cards.has(card):
 		selected_cards.append(card)
 		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
@@ -90,7 +118,6 @@ func on_selected_cards(card):
 			if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
 				i.path_pos_index += 1.0
 		card.path_pos_index = len(selected_cards)-1
-		_update_chand_layout()
 	else:
 		selected_cards.erase(card)
 		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,0))
@@ -98,11 +125,17 @@ func on_selected_cards(card):
 			if i.path_pos_index > card.path_pos_index:
 				i.path_pos_index -= 1
 		card.path_pos_index = len(selected_cards)
-		_update_chand_layout()
-
-func on_card_pressed(_card: Card):
-	if _card in selected_cards:
-		is_dragging = true
+		
+		#_update_chand_layout()
+	#else:
+		#if not is_dragging:
+			#selected_cards.erase(card)
+			#card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,0))
+			#for i in selected_cards:
+				#if i.path_pos_index > card.path_pos_index:
+					#i.path_pos_index -= 1
+			#card.path_pos_index = len(selected_cards)
+			
 
 func _on_play_pressed() -> void:
 	var played_cards = 0
@@ -177,12 +210,15 @@ func _on_potion_mouse_exited() -> void:
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if not event.is_pressed():
-				if is_dragging:
+			if mouse_start_pos.direction_to(get_local_mouse_position()): #faire que ca ca check a chaque frame que le mouse est pressed, jsp comment faire
+				print("checking")
+				is_dragging = true
+			if event.is_released():
 					if mouse_on_potion:
 						play_selected_cards()
-					else:
-						is_dragging = false
+					#await get_tree().create_timer(0).timeout
+					is_dragging = false
+	
 						
 func play_selected_cards():
 	var played_cards = 0

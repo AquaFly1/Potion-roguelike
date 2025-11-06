@@ -189,9 +189,9 @@ text = "vsdv"
 
 [node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
 layout_mode = 1
-offset_left = -111.435
+offset_left = -32.000008
 offset_top = -1.8
-offset_right = -111.435
+offset_right = -32.000008
 offset_bottom = -1.7999992
 scale = Vector2(0.08, 0.1)
 

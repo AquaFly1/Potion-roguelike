@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=35 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scenes/Entities/player/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
+[ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scenes/Entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
@@ -84,6 +85,9 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_r8aaq"]
+viewport_path = NodePath("UI+PostP/2D/SubViewport")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
 bg_color = Color(0, 0, 0, 0.3529412)
 corner_radius_top_left = 1
@@ -97,7 +101,7 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 720.00003116
+shader_parameter/pixel_resolution = 480.00001976
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.0
 shader_parameter/enable_dither = false
@@ -121,7 +125,7 @@ collision_mask = 17
 script = ExtResource("1_v0iea")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
-hand = NodePath("UI+PostP/2D/UI/hand")
+hand = NodePath("UI+PostP/2D/SubViewport/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
@@ -153,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 environment = SubResource("Environment_l3v4j")
 current = true
 
-[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera" node_paths=PackedStringArray("popup_label")]
+[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera"]
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 4
 hit_from_inside = true
@@ -161,7 +165,6 @@ hit_back_faces = false
 collide_with_areas = true
 debug_shape_thickness = 1
 script = ExtResource("2_g154t")
-popup_label = NodePath("../../../UI+PostP/2D/UI/PopupLabel")
 
 [node name="InfiniRay" type="RayCast3D" parent="Camera_pivot/Camera"]
 target_position = Vector3(0, 0, -50)
@@ -190,18 +193,42 @@ end_segment = true
 [node name="UI+PostP" type="CanvasLayer" parent="."]
 layer = 130
 
-[node name="2D" type="SubViewportContainer" parent="UI+PostP"]
+[node name="SubviewportInputRelay" type="Control" parent="UI+PostP"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 1
+mouse_behavior_recursive = 1
+script = ExtResource("9_r8aaq")
+metadata/_edit_use_anchors_ = true
+
+[node name="2D" type="TextureRect" parent="UI+PostP"]
 visibility_layer = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_r8aaq")
 script = ExtResource("8_j5c6h")
-default_resolution = 720.0
+default_resolution = 480.0
+metadata/_edit_use_anchors_ = true
 
-[node name="UI" type="Control" parent="UI+PostP/2D"]
-layout_mode = 2
+[node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="UI+PostP/2D/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 1
 
-[node name="hand" parent="UI+PostP/2D/UI" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
+[node name="hand" parent="UI+PostP/2D/SubViewport/UI" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -210,14 +237,14 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 path_scene = ExtResource("10_sefq3")
-chand_path = NodePath("../../../../HandShape")
+chand_path = NodePath("../../../../../HandShape")
 
-[node name="PlayerLabels" parent="UI+PostP/2D/UI" instance=ExtResource("4_vgqql")]
+[node name="PlayerLabels" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("4_vgqql")]
 visible = false
 layout_mode = 0
 mouse_filter = 1
 
-[node name="player_manager" parent="UI+PostP/2D/UI" instance=ExtResource("3_6t5aa")]
+[node name="player_manager" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("3_6t5aa")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -231,14 +258,15 @@ xp = 0
 max_mana = 10
 max_health = 10.0
 
-[node name="Health_bar" parent="UI+PostP/2D/UI/player_manager" instance=ExtResource("14_yicnn")]
+[node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI/player_manager" instance=ExtResource("14_yicnn")]
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+scale = Vector2(0.39, 0.39)
 mouse_filter = 2
 is_player = true
 
-[node name="PopupLabel" type="Label" parent="UI+PostP/2D/UI"]
+[node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -258,15 +286,6 @@ visible_characters = 0
 visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
-
-[node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(1920, 1080)
-size_2d_override = Vector2i(1920, 1080)
-render_target_update_mode = 4
 
 [node name="PostP" type="CanvasLayer" parent="UI+PostP"]
 layer = 100

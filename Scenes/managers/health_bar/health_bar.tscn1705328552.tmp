@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsrc1ojniam15"]
+[gd_scene load_steps=5 format=3 uid="uid://dsrc1ojniam15"]
 
 [ext_resource type="PackedScene" uid="uid://c4eydgphhqu24" path="res://Scenes/managers/health_bar/9patchslice.tscn" id="1_krehl"]
 [ext_resource type="Script" uid="uid://c312bkw332gaj" path="res://Scripts/managers/health_bar/health_bar.gd" id="1_pjkch"]
+
+[sub_resource type="Gradient" id="Gradient_pjkch"]
+offsets = PackedFloat32Array(0, 0.38121548)
+colors = PackedColorArray(1, 0.5803922, 0.3529412, 1, 1, 1, 0.39215687, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xnbb0"]
+gradient = SubResource("Gradient_pjkch")
 
 [node name="Health_bar" type="Control"]
 visibility_layer = 33
@@ -39,16 +46,16 @@ offset_right = 859.99994
 offset_bottom = 110.0
 scale = Vector2(-1, 1)
 mouse_filter = 2
-color = Color(0.99999994, 0.3211193, 0.13595212, 1)
+color = Color(1, 0.3254902, 0, 1)
 
-[node name="Rejuv" type="ColorRect" parent="."]
+[node name="Rejuv" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 19.999939
 offset_top = 20.0
 offset_right = 859.99994
 offset_bottom = 110.0
 mouse_filter = 2
-color = Color(1, 1, 0.3019608, 1)
+texture = SubResource("GradientTexture1D_xnbb0")
 
 [node name="Shield" type="ColorRect" parent="."]
 layout_mode = 0

@@ -28,10 +28,16 @@ var test_node: Node2D
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient] = []
 
+
+
+
+
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
 	Game.card_selected.connect(on_selected_cards)
 	Game.card_pressed.connect(on_card_pressed)
+	
+	
 	
 
 	
@@ -111,7 +117,7 @@ func _on_throw_pot_pressed() -> void:
 		potion = []
 		Game.current_enemy = null
 		has_potion = false
-		await get_tree().create_timer(1.0).timeout
+		#await get_tree().create_timer(1.0).timeout
 		Game.turn_ended.emit()
 	
 
@@ -119,7 +125,7 @@ func _on_throw_self_pressed() -> void:
 	await PotionMan.throw_potion(potion, Player.rings, Player, true)
 	potion = []
 	has_potion = false
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(1.0).timeout
 	Game.turn_ended.emit()
 
 func _on_get_potion_pressed() -> void:

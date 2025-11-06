@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scenes/Entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
+[ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
 stencil_flags = 2
@@ -106,11 +107,15 @@ shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.0
 shader_parameter/enable_dither = false
 shader_parameter/dither_strength = 0.10000000475
-shader_parameter/enable_glow = true
-shader_parameter/glow_strength = 0.2000000095
-shader_parameter/glow_spread = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq2rp"]
+shader = ExtResource("17_iq2rp")
+shader_parameter/pixel_resolution = 360.00001406
 shader_parameter/enable_vintage = true
-shader_parameter/vintage_strength = 0.400000019
+shader_parameter/vintage_strength = 0.50000002375
+shader_parameter/enable_glow = true
+shader_parameter/glow_strength = 0.1150000054625
+shader_parameter/glow_spread = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8g4m7"]
 shader = ExtResource("7_sefq3")
@@ -191,7 +196,7 @@ script = ExtResource("6_yicnn")
 end_segment = true
 
 [node name="UI+PostP" type="CanvasLayer" parent="."]
-layer = 130
+layer = 50
 
 [node name="SubviewportInputRelay" type="Control" parent="UI+PostP"]
 layout_mode = 3
@@ -210,7 +215,7 @@ offset_bottom = 1080.0
 mouse_filter = 2
 texture = SubResource("ViewportTexture_r8aaq")
 script = ExtResource("8_j5c6h")
-default_resolution = 480.0
+default_resolution = 360.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
@@ -244,7 +249,15 @@ visible = false
 layout_mode = 0
 mouse_filter = 1
 
-[node name="player_manager" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("3_6t5aa")]
+[node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("14_yicnn")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(0.39, 0.39)
+mouse_filter = 2
+is_player = true
+
+[node name="player_stat" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("3_6t5aa")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -252,19 +265,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
-gold = 0
-level = 0
-xp = 0
-max_mana = 10
 max_health = 10.0
-
-[node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI/player_manager" instance=ExtResource("14_yicnn")]
-layout_mode = 1
-offset_right = 0.0
-offset_bottom = 0.0
-scale = Vector2(0.39, 0.39)
-mouse_filter = 2
-is_player = true
 
 [node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
 visible = false
@@ -287,10 +288,10 @@ visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
-[node name="PostP" type="CanvasLayer" parent="UI+PostP"]
-layer = 100
+[node name="DownscaleLayer" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="PostProcessing" type="ColorRect" parent="UI+PostP/PostP"]
+[node name="PSX" type="ColorRect" parent="DownscaleLayer"]
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0
@@ -299,10 +300,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI+PostP/PostP"]
-layer = 200
+[node name="PostEffectLayer" type="CanvasLayer" parent="."]
+layer = 75
 
-[node name="PostProcessing2" type="ColorRect" parent="UI+PostP/PostP/CanvasLayer"]
+[node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
+material = SubResource("ShaderMaterial_iq2rp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AbberLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="abber" type="ColorRect" parent="AbberLayer"]
 material = SubResource("ShaderMaterial_8g4m7")
 anchors_preset = 15
 anchor_right = 1.0

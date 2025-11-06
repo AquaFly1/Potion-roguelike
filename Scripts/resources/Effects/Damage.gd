@@ -7,3 +7,5 @@ func on_hit(entity):
 	entity.health -= entity.effects[0]
 	entity.effects[0] = 0
 	
+
+	

@@ -15,7 +15,6 @@ func _ready() -> void:
 	effects.resize(Game.effects.size()) #have to use Game 
 	effects.fill(0.0)
 	health = max_health
-	
 
 func start_turn():
 	await Effect.call_event(self, Effect.START_TURN)
@@ -23,8 +22,6 @@ func start_turn():
 	await get_tree().create_timer(0.5).timeout
 	if health <= 0:
 		await die() 
-		
-	await end_turn()
 	
 func end_turn():
 	

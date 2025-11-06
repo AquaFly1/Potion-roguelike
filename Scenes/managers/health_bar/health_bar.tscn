@@ -14,43 +14,48 @@ script = ExtResource("1_pjkch")
 
 [node name="Health" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 19.999939
-offset_top = 20.0
-offset_right = 859.99994
-offset_bottom = 110.0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 856.0
+offset_bottom = 120.0
 mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
-[node name="Poison" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 19.999939
-offset_top = 19.999998
-offset_right = 859.99994
-offset_bottom = 110.0
+[node name="Burn" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 6.1035156e-05
+offset_right = 6.1035156e-05
+offset_bottom = 96.0
+grow_horizontal = 0
 scale = Vector2(-1, 1)
+mouse_filter = 2
+color = Color(1, 0.5126667, 0.13999999, 1)
+
+[node name="Poison" type="ColorRect" parent="Health/Burn"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 0
 mouse_filter = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Burn" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 19.999939
-offset_top = 20.0
-offset_right = 859.99994
-offset_bottom = 110.0
-scale = Vector2(-1, 1)
-mouse_filter = 2
-color = Color(0.99999994, 0.3211193, 0.13595212, 1)
-
-[node name="Rejuv" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 19.999939
-offset_top = 20.0
-offset_right = 859.99994
-offset_bottom = 110.0
+[node name="Rejuv" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 0
 mouse_filter = 2
 color = Color(1, 1, 0.3019608, 1)
 
 [node name="Shield" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 880.9999
 offset_top = 20.0
@@ -62,9 +67,10 @@ color = Color(0, 0, 1, 1)
 [node name="Control" parent="." instance=ExtResource("1_krehl")]
 visibility_layer = 33
 layout_mode = 0
-offset_left = -6.097555e-05
-offset_right = 87.99994
-offset_bottom = 13.0
+offset_top = 8.0
+offset_right = 108.9
+offset_bottom = 24.0
+scale = Vector2(8, 8)
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2

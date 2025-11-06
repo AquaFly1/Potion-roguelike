@@ -59,19 +59,25 @@ static func call_event(entity, event: int):
 					effects[i].start_turn(entity)
 				END_TURN:
 					effects[i].end_turn(entity)
+					await entity.health_bar.update_bar(true)
+					
 				ON_DAMAGE:
 					effects[i].on_damage(entity)
 				ON_HIT:
 					effects[i].on_hit(entity)
 				
-			await Game.get_tree().create_timer(0.3).timeout
-		
+	await Game.get_tree().create_timer(0.5).timeout
 
 static func afflict(entity, effects_list, call_on_hit = true):
 	for i in range(len(effects)):
 		entity.effects[i] += effects_list[i]
-		if call_on_hit: if entity.effects[i] > 0: effects[i].on_hit(entity)
-		await Game.get_tree().create_timer(0.3).timeout
+		if call_on_hit: 
+			if entity.effects[i] > 0: 
+				effects[i].on_hit(entity)
+		await entity.health_bar.update_bar()
+		
+	await Game.get_tree().create_timer(1).timeout
+	
 
 ##Activates the [code]start_turn()[/code] function of this  [member effect] .
 func start_turn(_entity):
@@ -80,6 +86,7 @@ func start_turn(_entity):
 ##Activates the [code]end_turn()[/code] function of this  [member effect] .
 func end_turn(_entity):
 	pass
+	
 
 ##Activates the [code]on_hit()[/code] function of this  [member effect] .
 ##By default, adds [param _value] to the entity

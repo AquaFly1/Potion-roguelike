@@ -132,6 +132,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Burn_icon" type="TextureRect" parent="Effects"]
+visible = false
 layout_mode = 0
 offset_left = -33.0
 offset_top = 10.0
@@ -146,6 +147,7 @@ offset_bottom = 32.0
 text = "vsdv"
 
 [node name="Poison_icon" type="TextureRect" parent="Effects"]
+visible = false
 layout_mode = 0
 offset_top = 10.0
 offset_right = 32.0
@@ -159,6 +161,7 @@ offset_bottom = 32.0
 text = "vsd"
 
 [node name="Rejuvination_icon" type="TextureRect" parent="Effects"]
+visible = false
 layout_mode = 0
 offset_left = 34.0
 offset_top = 10.0

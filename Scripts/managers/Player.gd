@@ -1,14 +1,15 @@
 extends Entity
 
-@export var gold = 0
-@export var level = 0
-@export var xp = 0
+var gold = 0
+var level = 0
+var xp = 0
 
 
-@export var max_mana = 10
+var max_mana = 10
 var mana = 0
 
-@onready var node: CharacterBody3D
+var node: CharacterBody3D
+var health_bar : Control
 
 var xp_needed = 10
 
@@ -21,6 +22,9 @@ func _ready() -> void:
 
 
 func start_turn():
+	super()
+	
+func end_turn():
 	super()
 	
 	

@@ -22,7 +22,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [autoload]
 
-Player="*res://Scripts/managers/player_manager.gd"
+Player="*res://Scripts/managers/Player.gd"
 Game="*res://Scenes/managers/game_manager.tscn"
 PotionMan="*res://Scripts/managers/potion_manager.gd"
 PsxLoader="*res://Scenes/Environnement/Psx_Loader.tscn"

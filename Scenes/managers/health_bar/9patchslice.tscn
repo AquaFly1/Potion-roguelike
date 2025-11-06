@@ -3,13 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://brxv8vxwnmmyc" path="res://Graphics/temporary_art/health_bar_cont.aseprite" id="1_4uflj"]
 
 [node name="Control" type="NinePatchRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1845.2
-offset_bottom = -1067.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 6.0
+offset_bottom = 6.0
 scale = Vector2(10, 10)
 texture = ExtResource("1_4uflj")
 region_rect = Rect2(0, 0.017980099, 8.962275, 8.982019)

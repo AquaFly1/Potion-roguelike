@@ -9,10 +9,10 @@ script = ExtResource("1_ljlp1")
 
 [node name="Info_bg" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1577.0
-offset_top = 656.0
-offset_right = 1877.0
-offset_bottom = 756.0
+offset_left = 13.0
+offset_top = 154.0
+offset_right = 313.0
+offset_bottom = 254.0
 
 [node name="Info_label" type="Label" parent="Info_bg"]
 layout_mode = 1
@@ -23,54 +23,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
-text = "5"
-horizontal_alignment = 1
-
-[node name="Burn_bg" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1577.0
-offset_top = 515.0
-offset_right = 1677.0
-offset_bottom = 615.0
-color = Color(1, 0, 0, 1)
-
-[node name="Burn_label" type="Label" parent="Burn_bg"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Poison_bg" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 365.0
-offset_right = 1827.0
-offset_bottom = 465.0
-color = Color(0, 1, 0, 1)
-
-[node name="Poison_label" type="Label" parent="Poison_bg"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
-text = "5"
-horizontal_alignment = 1
-
-[node name="Rejuvination_bg" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1727.0
-offset_top = 515.0
-offset_right = 1827.0
-offset_bottom = 615.0
-color = Color(1, 1, 0, 1)
-
-[node name="Rejuvination_label" type="Label" parent="Rejuvination_bg"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
 text = "5"
 horizontal_alignment = 1

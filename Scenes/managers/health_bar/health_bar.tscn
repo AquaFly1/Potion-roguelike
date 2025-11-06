@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c312bkw332gaj" path="res://Scripts/managers/health_bar/health_bar.gd" id="1_pjkch"]
 
 [node name="Health_bar" type="Control"]
+visibility_layer = 33
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,59 +13,65 @@ offset_right = 373.74658
 offset_bottom = -945.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.16000023, 0.19999999)
 mouse_filter = 1
 script = ExtResource("1_pjkch")
 
 [node name="Health" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 573.00006
-offset_top = 20.0
-offset_right = 1414.9998
-offset_bottom = 114.0
+offset_left = 10.0
+offset_top = 10.000002
+offset_right = 810.0
+offset_bottom = 60.0
 color = Color(1, 0, 0, 1)
 
 [node name="Poison" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 573.00006
-offset_top = 19.999998
-offset_right = 1415.0
-offset_bottom = 114.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 810.0
+offset_bottom = 60.0
 scale = Vector2(-1, 1)
 color = Color(0, 1, 0, 1)
 
 [node name="Burn" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 573.00006
-offset_top = 20.0
-offset_right = 873.00006
-offset_bottom = 114.0
+offset_left = 10.0
+offset_top = 10.000002
+offset_right = 810.0
+offset_bottom = 60.0
 scale = Vector2(-1, 1)
 color = Color(1, 0.3254902, 0, 1)
 
 [node name="Rejuv" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 573.00006
-offset_top = 20.0
-offset_right = 1415.0
-offset_bottom = 114.0
+offset_left = 10.0
+offset_top = 10.000002
+offset_right = 810.0
+offset_bottom = 60.0
 color = Color(1, 1, 0, 1)
 
 [node name="Shield" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1434.0
-offset_top = 20.0
-offset_right = 2276.0056
-offset_bottom = 114.0
+offset_left = 820.0
+offset_top = 10.000002
+offset_right = 1620.0
+offset_bottom = 60.0
 color = Color(0, 0, 1, 1)
 
 [node name="Control" parent="." instance=ExtResource("1_krehl")]
+visibility_layer = 33
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 553.0
-offset_right = 641.1
-offset_bottom = 13.4
+offset_left = -6.097555e-05
+offset_right = 163.99994
+offset_bottom = 14.0
 grow_horizontal = 1
 grow_vertical = 1
+scale = Vector2(5, 5)
+region_rect = Rect2(0, 0, 9, 9)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2

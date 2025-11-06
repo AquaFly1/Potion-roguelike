@@ -104,18 +104,6 @@ func on_card_pressed(_card: Card):
 	if _card in selected_cards:
 		is_dragging = true
 
-func _on_play_pressed() -> void:
-	var played_cards = 0
-	if has_potion and Player.mana > 0 and selected_cards:
-		for i in selected_cards.duplicate():
-			potion.append(i.ingredient)
-			remove_card(i)
-			Player.mana -= 1
-			played_cards += 1
-			for j in cards:
-				j.path_pos_index -= 1.0
-		draw(played_cards)
-		selected_cards = []
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -187,7 +175,7 @@ func _input(event):
 func play_selected_cards():
 	var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
-		for i in selected_cards:
+		for i in selected_cards.duplicate():
 			potion.append(i.ingredient)
 			remove_card(i)
 			Player.mana -= 1

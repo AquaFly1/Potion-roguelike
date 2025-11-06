@@ -1,7 +1,6 @@
 extends Effect
 
 func on_hit(entity):
-	print(self.name, "hitting")
 	entity.health = min(entity.health+1,entity.max_health)
 	entity.effects[3] = max(
 		min(

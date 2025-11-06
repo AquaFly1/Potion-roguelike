@@ -32,8 +32,7 @@ func _ready() -> void:
 
 func start_turn():
 	
-	await super()
-	#await get_tree().create_timer(0.5).timeout
+	await super.start_turn()
 	if not is_queued_for_deletion(): 
 		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
 		if chosen_potion.drink == true:
@@ -52,7 +51,6 @@ func start_turn():
 				chosen_potion = potions.pick_random()
 				preparing = 1
 		
-		end_turn()
 
 
 func _process(delta: float) -> void:

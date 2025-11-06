@@ -64,14 +64,14 @@ static func call_event(entity, event: int):
 				ON_HIT:
 					effects[i].on_hit(entity)
 				
-			await Game.get_tree().create_timer(0.1).timeout
+			await Game.get_tree().create_timer(0.3).timeout
 		
 
 static func afflict(entity, effects_list, call_on_hit = true):
 	for i in range(len(effects)):
 		entity.effects[i] += effects_list[i]
 		if call_on_hit: if entity.effects[i] > 0: effects[i].on_hit(entity)
-		await Game.get_tree().create_timer(0.1).timeout
+		await Game.get_tree().create_timer(0.3).timeout
 
 ##Activates the [code]start_turn()[/code] function of this  [member effect] .
 func start_turn(_entity):

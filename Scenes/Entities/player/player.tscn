@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=30 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
+[ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
@@ -29,12 +30,44 @@ radius = 0.25
 radius = 0.25
 height = 1.75
 
+[sub_resource type="Gradient" id="Gradient_yicnn"]
+offsets = PackedFloat32Array(0.993865, 1)
+colors = PackedColorArray(0.017469725, 0.015841575, 0.031599022, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y87ki"]
+noise_type = 2
+frequency = 0.0041
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j5c6h"]
+width = 2048
+height = 2048
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_y87ki")
+color_ramp = SubResource("Gradient_yicnn")
+invert = true
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5c6h"]
+shader = ExtResource("2_y87ki")
+shader_parameter/sky_tex = SubResource("NoiseTexture2D_j5c6h")
+shader_parameter/energy = 1.0
+shader_parameter/gamma = 1.0
+shader_parameter/scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_blend_power = 4.0
+shader_parameter/seamless_blend = 0.1
+
+[sub_resource type="Sky" id="Sky_r8aaq"]
+sky_material = SubResource("ShaderMaterial_j5c6h")
+
 [sub_resource type="Environment" id="Environment_l3v4j"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.044239994, 0.0378, 0.07, 1)
+sky = SubResource("Sky_r8aaq")
 ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
+tonemap_mode = 2
 ssao_intensity = 16.0
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false

@@ -514,7 +514,7 @@ func iterate_scene(node):
 				_multimesh_new(node, meta, meta_val)
 			
 			if meta == "packed_scene":
-				#await get_tree().create_timer(0.1).timeout
+				#await get_tree().create_timer(0.3).timeout
 				var packed_scene = load(meta_val).instantiate()
 				packed_scene.name = "PackedScene_" + node.name
 				node.get_parent().add_child(packed_scene)

@@ -39,7 +39,7 @@ float bayer_dither(vec2 pos) {
 
 
 void fragment() {
-	vec2 pixel_uv = round(UV * pixel_resolution) / pixel_resolution;
+	vec2 pixel_uv = round(UV * (pixel_resolution + 1.0) - (UV - 0.5))/ (pixel_resolution + 1.0);
 
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
 	

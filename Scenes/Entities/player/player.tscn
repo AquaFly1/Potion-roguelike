@@ -71,7 +71,6 @@ sky = SubResource("Sky_r8aaq")
 ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
-tonemap_mode = 2
 ssao_intensity = 16.0
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
@@ -104,7 +103,7 @@ expand_margin_bottom = 10.0
 shader = ExtResource("5_l3v4j")
 shader_parameter/pixel_resolution = 480.00001976
 shader_parameter/color_steps = 24
-shader_parameter/noise_strength = 0.0
+shader_parameter/noise_strength = 0.1
 shader_parameter/enable_dither = false
 shader_parameter/dither_strength = 0.10000000475
 
@@ -162,7 +161,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 environment = SubResource("Environment_l3v4j")
 current = true
 
-[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera"]
+[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera" node_paths=PackedStringArray("popup_label")]
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 4
 hit_from_inside = true
@@ -170,6 +169,7 @@ hit_back_faces = false
 collide_with_areas = true
 debug_shape_thickness = 1
 script = ExtResource("2_g154t")
+popup_label = NodePath("../../../UI+PostP/2D/SubViewport/UI/PopupLabel")
 
 [node name="InfiniRay" type="RayCast3D" parent="Camera_pivot/Camera"]
 target_position = Vector3(0, 0, -50)
@@ -215,7 +215,7 @@ offset_bottom = 1080.0
 mouse_filter = 2
 texture = SubResource("ViewportTexture_r8aaq")
 script = ExtResource("8_j5c6h")
-default_resolution = 360.0
+default_resolution = 480.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
@@ -275,10 +275,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1324.0
-offset_top = 886.5
-offset_right = 1325.0
-offset_bottom = 916.5
+offset_left = 960.0
+offset_top = 879.0
+offset_right = 961.0
+offset_bottom = 924.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_en4d4")

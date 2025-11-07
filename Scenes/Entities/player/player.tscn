@@ -1,26 +1,24 @@
-[gd_scene load_steps=39 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
-[ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
+[ext_resource type="Script" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="5_iq2rp"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="6_yicnn"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
-[ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
+[ext_resource type="Shader" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scripts/environment/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scripts/entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
-[ext_resource type="Script" uid="uid://be0hqynu7q53f" path="res://Scripts/resources/Rings/Ring.gd" id="16_bqky3"]
 [ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
-[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Fire_ring.tres" id="17_x5yqs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
 stencil_flags = 2
@@ -267,7 +265,6 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
-rings = Array[ExtResource("16_bqky3")]([ExtResource("17_x5yqs")])
 max_health = 10.0
 
 [node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]

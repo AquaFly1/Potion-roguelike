@@ -22,8 +22,6 @@ var test_node: Node2D
 
 @export var chand_path: Path2D
 
-@export var deck: Array[Ingredient]
-
 
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient] = []
@@ -149,8 +147,8 @@ func draw(amount: int):
 
 func player_start():
 	Player.mana = Player.max_mana
-	deck.shuffle()
-	use_deck = deck.duplicate()
+	Game.deck.shuffle()
+	use_deck = Game.deck.duplicate(true)
 	var cards_to_remove = cards.duplicate()
 	for card in cards_to_remove:
 		remove_card(card)

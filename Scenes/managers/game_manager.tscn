@@ -1,12 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=22 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="3_yqty0"]
 [ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="4_71d4j"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="5_i4mau"]
+[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="6_6gmvr"]
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="6_i4mau"]
 [ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="7_b5cn8"]
+[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="7_jb27j"]
 [ext_resource type="Resource" uid="uid://cvnw2m4qh74b7" path="res://Resources/Combos/heal.tres" id="7_sm5re"]
 [ext_resource type="Resource" uid="uid://crhtsiwjsvcta" path="res://Resources/Combos/poison.tres" id="8_hjqsb"]
 [ext_resource type="Resource" uid="uid://clyxeiknep0fk" path="res://Resources/Combos/ice_bomb.tres" id="8_jencv"]
@@ -22,6 +24,6 @@
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_mmt5l")
-deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau")])
+deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
 effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t")])

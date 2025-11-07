@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=34 format=4 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_ko3d7"]
 [ext_resource type="Texture2D" uid="uid://c7jjpb7nefpbe" path="res://Graphics/Environnement/props/chest/chestBase.png" id="6_buf24"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="10_ce7yl"]
 [ext_resource type="Texture2D" uid="uid://cu50xlkjlrwor" path="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png" id="11_pwss2"]
 [ext_resource type="Shader" uid="uid://ctfnnu8wxax4j" path="res://Graphics/Shaders/psx.gdshader" id="11_y8lxq"]
+[ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://Scenes/Interactions/Shop/shop_3d.tscn" id="12_7ees8"]
 [ext_resource type="Texture2D" uid="uid://bcb85mgwcf76l" path="res://3DAssets/Evironnement/Church_CH_WIN.png" id="12_buf24"]
 [ext_resource type="PackedScene" uid="uid://cbjt4uqgyabqp" path="res://3DAssets/Evironnement/Church.blend" id="12_pwss2"]
 [ext_resource type="Material" uid="uid://bwu4tkt475ah4" path="res://Graphics/Shaders/light_ray.tres" id="13_a3qpn"]
@@ -349,3 +350,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
 
 [node name="Candle2" parent="." instance=ExtResource("14_buf24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.419603, 0, -11.606251)
+
+[node name="Shop_3D" parent="." instance=ExtResource("12_7ees8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.848698, 0.024918735, -12.633319)

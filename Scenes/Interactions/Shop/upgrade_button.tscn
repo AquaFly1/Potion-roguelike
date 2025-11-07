@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcha7a1nlk16q"]
+
+[ext_resource type="Script" uid="uid://02a860hk2w7f" path="res://upgrade_button.gd" id="1_fmn7f"]
+[ext_resource type="PackedScene" uid="uid://ccqudf0fjqp3l" path="res://Scenes/Interactions/Shop/shop_button.tscn" id="1_jk0qb"]
+
+[node name="upgrade_button" instance=ExtResource("1_jk0qb")]
+script = ExtResource("1_fmn7f")
+combo = null

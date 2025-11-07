@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccqudf0fjqp3l"]
+
+[ext_resource type="Script" uid="uid://5bkhe0kxfhcx" path="res://shop_button.gd" id="1_mv16e"]
+
+[node name="Shop_button" type="Button"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mv16e")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

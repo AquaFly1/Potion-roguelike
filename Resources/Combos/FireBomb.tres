@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=8 format=3 uid="uid://bfnfpccw8rf5l"]
+[gd_resource type="Resource" script_class="Combo" load_steps=9 format=3 uid="uid://bfnfpccw8rf5l"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_u3qsu"]
 [ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="2_1r8m6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dt7x6f3u5k6m" path="res://Resources/Effects/Damage.tres" id="3_vikba"]
 [ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="4_1amju"]
 [ext_resource type="Resource" uid="uid://kqc8bglj7e23" path="res://Resources/Effects/Burn.tres" id="4_eu1br"]
+[ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="5_11vwg"]
 
 [resource]
 script = ExtResource("1_u3qsu")
@@ -17,4 +18,5 @@ effects = {
 ExtResource("3_vikba"): 2.0,
 ExtResource("4_eu1br"): 3.0
 }
+icon = ExtResource("5_11vwg")
 metadata/_custom_type_script = "uid://dr6idhc60c460"

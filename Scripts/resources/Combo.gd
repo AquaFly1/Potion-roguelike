@@ -6,6 +6,7 @@ class_name Combo
 @export var tags_needed: Array[Tag]
 @export var combos_removed: Array[Combo]
 @export var effects = {}
+@export var icon: Texture2D
 var upgrade = {}
 var eff_array: Array[float]
 
@@ -22,12 +23,12 @@ func effect_values() -> Array:
 	return eff_array
 
 ## defines the upgrade dictionary by halving each value of the base effects and rounding them up
-func def_upgrade():
+func upgrade_combo():
 	for i in range(effects.size()):
 		var value = effects.values()[i]
 		value /= 2
 		ceil(value)
-		upgrade.values()[i] = float(value)
+		upgrade[effects.keys()[i]] = float(value)
 
 ## adds each value of each effect of the upgrade dictionary to the effect dictionary
 func upgrade_effetcs():

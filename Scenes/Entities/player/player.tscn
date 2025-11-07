@@ -267,7 +267,7 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
-rings = Array[ExtResource("16_bqky3")]([ExtResource("17_x5yqs"), ExtResource("17_x5yqs"), ExtResource("17_x5yqs"), ExtResource("17_x5yqs")])
+rings = Array[ExtResource("16_bqky3")]([ExtResource("17_x5yqs")])
 max_health = 10.0
 
 [node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]

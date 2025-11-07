@@ -32,11 +32,10 @@ func update_bar(_end_turn: bool = false) -> void:
 	tween.tween_interval(0)
 	for i in [
 		[health,"size",health_size],
-		[poison,"size", min(poison.size.x, health_size-(entity.effects[1]/entity.max_health) * max_size), true], 		#no overkill
 		
 		[burn,"size", (entity.effects[1]/entity.max_health) * max_size, _end_turn],
 		
-		[poison,"size", min(entity.effects[2],entity.health)/entity.max_health * max_size, _end_turn],
+		[poison,"size", min(min(entity.effects[2],1),entity.health)/entity.max_health * max_size, _end_turn],
 		
 		[rejuv, "size", entity.effects[3]/entity.max_health * max_size, _end_turn],
 		[shield ,"size" , entity.effects[4]/entity.max_health * max_size]

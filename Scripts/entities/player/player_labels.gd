@@ -4,8 +4,8 @@ extends Control
 @onready var info: Label = $Info_bg/Info_label
 
 
-
-
+func _ready() -> void:
+	Player.rings = $"../player_stat".rings
 
 func _process(_delta: float) -> void:
 	if self:

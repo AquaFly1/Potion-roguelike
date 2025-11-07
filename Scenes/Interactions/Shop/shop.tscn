@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6db4x3hvnsiu" path="res://Scenes/Interactions/Shop/ring_button.tscn" id="1_6cc3b"]
 [ext_resource type="Script" uid="uid://cvql1nby8bp6i" path="res://Scripts/interaction/shop/shop.gd" id="1_cdvwr"]
 [ext_resource type="PackedScene" uid="uid://bcha7a1nlk16q" path="res://Scenes/Interactions/Shop/upgrade_button.tscn" id="2_dat7q"]
-[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Ring_test.tres" id="2_epu13"]
+[ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Fire_ring.tres" id="2_epu13"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3

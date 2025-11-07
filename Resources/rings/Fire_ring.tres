@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://by8042g3hlhgf"]
+
+[ext_resource type="Texture2D" uid="uid://bcv1cygs7dufl" path="res://Graphics/temporary_art/fire_ring.aseprite" id="1_dt5nm"]
+[ext_resource type="Script" uid="uid://fk27p0wk2yob" path="res://Scripts/resources/Rings/Fire_ring.gd" id="2_mv3o7"]
+
+[resource]
+script = ExtResource("2_mv3o7")
+ring_name = "Incineration"
+icon = ExtResource("1_dt5nm")
+metadata/_custom_type_script = "uid://be0hqynu7q53f"

@@ -23,7 +23,6 @@ var bonus_damage: int = 0
 ## halt the rest of the code, ensuring a cohesive order.
 static func call_event(entity, event: int):
 	for ring in entity.rings:
-		
 		match event: #all of the possible Ring.EVENT types.
 			START_TURN:
 				ring.start_turn(entity)
@@ -33,8 +32,10 @@ static func call_event(entity, event: int):
 				ring.on_damage(entity)
 			ON_HIT:
 				ring.on_hit(entity)
-				
-		await Game.get_tree().create_timer(0).timeout
+		
+		await entity.health_bar.update_bar()
+		#await Game.get_tree().create_timer(0).timeoutw
+		
 
 
 func activate(_ings: Array[Ingredient]):

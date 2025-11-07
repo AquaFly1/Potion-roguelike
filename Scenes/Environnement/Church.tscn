@@ -256,7 +256,7 @@ size = Vector3(2, 2.5, 1)
 [node name="Room" type="Node3D"]
 
 [node name="Player-nx" parent="." instance=ExtResource("1_ko3d7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.658146, 2.2174144, -13.326778)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.598137, 2.217414, -0.15450382)
 
 [node name="Floor-nx" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.23041892, 0)
@@ -346,7 +346,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.992, 1.2654641, -5.5)
 shape = SubResource("BoxShape3D_pwss2")
 
 [node name="interaction" parent="." instance=ExtResource("14_a3qpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3022738, 0, 0.0049586296)
 
 [node name="Candle2" parent="." instance=ExtResource("14_buf24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.419603, 0, -11.606251)

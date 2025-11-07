@@ -22,10 +22,10 @@ func _ready() -> void:
 
 
 func start_turn():
-	super()
+	await super()
 	
 func end_turn():
-	super()
+	await super()
 	
 	
 

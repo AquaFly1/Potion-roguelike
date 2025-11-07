@@ -37,7 +37,8 @@ func _ready() -> void:
 	enemy_start_turn.connect(call_enemies_turn)
 	look_candle.connect(player_look_candle)
 	Effect.define_effects(effects)
-
+	for combo in combos:
+		combo.set_upgrade()
 ##Iterates through all [member enemies] in 
 ##[member enemy_list] and starts their turn 
 func call_enemies_turn():

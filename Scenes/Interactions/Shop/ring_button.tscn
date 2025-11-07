@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6db4x3hvnsiu"]
 
 [ext_resource type="PackedScene" uid="uid://ccqudf0fjqp3l" path="res://Scenes/Interactions/Shop/shop_button.tscn" id="1_cj4ya"]
-[ext_resource type="Script" uid="uid://nva873qa2d3g" path="res://ring_button.gd" id="1_e0l6n"]
+[ext_resource type="Script" uid="uid://nva873qa2d3g" path="res://Scripts/interaction/shop/ring_button.gd" id="1_e0l6n"]
 
 [node name="ring_button" instance=ExtResource("1_cj4ya")]
 script = ExtResource("1_e0l6n")

@@ -23,14 +23,13 @@ func effect_values() -> Array:
 	return eff_array
 
 ## defines the upgrade dictionary by halving each value of the base effects and rounding them up
-func upgrade_combo():
+func set_upgrade():
 	for i in range(effects.size()):
 		var value = effects.values()[i]
 		value /= 2
-		ceil(value)
-		upgrade[effects.keys()[i]] = float(value)
+		upgrade[effects.keys()[i]] = float(ceil(value))
 
 ## adds each value of each effect of the upgrade dictionary to the effect dictionary
-func upgrade_effetcs():
-	for i in range(effects.size()):
-		effects.values()[i] += upgrade.values()[i]
+func upgrade_combo():
+	for key in effects.keys():
+		effects[key] = effects.get(key, 0) + upgrade[key]

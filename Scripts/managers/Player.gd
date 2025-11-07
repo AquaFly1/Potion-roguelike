@@ -15,7 +15,7 @@ var xp_needed = 10
 
 func _ready() -> void:
 	super()
-	gold = 0
+	gold = 20
 	level = 0
 	xp = 0
 	xp_needed = 10

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds4es326flpws"]
+[gd_scene load_steps=5 format=3 uid="uid://ds4es326flpws"]
 
 [ext_resource type="PackedScene" uid="uid://c6db4x3hvnsiu" path="res://Scenes/Interactions/Shop/ring_button.tscn" id="1_6cc3b"]
-[ext_resource type="Script" uid="uid://cvql1nby8bp6i" path="res://Scenes/Interactions/Shop/shop.gd" id="1_cdvwr"]
+[ext_resource type="Script" uid="uid://cvql1nby8bp6i" path="res://Scripts/interaction/shop/shop.gd" id="1_cdvwr"]
 [ext_resource type="PackedScene" uid="uid://bcha7a1nlk16q" path="res://Scenes/Interactions/Shop/upgrade_button.tscn" id="2_dat7q"]
 [ext_resource type="Resource" uid="uid://by8042g3hlhgf" path="res://Resources/rings/Ring_test.tres" id="2_epu13"]
-[ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="4_cdvwr"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -14,6 +13,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cdvwr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1914.0
+offset_bottom = 1079.0
+
+[node name="Money" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 764.0
+offset_top = 39.0
+offset_right = 1220.0
+offset_bottom = 226.0
+text = "67"
 
 [node name="Rings_container" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -26,14 +38,17 @@ alignment = 1
 [node name="ring_button" parent="Rings_container" instance=ExtResource("1_6cc3b")]
 layout_mode = 2
 ring = ExtResource("2_epu13")
+price = 10
 
 [node name="ring_button2" parent="Rings_container" instance=ExtResource("1_6cc3b")]
 layout_mode = 2
 ring = ExtResource("2_epu13")
+price = 10
 
 [node name="ring_button3" parent="Rings_container" instance=ExtResource("1_6cc3b")]
 layout_mode = 2
 ring = ExtResource("2_epu13")
+price = 10
 
 [node name="Combo_container" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -45,15 +60,15 @@ alignment = 1
 
 [node name="upgrade_button" parent="Combo_container" instance=ExtResource("2_dat7q")]
 layout_mode = 2
-combo = ExtResource("4_cdvwr")
+price = 5
 
 [node name="upgrade_button2" parent="Combo_container" instance=ExtResource("2_dat7q")]
 layout_mode = 2
-combo = ExtResource("4_cdvwr")
+price = 5
 
 [node name="upgrade_button3" parent="Combo_container" instance=ExtResource("2_dat7q")]
 layout_mode = 2
-combo = ExtResource("4_cdvwr")
+price = 5
 
 [node name="back" type="Button" parent="."]
 layout_mode = 0

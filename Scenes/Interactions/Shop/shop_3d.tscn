@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://3iv82ijofkh2"]
 
-[ext_resource type="Script" uid="uid://fu7ar61v2gfo" path="res://shop_interact.gd" id="1_smuto"]
+[ext_resource type="Script" uid="uid://fu7ar61v2gfo" path="res://Scripts/interaction/shop/shop_interact.gd" id="1_smuto"]
 [ext_resource type="PackedScene" uid="uid://ds4es326flpws" path="res://Scenes/Interactions/Shop/shop.tscn" id="2_2ner2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqva0"]

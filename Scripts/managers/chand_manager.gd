@@ -28,10 +28,16 @@ var test_node: Node2D
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient] = []
 
+
+
+
+
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
 	Game.card_selected.connect(on_selected_cards)
 	Game.card_pressed.connect(on_card_pressed)
+	
+	
 	
 
 	
@@ -104,18 +110,6 @@ func on_card_pressed(_card: Card):
 	if _card in selected_cards:
 		is_dragging = true
 
-func _on_play_pressed() -> void:
-	var played_cards = 0
-	if has_potion and Player.mana > 0 and selected_cards:
-		for i in selected_cards.duplicate():
-			potion.append(i.ingredient)
-			remove_card(i)
-			Player.mana -= 1
-			played_cards += 1
-			for j in cards:
-				j.path_pos_index -= 1.0
-		draw(played_cards)
-		selected_cards = []
 				
 func _on_throw_pot_pressed() -> void:
 	if Game.current_enemy:
@@ -123,7 +117,7 @@ func _on_throw_pot_pressed() -> void:
 		potion = []
 		Game.current_enemy = null
 		has_potion = false
-		await get_tree().create_timer(1.0).timeout
+		#await get_tree().create_timer(1.0).timeout
 		Game.turn_ended.emit()
 	
 
@@ -131,7 +125,7 @@ func _on_throw_self_pressed() -> void:
 	await PotionMan.throw_potion(potion, Player.rings, Player, true)
 	potion = []
 	has_potion = false
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(1.0).timeout
 	Game.turn_ended.emit()
 
 func _on_get_potion_pressed() -> void:
@@ -187,7 +181,7 @@ func _input(event):
 func play_selected_cards():
 	var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
-		for i in selected_cards:
+		for i in selected_cards.duplicate():
 			potion.append(i.ingredient)
 			remove_card(i)
 			Player.mana -= 1

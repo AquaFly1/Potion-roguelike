@@ -21,6 +21,7 @@ var chosen_potion = null
 @onready var health_label: Label = $Effects/Health_icon/Health_label
 @onready var gui_origin: Marker3D = $gui_origin
 @onready var gui_parent: Control = $Effects
+@onready var health_bar : Control
 var preparing: int = 1
 #@onready var attack_button: Marker3D = $attack_origin
 
@@ -29,11 +30,11 @@ func _ready() -> void:
 	enemy_sprite.texture = sprite
 	
 	chosen_potion = potions.pick_random()
+	
 
 func start_turn():
 	
-	await super()
-	#await get_tree().create_timer(0.5).timeout
+	await super.start_turn()
 	if not is_queued_for_deletion(): 
 		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
 		if chosen_potion.drink == true:
@@ -51,8 +52,8 @@ func start_turn():
 				enemy_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 				chosen_potion = potions.pick_random()
 				preparing = 1
-		
-		end_turn()
+	
+	await end_turn()
 
 
 func _process(delta: float) -> void:

@@ -22,7 +22,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [autoload]
 
-Player="*res://Scripts/managers/player_manager.gd"
+Player="*res://Scripts/managers/Player.gd"
 Game="*res://Scenes/managers/game_manager.tscn"
 PotionMan="*res://Scripts/managers/potion_manager.gd"
 PsxLoader="*res://Scenes/Environnement/Psx_Loader.tscn"
@@ -33,6 +33,14 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
+window/snap/snap_2d_vertices_to_pixel=true
+window/snap/snap_2d_transforms_to_pixel=true
+window/quality/msaa_2d=0
+window/quality/screen_space_aa=0
+window/quality/use_taa=false
+window/layer_2="Text"
+window/layer_1="Main"
+window/layer_6=""
 
 [editor_plugins]
 
@@ -114,11 +122,6 @@ backward={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
-quit={
-"deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-]
-}
 jump={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
@@ -129,6 +132,11 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+window_fullscreen={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -136,7 +144,9 @@ sensors/enable_gravity=true
 
 [layer_names]
 
+2d_render/layer_1="Main"
 3d_render/layer_1="Default_lights"
+2d_render/layer_2="Text"
 3d_render/layer_2="transition_black_light"
 3d_render/layer_6="Player_light"
 
@@ -151,6 +161,9 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 textures/decals/filter=0
 environment/volumetric_fog/use_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
+viewport/stretch/mode="canvas_items"
 
 [shader_globals]
 

@@ -15,14 +15,13 @@ func _ready() -> void:
 	effects.resize(Game.effects.size()) #have to use Game 
 	effects.fill(0.0)
 	health = max_health
-	
 
 func start_turn():
 	await Effect.call_event(self, Effect.START_TURN)
 	await Ring.call_event(self, Ring.START_TURN)
+	await get_tree().create_timer(0.5).timeout
 	if health <= 0:
 		await die() 
-		
 	
 func end_turn():
 	
@@ -31,10 +30,11 @@ func end_turn():
 	await Effect.call_event(self, Effect.END_TURN)
 	await Ring.call_event(self, Ring.END_TURN)
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	if health <= 0:
 		await die() 
+	
 
 func _process(_delta: float) -> void:
 	#if health:

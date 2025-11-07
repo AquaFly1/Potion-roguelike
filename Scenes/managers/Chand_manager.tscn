@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://ccn7rphveje3s" path="res://Graphics/Fonts/default_theme.tres" id="12_f1178"]
 
 [node name="CHand" type="Control"]
+visibility_layer = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,7 @@ card_scene = ExtResource("2_jjkdi")
 deck = Array[ExtResource("3_f1178")]([ExtResource("4_06x3b"), ExtResource("4_06x3b"), ExtResource("5_v334f"), ExtResource("5_v334f"), ExtResource("6_iyafx"), ExtResource("7_3roop"), ExtResource("7_3roop"), ExtResource("8_drrq4"), ExtResource("8_drrq4")])
 
 [node name="draw" type="Button" parent="."]
+visibility_layer = 2
 layout_mode = 0
 offset_left = 1476.0
 offset_top = 27.0
@@ -35,22 +37,16 @@ text = "draw (temporary)
 "
 
 [node name="get_potion" type="Button" parent="."]
+visibility_layer = 2
 layout_mode = 0
 offset_left = 200.0
-offset_top = 897.0
+offset_top = 404.0
 offset_right = 400.0
-offset_bottom = 997.0
+offset_bottom = 504.0
 text = "get potion"
 
-[node name="play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1270.0
-offset_top = 911.0
-offset_right = 1470.0
-offset_bottom = 1011.0
-text = "play"
-
 [node name="throw_pot" type="Button" parent="."]
+visibility_layer = 2
 layout_mode = 0
 offset_left = 799.0
 offset_top = 22.0
@@ -59,6 +55,7 @@ offset_bottom = 122.0
 text = "throw potion"
 
 [node name="end_turn" type="Button" parent="."]
+visibility_layer = 2
 layout_mode = 0
 offset_left = 175.99994
 offset_top = 644.0
@@ -67,11 +64,12 @@ offset_bottom = 744.0
 text = "end turn"
 
 [node name="throw_self" type="Button" parent="."]
+visibility_layer = 2
 layout_mode = 0
 offset_left = 846.0
-offset_top = 908.0
+offset_top = 895.0
 offset_right = 1062.0
-offset_bottom = 1008.0
+offset_bottom = 995.0
 text = "throw to self"
 
 [node name="Mana_bar" type="TextureProgressBar" parent="."]
@@ -111,7 +109,6 @@ theme = ExtResource("12_f1178")
 
 [connection signal="pressed" from="draw" to="." method="_on_draw_pressed"]
 [connection signal="pressed" from="get_potion" to="." method="_on_get_potion_pressed"]
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]
 [connection signal="pressed" from="end_turn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="throw_self" to="." method="_on_throw_self_pressed"]

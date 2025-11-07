@@ -1,19 +1,24 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
+[ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
+[ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="5_iq2rp"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="6_yicnn"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
+[ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scenes/Entities/player/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
+[ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scenes/Entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
+[ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
 stencil_flags = 2
@@ -29,21 +34,60 @@ radius = 0.25
 radius = 0.25
 height = 1.75
 
+[sub_resource type="Gradient" id="Gradient_yicnn"]
+offsets = PackedFloat32Array(0.993865, 1)
+colors = PackedColorArray(0.017469725, 0.015841575, 0.031599022, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y87ki"]
+noise_type = 2
+frequency = 0.0041
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j5c6h"]
+width = 2048
+height = 2048
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_y87ki")
+color_ramp = SubResource("Gradient_yicnn")
+invert = true
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5c6h"]
+shader = ExtResource("2_y87ki")
+shader_parameter/sky_tex = SubResource("NoiseTexture2D_j5c6h")
+shader_parameter/energy = 1.0
+shader_parameter/gamma = 1.0
+shader_parameter/scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_blend_power = 4.0
+shader_parameter/seamless_blend = 0.1
+
+[sub_resource type="Sky" id="Sky_r8aaq"]
+sky_material = SubResource("ShaderMaterial_j5c6h")
+
 [sub_resource type="Environment" id="Environment_l3v4j"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.044239994, 0.0378, 0.07, 1)
+sky = SubResource("Sky_r8aaq")
 ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
+tonemap_mode = 2
 ssao_intensity = 16.0
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b7dpg"]
+shader = ExtResource("5_iq2rp")
+shader_parameter/colorForDelete = Color(0, 0, 0, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_en4d4"]
 _data = {
 "points": PackedVector2Array(86.04938, 42.46979, -86.04938, -42.46979, 347, -102, 22.458641, -28.445454, -22.458641, 28.445454, 0, 0)
 }
 point_count = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r8aaq"]
+viewport_path = NodePath("UI+PostP/2D/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
 bg_color = Color(0, 0, 0, 0.3529412)
@@ -58,16 +102,20 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 720.00003116
+shader_parameter/pixel_resolution = 480.00001976
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.0
 shader_parameter/enable_dither = false
 shader_parameter/dither_strength = 0.10000000475
-shader_parameter/enable_glow = true
-shader_parameter/glow_strength = 0.2000000095
-shader_parameter/glow_spread = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq2rp"]
+shader = ExtResource("17_iq2rp")
+shader_parameter/pixel_resolution = 360.00001406
 shader_parameter/enable_vintage = true
-shader_parameter/vintage_strength = 0.400000019
+shader_parameter/vintage_strength = 0.50000002375
+shader_parameter/enable_glow = true
+shader_parameter/glow_strength = 0.1150000054625
+shader_parameter/glow_spread = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8g4m7"]
 shader = ExtResource("7_sefq3")
@@ -76,12 +124,13 @@ shader_parameter/r_displacement = Vector2(1, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1, 0)
 
-[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hand")]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_v0iea")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
+hand = NodePath("UI+PostP/2D/SubViewport/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
@@ -113,7 +162,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 environment = SubResource("Environment_l3v4j")
 current = true
 
-[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera" node_paths=PackedStringArray("popup_label")]
+[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera"]
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 4
 hit_from_inside = true
@@ -121,7 +170,6 @@ hit_back_faces = false
 collide_with_areas = true
 debug_shape_thickness = 1
 script = ExtResource("2_g154t")
-popup_label = NodePath("../../../2D/Ignore Post P/PopupLabel")
 
 [node name="InfiniRay" type="RayCast3D" parent="Camera_pivot/Camera"]
 target_position = Vector3(0, 0, -50)
@@ -134,6 +182,7 @@ debug_shape_thickness = 1
 script = ExtResource("3_en4d4")
 
 [node name="3D Projection" parent="." instance=ExtResource("2_cvnsp")]
+material = SubResource("ShaderMaterial_b7dpg")
 
 [node name="HandShape" type="Path2D" parent="."]
 curve = SubResource("Curve2D_en4d4")
@@ -146,16 +195,45 @@ script = ExtResource("6_yicnn")
 script = ExtResource("6_yicnn")
 end_segment = true
 
-[node name="2D" type="Control" parent="."]
+[node name="UI+PostP" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="SubviewportInputRelay" type="Control" parent="UI+PostP"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 1
+mouse_behavior_recursive = 1
+script = ExtResource("9_r8aaq")
+metadata/_edit_use_anchors_ = true
+
+[node name="2D" type="TextureRect" parent="UI+PostP"]
+visibility_layer = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_r8aaq")
+script = ExtResource("8_j5c6h")
+default_resolution = 360.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="UI" type="Control" parent="UI+PostP/2D/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 1
 
-[node name="hand" parent="2D" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
+[node name="hand" parent="UI+PostP/2D/SubViewport/UI" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -164,45 +242,43 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 path_scene = ExtResource("10_sefq3")
-chand_path = NodePath("../../HandShape")
+chand_path = NodePath("../../../../../HandShape")
 
-[node name="PlayerLabels" parent="2D" instance=ExtResource("4_vgqql")]
+[node name="PlayerLabels" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("4_vgqql")]
 visible = false
 layout_mode = 0
 mouse_filter = 1
 
-[node name="player_manager" parent="2D" instance=ExtResource("3_6t5aa")]
+[node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("14_yicnn")]
 layout_mode = 1
-mouse_filter = 2
-gold = 0
-level = 0
-xp = 0
-max_mana = 10
-max_health = 10.0
-
-[node name="Health_bar" parent="2D/player_manager" instance=ExtResource("14_yicnn")]
-layout_mode = 1
-offset_left = -318.0
-offset_top = 13.999999
-offset_right = -296.125
-offset_bottom = -896.0
-scale = Vector2(0.64, 0.8)
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(0.39, 0.39)
 mouse_filter = 2
 is_player = true
 
-[node name="Ignore Post P" type="CanvasLayer" parent="2D"]
-layer = 105
+[node name="player_stat" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("3_6t5aa")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+max_health = 10.0
 
-[node name="PopupLabel" type="Label" parent="2D/Ignore Post P"]
+[node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 263.0
-offset_right = 1.0
-offset_bottom = 292.0
+offset_left = 1324.0
+offset_top = 886.5
+offset_right = 1325.0
+offset_bottom = 916.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_en4d4")
@@ -212,10 +288,10 @@ visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
-[node name="PostP" type="CanvasLayer" parent="2D"]
-layer = 100
+[node name="DownscaleLayer" type="CanvasLayer" parent="."]
+layer = 0
 
-[node name="PostProcessing" type="ColorRect" parent="2D/PostP"]
+[node name="PSX" type="ColorRect" parent="DownscaleLayer"]
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,11 +300,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="2D/PostP"]
-layer = 110
+[node name="PostEffectLayer" type="CanvasLayer" parent="."]
+layer = 75
 
-[node name="PostProcessing2" type="ColorRect" parent="2D/PostP/CanvasLayer"]
-visible = false
+[node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
+material = SubResource("ShaderMaterial_iq2rp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AbberLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="abber" type="ColorRect" parent="AbberLayer"]
 material = SubResource("ShaderMaterial_8g4m7")
 anchors_preset = 15
 anchor_right = 1.0

@@ -2,9 +2,9 @@ extends Control
 
 
 @onready var info: Label = $Info_bg/Info_label
-@onready var poison_label: Label = $Poison_bg/Poison_label
-@onready var burn_label: Label = $Burn_bg/Burn_label
-@onready var rejuv_label: Label = $Rejuvination_bg/Rejuvination_label
+
+
+
 
 
 func _process(_delta: float) -> void:
@@ -15,7 +15,3 @@ func _process(_delta: float) -> void:
 			self.visible = false
 	if info:
 		info.text = "health: %d gold: %d \nxp: %d level: %d \ndamage: %d " % [Player.health, Player.gold, Player.xp, Player.level, Player.effects[0]]
-	if burn_label and poison_label and rejuv_label:
-		burn_label.text = str(Player.effects[1])
-		poison_label.text = str(Player.effects[2])
-		rejuv_label.text = str(Player.effects[3])

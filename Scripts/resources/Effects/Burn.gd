@@ -6,3 +6,4 @@ func end_turn(_entity):
 		#_entity.effects[1] -= 1
 	#else:
 	_entity.effects[1] = 0
+	

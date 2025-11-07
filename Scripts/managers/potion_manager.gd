@@ -40,7 +40,6 @@ func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: En
 	var total_effects: Array
 	total_effects.resize(Effect.get_length())
 	total_effects.fill(0.0)
-	print(entity.health)
 	for combo in calculate_combos(ingredients, rings):
 		var combo_effects = combo.effect_values()
 		for i in range(Effect.get_length()):
@@ -50,7 +49,6 @@ func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: En
 		total_effects[0] += 1
 	
 	
-	Effect.afflict(entity, total_effects)
-	print(entity.health)
+	await Effect.afflict(entity, total_effects)
 	
 	

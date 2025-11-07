@@ -34,7 +34,7 @@ static func call_event(entity, event: int):
 			ON_HIT:
 				ring.on_hit(entity)
 				
-		await Game.get_tree().create_timer(0.1).timeout
+		await Game.get_tree().create_timer(0).timeout
 
 
 func activate(_ings: Array[Ingredient]):

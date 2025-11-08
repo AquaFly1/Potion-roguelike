@@ -9,6 +9,7 @@ var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br
 var current_enemy: Enemy = null
 
 var camera = null
+@onready var screen_size : Vector2 = get_viewport().size
 
 var is_in_combat: bool = false
 
@@ -26,6 +27,7 @@ signal look_candle(candle: Node3D)
 var xp_end_of_fight: int = 0
 
 func _ready() -> void:
+	
 	camera = get_viewport().get_camera_3d()
 	interaction_started.connect(interaction_start_func)
 	held_chand_modified.connect(chand_modified)
@@ -77,8 +79,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("window_fullscreen"):
-		if not DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
+			
+			
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			
+			
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			
 	

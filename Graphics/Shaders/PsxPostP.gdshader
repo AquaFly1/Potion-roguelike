@@ -40,14 +40,14 @@ float bayer_dither(vec2 pos) {
 
 void fragment() {
 	vec2 pixel_uv = round(UV * (pixel_resolution + 1.0) - (UV - 0.5))/ (pixel_resolution + 1.0);
+	//vec2 pixel_uv = UV;
 
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
-	
-	
+
+
 
 	float steps = float(color_steps);
-	color = color + ign(FRAGCOORD.xy)*0.02;
-	//color = vec3(1) * ign(FRAGCOORD.xy);
+	color = color + ign(FRAGCOORD.xy)*0.2;
 	color = floor(color * steps + 0.5) / steps;
 
 

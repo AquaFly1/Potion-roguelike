@@ -107,7 +107,6 @@ size_2d_override = Vector2i(64, 64)
 size_2d_override_stretch = true
 
 [node name="Sprite2D" type="Sprite2D" parent="VFX/SubViewport"]
-visible = false
 material = SubResource("ShaderMaterial_4oths")
 rotation = 1.5707964
 texture = SubResource("GradientTexture2D_0s7u1")

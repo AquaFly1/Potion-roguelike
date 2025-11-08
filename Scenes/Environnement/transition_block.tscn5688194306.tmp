@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxewjyxiyo7my"]
+[gd_scene load_steps=12 format=3 uid="uid://cxewjyxiyo7my"]
 
 [ext_resource type="Script" uid="uid://6frvg0obaj15" path="res://Scripts/environment/room_trans_main.gd" id="1_6v614"]
 [ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/room_trans_sides.gd" id="2_ha7ph"]
@@ -27,17 +27,10 @@ material = SubResource("StandardMaterial3D_y8lxq")
 
 [sub_resource type="Gradient" id="Gradient_wb8l8"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4q0dg"]
 gradient = SubResource("Gradient_wb8l8")
-
-[sub_resource type="Gradient" id="Gradient_4q0dg"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_r6ji1"]
-gradient = SubResource("Gradient_4q0dg")
 
 [node name="Transition-nx" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -113,7 +106,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 sorting_offset = 6.38
 size = Vector3(1, 1, 1)
 texture_albedo = SubResource("GradientTexture2D_4q0dg")
-texture_emission = SubResource("GradientTexture1D_r6ji1")
+modulate = Color(0, 0, 0, 1)
 upper_fade = 1e-05
 lower_fade = 1e-05
 cull_mask = 1048573

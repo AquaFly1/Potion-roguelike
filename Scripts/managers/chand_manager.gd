@@ -9,6 +9,8 @@ extends Control
 var mouse_on_potion: bool = false
 var is_dragging: bool = false
 
+var was_on_pot: bool = false
+
 var selected_cards: Array[Card]
 var cards: Array[Card]
 var card_order: Array[Card] #card order for making sure we click the right card
@@ -175,7 +177,18 @@ func _input(event):
 						play_selected_cards()
 					else:
 						is_dragging = false
-						
+				elif Game.current_enemy:
+					print(Game.current_enemy)
+					if was_on_pot:
+						print(potion)
+						await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
+						potion = []
+						Game.current_enemy = null
+						has_potion = false
+						#await get_tree().create_timer(1.0).timeout
+						Game.turn_ended.emit()
+					else:
+						was_on_pot = false
 func play_selected_cards():
 	var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
@@ -189,3 +202,10 @@ func play_selected_cards():
 		draw(played_cards)
 		selected_cards = []
 	_update_chand_layout()
+
+
+func _on_potion_button_down() -> void:
+	was_on_pot = true
+
+func _on_potion_button_up() -> void:
+	was_on_pot = false

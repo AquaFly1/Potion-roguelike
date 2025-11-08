@@ -1,13 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://xwd75vy5re77"]
+[gd_scene load_steps=7 format=3 uid="uid://xwd75vy5re77"]
 
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/managers/chand_manager.gd" id="1_riyg6"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card Stuff/Card.tscn" id="2_jjkdi"]
-[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_f1178"]
-[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="4_06x3b"]
-[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="5_v334f"]
-[ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="6_iyafx"]
-[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="7_3roop"]
-[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="8_drrq4"]
 [ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Graphics/temporary_art/potion_bar_empty.aseprite" id="9_63gbn"]
 [ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Graphics/temporary_art/potion_bar.aseprite" id="10_25dlp"]
 [ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Graphics/temporary_art/potion.aseprite" id="11_jjkdi"]
@@ -24,7 +18,6 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_riyg6")
 card_scene = ExtResource("2_jjkdi")
-deck = Array[ExtResource("3_f1178")]([ExtResource("4_06x3b"), ExtResource("4_06x3b"), ExtResource("5_v334f"), ExtResource("5_v334f"), ExtResource("6_iyafx"), ExtResource("7_3roop"), ExtResource("7_3roop"), ExtResource("8_drrq4"), ExtResource("8_drrq4")])
 
 [node name="draw" type="Button" parent="."]
 visibility_layer = 2
@@ -112,6 +105,7 @@ theme = ExtResource("12_f1178")
 [connection signal="pressed" from="throw_pot" to="." method="_on_throw_pot_pressed"]
 [connection signal="pressed" from="end_turn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="throw_self" to="." method="_on_throw_self_pressed"]
+[connection signal="button_down" from="Potion" to="." method="_on_potion_button_down"]
 [connection signal="button_up" from="Potion" to="." method="_on_potion_button_up"]
 [connection signal="mouse_entered" from="Potion" to="." method="_on_potion_mouse_entered"]
 [connection signal="mouse_exited" from="Potion" to="." method="_on_potion_mouse_exited"]

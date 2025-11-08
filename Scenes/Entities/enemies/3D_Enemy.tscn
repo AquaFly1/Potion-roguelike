@@ -36,9 +36,9 @@ shader_parameter/noise_tex = SubResource("NoiseTexture2D_4oths")
 shader_parameter/alpha_ramp = SubResource("GradientTexture2D_1hpgq")
 shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
 shader_parameter/fire_power_factor = 0.105
-shader_parameter/fire_intensity = 1.8050000000000002
+shader_parameter/fire_intensity = 1.805
 shader_parameter/fire_start = 1.0
-shader_parameter/ball_size = 1.7149999999999999
+shader_parameter/ball_size = 1.715
 
 [sub_resource type="Gradient" id="Gradient_yrgos"]
 
@@ -209,4 +209,6 @@ offset_top = -133.0
 offset_right = 71.328
 offset_bottom = -6.2720003
 
+[connection signal="mouse_entered" from="Effects/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Effects/Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Effects/Button" to="." method="_on_button_pressed"]

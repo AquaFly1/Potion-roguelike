@@ -1153,6 +1153,7 @@ _data = {
 
 [node name="PostProcess" type="MeshInstance3D" parent="."]
 transform = Transform3D(14.7768, 0, 0, 0, 8.16895, 0.0831253, 0, -1.56777, 0.433129, 0.0033278465, 0.72268534, 1.3311201)
+layers = 1024
 mesh = SubResource("BoxMesh_cm0pq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_glv2v")

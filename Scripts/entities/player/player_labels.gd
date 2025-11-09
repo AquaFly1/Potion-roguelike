@@ -5,7 +5,7 @@ extends Control
 
 
 func _ready() -> void:
-	Player.rings = Game.player_rings
+	pass
 
 func _process(_delta: float) -> void:
 	if self:

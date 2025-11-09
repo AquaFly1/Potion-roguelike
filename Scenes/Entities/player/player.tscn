@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
@@ -129,7 +129,7 @@ shader_parameter/b_displacement = Vector2(-1, 0)
 collision_layer = 17
 collision_mask = 17
 floor_max_angle = 1.712168
-script = ExtResource("1_v0iea")
+script = ExtResource("1_r8aaq")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
 hand = NodePath("UI+PostP/2D/SubViewport/UI/hand")

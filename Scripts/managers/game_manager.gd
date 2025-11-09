@@ -4,6 +4,9 @@ extends Node
 @export var combos: Array[Combo]
 @export var effects: Array[Effect]
 
+@export var  player_rings: Array[Ring]
+@export var player_max_health: int = 10
+
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 
 var current_enemy: Enemy = null
@@ -27,7 +30,8 @@ signal look_candle(candle: Node3D)
 var xp_end_of_fight: int = 0
 
 func _ready() -> void:
-	
+	Player.rings = player_rings
+	Player.max_health = player_max_health
 	camera = get_viewport().get_camera_3d()
 	interaction_started.connect(interaction_start_func)
 	held_chand_modified.connect(chand_modified)

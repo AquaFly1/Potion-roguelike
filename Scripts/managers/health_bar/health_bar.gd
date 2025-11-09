@@ -8,6 +8,7 @@ extends Control
 
 @export var is_player = false
 
+@onready var anim_text: Label = $Anim_panel/Anim_text
 
 var entity: Entity
 
@@ -40,12 +41,16 @@ func update_bar(_end_turn: bool = false) -> void:
 		[rejuv, "size", entity.effects[3]/entity.max_health * max_size, _end_turn],
 		[shield ,"size" , entity.effects[4]/entity.max_health * max_size]
 			]:
+		
 		if i[0].get(i[1]).x != i[2]: #if theres a difference
 			if len(i) == 4 and i[3] == true: #if parallel
 				tween.parallel().tween_property(i[0], i[1] , Vector2( i[2] , i[0].get(i[1]).y ) , 0.5)
 			else:
 				tween.tween_property(i[0], i[1] , Vector2( i[2] , i[0].get(i[1]).y ) , 0.5)
-		
+			await tween.finished
+			anim_text.text = "Applying %s" % i[0].name
+			
+			
 	await tween.finished
 	
 	

@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
+[ext_resource type="Script" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="5_iq2rp"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
@@ -98,6 +99,9 @@ expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq2rp"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
@@ -260,16 +264,6 @@ scale = Vector2(0.39, 0.39)
 mouse_filter = 2
 is_player = true
 
-[node name="player_stat" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("3_6t5aa")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-mouse_filter = 2
-max_health = 10.0
-
 [node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
 visible = false
 layout_mode = 1
@@ -291,8 +285,25 @@ visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
+[node name="Game_over_panel" type="Panel" parent="UI+PostP/2D/SubViewport/UI"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iq2rp")
+
+[node name="GO_text" type="Label" parent="UI+PostP/2D/SubViewport/UI/Game_over_panel"]
+layout_mode = 0
+offset_left = 234.385
+offset_top = 149.295
+offset_right = 465.385
+offset_bottom = 194.29501
+scale = Vector2(3.93, 3.93)
+text = "Game Over"
+
 [node name="DownscaleLayer" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 
 [node name="PSX" type="ColorRect" parent="DownscaleLayer"]
 material = SubResource("ShaderMaterial_g154t")
@@ -305,6 +316,7 @@ mouse_filter = 2
 
 [node name="PostEffectLayer" type="CanvasLayer" parent="."]
 layer = 75
+visible = false
 
 [node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
 material = SubResource("ShaderMaterial_iq2rp")
@@ -317,6 +329,7 @@ mouse_filter = 2
 
 [node name="AbberLayer" type="CanvasLayer" parent="."]
 layer = 100
+visible = false
 
 [node name="abber" type="ColorRect" parent="AbberLayer"]
 material = SubResource("ShaderMaterial_8g4m7")

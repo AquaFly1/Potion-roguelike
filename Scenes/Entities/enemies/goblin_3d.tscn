@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx0v1xfgdcqa2"]
+[gd_scene load_steps=8 format=3 uid="uid://bx0v1xfgdcqa2"]
 
 [ext_resource type="PackedScene" uid="uid://dv80o7a0f4uou" path="res://Scenes/Entities/enemies/3D_Enemy.tscn" id="1_nqjfx"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_airuq"]
 [ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/resources/potion.gd" id="3_k8ixw"]
 [ext_resource type="Resource" uid="uid://bgy0mnllkauw2" path="res://Resources/premade potions/fireball_potion.tres" id="4_1wrfg"]
 [ext_resource type="Resource" uid="uid://b8q4rvr7t6aao" path="res://Resources/premade potions/Heal_potion.tres" id="5_fjvxl"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nqjfx"]
+viewport_path = NodePath("VFX/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nqjfx"]
 size = Vector3(0.275, 0.38, 0.05)
@@ -17,16 +20,15 @@ potions = Array[ExtResource("3_k8ixw")]([ExtResource("4_1wrfg"), ExtResource("5_
 [node name="Enemy_sprite" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21802379, 0)
 
-[node name="Camera3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
+[node name="VFX" parent="." index="1"]
+texture = SubResource("ViewportTexture_nqjfx")
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_nqjfx")
 
-[node name="Effects" parent="." index="6"]
+[node name="Effects" parent="." index="5"]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0

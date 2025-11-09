@@ -87,7 +87,3 @@ func die():
 
 func _on_button_mouse_entered() -> void:
 	Game.current_enemy = self
-
-
-func _on_button_mouse_exited() -> void:
-	Game.current_enemy = null

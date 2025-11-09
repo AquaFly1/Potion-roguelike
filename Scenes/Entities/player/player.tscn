@@ -1,22 +1,23 @@
-[gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=38 format=3 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
+[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
-[ext_resource type="Script" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
+[ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="5_iq2rp"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="6_yicnn"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
-[ext_resource type="Shader" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
+[ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scripts/environment/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scripts/entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
+[ext_resource type="Script" uid="uid://bv2gaws1frp17" path="res://Scripts/managers/game_over_panel.gd" id="16_iq2rp"]
 [ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
@@ -228,14 +229,18 @@ disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(1920, 1080)
+size = Vector2i(640, 480)
 size_2d_override = Vector2i(1920, 1080)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="UI" type="Control" parent="UI+PostP/2D/SubViewport"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
 [node name="hand" parent="UI+PostP/2D/SubViewport/UI" node_paths=PackedStringArray("chand_path") instance=ExtResource("9_7u22i")]
@@ -265,21 +270,15 @@ is_player = true
 [node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.85
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 960.0
-offset_top = 879.0
-offset_right = 961.0
-offset_bottom = 924.0
+anchor_bottom = 0.85
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_en4d4")
 horizontal_alignment = 1
-visible_characters = 0
-visible_ratio = 0.517
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
@@ -289,6 +288,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iq2rp")
+script = ExtResource("16_iq2rp")
 
 [node name="GO_text" type="Label" parent="UI+PostP/2D/SubViewport/UI/Game_over_panel"]
 layout_mode = 0

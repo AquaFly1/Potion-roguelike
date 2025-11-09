@@ -48,7 +48,6 @@ func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: En
 	if not drank:
 		total_effects[0] += 1
 	
-	print(total_effects)
 	await Effect.afflict(entity, total_effects)
 	
 	

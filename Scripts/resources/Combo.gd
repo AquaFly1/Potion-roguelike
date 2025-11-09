@@ -19,7 +19,7 @@ func effect_values() -> Array:
 		eff_array.resize(Effect.get_length())
 		eff_array.fill(0)
 		for i in effects.keys():
-			eff_array[Effect.find(i)] = effects[i]
+			eff_array[Effect.index(i)] = effects[i]
 	return eff_array
 
 ## defines the upgrade dictionary by halving each value of the base effects and rounding them up

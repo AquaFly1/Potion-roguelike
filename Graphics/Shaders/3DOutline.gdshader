@@ -46,6 +46,6 @@ void fragment() {
 	}
 
 	// Enabling this line will cut out the image and leave the outline
-	//ALPHA -= col.a;
+	ALPHA -= col.a;
 	// if you set blend to add, and set this as a second pass, you'll get a better glow effect
 }

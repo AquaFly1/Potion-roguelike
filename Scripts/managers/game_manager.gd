@@ -6,7 +6,7 @@ extends Node
 
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
-
+#u
 var current_enemy: Enemy = null
 
 var camera = null
@@ -46,6 +46,8 @@ func _ready() -> void:
 func call_enemies_turn():
 	for i in enemy_list.duplicate():
 		await i.start_turn()
+		print("waiting")
+		await get_tree().create_timer(0.5).timeout
 	if enemy_list.size() != 0:
 		player_start_turn.emit()
 	else:
@@ -53,8 +55,7 @@ func call_enemies_turn():
 
 func call_player_turn():
 	if enemy_list.size() != 0:
-		Player.start_turn()
-		await turn_ended
+		await Player.start_turn()
 		enemy_start_turn.emit()
 	
 

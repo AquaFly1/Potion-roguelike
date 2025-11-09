@@ -8,6 +8,8 @@ class_name Entity
 
 @onready var effects: Array[float]
 
+var health_bar : Control
+
 var health: float = 0
 
 
@@ -17,33 +19,36 @@ func _ready() -> void:
 	health = max_health
 
 func take_damage(amount):
+	update_effect_vfx(Effect.effects[Effect.index("Damage")])
+	
 	var dmg = amount
-	amount -= effects[4]
+	if effects[4] > 0:
+		amount -= min(amount,effects[4])
 
-	effects[4] -= max(dmg,0)
+		effects[4] -= min(dmg,effects[4])
 
 	health -= amount
 	effects[0] = 0
 
 func start_turn():
+	health_bar.anim_text.text = "Starting turn"
 	await Effect.call_event(self, Effect.START_TURN)
 	await Ring.call_event(self, Ring.START_TURN)
 	await get_tree().create_timer(0.5).timeout
-	if health <= 0:
-		await die() 
+	
 	
 func end_turn():
-	
-	await get_tree().create_timer(0.4).timeout
+	health_bar.anim_text.text = "Ending turn"
 	
 	await Effect.call_event(self, Effect.END_TURN)
 	await Ring.call_event(self, Ring.END_TURN)
-	
 	await get_tree().create_timer(0.5).timeout
 	
-	if health <= 0:
-		await die() 
 	
+	
+func update_effect_vfx(_effect):
+	pass
+
 
 func _process(_delta: float) -> void:
 	#if health:
@@ -55,3 +60,4 @@ func _process(_delta: float) -> void:
 
 func die():
 	pass
+	

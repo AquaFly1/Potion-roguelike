@@ -1,9 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=32 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
+[ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="2_4oths"]
 [ext_resource type="Shader" uid="uid://biqm2a7trige6" path="res://Graphics/Shaders/ennemyFire.gdshader" id="2_5faar"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_aft1i"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="4_5faar"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrgos"]
+render_priority = 0
+shader = ExtResource("2_4oths")
+shader_parameter/sprite_texture = ExtResource("2_aft1i")
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/glowSize = 0.0
+shader_parameter/glowDensity = 1
+shader_parameter/glowRadialCoverage = 4
+shader_parameter/glowAngle = 1.57
+shader_parameter/glowSharpness = 1.0
+shader_parameter/alphaThreshold = 0.2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5faar"]
 viewport_path = NodePath("VFX/SubViewport")
@@ -45,47 +58,105 @@ shader_parameter/ball_size = 1.715
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0s7u1"]
 gradient = SubResource("Gradient_yrgos")
 
-[sub_resource type="Gradient" id="Gradient_faj7i"]
+[sub_resource type="Gradient" id="Gradient_1hpgq"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.33, 0.23694003, 0.1749, 1)
+offsets = PackedFloat32Array(0, 0.5505319, 1)
+colors = PackedColorArray(0.17279999, 0.32, 0.23903999, 0.48235294, 0.29854003, 0.59, 0.2832, 0.2901961, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vtixw"]
-gradient = SubResource("Gradient_faj7i")
-width = 32
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yv5al"]
+gradient = SubResource("Gradient_1hpgq")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.48290598)
 
-[sub_resource type="Gradient" id="Gradient_vtixw"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0091743115)
-colors = PackedColorArray(0.23280002, 0.36, 0.21600002, 1, 0.23280002, 0.36, 0.21600002, 1)
+[sub_resource type="Curve" id="Curve_yrgos"]
+_data = [Vector2(0, 1), 0.0, -4.814286, 0, 0, Vector2(0.43575418, 0.010405302), 0.028591763, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aft1i"]
-gradient = SubResource("Gradient_vtixw")
-width = 32
+[sub_resource type="CurveTexture" id="CurveTexture_0s7u1"]
+texture_mode = 1
+curve = SubResource("Curve_yrgos")
 
-[sub_resource type="Gradient" id="Gradient_aft1i"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.406515, 0.41, 0.2009, 1)
+[sub_resource type="Curve" id="Curve_4oths"]
+_data = [Vector2(0, 1), 0.0, -0.8251223, 0, 0, Vector2(0.7067039, 0.8089888), -0.030007647, -0.030007647, 0, 0, Vector2(1, 0.022471905), -12.433073, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5faar"]
-gradient = SubResource("Gradient_aft1i")
-width = 32
+[sub_resource type="CurveTexture" id="CurveTexture_yrgos"]
+curve = SubResource("Curve_4oths")
+
+[sub_resource type="Curve" id="Curve_5faar"]
+_data = [Vector2(0.21081081, 0), 0.0, 11.404112, 0, 0, Vector2(0.25675675, 1), 0.2815831, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4oths"]
+curve = SubResource("Curve_5faar")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4oths"]
+particle_flag_disable_z = true
+angle_min = -100.399994
+angle_max = 57.30001
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+radial_velocity_min = 25.229977
+radial_velocity_max = 30.279978
+radial_velocity_curve = SubResource("CurveTexture_0s7u1")
+gravity = Vector3(0, -15, 0)
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_yrgos")
+hue_variation_min = -0.08000002
+hue_variation_max = 0.029999977
+turbulence_influence_min = 0.068
+turbulence_influence_max = 0.07
+turbulence_influence_over_life = SubResource("CurveTexture_4oths")
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 1
 
 [sub_resource type="Gradient" id="Gradient_4oths"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.33, 0.1749, 0.1749, 1)
+offsets = PackedFloat32Array(0.58776593, 1)
+colors = PackedColorArray(0.17955332, 0.46, 0.1748, 0.3137255, 0.2832, 0.59, 0.3650133, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_yrgos"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yrgos"]
 gradient = SubResource("Gradient_4oths")
 width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.48290598)
+
+[sub_resource type="Curve" id="Curve_0s7u1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25139666, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.340605, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1hpgq"]
+curve = SubResource("Curve_0s7u1")
+
+[sub_resource type="Curve" id="Curve_yv5al"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24022345, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2xgx5"]
+curve = SubResource("Curve_yv5al")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0s7u1"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 4.9999776
+radial_velocity_max = 4.9999776
+radial_velocity_curve = SubResource("CurveTexture_2xgx5")
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_1hpgq")
 
 [node name="3dEnemy" type="Node3D"]
 script = ExtResource("1_vtixw")
 
 [node name="Enemy_sprite" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_yrgos")
 texture_filter = 0
 texture = ExtResource("2_aft1i")
 
@@ -104,13 +175,34 @@ canvas_item_default_texture_filter = 0
 gui_disable_input = true
 size = Vector2i(64, 64)
 size_2d_override = Vector2i(64, 64)
-size_2d_override_stretch = true
 
-[node name="Sprite2D" type="Sprite2D" parent="VFX/SubViewport"]
+[node name="Fire" type="Sprite2D" parent="VFX/SubViewport"]
+visible = false
 material = SubResource("ShaderMaterial_4oths")
 rotation = 1.5707964
 texture = SubResource("GradientTexture2D_0s7u1")
 offset = Vector2(32, -32)
+
+[node name="PoisonBubble" type="GPUParticles2D" parent="VFX/SubViewport"]
+visible = false
+z_index = 10
+position = Vector2(32, 50.29)
+amount = 4
+sub_emitter = NodePath("PoisonCloud")
+texture = SubResource("GradientTexture2D_yv5al")
+lifetime = 1.5
+explosiveness = 0.33
+randomness = 0.37
+trail_lifetime = 0.77
+trail_sections = 2
+trail_section_subdivisions = 3
+process_material = SubResource("ParticleProcessMaterial_4oths")
+
+[node name="PoisonCloud" type="GPUParticles2D" parent="VFX/SubViewport/PoisonBubble"]
+z_index = -20
+texture = SubResource("GradientTexture2D_yrgos")
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_0s7u1")
 
 [node name="gui_origin" type="Marker3D" parent="."]
 
@@ -130,72 +222,13 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Burn_icon" type="TextureRect" parent="Effects"]
-visible = false
-layout_mode = 0
-offset_left = -33.0
-offset_top = 10.0
-offset_right = -1.0
-offset_bottom = 42.0
-texture = SubResource("GradientTexture1D_vtixw")
-
-[node name="Burn_label" type="Label" parent="Effects/Burn_icon"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-text = "vsdv"
-
-[node name="Poison_icon" type="TextureRect" parent="Effects"]
-visible = false
-layout_mode = 0
-offset_top = 10.0
-offset_right = 32.0
-offset_bottom = 42.0
-texture = SubResource("GradientTexture1D_aft1i")
-
-[node name="Poison_label" type="Label" parent="Effects/Poison_icon"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-text = "vsd"
-
-[node name="Rejuvination_icon" type="TextureRect" parent="Effects"]
-visible = false
-layout_mode = 0
-offset_left = 34.0
-offset_top = 10.0
-offset_right = 66.0
-offset_bottom = 42.0
-texture = SubResource("GradientTexture1D_5faar")
-
-[node name="Rejuvination_label" type="Label" parent="Effects/Rejuvination_icon"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-text = "aaa"
-
-[node name="Health_icon" type="TextureRect" parent="Effects"]
-visible = false
-layout_mode = 0
-offset_left = -64.0
-offset_top = 10.0
-offset_right = -32.0
-offset_bottom = 42.0
-texture = SubResource("GradientTexture1D_yrgos")
-
-[node name="Health_label" type="Label" parent="Effects/Health_icon"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-text = "vsdv"
-
 [node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
 layout_mode = 1
 offset_left = -32.000008
 offset_top = -1.8
 offset_right = -32.000008
 offset_bottom = -1.7999992
-scale = Vector2(0.08, 0.1)
+scale = Vector2(0.095, 0.119)
 
 [node name="Button" type="Button" parent="Effects"]
 layout_mode = 1
@@ -209,5 +242,4 @@ offset_right = 71.328
 offset_bottom = -6.2720003
 
 [connection signal="mouse_entered" from="Effects/Button" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Effects/Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Effects/Button" to="." method="_on_button_pressed"]

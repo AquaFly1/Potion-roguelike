@@ -25,7 +25,7 @@ static func define_effects(array):
 	effects = array
 	
 ##Returns the array of all valid  [member effects], in order. 
-##[br]Use [code]Effect.find(name)[/code] to find the index of an [member effect].
+##[br]Use [code]Effect.index(name)[/code] to find the index of an [member effect].
 static func get_effects():
 	return effects.duplicate()
 
@@ -34,7 +34,7 @@ static func get_length():
 	return effects.size()
 
 ##Returns the index of the [member effect], by name or with the effect's [member resource].
-static func find(effect_name_or_ressource):
+static func index(effect_name_or_ressource):
 	if effect_name_or_ressource is Effect:
 		if effects.find(effect_name_or_ressource) != -1: 
 			return effects.find(effect_name_or_ressource)
@@ -42,7 +42,7 @@ static func find(effect_name_or_ressource):
 	else:
 		for i in effects:
 			if i.name == effect_name_or_ressource:
-				return i
+				return effects.find(i)
 	push_warning("No valid effect of name", effect_name_or_ressource)
 
 ##Activates the [param Effect.EVENT()] function of all valid  [member effects] .
@@ -52,7 +52,6 @@ static func find(effect_name_or_ressource):
 ## halt the rest of the code, ensuring a cohesive order.
 static func call_event(entity, event: int):
 	for i in range(len(effects)):
-		
 		if entity.effects[i] > 0:
 			match event: #all of the possible Effect.EVENT types.
 				START_TURN:
@@ -65,8 +64,10 @@ static func call_event(entity, event: int):
 					effects[i].on_damage(entity)
 				ON_HIT:
 					effects[i].on_hit(entity)
-				
-	await Game.get_tree().create_timer(0.5).timeout
+					
+	
+	if entity.health <= 0:
+		entity.die()	
 
 static func afflict(entity, effects_list, call_on_hit = true):
 	for i in range(len(effects)):
@@ -74,7 +75,7 @@ static func afflict(entity, effects_list, call_on_hit = true):
 		if call_on_hit: 
 			if entity.effects[i] > 0: 
 				effects[i].on_hit(entity)
-		await entity.health_bar.update_bar()
+		await entity.health_bar.update_bar(i)
 		
 	await Game.get_tree().create_timer(1).timeout
 	

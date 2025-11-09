@@ -15,7 +15,7 @@ var selected_cards: Array[Card]
 var cards: Array[Card]
 var card_order: Array[Card] #card order for making sure we click the right card
 
-var has_potion = false
+
 
 var test_node: Node2D
 
@@ -24,10 +24,9 @@ var test_node: Node2D
 
 @export var chand_path: Path2D
 
-
+var has_potion = false
 var use_deck: Array[Ingredient]
 var potion: Array[Ingredient] = []
-
 
 
 
@@ -112,21 +111,22 @@ func on_card_pressed(_card: Card):
 
 				
 func _on_throw_pot_pressed() -> void:
-	if Game.current_enemy:
+	if Game.current_enemy and has_potion:
+		has_potion = false
 		await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
 		potion = []
 		Game.current_enemy = null
-		has_potion = false
-		#await get_tree().create_timer(1.0).timeout
-		Game.turn_ended.emit()
+		
+		Player.turn_ended.emit()
 	
 
 func _on_throw_self_pressed() -> void:
-	await PotionMan.throw_potion(potion, Player.rings, Player, true)
-	potion = []
-	has_potion = false
-	#await get_tree().create_timer(1.0).timeout
-	Game.turn_ended.emit()
+	if has_potion:
+		has_potion = false
+		await PotionMan.throw_potion(potion, Player.rings, Player, true)
+		potion = []
+		
+		Player.turn_ended.emit()
 
 func _on_get_potion_pressed() -> void:
 	if Player.mana > 0:
@@ -177,18 +177,16 @@ func _input(event):
 						play_selected_cards()
 					else:
 						is_dragging = false
-				elif Game.current_enemy:
-					print(Game.current_enemy)
-					if was_on_pot:
-						print(potion)
-						await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
-						potion = []
-						Game.current_enemy = null
-						has_potion = false
-						#await get_tree().create_timer(1.0).timeout
-						Game.turn_ended.emit()
-					else:
-						was_on_pot = false
+				#elif Game.current_enemy:
+					#if was_on_pot:
+						#await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
+						#potion = []
+						#Game.current_enemy = null
+						#has_potion = false
+						##await get_tree().create_timer(1.0).timeout
+						#Player.turn_ended.emit()
+					#else:
+						#was_on_pot = false
 func play_selected_cards():
 	var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:

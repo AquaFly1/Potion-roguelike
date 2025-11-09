@@ -70,6 +70,7 @@ func interaction_end_func():
 	is_in_combat = false
 	Player.xp += xp_end_of_fight
 	xp_end_of_fight = 0
+	
 func interaction_start_func():
 	player_start_turn.emit()
 func card_pressed_func(_card):

@@ -1,8 +1,8 @@
-extends StaticBody3D
+extends Node3D
 
 @export var cards: Array[Ingredient]
 @onready var card_label: Label = $card_label
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var collision_shape_3d: CollisionShape3D = $Chest/CollisionShape3D
 
 func open_chest():
 	var card = cards.pick_random()

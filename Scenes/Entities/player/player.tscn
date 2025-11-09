@@ -1,17 +1,17 @@
 [gd_scene load_steps=37 format=3 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/character_controller.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/player_controller.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://drhlo4inut523" path="res://Scenes/Hand/hand_projection.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="2_y87ki"]
 [ext_resource type="PackedScene" uid="uid://d3rktbxstbuhc" path="res://Scenes/managers/player_manager.tscn" id="3_6t5aa"]
-[ext_resource type="Script" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
+[ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="5_iq2rp"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Script" uid="uid://crwvm2058e0ct" path="res://Scripts/cards/CardPath2D.gd" id="6_yicnn"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
-[ext_resource type="Shader" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
+[ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scripts/environment/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
@@ -126,6 +126,7 @@ shader_parameter/b_displacement = Vector2(-1, 0)
 [node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hand")]
 collision_layer = 17
 collision_mask = 17
+floor_max_angle = 1.712168
 script = ExtResource("1_v0iea")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
@@ -134,6 +135,7 @@ metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+layers = 1025
 light_energy = 0.1
 light_indirect_energy = 0.0
 shadow_enabled = true
@@ -158,6 +160,7 @@ shape = SubResource("CapsuleShape3D_6t5aa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
 [node name="Camera" type="Camera3D" parent="Camera_pivot"]
+cull_mask = 1045503
 environment = SubResource("Environment_l3v4j")
 current = true
 

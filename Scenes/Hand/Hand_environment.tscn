@@ -1162,6 +1162,7 @@ environment = ExtResource("2_uujy1")
 
 [node name="Camera2" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.4, 2)
+cull_mask = 3072
 projection = 1
 size = 3.65625
 near = 0.1
@@ -1401,6 +1402,8 @@ bones/30/rotation = Quaternion(-0.6927526, 0.0004821056, -0.040881928, 0.7200154
 bones/30/scale = Vector3(1, 1, 0.99999994)
 
 [node name="hand" type="MeshInstance3D" parent="hand2/ArmRight/Skeleton3D"]
+layers = 1024
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_2lkj8")
 skin = SubResource("Skin_27gqo")
 
@@ -1434,5 +1437,6 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.002530843, 0.99999684, 0, -0.99999684, -0.002530843, 0, 3.51133, -1.39321)
+visible = false
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.241

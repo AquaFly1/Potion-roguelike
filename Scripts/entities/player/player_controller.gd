@@ -1,55 +1,124 @@
-# Example GDScript for camera control
-extends Node3D # Or your player node
+extends CharacterBody3D
 
-@export var mouse_sensitivity: float = 0.5
-@export var vertical_rotation_limit: float = PI/3 # 60 degrees
 
-var mouse_captured: bool = false
-var mouse_motion_vector: Vector2 = Vector2.ZERO
 
-func _ready():
-	pass
-	# Capture mouse on left-click and set the camera to captured mode
-	#input_event.connect(_on_input_event) # Assuming input_event is an input action
-	# Alternatively, capture on mouse_entered signal of the viewport
+#region variables
+@export var walk_speed: float = 10.0
+@export var acceleration: float = 0.1
+@export var acceleration_air_mult: float = 0.5
+@export var jump_force: float = 7
+@export var GRAVITY: float = 20
+@export var mouse_sensitivity: float = 0.001
+@export var camera: Node3D
 
-func _input(event):
-	# Check if the mouse is captured before processing motion\
-	if not mouse_captured:
-		return
+var dir: Vector3 = Vector3.ZERO
+var h_rot: float = 0
+@onready var pivot: Node3D = $Camera_pivot
+var mouse_mode_capture: bool = true
 
-	if event is InputEventMouseMotion:
-		# Get the relative movement of the mouse
-		mouse_motion_vector += event.relative
+@onready var hand_display: Node2D = $"3D Projection"
+@export var hand: Control
+
+var horizontal_velocity: Vector3
+var vertical_velocity: Vector3
+
+var anim_y: float = 0
+var anim_time: float = 0
+#endregion
+func _ready() -> void:
+	Player.node = self
+	Game.interaction_ended.connect(end_interaction)
+	Game.interaction_started.connect(start_interaction)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_mode_capture = true
+	Player.player_ready.emit()
+	
 
 func _unhandled_input(event):
-	# Handle mouse capture and release
-	if event.is_action_pressed("ui_accept"): # Assuming ui_accept is the capture action (e.g., left-click)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		mouse_captured = true
-		mouse_motion_vector = Vector2.ZERO # Reset motion vector on capture
-		
-	if event.is_action_pressed("ui_cancel"): # Assuming ui_cancel is the release action (e.g., Escape key)
+	
+	if event is InputEventMouseMotion and not Game.is_in_combat:
+		# Yaw on Player
+		rotate_y(-event.relative.x * mouse_sensitivity)
+		# Pitch on Pivot
+		pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		# Clamp pitch to avoid flipping
+		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-85), deg_to_rad(75))
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_captured = false
+		mouse_mode_capture = false
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		mouse_mode_capture = true
+func _physics_process(delta):
+	#if Game.is_in_combat:
+		#return
+	dir = Vector3.ZERO
+	h_rot = pivot.global_transform.basis.get_euler().y
+#region horizontal
+	#if (Input.is_action_pressed("forward")
+	#|| Input.is_action_pressed("backward") 
+	#|| Input.is_action_pressed("left") 
+	#|| Input.is_action_pressed("right")):
+	dir = Vector3(Input.get_action_strength("right") 
+								- Input.get_action_strength("left"),
+								0,
+								Input.get_action_strength("backward") 
+								- Input.get_action_strength("forward"))
+	camera.rotation.z = lerp(camera.rotation.z,-dir.x/40.0,0.1)
+	dir = dir.rotated(Vector3.UP, h_rot).normalized()
+			
+	
+			
+	dir = dir.normalized()
+	
+		
+	horizontal_velocity = horizontal_velocity.lerp(
+		dir.normalized() * walk_speed, 
+		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
+	velocity.z = horizontal_velocity.z
+	
+	velocity.x = horizontal_velocity.x
+		
+#endregion
 
-func _process(delta):
-	if not mouse_captured:
-		return
+#region vertical
+	#gravity and jump
+	if is_on_floor():
+		velocity.y = 0
+		if Input.is_action_just_pressed("jump"):
+			vertical_velocity = Vector3.UP*jump_force
+			velocity.y = vertical_velocity.y
+	else:
+		velocity.y -= GRAVITY * delta
+#endregion
+		
+#region small anims
+	if velocity.distance_to(Vector3.ZERO) > 2 and is_on_floor():
+		anim_time += delta
+		anim_y = (cos(anim_time*15-PI)+1)*-10
 
-	# Rotate the camera pivot (y-axis) and camera (x-axis)
-	rotate_y(-mouse_motion_vector.x * mouse_sensitivity * delta)
-	get_node("Camera3D").rotate_x(-mouse_motion_vector.y * mouse_sensitivity * delta)
+	else:
+		if is_on_floor():
+			if cos(anim_time*15) < 0.98:
+				anim_time += delta
+				anim_y = (cos(anim_time*15-PI)+1)*-10
+			
+			else:
+				anim_time = 0
+		else:
+			anim_y = lerpf(anim_y,0,0.1)	
+			anim_time = 0 
+		
+	hand_display.transform.origin.y = anim_y
+#endregion
+	# Move character
+	
+	move_and_slide()
 
-	# Clamp the vertical rotation
-	var camera_node = get_node("Camera3D")
-	var current_rotation_x = camera_node.rotation.x
-	camera_node.rotation.x = clamp(current_rotation_x, -vertical_rotation_limit, vertical_rotation_limit)
-
-	# Reset the mouse motion vector for the next frame
-	mouse_motion_vector = Vector2.ZERO
-
-# Example Input Map Setup
-# 1. In Project -> Project Settings -> Input Map:
-#    - Add "ui_accept" (e.g., Left Mouse Button)
-#    - Add "ui_cancel" (e.g., Escape Key)
+func start_interaction():
+	Game.is_in_combat = true
+	hand.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func end_interaction():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hand.visible = false

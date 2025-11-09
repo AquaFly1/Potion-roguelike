@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://drhlo4inut523"]
+[gd_scene load_steps=12 format=3 uid="uid://drhlo4inut523"]
 
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="2_b7dpg"]
 [ext_resource type="PackedScene" uid="uid://pujqkmtdknev" path="res://Scenes/Hand/Hand_environment.tscn" id="2_v6xcv"]
 [ext_resource type="Shader" uid="uid://b4ho85s3kdodg" path="res://Graphics/Shaders/3DMask.gdshader" id="3_b7dpg"]
-[ext_resource type="Environment" uid="uid://bgv7avnm6jp1i" path="res://Scenes/Hand/Hand_environment_preset.tres" id="3_qaiqp"]
 [ext_resource type="Shader" uid="uid://bvsrns2282jtb" path="res://Graphics/Shaders/CustomPosterization.gdshader" id="4_58i8l"]
+[ext_resource type="Script" uid="uid://qjl80xdnvd74" path="res://Scripts/managers/handsFollowPlayer.gd" id="4_qaiqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b7dpg"]
 shader = ExtResource("3_b7dpg")
@@ -21,10 +21,6 @@ viewport_path = NodePath("3D View/ViewMasked")
 [sub_resource type="ViewportTexture" id="ViewportTexture_b7dpg"]
 viewport_path = NodePath("3D View/ViewBack")
 
-[sub_resource type="World3D" id="World3D_v6xcv"]
-resource_local_to_scene = true
-environment = ExtResource("3_qaiqp")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_v6xcv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7dpg"]
@@ -32,10 +28,6 @@ render_priority = 1
 transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="World3D" id="World3D_b7dpg"]
-resource_local_to_scene = true
-environment = ExtResource("3_qaiqp")
 
 [node name="3D Projection" type="Node2D"]
 z_index = -10
@@ -58,29 +50,38 @@ centered = false
 [node name="3D View" type="Node3D" parent="."]
 
 [node name="ViewMasked" type="SubViewport" parent="3D View"]
-own_world_3d = true
-world_3d = SubResource("World3D_v6xcv")
 transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
 size = Vector2i(320, 180)
 size_2d_override = Vector2i(1920, 1080)
 
 [node name="3DMasked" parent="3D View/ViewMasked" instance=ExtResource("2_v6xcv")]
+script = ExtResource("4_qaiqp")
 
 [node name="mask2" type="MeshInstance3D" parent="3D View/ViewMasked/3DMasked"]
 transform = Transform3D(0.9937912, 0.11067823, 0.011371076, 0, 0.102202, -0.994764, -0.1112608, 0.9885877, 0.10156745, 1.55677, 1.08376, 0.8277856)
+layers = 2048
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_v6xcv")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")
 
 [node name="ViewBack" type="SubViewport" parent="3D View"]
-own_world_3d = true
-world_3d = SubResource("World3D_b7dpg")
 transparent_bg = true
+gui_disable_input = true
 size = Vector2i(320, 180)
 size_2d_override = Vector2i(1920, 1080)
 
-[node name="3DBack" parent="3D View/ViewBack" instance=ExtResource("2_v6xcv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.491, 0, 0)
+[node name="Camera3" type="Camera3D" parent="3D View/ViewBack"]
+transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.17364796, 0, -0.17364796, 0.9848078, 0, 1.4, 2)
+visible = false
+cull_mask = 1024
+projection = 1
+size = 3.65625
+near = 0.1
+far = 100.0
+script = ExtResource("4_qaiqp")
 
 [node name="Palette" type="Sprite2D" parent="."]
 visible = false

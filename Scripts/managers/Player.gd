@@ -14,6 +14,9 @@ var health_bar : Control
 
 var xp_needed = 10
 
+@warning_ignore("unused_signal")
+signal player_ready ##Called when the Player.node is ready
+
 func _ready() -> void:
 	super()
 	gold = 20

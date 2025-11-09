@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://2tbmicm44hji"]
+[gd_scene load_steps=8 format=3 uid="uid://2tbmicm44hji"]
 
 [ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://Scripts/managers/interaction_3D.gd" id="1_akt8v"]
 [ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="3_jvst4"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="4_pna2x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fkl"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.53, 0.20669998, 0.20669998, 0.07058824)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jvst4"]
+material = SubResource("StandardMaterial3D_r3fkl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cdvjk"]
 
@@ -12,6 +20,9 @@ script = ExtResource("1_akt8v")
 possible_interactions = Array[ExtResource("2_r3fkl")]([ExtResource("3_jvst4"), ExtResource("4_pna2x")])
 
 [node name="Area3D" type="Area3D" parent="."]
+
+[node name="MeshInstance3D-nx" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_jvst4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_cdvjk")

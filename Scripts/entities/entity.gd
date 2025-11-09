@@ -16,6 +16,15 @@ func _ready() -> void:
 	effects.fill(0.0)
 	health = max_health
 
+func take_damage(amount):
+	var dmg = amount
+	amount -= effects[4]
+
+	effects[4] -= max(dmg,0)
+
+	health -= amount
+	effects[0] = 0
+
 func start_turn():
 	await Effect.call_event(self, Effect.START_TURN)
 	await Ring.call_event(self, Ring.START_TURN)

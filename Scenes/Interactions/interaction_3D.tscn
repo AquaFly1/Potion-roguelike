@@ -22,6 +22,7 @@ possible_interactions = Array[ExtResource("2_r3fkl")]([ExtResource("3_jvst4"), E
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="MeshInstance3D-nx" type="MeshInstance3D" parent="Area3D"]
+visible = false
 mesh = SubResource("BoxMesh_jvst4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

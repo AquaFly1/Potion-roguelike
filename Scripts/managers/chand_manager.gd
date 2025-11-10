@@ -35,6 +35,7 @@ var potion: Array[Ingredient] = []
 
 func _ready() -> void:
 	Game.player_start_turn.connect(player_start)
+	Game.interaction_ended.connect(interaction_end)
 	Game.card_selected.connect(on_selected_cards)
 	Game.card_pressed.connect(on_card_pressed)
 	
@@ -163,12 +164,17 @@ func player_start():
 	_on_get_potion_pressed()
 	selected_cards = []
 
+func interaction_end():
+	for card in cards.duplicate():
+		remove_card(card)
+
 
 func _on_potion_mouse_entered() -> void:
 	mouse_on_potion = true
 
 func _on_potion_mouse_exited() -> void:
 	mouse_on_potion = false
+
 
 
 func _input(event):

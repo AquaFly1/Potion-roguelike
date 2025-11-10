@@ -173,20 +173,20 @@ transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 gui_disable_input = true
-size = Vector2i(64, 64)
-size_2d_override = Vector2i(64, 64)
+size = Vector2i(128, 128)
+size_2d_override_stretch = true
 
 [node name="Fire" type="Sprite2D" parent="VFX/SubViewport"]
 visible = false
 material = SubResource("ShaderMaterial_4oths")
 rotation = 1.5707964
 texture = SubResource("GradientTexture2D_0s7u1")
-offset = Vector2(32, -32)
+offset = Vector2(64, -64)
 
 [node name="PoisonBubble" type="GPUParticles2D" parent="VFX/SubViewport"]
 visible = false
 z_index = 10
-position = Vector2(32, 50.29)
+position = Vector2(64, 82.29)
 amount = 4
 sub_emitter = NodePath("PoisonCloud")
 texture = SubResource("GradientTexture2D_yv5al")

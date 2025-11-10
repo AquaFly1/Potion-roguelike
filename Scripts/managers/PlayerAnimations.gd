@@ -1,6 +1,7 @@
 extends AnimationTree
 
 func _ready() -> void:
+	Game.interaction_ended.connect(rest)
 	rest()
 	
 func rest() -> void:

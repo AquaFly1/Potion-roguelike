@@ -5,6 +5,7 @@ extends Control
 
 @export var card_scene: PackedScene
 @export var path_scene: PackedScene
+@export var hand_anim: AnimationTree
 
 var mouse_on_potion: bool = false
 var is_dragging: bool = false
@@ -69,20 +70,20 @@ func remove_card(card):
 
 func _update_chand_layout():
 	var total = cards.size()
-	if total == 0:
-		Game.held_chand_modified.emit(cards)
-		return
-	for i in range(total):
-		cards[i].move_to_position()
+	if total != 0:
+		for i in range(total):
+			cards[i].move_to_position()
+			
+		card_order = []				#card array with cards and selected_cards, selected_cards coming first and removing duplicates
 		
-	card_order = []				#card array with cards and selected_cards, selected_cards coming first and removing duplicates
+		for i in selected_cards+cards:
+			if not card_order.has(i):
+				card_order.append(i)
+		cards = card_order # cards list now in order
+		for i in len(card_order):			#card selection based on order in node tree (end is better)
+			move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
 	
-	for i in selected_cards+cards:
-		if not card_order.has(i):
-			card_order.append(i)
-	cards = card_order # cards list now in order
-	for i in len(card_order):			#card selection based on order in node tree (end is better)
-		move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
+	hand_anim.update_hand_size(total)
 	Game.held_chand_modified.emit(cards)
 	
 
@@ -155,6 +156,7 @@ func player_start():
 	for card in cards_to_remove:
 		remove_card(card)
 	
+	hand_anim.play()
 	_update_chand_layout()
 	draw(5)
 	_on_get_potion_pressed()
@@ -197,7 +199,7 @@ func play_selected_cards():
 			played_cards += 1
 			for j in cards:
 				j.path_pos_index -= 1.0
-		draw(played_cards)
+		#draw(played_cards)
 		selected_cards = []
 	_update_chand_layout()
 

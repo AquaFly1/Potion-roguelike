@@ -92,7 +92,7 @@ void fragment() {
 
 	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	vec3 final_highlight_color = mix(original_color, highlight_color, highlight_strength);
-	vec3 final_shadow_color = mix(original_color, shadow_color, shadow_strength);
+	vec3 final_shadow_color = max(mix(original_color, shadow_color, shadow_strength) , 0.003);
 	vec3 final = original_color;
 	if (highlights_enabled) {
 		final = mix(final, final_highlight_color, normal_diff);

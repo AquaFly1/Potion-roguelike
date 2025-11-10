@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://l0qk45pib3v3"
-path="res://.godot/imported/handNew.blend-b11d48deeff4cbafc28e627efa42694d.scn"
+uid="uid://cqmps1vj10eo1"
+path="res://.godot/imported/HandExportFile.blend-130c5bd92da329f8ac41f55b71d9aa0c.scn"
 
 [deps]
 
-source_file="res://3DAssets/hand/handNew.blend"
-dest_files=["res://.godot/imported/handNew.blend-b11d48deeff4cbafc28e627efa42694d.scn"]
+source_file="res://3DAssets/hand/HandExportFile.blend"
+dest_files=["res://.godot/imported/HandExportFile.blend-130c5bd92da329f8ac41f55b71d9aa0c.scn"]
 
 [params]
 
@@ -38,8 +38,8 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-blender/nodes/visible=2
-blender/nodes/active_collection_only=true
+blender/nodes/visible=0
+blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true

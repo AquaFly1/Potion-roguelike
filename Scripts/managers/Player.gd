@@ -46,7 +46,7 @@ func die():
 		exposed = true
 		health_bar.update_bar()
 	else:
-		Player.death.emit()
+		death.emit()
 	
 	health_bar.visible = not exposed
 

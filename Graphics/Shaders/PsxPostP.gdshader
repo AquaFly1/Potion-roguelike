@@ -47,7 +47,7 @@ void fragment() {
 
 
 	float steps = float(color_steps);
-	color = color + ign(FRAGCOORD.xy)*0.1;
+	color = color + ign(FRAGCOORD.xy)*0.02;
 	color = floor(color * steps + 0.5) / steps;
 
 

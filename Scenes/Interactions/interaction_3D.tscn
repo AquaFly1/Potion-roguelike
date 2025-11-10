@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://2tbmicm44hji"]
+[gd_scene load_steps=10 format=3 uid="uid://2tbmicm44hji"]
 
 [ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://Scripts/managers/interaction_3D.gd" id="1_akt8v"]
 [ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="3_jvst4"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="4_pna2x"]
+[ext_resource type="Script" uid="uid://dhldo34f484bo" path="res://Scripts/interaction/Interaction_Renderer.gd" id="5_jvst4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fkl"]
 transparency = 1
@@ -14,6 +15,9 @@ albedo_color = Color(0.53, 0.20669998, 0.20669998, 0.07058824)
 material = SubResource("StandardMaterial3D_r3fkl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cdvjk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jvst4"]
+viewport_path = NodePath("enemy_parent/SubViewport")
 
 [node name="interaction" type="Node3D"]
 script = ExtResource("1_akt8v")
@@ -30,5 +34,23 @@ shape = SubResource("BoxShape3D_cdvjk")
 
 [node name="enemy_parent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4632021, -2.4963102)
+
+[node name="BypassPSX" type="CanvasLayer" parent="enemy_parent"]
+layer = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy_parent/BypassPSX"]
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_jvst4")
+
+[node name="SubViewport" type="SubViewport" parent="enemy_parent"]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="Parent" type="Node3D" parent="enemy_parent/SubViewport"]
+
+[node name="Renderer" type="Camera3D" parent="enemy_parent/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7515161)
+cull_mask = 4096
+script = ExtResource("5_jvst4")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

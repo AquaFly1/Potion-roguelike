@@ -149,6 +149,9 @@ sensors/enable_gravity=true
 2d_render/layer_2="Text"
 3d_render/layer_2="transition_black_light"
 3d_render/layer_6="Player_light"
+3d_render/layer_11="Hand Render"
+3d_render/layer_12="Hand Mask Render"
+3d_render/layer_13="Ennemy Render"
 
 [physics]
 

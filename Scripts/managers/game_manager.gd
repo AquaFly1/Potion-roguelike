@@ -16,11 +16,17 @@ var is_in_combat: bool = false
 
 signal card_pressed(card: Card)
 signal card_selected(card: Card)
-signal turn_ended() ##Gets called when an [member entity] finishes it's turn
-signal player_start_turn()
-signal enemy_start_turn()
-signal interaction_started()
-signal interaction_ended()
+
+signal player_start_turn
+
+signal enemy_start_turn
+signal enemy_turn_ended
+signal enemy_killed
+var waiting_for_enemy: bool
+
+signal interaction_started
+signal interaction_ended
+
 signal held_chand_modified(cards: Array)
 signal look_candle(candle: Node3D)
 
@@ -33,10 +39,10 @@ func _ready() -> void:
 	held_chand_modified.connect(chand_modified)
 	card_selected.connect(card_selected_func)
 	card_pressed.connect(card_pressed_func)
-	turn_ended.connect(turn_ended_func) 
 	interaction_ended.connect(interaction_end_func)
 	player_start_turn.connect(call_player_turn)
 	enemy_start_turn.connect(call_enemies_turn)
+	enemy_killed.connect(enemy_killed_func)
 	look_candle.connect(player_look_candle)
 	Effect.define_effects(effects)
 	for combo in combos:
@@ -45,8 +51,10 @@ func _ready() -> void:
 ##[member enemy_list] and starts their turn 
 func call_enemies_turn():
 	for i in enemy_list.duplicate():
-		await i.start_turn()
-		print("waiting")
+		waiting_for_enemy = true
+		wait_for_enemy_turn(i)
+		await enemy_turn_ended
+		waiting_for_enemy = false
 		await get_tree().create_timer(0.5).timeout
 	if enemy_list.size() != 0:
 		player_start_turn.emit()
@@ -57,15 +65,22 @@ func call_player_turn():
 	if enemy_list.size() != 0:
 		await Player.start_turn()
 		enemy_start_turn.emit()
-	
+
+func wait_for_enemy_turn(entity: Entity):
+	await entity.start_turn()
+	if waiting_for_enemy:
+		enemy_turn_ended.emit()
+		
+func enemy_killed_func():
+	if waiting_for_enemy:
+		enemy_turn_ended.emit()
+	else: push_warning("Enemy died after turn ended")
 
 func player_look_candle(_candle):
 	pass
 func chand_modified(_cards: Array):
 	pass
 func card_selected_func(_card):
-	pass
-func turn_ended_func():
 	pass
 func interaction_end_func():
 	is_in_combat = false

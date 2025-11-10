@@ -156,12 +156,14 @@ script = ExtResource("1_vtixw")
 
 [node name="Enemy_sprite" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+layers = 4096
 material_overlay = SubResource("ShaderMaterial_yrgos")
 texture_filter = 0
 texture = ExtResource("2_aft1i")
 
 [node name="VFX" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.036400348, 0.5297184, -0.009604812)
+layers = 4096
 cast_shadow = 0
 texture_filter = 0
 render_priority = -45

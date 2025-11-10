@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=79 format=4 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
 [ext_resource type="Script" uid="uid://bv2gaws1frp17" path="res://Scripts/managers/game_over_panel.gd" id="16_iq2rp"]
 [ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
+[ext_resource type="Script" uid="uid://ckq2nwn431u8r" path="res://Scripts/managers/interact_wave_controller.gd" id="21_fmrin"]
+[ext_resource type="Shader" uid="uid://bn7rtec3bshnn" path="res://Graphics/Shaders/screen_wave.gdshader" id="21_nes5i"]
+[ext_resource type="Shader" uid="uid://duv1lhgdlll16" path="res://Graphics/Shaders/interaction_color.gdshader" id="22_4kjub"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
 stencil_flags = 2
@@ -1111,6 +1114,31 @@ expand_margin_bottom = 10.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq2rp"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmrin"]
+shader = ExtResource("21_nes5i")
+shader_parameter/intensity = 0.0
+shader_parameter/glitch_frequency = 0.91100004001262
+shader_parameter/glitch_duration = 0.1
+shader_parameter/wave_size = 2.0
+shader_parameter/displacement_amount = 1.0000003799999995
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.0
+shader_parameter/noise_intensity = 0.0
+shader_parameter/slice_intensity = 0.0
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukq60"]
+shader = ExtResource("22_4kjub")
+shader_parameter/base_displacement = Vector2(0, 0)
+shader_parameter/repetion_x = 0.655
+shader_parameter/scale_x = 14.17
+shader_parameter/speed_x = 1.0
+shader_parameter/color_count = 0
+shader_parameter/fps = 0.0
+shader_parameter/frame_count = 0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
 shader_parameter/pixel_resolution = 480.00001976
@@ -1147,7 +1175,7 @@ metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-layers = 1025
+layers = 5121
 light_color = Color(1, 0.922, 0.82, 1)
 light_energy = 0.05
 light_indirect_energy = 0.0
@@ -1173,7 +1201,7 @@ shape = SubResource("CapsuleShape3D_6t5aa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
 [node name="Camera" type="Camera3D" parent="Camera_pivot"]
-cull_mask = 1045503
+cull_mask = 1041407
 environment = SubResource("Environment_l3v4j")
 current = true
 
@@ -1649,6 +1677,32 @@ text = "Game Over"
 
 [node name="DownscaleLayer" type="CanvasLayer" parent="."]
 layer = 0
+
+[node name="InteractionWave" type="CanvasLayer" parent="DownscaleLayer"]
+layer = -2
+
+[node name="Wave" type="ColorRect" parent="DownscaleLayer/InteractionWave"]
+material = SubResource("ShaderMaterial_fmrin")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("21_fmrin")
+
+[node name="Color" type="CanvasLayer" parent="DownscaleLayer/InteractionWave"]
+visible = false
+
+[node name="ColorAdjust" type="TextureRect" parent="DownscaleLayer/InteractionWave/Color"]
+material = SubResource("ShaderMaterial_ukq60")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="PSX" type="ColorRect" parent="DownscaleLayer"]
 material = SubResource("ShaderMaterial_g154t")

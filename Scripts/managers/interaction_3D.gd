@@ -3,7 +3,7 @@ extends Node3D
 var enemies: Array[PackedScene]
 @export var possible_interactions: Array[Interaction]
 var current_interaction = null
-@onready var enemy_parent: Node3D = $enemy_parent
+@onready var enemy_parent = $enemy_parent
 
 func _ready() -> void:
 	current_interaction = possible_interactions.pick_random()

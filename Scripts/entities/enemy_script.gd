@@ -102,7 +102,8 @@ func die():
 	
 	while Game.enemy_list.has(self):
 		Game.enemy_list.erase(self)
-
+	
+	Game.enemy_killed.emit()
 	
 	queue_free()
 	

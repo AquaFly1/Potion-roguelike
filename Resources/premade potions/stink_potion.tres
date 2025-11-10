@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=3 format=3 uid="uid://da3vbg6urhec2"]
+
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="1_pgyig"]
+[ext_resource type="Script" uid="uid://dot6hntkybv0w" path="res://Scripts/resources/potion.gd" id="2_0h4pf"]
+
+[resource]
+script = ExtResource("2_0h4pf")
+metadata/_custom_type_script = "uid://dot6hntkybv0w"

@@ -26,6 +26,7 @@ var anim_y: float = 0
 var anim_time: float = 0
 #endregion
 func _ready() -> void:
+	
 	Player.node = self
 	Game.interaction_ended.connect(end_interaction)
 	Game.interaction_started.connect(start_interaction)
@@ -71,25 +72,26 @@ func _physics_process(delta):
 			
 	dir = dir.normalized()
 	
-		
-	horizontal_velocity = horizontal_velocity.lerp(
+	
+	horizontal_velocity = velocity.lerp(
 		dir.normalized() * walk_speed, 
 		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
-	velocity.z = horizontal_velocity.z
 	
 	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
 		
 #endregion
 
 #region vertical
 	#gravity and jump
+	velocity.y -= GRAVITY * delta
+	
 	if is_on_floor():
-		velocity.y = 0
+		#velocity.y = 0
 		if Input.is_action_just_pressed("jump"):
-			vertical_velocity = Vector3.UP*jump_force
-			velocity.y = vertical_velocity.y
-	else:
-		velocity.y -= GRAVITY * delta
+			velocity.y = jump_force
+			#velocity.y = vertical_velocity.y
+
 #endregion
 		
 #region small anims

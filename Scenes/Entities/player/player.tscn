@@ -1166,7 +1166,9 @@ shader_parameter/b_displacement = Vector2(-1, 0)
 [node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hand")]
 collision_layer = 17
 collision_mask = 17
-floor_max_angle = 1.712168
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 1.3386675
 script = ExtResource("1_r8aaq")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
@@ -1192,6 +1194,7 @@ mesh = SubResource("CapsuleMesh_l3v4j")
 
 [node name="Head" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+visible = false
 shape = SubResource("CylinderShape3D_l3v4j")
 
 [node name="Body" type="CollisionShape3D" parent="."]

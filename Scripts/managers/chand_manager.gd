@@ -6,6 +6,7 @@ extends Control
 @export var card_scene: PackedScene
 @export var path_scene: PackedScene
 @export var hand_anim: AnimationTree
+@export var cards_parent: Node
 
 var mouse_on_potion: bool = false
 var is_dragging: bool = false
@@ -49,7 +50,7 @@ func add_card(card_ing):
 	card.ingredient = card_ing
 	card.path = card_path
 	card.path_pos_index = float(cards.size())
-	add_child(card)
+	cards_parent.add_child(card)
 	chand_path.add_child(card_path)
 	
 	#remote path is a node that forces another to copy its transforms
@@ -81,7 +82,7 @@ func _update_chand_layout():
 				card_order.append(i)
 		cards = card_order # cards list now in order
 		for i in len(card_order):			#card selection based on order in node tree (end is better)
-			move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
+			cards_parent.move_child(card_order[i],-(i+1))		#reversing the order makes the top card the highest prior
 	
 	hand_anim.update_hand_size(total)
 	Game.held_chand_modified.emit(cards)

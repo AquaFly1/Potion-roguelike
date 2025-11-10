@@ -1120,7 +1120,7 @@ shader_parameter/intensity = 0.0
 shader_parameter/glitch_frequency = 0.91100004001262
 shader_parameter/glitch_duration = 0.1
 shader_parameter/wave_size = 2.0
-shader_parameter/displacement_amount = 1.0000003799999995
+shader_parameter/displacement_amount = 1.0000003799999997
 shader_parameter/green_displacement = 0.02
 shader_parameter/blue_displacement = 0.02
 shader_parameter/scanline_intensity = 0.0
@@ -1578,7 +1578,7 @@ layer = 40
 [node name="UI+PostP" type="CanvasLayer" parent="."]
 layer = 50
 
-[node name="SubviewportInputRelay" type="Control" parent="UI+PostP"]
+[node name="SubviewportInputRelay" type="Control" parent="UI+PostP" node_paths=PackedStringArray("subviewport")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1.0
@@ -1586,6 +1586,7 @@ offset_bottom = 1.0
 mouse_filter = 1
 mouse_behavior_recursive = 1
 script = ExtResource("9_r8aaq")
+subviewport = NodePath("../2D/SubViewport")
 metadata/_edit_use_anchors_ = true
 
 [node name="2D" type="TextureRect" parent="UI+PostP"]

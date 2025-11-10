@@ -61,11 +61,12 @@ void fragment() {
     }
     
     float shift_amount = displacement_amount * intensity;
-    vec4 green_channel = texture(screen_texture, uv + vec2(-green_displacement * shift_amount, 0.0));
-    vec4 blue_channel = texture(screen_texture, uv + vec2(blue_displacement * shift_amount, 0.0));
+    vec4 left_channel = texture(screen_texture, uv + vec2(-green_displacement * shift_amount, 0.0));
+    vec4 right_channel = texture(screen_texture, uv + vec2(blue_displacement * shift_amount, 0.0));
     
-    final_color.g = green_channel.g;
-    final_color.b = blue_channel.b;
+	final_color.r = left_channel.r;
+    final_color.g = right_channel.g;
+    final_color.b = (left_channel.b + right_channel.b)/2.0;
     
     float scanline = sin(uv.y * 300.0 + glitch_time * 2.0) * 0.5 + 0.5;
     final_color.rgb *= 1.0 - scanline * scanline_intensity * intensity;

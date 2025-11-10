@@ -3,7 +3,7 @@ extends Node3D
 var enemies: Array[PackedScene]
 @export var possible_interactions: Array[Interaction]
 var current_interaction = null
-@onready var enemy_parent = $enemy_parent
+@onready var enemy_parent = $enemy_parent/SubViewport/Parent
 
 func _ready() -> void:
 	current_interaction = possible_interactions.pick_random()
@@ -16,13 +16,13 @@ func _ready() -> void:
 
 func load_enemies(enemie_list):
 	#Player.start_turn()
-	var pos = -0.4
+	var pos = -0.5*(len(enemie_list)-1)
 	for i in range(len(enemie_list)):
 		var enemy_inst = enemie_list[i].instantiate()
 		enemy_parent.add_child(enemy_inst)
 		Game.enemy_list.append(enemy_inst)
 		enemy_inst.position.x += pos
-		pos += 0.4
+		pos += 1
 
 #func turn_ended():
 	#for enemy in Game.enemy_list:

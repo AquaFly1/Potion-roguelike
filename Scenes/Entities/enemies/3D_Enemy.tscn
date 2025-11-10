@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=33 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="2_4oths"]
@@ -151,6 +151,13 @@ radial_velocity_curve = SubResource("CurveTexture_2xgx5")
 gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_1hpgq")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5faar"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="3dEnemy" type="Node3D"]
 script = ExtResource("1_vtixw")
 
@@ -161,6 +168,12 @@ material_overlay = SubResource("ShaderMaterial_yrgos")
 texture_filter = 0
 texture = ExtResource("2_aft1i")
 
+[node name="gui_origin" type="Marker3D" parent="Enemy_sprite"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.12063969, 0)
+
+[node name="attack_origin" type="Marker3D" parent="Enemy_sprite"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013009878, -0.020856291, 0)
+
 [node name="VFX" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.036400348, 0.5297184, -0.009604812)
 layers = 4096
@@ -168,6 +181,12 @@ cast_shadow = 0
 texture_filter = 0
 render_priority = -45
 texture = SubResource("ViewportTexture_5faar")
+
+[node name="FireLight" type="OmniLight3D" parent="VFX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27779824, 0)
+visible = false
+light_color = Color(0.87, 0.493, 0, 1)
+omni_range = 1.126
 
 [node name="SubViewport" type="SubViewport" parent="VFX"]
 disable_3d = true
@@ -206,10 +225,6 @@ texture = SubResource("GradientTexture2D_yrgos")
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_0s7u1")
 
-[node name="gui_origin" type="Marker3D" parent="."]
-
-[node name="attack_origin" type="Marker3D" parent="."]
-
 [node name="Effects" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -219,29 +234,47 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
 offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
+layout_mode = 0
+offset_left = -39.845
+offset_right = -39.845
+offset_bottom = 0.0
+scale = Vector2(0.095, 0.119)
+
+[node name="Target" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
+[node name="Button" type="Button" parent="Target"]
 layout_mode = 1
-offset_left = -32.000008
-offset_top = -1.8
-offset_right = -32.000008
-offset_bottom = -1.7999992
-scale = Vector2(0.095, 0.119)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.49997
+offset_top = -63.363983
+offset_right = 56.49997
+offset_bottom = 63.363983
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_5faar")
 
-[node name="Button" type="Button" parent="Effects"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.021000002
-anchor_right = 0.021000002
-anchor_bottom = 0.071
-offset_left = -41.672
-offset_top = -133.0
-offset_right = 71.328
-offset_bottom = -6.2720003
-
-[connection signal="mouse_entered" from="Effects/Button" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Effects/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Target/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Target/Button" to="." method="_on_button_pressed"]

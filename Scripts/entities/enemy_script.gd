@@ -15,8 +15,10 @@ var test_node: Node2D
 var chosen_potion = null
 @export var potions: Array[Potion]
 
-@onready var gui_origin: Marker3D = $gui_origin
+@onready var gui_origin: Marker3D = $Enemy_sprite/gui_origin
 @onready var gui_parent: Control = $Effects
+@onready var attack_origin: Marker3D = $Enemy_sprite/attack_origin
+@onready var attack_parent: Control = $Target
 
 @onready var fire_visuals : Sprite2D = $VFX/SubViewport/Fire
 @onready var poison_visuals : GPUParticles2D = $VFX/SubViewport/PoisonBubble
@@ -64,11 +66,13 @@ func end_turn():
 
 
 func update_effect_vfx(effect: Effect):
+	var intensity := effects[Effect.index(effect.name)] 
 	match effect.name:
 		"Burn":
-			fire_visuals.visible = effects[Effect.index(effect.name)] 
+			fire_visuals.visible = intensity
+			$VFX/FireLight.visible = intensity
 		"Poison":
-			poison_visuals.visible = effects[Effect.index(effect.name)] 
+			poison_visuals.visible = intensity
 		_:
 			pass
 
@@ -85,7 +89,9 @@ func clear_outline(): outline(Color.TRANSPARENT)
 func _process(delta: float) -> void:
 	super(delta)
 	gui_parent.visible = not get_viewport().get_camera_3d().is_position_behind(gui_origin.global_position)
+	attack_parent.visible = gui_parent.visible
 	gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
+	attack_parent.position = get_viewport().get_camera_3d().unproject_position(attack_origin.global_position)
 
 #	if chosen_potion and intention:
 #		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")

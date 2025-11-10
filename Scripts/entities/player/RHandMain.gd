@@ -11,13 +11,6 @@ func _ready() -> void:
 	CardPathStart3D.visible= false
 	#CardPathEnd3D.visible= false
 
-func _process(_delta: float) -> void:
+#func _process(_delta: float) -> void:
 
-	card_path_end_2D_pos.emit(
-		camera
-		.unproject_position(CardPathEnd3D.global_position)
-							)
-	card_path_start_2D_pos.emit(
-		camera
-		.unproject_position(CardPathStart3D.global_position)
-							)
+	

@@ -55,5 +55,5 @@ func update_player_light() -> void:
 		if active:
 			tween.tween_property(player_light,"light_energy",player_light_base_energy,0.25)
 		else:
-			tween.tween_property(player_light,"light_energy",player_light_base_energy/100,0.25)
+			tween.tween_property(player_light,"light_energy",0,0.25)
 		

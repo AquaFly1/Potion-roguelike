@@ -14,6 +14,8 @@ var affect_player_light: bool = false
 
 func _ready() -> void:
 	#armature.visible = false
+	point.set_layer_mask_value(1,1)
+	point.set_layer_mask_value(11,1)
 	point.light_energy = 0
 	armature.scale = Vector3.ZERO
 	animation_player.play("ArmatureAction")

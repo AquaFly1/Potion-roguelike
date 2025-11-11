@@ -91,14 +91,15 @@ func _update_chand_layout():
 
 func on_selected_cards(card):
 	if not selected_cards.has(card):
-		selected_cards.append(card)
-		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
+		if len(selected_cards) < Player.mana:
+			selected_cards.append(card)
+			card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,1))
 
-		for i in cards:
-			if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
-				i.path_pos_index += 1.0
-		card.path_pos_index = len(selected_cards)-1
-		_update_chand_layout()
+			for i in cards:
+				if i.path_pos_index < card.path_pos_index and not selected_cards.has(i):
+					i.path_pos_index += 1.0
+			card.path_pos_index = len(selected_cards)-1
+			_update_chand_layout()
 	else:
 		selected_cards.erase(card)
 		card.card_sprite.material.set("shader_parameter/outline_color",Vector4(1, 0, 0,0))
@@ -120,8 +121,11 @@ func _on_throw_pot_pressed() -> void:
 		potion = []
 		Game.current_enemy = null
 		
-		Player.turn_ended.emit()
-	
+		if Player.mana <= 0: Player.turn_ended.emit()
+		else: 
+			_on_get_potion_pressed()
+			hand_anim.play()
+			draw(chand_size-len(cards))
 
 func _on_throw_self_pressed() -> void:
 	if has_potion:
@@ -129,7 +133,11 @@ func _on_throw_self_pressed() -> void:
 		await PotionMan.throw_potion(potion, Player.rings, Player, true)
 		potion = []
 		
-		Player.turn_ended.emit()
+		if Player.mana <= 0: Player.turn_ended.emit()
+		else: 
+			_on_get_potion_pressed()
+			hand_anim.play()
+			draw(chand_size-len(cards))
 
 func _on_get_potion_pressed() -> void:
 	if Player.mana > 0:

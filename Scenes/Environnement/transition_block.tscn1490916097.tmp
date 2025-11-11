@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://cxewjyxiyo7my"]
+
+[ext_resource type="Script" uid="uid://6frvg0obaj15" path="res://Scripts/environment/room_trans_main.gd" id="1_6v614"]
+[ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/room_trans_sides.gd" id="2_ha7ph"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8lxq"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwss2"]
+transparency = 4
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_buf24"]
+material = SubResource("StandardMaterial3D_pwss2")
+
+[sub_resource type="BoxMesh" id="BoxMesh_wb8l8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb8l8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8lxq"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y8lxq"]
+material = SubResource("StandardMaterial3D_y8lxq")
+
+[sub_resource type="Gradient" id="Gradient_wb8l8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4q0dg"]
+gradient = SubResource("Gradient_wb8l8")
+
+[sub_resource type="Gradient" id="Gradient_4q0dg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r6ji1"]
+gradient = SubResource("Gradient_4q0dg")
+
+[node name="Transition-nx" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_6v614")
+
+[node name="Side1Area" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+collision_layer = 2
+script = ExtResource("2_ha7ph")
+area_other = NodePath("../Side2Area")
+fade_mesh = NodePath("Side1")
+fade_mesh_other = NodePath("../Side2Area/Side2")
+zone = NodePath("Detect")
+
+[node name="Detect" type="CollisionShape3D" parent="Side1Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+shape = SubResource("BoxShape3D_y8lxq")
+debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
+
+[node name="Side1" type="MeshInstance3D" parent="Side1Area"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0.25)
+layers = 2
+transparency = 1.0
+cast_shadow = 0
+mesh = SubResource("BoxMesh_buf24")
+skeleton = NodePath("../Enemy_test")
+
+[node name="playerlightBlock" type="MeshInstance3D" parent="Side1Area/Side1"]
+visible = false
+layers = 32
+cast_shadow = 3
+mesh = SubResource("BoxMesh_wb8l8")
+skeleton = NodePath("../Enemy_test")
+
+[node name="Side2Area" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+collision_layer = 2
+script = ExtResource("2_ha7ph")
+area_other = NodePath("../Side1Area")
+fade_mesh = NodePath("Side2")
+fade_mesh_other = NodePath("../Side1Area/Side1")
+zone = NodePath("Detect")
+
+[node name="Detect" type="CollisionShape3D" parent="Side2Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+shape = SubResource("BoxShape3D_y8lxq")
+debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
+
+[node name="Side2" type="MeshInstance3D" parent="Side2Area"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, -0.25)
+layers = 2
+transparency = 1.0
+cast_shadow = 0
+mesh = SubResource("BoxMesh_buf24")
+skeleton = NodePath("../Enemy_test")
+
+[node name="playerlightBlock2" type="MeshInstance3D" parent="Side2Area/Side2"]
+visible = false
+layers = 32
+material_override = SubResource("StandardMaterial3D_wb8l8")
+cast_shadow = 3
+mesh = SubResource("BoxMesh_wb8l8")
+skeleton = NodePath("../Enemy_test")
+
+[node name="Black" type="MeshInstance3D" parent="."]
+layers = 2
+cast_shadow = 0
+mesh = SubResource("BoxMesh_y8lxq")
+skeleton = NodePath("../../Enemy_test")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+sorting_offset = 6.38
+size = Vector3(1, 1, 1)
+texture_albedo = SubResource("GradientTexture2D_4q0dg")
+texture_emission = SubResource("GradientTexture1D_r6ji1")
+upper_fade = 1e-05
+lower_fade = 1e-05
+cull_mask = 1048573

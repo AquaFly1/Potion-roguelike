@@ -48,8 +48,9 @@ func on_body_exited(_body: Node3D) -> void:
 				#area_other.candle.affect_player_light = true
 				#area_other.candle.update_player_light()
 			#candle.affect_player_light = false
-
-		if area_other.global_position.distance_to(Player.node.global_position) > parent.scale.z:
+		var player_distance_along_z = Player.node.global_position - area_other.global_position
+		player_distance_along_z = player_distance_along_z.dot(Vector3.FORWARD)
+		if abs(player_distance_along_z) > parent.scale.z:
 			fade_mesh_other.transparency = 1
 			fade_mesh.transparency = 1
 		

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cow432htspaqs"
-path.s3tc="res://.godot/imported/ChurchSpriteSheet.png-b5a5ea41af78eeccc77fab0b34cc8f53.s3tc.ctex"
+uid="uid://bby4j0ome42hb"
+path.s3tc="res://.godot/imported/Hand_AO.png-899c7262349999947d9904b1e7c25e58.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3DAssets/Evironnement/ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/ChurchSpriteSheet.png-b5a5ea41af78eeccc77fab0b34cc8f53.s3tc.ctex"]
+source_file="res://3DAssets/hand/textures/Hand_AO.png"
+dest_files=["res://.godot/imported/Hand_AO.png-899c7262349999947d9904b1e7c25e58.s3tc.ctex"]
 
 [params]
 

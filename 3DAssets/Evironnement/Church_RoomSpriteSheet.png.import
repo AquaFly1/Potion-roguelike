@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6aepk7xnv1kc"
-path.s3tc="res://.godot/imported/Church_RoomSpriteSheet.png-c01869d6328dcdc482b070345ddfcfca.s3tc.ctex"
+path="res://.godot/imported/Church_RoomSpriteSheet.png-c01869d6328dcdc482b070345ddfcfca.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "b2a30207021a517036a46c3d55eca93b"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://3DAssets/Evironnement/Church_RoomSpriteSheet.png"
-dest_files=["res://.godot/imported/Church_RoomSpriteSheet.png-c01869d6328dcdc482b070345ddfcfca.s3tc.ctex"]
+dest_files=["res://.godot/imported/Church_RoomSpriteSheet.png-c01869d6328dcdc482b070345ddfcfca.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

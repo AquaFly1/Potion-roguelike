@@ -1,10 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=36 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="2_4oths"]
-[ext_resource type="Shader" uid="uid://biqm2a7trige6" path="res://Graphics/Shaders/ennemyFire.gdshader" id="2_5faar"]
 [ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_aft1i"]
+[ext_resource type="Texture2D" uid="uid://bnc2bu1d0mfjw" path="res://Graphics/Sprites/goblion_sheet.png" id="4_0s7u1"]
+[ext_resource type="Script" uid="uid://b6pdosfyyrhhb" path="res://Graphics/Shaders/renderSub.gd" id="4_4oths"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="4_5faar"]
+[ext_resource type="SpriteFrames" uid="uid://bjgpr5kuqynbq" path="res://Graphics/Sprites/Rendered_FX/fire/fire_anim.tres" id="5_yrgos"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yrgos"]
 render_priority = 0
@@ -18,45 +20,72 @@ shader_parameter/glowAngle = 1.57
 shader_parameter/glowSharpness = 1.0
 shader_parameter/alphaThreshold = 0.2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hpgq"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv5al"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xgx5"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fywcl"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n07rk"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j8ss"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35lce"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t141v"]
+atlas = ExtResource("4_0s7u1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pw3mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hpgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv5al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xgx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fywcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n07rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j8ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35lce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t141v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_5faar"]
 viewport_path = NodePath("VFX/SubViewport")
-
-[sub_resource type="Gradient" id="Gradient_0s7u1"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1hpgq"]
-gradient = SubResource("Gradient_0s7u1")
-fill_from = Vector2(0.18803419, 1)
-fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_5faar"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.48181817, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.7328025, 0.7328025, 0.7328025, 1, 1, 1, 1, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5faar"]
-frequency = 0.0058
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4oths"]
-noise = SubResource("FastNoiseLite_5faar")
-color_ramp = SubResource("Gradient_5faar")
-seamless = true
-normalize = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oths"]
-shader = ExtResource("2_5faar")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_4oths")
-shader_parameter/alpha_ramp = SubResource("GradientTexture2D_1hpgq")
-shader_parameter/fire_color = Color(1, 0.33, 0.068, 1)
-shader_parameter/fire_power_factor = 0.105
-shader_parameter/fire_intensity = 1.805
-shader_parameter/fire_start = 1.0
-shader_parameter/ball_size = 1.715
-
-[sub_resource type="Gradient" id="Gradient_yrgos"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0s7u1"]
-gradient = SubResource("Gradient_yrgos")
 
 [sub_resource type="Gradient" id="Gradient_1hpgq"]
 interpolation_mode = 1
@@ -161,13 +190,14 @@ border_width_bottom = 2
 [node name="3dEnemy" type="Node3D"]
 script = ExtResource("1_vtixw")
 
-[node name="Enemy_sprite" type="Sprite3D" parent="."]
+[node name="Enemy_sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 layers = 4096
 material_overlay = SubResource("ShaderMaterial_yrgos")
 shaded = true
 texture_filter = 0
-texture = ExtResource("2_aft1i")
+sprite_frames = SubResource("SpriteFrames_pw3mf")
+frame_progress = 0.8527279
 
 [node name="gui_origin" type="Marker3D" parent="Enemy_sprite"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.12063969, 0)
@@ -182,10 +212,19 @@ cast_shadow = 0
 texture_filter = 0
 render_priority = -45
 texture = SubResource("ViewportTexture_5faar")
+script = ExtResource("4_4oths")
 
-[node name="FireLight" type="OmniLight3D" parent="VFX"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.278, -0.03728754)
-visible = false
+[node name="FireSprite" type="AnimatedSprite3D" parent="VFX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.031339437)
+layers = 4096
+texture_filter = 0
+render_priority = -3
+sprite_frames = ExtResource("5_yrgos")
+autoplay = "default"
+frame_progress = 0.68495965
+
+[node name="FireLight" type="OmniLight3D" parent="VFX/FireSprite"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.362772, 0.041957222)
 layers = 5121
 light_color = Color(0.87, 0.493, 0, 1)
 light_energy = 0.294
@@ -202,13 +241,6 @@ canvas_item_default_texture_filter = 0
 gui_disable_input = true
 size = Vector2i(128, 128)
 size_2d_override_stretch = true
-
-[node name="Fire" type="Sprite2D" parent="VFX/SubViewport"]
-visible = false
-material = SubResource("ShaderMaterial_4oths")
-rotation = 1.5707964
-texture = SubResource("GradientTexture2D_0s7u1")
-offset = Vector2(64, -64)
 
 [node name="PoisonBubble" type="GPUParticles2D" parent="VFX/SubViewport"]
 visible = false

@@ -2,10 +2,10 @@ extends Entity
 
 class_name Enemy
 
-@export var sprite_texture: Texture
+@export var sprite_frames: SpriteFrames
 
 #@onready var entity_sprite: Sprite2D = $Sprite2D
-@onready var sprite: Sprite3D = $Enemy_sprite
+@onready var sprite_node: AnimatedSprite3D = $Enemy_sprite
 
 var test_node: Node2D
 
@@ -20,7 +20,7 @@ var chosen_potion = null
 @onready var attack_origin: Marker3D = $Enemy_sprite/attack_origin
 @onready var attack_parent: Control = $Target
 
-@onready var fire_visuals : Sprite2D = $VFX/SubViewport/Fire
+@onready var fire_visuals : AnimatedSprite3D = $VFX/FireSprite
 @onready var poison_visuals : GPUParticles2D = $VFX/SubViewport/PoisonBubble
 
 var preparing: int = 1
@@ -28,8 +28,8 @@ var preparing: int = 1
 
 func _ready() -> void:
 	super()
-	sprite.material_overlay = sprite.material_overlay.duplicate(true)
-	sprite.material_overlay.set("sprite_texture",sprite_texture)
+	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
+	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
 	
 	chosen_potion = potions.pick_random()
 	
@@ -42,17 +42,17 @@ func start_turn():
 		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
 		if chosen_potion.drink == true:
 			await PotionMan.throw_potion(chosen_potion.ingredients, rings, self, true)
-			sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			chosen_potion = potions.pick_random()
 			preparing = 1
 			
 		else:
 			if preparing != 0:
-				sprite.modulate = Color(0.813, 0.0, 0.092, 1.0)
+				sprite_node.modulate = Color(0.813, 0.0, 0.092, 1.0)
 				preparing -= 1
 			else:
 				await PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
-				sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
 				chosen_potion = potions.pick_random()
 				preparing = 1
 	
@@ -70,7 +70,7 @@ func update_effect_vfx(effect: Effect):
 	match effect.name:
 		"Burn":
 			fire_visuals.visible = intensity
-			$VFX/FireLight.visible = intensity
+			$VFX/FireSprite/FireLight.light_energy = intensity/max_health
 		"Poison":
 			poison_visuals.visible = intensity
 		_:
@@ -78,9 +78,9 @@ func update_effect_vfx(effect: Effect):
 
 func outline(color = null) -> Color:
 	if color: 
-		sprite.material_overlay.set("shader_parameter/glowSize",  int(color != Color.TRANSPARENT))
-		sprite.material_overlay.set("shader_parameter/line_color",color)
-	else: color = sprite.material_overlay.get("shader_parameter/line_color")
+		sprite_node.material_overlay.set("shader_parameter/glowSize",  int(color != Color.TRANSPARENT))
+		sprite_node.material_overlay.set("shader_parameter/line_color",color)
+	else: color = sprite_node.material_overlay.get("shader_parameter/line_color")
 	return color
 	
 

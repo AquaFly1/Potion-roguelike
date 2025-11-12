@@ -93,6 +93,9 @@ theme/custom="uid://ccn7rphveje3s"
 scene={
 &"import_script/path": "uid://dk5pujb3sxea8"
 }
+3d_texture={
+&"compress/mode": 0
+}
 
 [input]
 

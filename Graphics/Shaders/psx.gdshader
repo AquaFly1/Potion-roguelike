@@ -28,7 +28,7 @@ uniform vec3 uv2_offset;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
-uniform sampler2D texture_normal : hint_normal, filter_nearest;
+uniform sampler2D texture_normal : hint_normal, filter_nearest,repeat_enable;
 uniform float normal_strength = 1.0;
 
 uniform ivec2 resolution = ivec2(320, 240);
@@ -65,6 +65,15 @@ void fragment() {
 	vec4 color_base = COLOR;
 	vec4 texture_color = texture(texture_albedo, base_uv);
 	
+	
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_strength;
+	
+	
+	
+	
+	
+	
 	ALBEDO = albedo.rgb * texture_color.rgb;
 	ALPHA = texture_color.a * color_base.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
@@ -76,10 +85,5 @@ void fragment() {
 	SPECULAR = specular;
 	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
 	EMISSION = (emission.rgb+emission_tex)*emission_energy;
-	//ALBEDO = vec3(w_comp,w_comp,w_comp);
-	vec3 normal_map = texture(texture_normal, base_uv).rgb;
-	normal_map = normal_map * 2.0 - 1.0;
-	normal_map.xy *= normal_strength;
-	normal_map.z = sqrt(1.0 - clamp(dot(normal_map.xy, normal_map.xy), 0.0, 1.0));
-	NORMAL = normalize(mat3(TANGENT,BINORMAL,NORMAL) * normal_map);
+	
 }

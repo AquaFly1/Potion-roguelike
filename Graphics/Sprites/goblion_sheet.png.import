@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu50xlkjlrwor"
-path="res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.ctex"
+uid="uid://bnc2bu1d0mfjw"
+path="res://.godot/imported/goblion_sheet.png-0c7512fc8f0cce805beb18759fbc4089.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "02f8c99be37dab688f061f087837e1d0"
 }
 
 [deps]
 
-source_file="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.ctex"]
+source_file="res://Graphics/Sprites/goblion_sheet.png"
+dest_files=["res://.godot/imported/goblion_sheet.png-0c7512fc8f0cce805beb18759fbc4089.ctex"]
 
 [params]
 

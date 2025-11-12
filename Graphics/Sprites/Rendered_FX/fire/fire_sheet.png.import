@@ -2,23 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu50xlkjlrwor"
-path="res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.ctex"
+uid="uid://dm4y65ra4wkm0"
+path.s3tc="res://.godot/imported/fire_sheet.png-eb9bdd6117616ba7a9619747f4d5e235.s3tc.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "02f8c99be37dab688f061f087837e1d0"
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.ctex"]
+source_file="res://Graphics/Sprites/Rendered_FX/fire/fire_sheet.png"
+dest_files=["res://.godot/imported/fire_sheet.png-eb9bdd6117616ba7a9619747f4d5e235.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

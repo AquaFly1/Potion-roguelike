@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=23 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -21,9 +21,19 @@
 [ext_resource type="Resource" uid="uid://qltim5rn6kbm" path="res://Resources/Effects/Shield.tres" id="19_5ul1t"]
 [ext_resource type="Resource" uid="uid://bohvvi81lc8xh" path="res://Resources/Effects/Poison.tres" id="19_tnymu"]
 [ext_resource type="Resource" uid="uid://r7bx2y1fm66f" path="res://Resources/Effects/Rejuvination.tres" id="20_33pfu"]
+[ext_resource type="PackedScene" uid="uid://cvvxom6idxm10" path="res://Scenes/managers/menu.tscn" id="22_jb27j"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
 effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t")])
+menu_scene = ExtResource("22_jb27j")
+
+[node name="Menu_parent" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1

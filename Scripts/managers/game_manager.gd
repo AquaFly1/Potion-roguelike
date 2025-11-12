@@ -4,6 +4,8 @@ extends Node
 @export var combos: Array[Combo]
 @export var effects: Array[Effect]
 
+@export var menu_scene: PackedScene
+@onready var menu_parent: Control = $Menu_parent
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 #u
@@ -94,7 +96,9 @@ func card_pressed_func(_card):
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		var menu_window = menu_scene.instantiate()
+		menu_parent.add_child(menu_window)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("window_fullscreen"):
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			

@@ -5,7 +5,7 @@ extends Node
 @export var effects: Array[Effect]
 
 @export var menu_scene: PackedScene
-@onready var menu_parent: Control = $Menu_parent
+@export var menu_parent: Control
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 #u

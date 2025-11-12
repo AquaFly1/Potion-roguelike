@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg5f20hymuna3"
-path="res://.godot/imported/button_pre.aseprite-2df186bebdd4987b2d9cc10d4d4a5160.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Graphics/temporary_art/button_pre.aseprite"
-dest_files=["res://.godot/imported/button_pre.aseprite-2df186bebdd4987b2d9cc10d4d4a5160.ctex"]
 
 [params]
 

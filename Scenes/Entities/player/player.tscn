@@ -1135,11 +1135,11 @@ shader_parameter/frame_count = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 480.00001976
+shader_parameter/pixel_resolution = 240.0
 shader_parameter/color_steps = 24
 shader_parameter/noise_strength = 0.050000002375
-shader_parameter/enable_dither = false
-shader_parameter/dither_strength = 0.10000000475
+shader_parameter/enable_dither = true
+shader_parameter/dither_strength = 0.0150000007125
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iq2rp"]
 shader = ExtResource("17_iq2rp")

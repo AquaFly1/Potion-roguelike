@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://bf16sbdv1txqm"]
+[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://bf16sbdv1txqm"]
 
 [ext_resource type="Texture2D" uid="uid://dm4y65ra4wkm0" path="res://Graphics/Sprites/Rendered_FX/fire/fire_sheet.png" id="1_jdpnk"]
 
@@ -62,19 +62,6 @@ region = Rect2(832, 64, 64, 64)
 atlas = ExtResource("1_jdpnk")
 region = Rect2(896, 64, 64, 64)
 
-[sub_resource type="GDScript" id="GDScript_86hjl"]
-script/source = "func hue_shift_image(img: Image, shift: float) -> Image:
-	img.lock()
-	for y in img.get_height():
-		for x in img.get_width():
-			var c = img.get_pixel(x,y)
-			var hsv = c.to_hsv()
-			hsv.x = fmod(hsv.x + shift, 1.0)
-			img.set_pixel(x,y, Color.from_hsv(hsv.x, hsv.y, hsv.z, c.a))
-	img.unlock()
-	return img
-"
-
 [resource]
 animations = [{
 "frames": [{
@@ -127,4 +114,3 @@ animations = [{
 "name": &"default",
 "speed": 30.0
 }]
-script = SubResource("GDScript_86hjl")

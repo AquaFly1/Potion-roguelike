@@ -382,7 +382,8 @@ size = Vector3(2, 2.5, 1)
 
 [node name="Player-nx" parent="." instance=ExtResource("1_ko3d7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.047791, 2.217414, -9.163347)
-floor_max_angle = 1.5201818
+floor_max_angle = 1.2130039
+floor_snap_length = 0.2
 
 [node name="Floor-nx" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -0.23041892, 0)
@@ -400,7 +401,7 @@ disabled = true
 [node name="Transition-nx" parent="." node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("10_ce7yl")]
 transform = Transform3D(2.1, 0, 0, 0, 2.625, 0, 0, 0, 2.1, -4, 1.25, -6)
 Side1Candle = NodePath("../Candle")
-Side2Candle = NodePath("../Candle2")
+Side2Candle = NodePath("")
 
 [node name="ChurchParent" type="Node3D" parent="."]
 
@@ -520,9 +521,6 @@ shape = SubResource("BoxShape3D_pwss2")
 
 [node name="interaction" parent="." instance=ExtResource("14_a3qpn")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8764205, 0.9670925, 0.0049586296)
-
-[node name="Candle2" parent="." instance=ExtResource("14_buf24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.419603, 0, -11.606251)
 
 [node name="Shop_3D" parent="." instance=ExtResource("12_7ees8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2560463, 0.024918735, -3.3414583)

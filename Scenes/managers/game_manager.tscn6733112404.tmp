@@ -46,6 +46,7 @@ script = ExtResource("23_33pfu")
 first_menu = NodePath("Main")
 
 [node name="Main" type="VBoxContainer" parent="CanvasLayer/Menu" node_paths=PackedStringArray("settings_menu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,6 +88,7 @@ theme = ExtResource("24_ofi3n")
 text = "Save & Quit"
 
 [node name="Settings" type="VBoxContainer" parent="CanvasLayer/Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,19 +165,19 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Bottom" type="HBoxContainer" parent="CanvasLayer/Menu/Settings"]
+[node name="Bottomn" type="HBoxContainer" parent="CanvasLayer/Menu/Settings"]
 layout_mode = 2
 
-[node name="Cancel" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="Cancel" type="Button" parent="CanvasLayer/Menu/Settings/Bottomn"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Menu/Settings/Bottomn"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Apply" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="Apply" type="Button" parent="CanvasLayer/Menu/Settings/Bottomn"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"

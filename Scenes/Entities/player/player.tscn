@@ -1187,7 +1187,6 @@ mesh = SubResource("CapsuleMesh_l3v4j")
 
 [node name="Head" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-visible = false
 shape = SubResource("CylinderShape3D_l3v4j")
 
 [node name="Body" type="CollisionShape3D" parent="."]
@@ -1632,6 +1631,7 @@ layout_mode = 0
 mouse_filter = 1
 
 [node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("14_yicnn")]
+visible = false
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
@@ -1710,7 +1710,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PostEffectLayer" type="CanvasLayer" parent="."]
-layer = 75
+layer = 90
 
 [node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
 material = SubResource("ShaderMaterial_iq2rp")

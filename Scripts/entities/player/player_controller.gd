@@ -11,6 +11,8 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
 
+var interaction_look_at: Node3D
+
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
 @onready var pivot: Node3D = $Camera_pivot
@@ -36,41 +38,43 @@ func _ready() -> void:
 	
 
 func _unhandled_input(event):
+	if not Game.is_in_combat:
+		if event is InputEventMouseMotion:
+			# Yaw on Player
+			rotate_y(-event.relative.x * mouse_sensitivity)
+			# Pitch on Pivot
+			pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+			# Clamp pitch to avoid flipping
+			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-85), deg_to_rad(75))
+		elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mouse_mode_capture = false
+		elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			mouse_mode_capture = true
 	
-	if event is InputEventMouseMotion and not Game.is_in_combat:
-		# Yaw on Player
-		rotate_y(-event.relative.x * mouse_sensitivity)
-		# Pitch on Pivot
-		pivot.rotate_x(-event.relative.y * mouse_sensitivity)
-		# Clamp pitch to avoid flipping
-		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-85), deg_to_rad(75))
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_mode_capture = false
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == false:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		mouse_mode_capture = true
+	
+	
 func _physics_process(delta):
-	if Game.is_in_combat:
-		return
+	
+	if interaction_look_at:	transform = transform.interpolate_with(transform.looking_at(interaction_look_at.global_position),0.1)	
+	
+	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
 #region horizontal
-	#if (Input.is_action_pressed("forward")
-	#|| Input.is_action_pressed("backward") 
-	#|| Input.is_action_pressed("left") 
-	#|| Input.is_action_pressed("right")):
-	dir = Vector3(Input.get_action_strength("right") 
-								- Input.get_action_strength("left"),
-								0,
-								Input.get_action_strength("backward") 
-								- Input.get_action_strength("forward"))
-	camera.rotation.z = lerp(camera.rotation.z,-dir.x/40.0,0.1)
-	dir = dir.rotated(Vector3.UP, h_rot).normalized()
-			
-	
-			
-	dir = dir.normalized()
+	if not Game.is_in_combat:
+		dir = Vector3(Input.get_action_strength("right") 
+									- Input.get_action_strength("left"),
+									0,
+									Input.get_action_strength("backward") 
+									- Input.get_action_strength("forward"))
+		camera.rotation.z = lerp(camera.rotation.z,-dir.x/40.0,0.1)
+		dir = dir.rotated(Vector3.UP, h_rot).normalized()
+				
+		
+				
+		dir = dir.normalized()
 	
 	
 	horizontal_velocity = velocity.lerp(
@@ -121,6 +125,9 @@ func start_interaction():
 	Game.is_in_combat = true
 	hand.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	interaction_look_at = Game.interaction_node.get_child(0)
+	
 func end_interaction():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	hand.visible = false
+	interaction_look_at = null

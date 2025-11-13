@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtbq8nt3ags7r"]
+
+[ext_resource type="Script" uid="uid://d20rluhwgrtwj" path="res://Scenes/managers/MAIN.gd" id="1_rket4"]
+[ext_resource type="PackedScene" uid="uid://cjuyi2adb48lg" path="res://Scenes/Environnement/Church.tscn" id="1_u0u2u"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_rket4")
+
+[node name="Room" parent="." instance=ExtResource("1_u0u2u")]

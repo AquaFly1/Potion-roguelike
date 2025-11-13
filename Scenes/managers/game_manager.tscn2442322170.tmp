@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=27 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -25,6 +25,12 @@
 [ext_resource type="Script" uid="uid://b6nmw3pp1g24w" path="res://Scenes/managers/menu_pause_main.gd" id="23_ofi3n"]
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfbmo"]
+bg_color = Color(0.35834408, 0.5883731, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heytn"]
+bg_color = Color(0.31050196, 0.597834, 1, 1)
+
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("menu_parent")]
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
@@ -35,7 +41,8 @@ menu_parent = NodePath("CanvasLayer/Menu")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 85
 
-[node name="Menu" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("first_menu")]
+[node name="Menu" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,145 +50,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("23_33pfu")
-first_menu = NodePath("Main")
 
-[node name="Main" type="VBoxContainer" parent="CanvasLayer/Menu" node_paths=PackedStringArray("settings_menu")]
+[node name="Main" type="VBoxContainer" parent="CanvasLayer/Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.75
+offset_left = -626.0
 offset_top = -540.0
-offset_right = 237.75
+offset_right = 533.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("23_ofi3n")
-settings_menu = NodePath("../Settings")
 
 [node name="Resume" type="Button" parent="CanvasLayer/Menu/Main"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Resume"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Main"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
 [node name="Settings" type="Button" parent="CanvasLayer/Menu/Main"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Settings"
-
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Main"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
 
 [node name="Save & Quit" type="Button" parent="CanvasLayer/Menu/Main"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Save & Quit"
 
-[node name="Settings" type="VBoxContainer" parent="CanvasLayer/Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -544.0
-offset_top = -473.0
-offset_right = 544.0
-offset_bottom = 473.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-script = ExtResource("23_ofi3n")
-
-[node name="Resume" type="Label" parent="CanvasLayer/Menu/Settings"]
+[node name="Label" type="Label" parent="CanvasLayer/Menu/Main"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("24_ofi3n")
-text = "Settings"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Settings"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Menu/Settings"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu/Settings/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Setting1" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Settings"
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Setting2" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Save & Quit"
-
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Setting3" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Settings"
-
-[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Setting4" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Save & Quit"
-
-[node name="HSeparator4" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Settings"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Bottom" type="HBoxContainer" parent="CanvasLayer/Menu/Settings"]
-layout_mode = 2
-
-[node name="Cancel" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Cancel"
-
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Menu/Settings/Bottom"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Apply" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Apply"
+theme_override_font_sizes/font_size = 300
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfbmo")
+theme_override_styles/focus = SubResource("StyleBoxFlat_heytn")
+text = "BAHAHAHA TU
+ CROYAIS QUE
+ JAVAIS FAIT
+ LES SETTINGS"
 
 [connection signal="pressed" from="CanvasLayer/Menu/Main/Resume" to="CanvasLayer/Menu/Main" method="_on_resume_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Main/Settings" to="CanvasLayer/Menu" method="set_menu" flags=18 binds= [NodePath("../../Settings")]]
+[connection signal="pressed" from="CanvasLayer/Menu/Main/Settings" to="CanvasLayer/Menu/Main" method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/Main/Save & Quit" to="CanvasLayer/Menu/Main" method="_on_save__quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer/Setting1" to="CanvasLayer/Menu/Settings" method="_on_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer/Setting2" to="CanvasLayer/Menu/Settings" method="_on_save__quit_pressed"]

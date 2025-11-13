@@ -44,8 +44,9 @@ func load_enemies(enemie_list):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == Player.node:
 		load_enemies(enemies)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Game.interaction_node = self
 		Game.interaction_started.emit()
+		
 		
 #func _process(_delta: float) -> void:
 	#if not Game.is_in_combat:

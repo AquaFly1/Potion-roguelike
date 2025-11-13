@@ -4,8 +4,9 @@ extends Node
 @export var combos: Array[Combo]
 @export var effects: Array[Effect]
 
-@export var menu_scene: PackedScene
+var main_node: Node3D
 @export var menu_parent: Control
+var mouse_mode: int
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 #u
@@ -26,8 +27,9 @@ signal enemy_turn_ended
 signal enemy_killed
 var waiting_for_enemy: bool
 
-signal interaction_started
+signal interaction_started(node: Node3D)
 signal interaction_ended
+var interaction_node: Node3D
 
 signal held_chand_modified(cards: Array)
 signal look_candle(candle: Node3D)
@@ -90,15 +92,13 @@ func interaction_end_func():
 	xp_end_of_fight = 0
 	
 func interaction_start_func():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	player_start_turn.emit()
 func card_pressed_func(_card):
 	pass
 
+
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		var menu_window = menu_scene.instantiate()
-		menu_parent.add_child(menu_window)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("window_fullscreen"):
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 			

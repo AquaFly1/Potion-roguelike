@@ -205,13 +205,13 @@ func _input(event):
 					#else:
 						#was_on_pot = false
 func play_selected_cards():
-	var played_cards = 0
+	#var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
 		for i in selected_cards.duplicate():
 			potion.append(i.ingredient)
 			remove_card(i)
 			Player.mana -= 1
-			played_cards += 1
+			#played_cards += 1
 			for j in cards:
 				j.path_pos_index -= 1.0
 		#draw(played_cards)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvvxom6idxm10"]
 
-[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://menu.gd" id="1_bfbmo"]
-[ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="2_heytn"]
+[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://menu_controller.gd" id="1_ffxdy"]
+[ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="2_rn3ok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfbmo"]
 bg_color = Color(0.35834408, 0.5883731, 1, 1)
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bfbmo")
+script = ExtResource("1_ffxdy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -36,19 +36,19 @@ alignment = 1
 [node name="Resume" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme = ExtResource("2_heytn")
+theme = ExtResource("2_rn3ok")
 text = "Resume"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme = ExtResource("2_heytn")
+theme = ExtResource("2_rn3ok")
 text = "Settings"
 
 [node name="Save & Quit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme = ExtResource("2_heytn")
+theme = ExtResource("2_rn3ok")
 text = "Save & Quit"
 
 [node name="Label" type="Label" parent="."]

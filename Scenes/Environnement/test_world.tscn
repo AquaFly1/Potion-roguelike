@@ -1,0 +1,92 @@
+[gd_scene load_steps=19 format=3 uid="uid://k2x51r1wi5it"]
+
+[ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_5opd7"]
+[ext_resource type="Material" uid="uid://d14fgmkjms5fr" path="res://3DAssets/Evironnement/Wood.tres" id="1_gepd6"]
+[ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_j4k5v"]
+[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="4_gepd6"]
+[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="5_36k1m"]
+[ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="6_mw27p"]
+[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="7_pgska"]
+[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="8_7cmid"]
+[ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://Scenes/Interactions/Shop/shop_3d.tscn" id="9_y2fwv"]
+[ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
+[ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_7cmid"]
+[ext_resource type="Script" uid="uid://cvl2ubjuqkf7j" path="res://Scripts/resources/Interaction.gd" id="13_y2fwv"]
+[ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="14_jqsnb"]
+[ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="15_oo1gt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3pl5u"]
+material = ExtResource("1_gepd6")
+size = Vector2(25, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5opd7"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u3w7i"]
+
+[node name="test_world -nx" type="Node3D"]
+
+[node name="floor -nx" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_3pl5u")
+
+[node name="Player-nx" parent="." instance=ExtResource("1_5opd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.689634, 0.52065825, 10.226602)
+
+[node name="floor_body -nx" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx"]
+shape = SubResource("BoxShape3D_5opd7")
+debug_color = Color(0, 0.6, 0.69803923, 0.39607844)
+
+[node name="Chest(1)" parent="." instance=ExtResource("2_05l0i")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.425005, 0.006901264, -9.821445)
+cards = Array[ExtResource("3_j4k5v")]([ExtResource("4_gepd6")])
+
+[node name="Chest(2)" parent="." instance=ExtResource("2_05l0i")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.826399, 0.006901264, -9.821445)
+cards = Array[ExtResource("3_j4k5v")]([ExtResource("5_36k1m"), ExtResource("6_mw27p")])
+
+[node name="Chest(3)" parent="." instance=ExtResource("2_05l0i")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.17627, 0.006901264, -9.821445)
+cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
+
+[node name="shop_label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.86462, 2.3799498, -10.158476)
+text = "SHOP
+"
+font_size = 300
+
+[node name="2_goblins_text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472517, 5.3759203, -10.158476)
+text = "2 GOBLINS"
+font_size = 300
+
+[node name="3_goblins_text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2529144, 5.3759203, -10.158476)
+text = "3 GOBLINS"
+font_size = 300
+
+[node name="Shop_3D" parent="." instance=ExtResource("9_y2fwv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7359734, 0.36199164, -10.25037)
+
+[node name="Candle" parent="." instance=ExtResource("10_j4k5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.229196, 0.087560296, -1.7276413)
+
+[node name="3_gob_int" parent="." instance=ExtResource("12_7cmid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0290737, 1.0162615, -8.912329)
+possible_interactions = Array[ExtResource("13_y2fwv")]([ExtResource("14_jqsnb")])
+
+[node name="3_gob_mesh -nx" type="MeshInstance3D" parent="3_gob_int"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0441589, 0)
+mesh = SubResource("BoxMesh_u3w7i")
+
+[node name="2_gob_int" parent="." instance=ExtResource("12_7cmid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6181278, 1.0516315, -8.825928)
+possible_interactions = Array[ExtResource("13_y2fwv")]([ExtResource("15_oo1gt")])
+
+[node name="2_gob_mesh -nx" type="MeshInstance3D" parent="2_gob_int"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022897482, -1.043518, -0.086400986)
+mesh = SubResource("BoxMesh_u3w7i")
+skeleton = NodePath("../../3_gob_int")

@@ -1,0 +1,209 @@
+[gd_scene load_steps=4 format=3 uid="uid://duccfvq305uq0"]
+
+[ext_resource type="Script" uid="uid://cstpgnrgr3q01" path="res://vending_machine.gd" id="1_kvq1s"]
+[ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="2_p2roi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18hwb"]
+
+[node name="Vending_machine" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvq1s")
+
+[node name="rows" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 25.0
+offset_right = 1103.0
+offset_bottom = 1037.0
+
+[node name="row1" type="HBoxContainer" parent="rows"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+alignment = 1
+
+[node name="A1" type="TextureRect" parent="rows/row1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator" type="VSeparator" parent="rows/row1"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="A2" type="TextureRect" parent="rows/row1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator2" type="VSeparator" parent="rows/row1"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="A3" type="TextureRect" parent="rows/row1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="row2" type="HBoxContainer" parent="rows"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="B1" type="TextureRect" parent="rows/row2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator" type="VSeparator" parent="rows/row2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="B2" type="TextureRect" parent="rows/row2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator2" type="VSeparator" parent="rows/row2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="B3" type="TextureRect" parent="rows/row2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="row3" type="HBoxContainer" parent="rows"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="C1" type="TextureRect" parent="rows/row3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator" type="VSeparator" parent="rows/row3"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="C2" type="TextureRect" parent="rows/row3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator2" type="VSeparator" parent="rows/row3"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="C3" type="TextureRect" parent="rows/row3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="row4" type="HBoxContainer" parent="rows"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="D1" type="TextureRect" parent="rows/row4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator" type="VSeparator" parent="rows/row4"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="D2" type="TextureRect" parent="rows/row4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="VSeparator2" type="VSeparator" parent="rows/row4"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="D3" type="TextureRect" parent="rows/row4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("2_p2roi")
+
+[node name="buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1136.0
+offset_top = 383.0
+offset_right = 1353.0
+offset_bottom = 745.0
+
+[node name="Input" type="Label" parent="buttons"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -83.0
+offset_right = 229.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 100
+
+[node name="GridContainer" type="GridContainer" parent="buttons"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="A" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "A"
+
+[node name="ONE" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "1"
+
+[node name="B" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "B"
+
+[node name="TWO" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "2"
+
+[node name="C" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "C"
+
+[node name="THREE" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "3"
+
+[node name="D" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "D"
+
+[node name="FOUR" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "4"
+
+[connection signal="pressed" from="buttons/GridContainer/A" to="." method="input_button" binds= ["A"]]
+[connection signal="pressed" from="buttons/GridContainer/ONE" to="." method="input_button" binds= ["1"]]
+[connection signal="pressed" from="buttons/GridContainer/B" to="." method="input_button" binds= ["B"]]
+[connection signal="pressed" from="buttons/GridContainer/TWO" to="." method="input_button" binds= ["2"]]
+[connection signal="pressed" from="buttons/GridContainer/C" to="." method="input_button" binds= ["C"]]
+[connection signal="pressed" from="buttons/GridContainer/THREE" to="." method="input_button" binds= ["3"]]
+[connection signal="pressed" from="buttons/GridContainer/D" to="." method="input_button" binds= ["D"]]
+[connection signal="pressed" from="buttons/GridContainer/FOUR" to="." method="input_button" binds= ["4"]]

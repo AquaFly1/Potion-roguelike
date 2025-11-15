@@ -5,6 +5,8 @@ var enemies: Array[PackedScene]
 var current_interaction = null
 @onready var enemy_parent = $enemy_parent/SubViewport/Parent
 
+var cleared: bool = false
+
 func _ready() -> void:
 	current_interaction = possible_interactions.pick_random()
 	enemies = current_interaction.enemies
@@ -16,13 +18,14 @@ func _ready() -> void:
 
 func load_enemies(enemie_list):
 	#Player.start_turn()
-	var pos = -0.5*(len(enemie_list)-1)
-	for i in range(len(enemie_list)):
-		var enemy_inst = enemie_list[i].instantiate()
-		enemy_parent.add_child(enemy_inst)
-		Game.enemy_list.append(enemy_inst)
-		enemy_inst.position.x += pos
-		pos += 1
+	if not cleared:
+		var pos = -0.5*(len(enemie_list)-1)
+		for i in range(len(enemie_list)):
+			var enemy_inst = enemie_list[i].instantiate()
+			enemy_parent.add_child(enemy_inst)
+			Game.enemy_list.append(enemy_inst)
+			enemy_inst.position.x += pos
+			pos += 1
 
 #func turn_ended():
 	#for enemy in Game.enemy_list:
@@ -42,7 +45,7 @@ func load_enemies(enemie_list):
 	#Game.enemies_loaded.emit()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body == Player.node:
+	if body == Player.node and not cleared:
 		load_enemies(enemies)
 		Game.interaction_node = self
 		Game.interaction_started.emit()

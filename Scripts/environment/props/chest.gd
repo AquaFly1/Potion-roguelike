@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var cards: Array[Ingredient]
-@onready var card_label: Label = $card_label
+@onready var card_label: Label = $CanvasLayer/card_label
 @onready var collision_shape_3d: CollisionShape3D = $Chest/CollisionShape3D
 
 func open_chest():

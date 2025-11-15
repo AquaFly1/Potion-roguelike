@@ -90,7 +90,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49818808, 0)
 shape = SubResource("BoxShape3D_6aqp2")
 
-[node name="card_label" type="Label" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 55
+
+[node name="card_label" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 373.0
 offset_top = 173.0

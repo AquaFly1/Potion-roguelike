@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5sknibx3yga"]
+
+[ext_resource type="Script" uid="uid://cyte20acba32p" path="res://card_pack.gd" id="1_pvgrn"]
+[ext_resource type="Texture2D" uid="uid://dfq264joewmbi" path="res://Graphics/temporary_art/white_square.aseprite" id="2_jkfcd"]
+
+[node name="card_pack" type="Control"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1720.0
+offset_bottom = -830.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pvgrn")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 250.0
+texture = ExtResource("2_jkfcd")
+
+[node name="position" type="Label" parent="."]
+layout_mode = 0
+offset_top = 202.0
+offset_right = 200.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "B22"
+horizontal_alignment = 1
+
+[node name="price" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "10$"
+horizontal_alignment = 1

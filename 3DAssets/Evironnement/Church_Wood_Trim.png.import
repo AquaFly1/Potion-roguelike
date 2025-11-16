@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doumxj0fvyjf5"
-path.s3tc="res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.s3tc.ctex"
+uid="uid://4g8l41ipktw7"
+path.s3tc="res://.godot/imported/Church_Wood_Trim.png-dfb9a96a94ae3bb9ddfcefa950685f3d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "36c1e0f8600887d7555bc989dc2b12ce"
+"md5": "ad690b3a5d18243e1ccb32cf6b96d86e"
 }
 
 [deps]
 
-source_file="res://3DAssets/Evironnement/Church_ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/Church_ChurchSpriteSheet.png-bdb868adbd82a1460ab791e163502b40.s3tc.ctex"]
+source_file="res://3DAssets/Evironnement/Church_Wood_Trim.png"
+dest_files=["res://.godot/imported/Church_Wood_Trim.png-dfb9a96a94ae3bb9ddfcefa950685f3d.s3tc.ctex"]
 
 [params]
 

@@ -1122,7 +1122,7 @@ shader_parameter/frame_count = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
 shader_parameter/pixel_resolution = 240.0
-shader_parameter/color_steps = 24
+shader_parameter/color_steps = 36
 shader_parameter/noise_strength = 0.050000002375
 shader_parameter/enable_dither = true
 shader_parameter/dither_strength = 0.0150000007125
@@ -1161,6 +1161,7 @@ layers = 5121
 light_color = Color(1, 0.922, 0.82, 1)
 light_energy = 0.4
 light_indirect_energy = 0.0
+light_size = 0.27
 shadow_bias = 0.05
 shadow_blur = 0.0
 shadow_caster_mask = 4293918753
@@ -1687,6 +1688,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PSX" type="ColorRect" parent="DownscaleLayer"]
+visible = false
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0

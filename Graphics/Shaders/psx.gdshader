@@ -66,8 +66,8 @@ void fragment() {
 	vec4 texture_color = texture(texture_albedo, base_uv);
 	
 	
-	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
-	NORMAL_MAP_DEPTH = normal_strength;
+	//NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	//NORMAL_MAP_DEPTH = normal_strength;
 	
 	
 	

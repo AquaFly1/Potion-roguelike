@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://k2x51r1wi5it"]
+[gd_scene load_steps=19 format=3 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="1_5opd7"]
 [ext_resource type="Material" uid="uid://d14fgmkjms5fr" path="res://3DAssets/Evironnement/Wood.tres" id="1_gepd6"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://Scenes/Interactions/Shop/shop_3d.tscn" id="9_y2fwv"]
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
 [ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_7cmid"]
-[ext_resource type="Script" uid="uid://cvl2ubjuqkf7j" path="res://Scripts/resources/Interaction.gd" id="13_y2fwv"]
+[ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="13_y2fwv"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="14_jqsnb"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="15_oo1gt"]
 

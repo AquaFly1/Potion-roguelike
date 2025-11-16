@@ -151,6 +151,12 @@ layout_mode = 2
 pack_position = "D13"
 price = 5
 
+[node name="player_money" type="Label" parent="."]
+layout_mode = 0
+offset_right = 383.0
+offset_bottom = 204.0
+text = "67"
+
 [connection signal="pressed" from="buttons/GridContainer/A" to="." method="input_button" binds= ["A"]]
 [connection signal="pressed" from="buttons/GridContainer/ONE" to="." method="input_button" binds= ["1"]]
 [connection signal="pressed" from="buttons/GridContainer/B" to="." method="input_button" binds= ["B"]]

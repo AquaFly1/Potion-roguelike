@@ -6,10 +6,10 @@ extends Node3D
 @onready var psx_blacklist_name: Array[String] = []
 @onready var psx_settings = {
 	"Vertex Snapping": amount.MEDIUM, 
-	"Affine Mapping": amount.NONE,
+	"Affine Mapping": 0.25,
 	"Downscaling": 4}
 var vertex_snapping_values := [1080,144,96,36]
-var downscaling_values := [false,720,480,360,240,144]
+var downscaling_values := [false,720,360,240,144]
 
 enum amount{NONE,LIGHT,MEDIUM,HEAVY}
 
@@ -17,7 +17,8 @@ var psx_instance: ShaderMaterial
 var surface_initial
 
 func _ready() -> void:
-	update()
+	await Player.player_ready
+	update_setting("Vertex Snapping", amount.MEDIUM)
 	
 func update() -> void:
 	for i in get_all_children(get_tree().get_root()):
@@ -83,12 +84,15 @@ func update_setting(option: String, value) -> void:
 	
 	psx_material.set_shader_parameter("resolution", 
 	Vector2.ONE * vertex_snapping_values[psx_settings["Vertex Snapping"]])
+	psx_material.set_shader_parameter("affine_amount", 
+	psx_settings["Affine Mapping"])
 	
 
 	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("downscaling",
 	downscaling_values[psx_settings["Downscaling"]] as bool)
 	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("pixel_resolution",
 	downscaling_values[psx_settings["Downscaling"]])
+	
 	
 	
 	update()

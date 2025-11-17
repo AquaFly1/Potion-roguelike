@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=29 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -24,6 +24,9 @@
 [ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://Scripts/managers/menu_controller.gd" id="23_33pfu"]
 [ext_resource type="Script" uid="uid://b6nmw3pp1g24w" path="res://Scenes/managers/menu_pause_main.gd" id="23_ofi3n"]
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
+[ext_resource type="Script" uid="uid://b2x17r8dhy8o4" path="res://Scripts/managers/options_passthrough.gd" id="25_ofi3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofi3n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33pfu"]
 content_margin_left = 50.0
@@ -169,52 +172,62 @@ text = "Save & Quit"
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
 layout_mode = 2
-size_flags_vertical = 3
+mouse_filter = 1
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ofi3n")
+
+[node name="downscaling" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 125
 alignment = 1
 
-[node name="Names" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer"]
+[node name="downs" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Names"]
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Downscaling:"
 
-[node name="Label2" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Names"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling/HBoxContainer"]
+custom_minimum_size = Vector2(84.505, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Off"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling/HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 4.0
+value = 1.0
+rounded = true
+tick_count = 5
+
+[node name="Vsnap" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="vsnap" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Vertex Snapping:"
 
-[node name="Values" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer"]
+[node name="OptionButton2" type="OptionButton" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+visible = false
 layout_mode = 2
-
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_33pfu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ofi3n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ofi3n")
-alignment = 1
-selected = 4
-item_count = 6
-popup/item_0/text = "Off"
-popup/item_0/id = 0
-popup/item_1/text = "720p"
-popup/item_1/id = 1
-popup/item_2/text = "480p"
-popup/item_2/id = 2
-popup/item_3/text = "360p"
-popup/item_3/id = 3
-popup/item_4/text = "240p"
-popup/item_4/id = 4
-popup/item_5/text = "144p"
-popup/item_5/id = 5
-
-[node name="OptionButton2" type="OptionButton" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values"]
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_33pfu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ofi3n")
@@ -230,11 +243,58 @@ popup/item_2/text = "Medium"
 popup/item_2/id = 2
 popup/item_3/text = "Heavy"
 popup/item_3/id = 3
+script = ExtResource("25_ofi3n")
 
-[node name="Vertexsnapping" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+custom_minimum_size = Vector2(84.505, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Off"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 3.0
+value = 1.0
+rounded = true
+tick_count = 4
+
+[node name="Affine" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 125
 alignment = 1
+
+[node name="affine" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Texture Warp:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+custom_minimum_size = Vector2(84.505, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0%"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 1.0
+step = 0.01
 
 [node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings"]
 custom_minimum_size = Vector2(0, 90.25)
@@ -258,5 +318,11 @@ text = "Apply"
 [connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Save & Quit" to="CanvasLayer-nx/Menu/Main" method="_on_save__quit_pressed"]
 [connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting1" to="CanvasLayer-nx/Menu/Settings" method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting2" to="CanvasLayer-nx/Menu/Settings" method="_on_save__quit_pressed"]
-[connection signal="item_selected" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values/OptionButton" to="CanvasLayer-nx/Menu" method="update_psx" binds= ["Downscaling"]]
-[connection signal="item_selected" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values/OptionButton2" to="CanvasLayer-nx/Menu" method="update_psx" binds= ["Vertex Snapping"]]
+[connection signal="mouse_entered" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" to="CanvasLayer-nx/Menu" method="make_see_through" binds= [Color(0, 0, 0, 0)]]
+[connection signal="mouse_exited" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" to="CanvasLayer-nx/Menu" method="make_see_through" binds= [Color(0, 0, 0, 1)]]
+[connection signal="mouse_exited" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="slider_unselect" flags=18]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/downscaling/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Downscaling", NodePath("../Label"), ["Off", "720p", "360p", "240p", "144p"]]]
+[connection signal="item_selected" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/OptionButton2" to="CanvasLayer-nx/Menu" method="update_psx" binds= ["Vertex Snapping"]]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Vertex Snapping", NodePath("../Label"), ["Off", "Low", "Med", "High"]]]
+[connection signal="mouse_exited" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="slider_unselect" flags=18]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider_percent" flags=18 binds= ["Affine Mapping", NodePath("../Label")]]

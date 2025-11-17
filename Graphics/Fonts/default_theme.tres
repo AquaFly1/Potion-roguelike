@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://ccn7rphveje3s"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://ccn7rphveje3s"]
 
 [ext_resource type="FontFile" uid="uid://drikrrt8seobl" path="res://Graphics/Fonts/alagard.ttf" id="1_he3nu"]
 
@@ -24,6 +24,50 @@ bg_color = Color(0, 0, 0, 0.105882354)
 color = Color(0.30692267, 0.3069227, 0.3069227, 1)
 thickness = 2
 
+[sub_resource type="Gradient" id="Gradient_he3nu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ytgyl"]
+gradient = SubResource("Gradient_he3nu")
+width = 30
+height = 40
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ytgyl"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.37, 0.37, 0.37, 0.3019608)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6yjtp"]
+gradient = SubResource("Gradient_ytgyl")
+width = 4
+height = 27
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqat5"]
+bg_color = Color(0.5770087, 0.5770083, 0.5770085, 1)
+corner_detail = 1
+expand_margin_top = 18.0
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl0et"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_detail = 1
+expand_margin_top = 18.0
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i6hy"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37413922, 0.37413934, 0.374139, 1)
+expand_margin_left = 2.0
+expand_margin_top = 20.0
+expand_margin_right = 2.0
+expand_margin_bottom = 20.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd8kw"]
 bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
 
@@ -36,11 +80,7 @@ border_width_bottom = 2
 border_color = Color(0.51718444, 0.5171845, 0.5171842, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oslq"]
-content_margin_left = 50.0
-content_margin_top = 50.0
-content_margin_right = 50.0
-content_margin_bottom = 50.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -63,7 +103,7 @@ content_margin_left = 10.0
 content_margin_top = 4.0
 content_margin_right = 10.0
 content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -94,6 +134,13 @@ Button/styles/normal = SubResource("StyleBoxFlat_6yjtp")
 Button/styles/pressed = SubResource("StyleBoxFlat_f0p7b")
 HSeparator/constants/separation = 10
 HSeparator/styles/separator = SubResource("StyleBoxLine_ytgyl")
+HSlider/constants/tick_offset = -15
+HSlider/icons/grabber = SubResource("GradientTexture2D_ytgyl")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_ytgyl")
+HSlider/icons/tick = SubResource("GradientTexture2D_6yjtp")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_gqat5")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cl0et")
+HSlider/styles/slider = SubResource("StyleBoxFlat_3i6hy")
 PopupMenu/font_sizes/font_size = 32
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_dd8kw")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_jft80")

@@ -6,7 +6,7 @@ render_mode blend_mix,
 	diffuse_burley,
 	specular_schlick_ggx,
 	depth_prepass_alpha,
-	//shadows_disabled, 
+	//shadows_disabled,
 	skip_vertex_transform;
 
 varying float w_comp;
@@ -34,30 +34,29 @@ uniform float normal_strength = 1.0;
 uniform vec2 resolution = vec2(320, 240);
 uniform bool affine_mapping = true;
 uniform float alpha_scissor : hint_range(0, 1) = 0.5;
-uniform float jitter: hint_range(0, 1) = 0.25;
 
 
 void vertex()
-{	
+{
 	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	w_comp = (PROJECTION_MATRIX * vec4(VERTEX, 1.0)).w;
-	
+
 	if (resolution != vec2(1080,1080))
 	{
 		VERTEX /= w_comp;
-		vec2 grid_to_snap = vec2(resolution) * (1.0 - jitter);
+		vec2 grid_to_snap = vec2(resolution);
 		VERTEX.x = floor(VERTEX.x * grid_to_snap.x) / grid_to_snap.x;
 		VERTEX.y = floor(VERTEX.y * grid_to_snap.y) / grid_to_snap.y;
 		VERTEX *= w_comp;
 	}
-	
-	
-	
+
+
+
 	if(affine_mapping == true){
 		UV *= w_comp*affine_amount + 1.0 - affine_amount;
-		
+
 	}
-	
+
 	//IMPORTANT NOTE: Make sure `NORMAL`s are transformed out of local space aswell.
 	NORMAL = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
 }
@@ -69,19 +68,19 @@ void fragment() {
 	if(affine_mapping == true){
 		base_uv /= w_comp*affine_amount + 1.0 - affine_amount;
 	}
-	
+
 	vec4 color_base = COLOR;
 	vec4 texture_color = texture(texture_albedo, base_uv);
-	
-	
+
+
 	//NORMAL_MAP = texture(texture_normal, base_uv).rgb;
 	//NORMAL_MAP_DEPTH = normal_strength;
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	ALBEDO = albedo.rgb * texture_color.rgb;
 	ALPHA = texture_color.a * color_base.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
@@ -93,5 +92,5 @@ void fragment() {
 	SPECULAR = specular;
 	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
 	EMISSION = (emission.rgb+emission_tex)*emission_energy;
-	
+
 }

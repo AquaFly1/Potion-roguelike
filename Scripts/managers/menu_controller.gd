@@ -2,22 +2,38 @@ extends Control
 
 @export var first_menu: Menu
 @onready var menu_travel: Array[Menu] = []
+var tween: Tween
+var tween_active = false
+var buffer := false
 
 func _ready() -> void:
 	hide()
 	Menu.controller = self
-
+	
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if not menu_travel.is_empty(): menu_travel[-1].escape()
 		else: toggle_menu()
 
+func add_buffer() -> bool:
+	if tween and tween.is_running():
+		if buffer: return false
+		buffer = true
+		tween.stop()
+		#await tween.finished
+		buffer = false
+		return true
+	return true
 
 func toggle_menu() -> void:
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	if tween: tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_interval(0)
 	if not visible: 
-		set_menu(self, first_menu.get_path()) #reset the travel
+		switch_menu(first_menu) #reset the travel
+		menu_travel.append(first_menu)
 		first_menu.show()
 		visible = not visible
 		
@@ -44,28 +60,53 @@ func toggle_menu() -> void:
 		await tween.finished
 		visible = not visible
 	
+	
 func switch_menu(next: Menu) -> void:
-	var previous = menu_travel[-1]
+	var previous
+	if menu_travel: previous = menu_travel[-1]
 	next.show()
 	next.modulate = Color.TRANSPARENT
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(previous, "modulate",Color.TRANSPARENT, 0.1)
-	tween.tween_property(previous, "visible",false, 0)
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	if previous:
+		tween.tween_property(previous, "modulate",Color.BLACK, 0.1)
+		tween.tween_property(previous, "visible",false, 0)
+		tween.tween_property(next, "modulate",Color.BLACK, 0)
+	
 	tween.tween_property(next, "modulate",Color.WHITE, 0.1)
+	
 
 func set_menu(from: Control, path: NodePath) -> void:
+	if tween: tween.kill()
+	
 	var menu = from.get_node(path)
 	if not menu_travel.is_empty(): switch_menu(menu)
 	menu_travel.append(menu)
 	
 func back() -> void:
+	if tween: tween.kill()
 	if len(menu_travel) >= 2:
 		switch_menu(menu_travel[-2])
 		menu_travel.remove_at(-1)
 	else:
-		menu_travel[-1].visible = false
 		toggle_menu()
 	
 func update_psx(value, option: String):
 	PsxLoader.update_setting(option,value)
+
+func update_psx_slider(value, from: Control, option: String, target_label = null, label_string_list: Array = []):
+	PsxLoader.update_setting(option,value)
+	if target_label: from.get_node(target_label).text = label_string_list[value]
 	
+func update_psx_slider_percent(value, from: Control, option: String, target_label = null):
+	PsxLoader.update_setting(option,value)
+	if target_label: from.get_node(target_label).text = str(int(value*100)) + "%"
+
+func slider_unselect(slider: HSlider):
+	slider.release_focus()
+	
+func make_see_through(col: Color):
+	var transparent_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	transparent_tween.tween_property(self,"color",col,0.3)
+
+
+		

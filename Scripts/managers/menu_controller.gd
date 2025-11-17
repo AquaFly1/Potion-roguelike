@@ -66,4 +66,6 @@ func back() -> void:
 		menu_travel[-1].visible = false
 		toggle_menu()
 	
+func update_psx(value, option: String):
+	PsxLoader.update_setting(option,value)
 	

@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture,filter_nearest;
 uniform float pixel_resolution : hint_range(10.0, 1080.0) = 240.0;
+uniform bool downscaling = false;
 
 uniform int color_steps : hint_range(2, 64) = 16;
 uniform float noise_strength : hint_range(0.0, 1.0) = 0.1;
@@ -41,13 +42,18 @@ float bayer_dither(vec2 pos) {
 
 
 void fragment() {
-	vec2 pixel_uv = vec2(
-		floor((UV.x * (pixel_resolution + 1.0) - (UV.x - 0.5))*(16.0/9.0) )/ ((pixel_resolution + 1.0)*(16.0/9.0)),
-		floor(UV.y * (pixel_resolution + 1.0) - (UV.y - 0.5))/ (pixel_resolution + 1.0)
-		);
-	//pixel_uv = round(UV*pixel_resolution)/pixel_resolution;
-	vec2 pixel_frag = pixel_uv*vec2((16.0/9.0),1.0)*pixel_resolution;
-
+	vec2 pixel_uv = UV;
+	vec2 pixel_frag = FRAGCOORD.xy;
+	if (downscaling){
+		
+		pixel_uv = vec2(
+			floor((UV.x * (pixel_resolution + 1.0) - (UV.x - 0.5))*(16.0/9.0) )/ ((pixel_resolution + 1.0)*(16.0/9.0)),
+			floor(UV.y * (pixel_resolution + 1.0) - (UV.y - 0.5))/ (pixel_resolution + 1.0)
+			);
+		//pixel_uv = round(UV*pixel_resolution)/pixel_resolution;
+		pixel_frag = pixel_uv*vec2((16.0/9.0),1.0)*pixel_resolution;
+	}
+	
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
 
 

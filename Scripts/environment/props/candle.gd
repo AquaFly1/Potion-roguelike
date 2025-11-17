@@ -1,6 +1,6 @@
 extends Node
 
-@onready var point: OmniLight3D = $StaticBody3D/candle/Point
+@onready var point: OmniLight3D = $Point
 @onready var flame: AnimatedSprite3D = $StaticBody3D/AnimatedSprite3D
 @onready var base_energy = point.light_energy
 @export var doors: Array[StaticBody3D]

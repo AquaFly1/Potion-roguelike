@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=27 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -21,21 +21,46 @@
 [ext_resource type="Resource" uid="uid://qltim5rn6kbm" path="res://Resources/Effects/Shield.tres" id="19_5ul1t"]
 [ext_resource type="Resource" uid="uid://bohvvi81lc8xh" path="res://Resources/Effects/Poison.tres" id="19_tnymu"]
 [ext_resource type="Resource" uid="uid://r7bx2y1fm66f" path="res://Resources/Effects/Rejuvination.tres" id="20_33pfu"]
-[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://menu_controller.gd" id="23_33pfu"]
+[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://Scripts/managers/menu_controller.gd" id="23_33pfu"]
 [ext_resource type="Script" uid="uid://b6nmw3pp1g24w" path="res://Scenes/managers/menu_pause_main.gd" id="23_ofi3n"]
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33pfu"]
+content_margin_left = 50.0
+content_margin_top = 10.0
+content_margin_right = 50.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.40832943, 0.4083295, 0.40832922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofi3n"]
+content_margin_left = 50.0
+content_margin_top = 10.0
+content_margin_right = 50.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7539839, 0.75398386, 0.75398403, 1)
 
 [node name="GameManager" type="Node2D" node_paths=PackedStringArray("menu_parent")]
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
 effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t")])
-menu_parent = NodePath("CanvasLayer/Menu")
+menu_parent = NodePath("CanvasLayer-nx/Menu")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer-nx" type="CanvasLayer" parent="."]
 layer = 85
 
-[node name="Menu" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("first_menu")]
+[node name="Menu" type="ColorRect" parent="CanvasLayer-nx" node_paths=PackedStringArray("first_menu")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,7 +70,8 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("23_33pfu")
 first_menu = NodePath("Main")
 
-[node name="Main" type="VBoxContainer" parent="CanvasLayer/Menu" node_paths=PackedStringArray("settings_menu")]
+[node name="Main" type="VBoxContainer" parent="CanvasLayer-nx/Menu" node_paths=PackedStringArray("settings_menu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,30 +89,30 @@ alignment = 1
 script = ExtResource("23_ofi3n")
 settings_menu = NodePath("../Settings")
 
-[node name="Resume" type="Button" parent="CanvasLayer/Menu/Main"]
+[node name="Resume" type="Button" parent="CanvasLayer-nx/Menu/Main"]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Resume"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Main"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Settings" type="Button" parent="CanvasLayer/Menu/Main"]
+[node name="Settings" type="Button" parent="CanvasLayer-nx/Menu/Main"]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Settings"
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Main"]
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Save & Quit" type="Button" parent="CanvasLayer/Menu/Main"]
+[node name="Save & Quit" type="Button" parent="CanvasLayer-nx/Menu/Main"]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Save & Quit"
 
-[node name="Settings" type="VBoxContainer" parent="CanvasLayer/Menu"]
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer-nx/Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,86 +128,135 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("23_ofi3n")
 
-[node name="Resume" type="Label" parent="CanvasLayer/Menu/Settings"]
+[node name="Settings" type="Label" parent="CanvasLayer-nx/Menu/Settings"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("24_ofi3n")
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Settings"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Menu/Settings"]
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer-nx/Menu/Settings"]
 layout_mode = 2
 size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu/Settings/ScrollContainer"]
+[node name="Game" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 6
+metadata/_tab_index = 0
+
+[node name="Setting1" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Setting2" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Save & Quit"
+
+[node name="Graphics" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 125
 alignment = 1
 
-[node name="Setting1" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Settings"
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="Names" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer"]
 layout_mode = 2
 
-[node name="Setting2" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Names"]
 layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Save & Quit"
+theme_override_font_sizes/font_size = 32
+text = "Downscaling:"
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="Label2" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Names"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Vertex Snapping:"
 
-[node name="Setting3" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Settings"
-
-[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="Values" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer"]
 layout_mode = 2
 
-[node name="Setting4" type="Button" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values"]
 layout_mode = 2
-theme = ExtResource("24_ofi3n")
-text = "Save & Quit"
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_33pfu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ofi3n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ofi3n")
+alignment = 1
+selected = 4
+item_count = 6
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "720p"
+popup/item_1/id = 1
+popup/item_2/text = "480p"
+popup/item_2/id = 2
+popup/item_3/text = "360p"
+popup/item_3/id = 3
+popup/item_4/text = "240p"
+popup/item_4/id = 4
+popup/item_5/text = "144p"
+popup/item_5/id = 5
 
-[node name="HSeparator4" type="HSeparator" parent="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="OptionButton2" type="OptionButton" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_33pfu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ofi3n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ofi3n")
+alignment = 1
+selected = 2
+item_count = 4
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Light"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Heavy"
+popup/item_3/id = 3
+
+[node name="Vertexsnapping" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+layout_mode = 2
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings"]
+custom_minimum_size = Vector2(0, 90.25)
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Menu/Settings"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Bottom" type="HBoxContainer" parent="CanvasLayer/Menu/Settings"]
-layout_mode = 2
-
-[node name="Cancel" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="Cancel" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Apply" type="Button" parent="CanvasLayer/Menu/Settings/Bottom"]
+[node name="Apply" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"
 
-[connection signal="pressed" from="CanvasLayer/Menu/Main/Resume" to="CanvasLayer/Menu/Main" method="_on_resume_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Main/Settings" to="CanvasLayer/Menu" method="set_menu" flags=18 binds= [NodePath("../../Settings")]]
-[connection signal="pressed" from="CanvasLayer/Menu/Main/Save & Quit" to="CanvasLayer/Menu/Main" method="_on_save__quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer/Setting1" to="CanvasLayer/Menu/Settings" method="_on_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Settings/ScrollContainer/VBoxContainer/Setting2" to="CanvasLayer/Menu/Settings" method="_on_save__quit_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Resume" to="CanvasLayer-nx/Menu/Main" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Settings" to="CanvasLayer-nx/Menu" method="set_menu" flags=18 binds= [NodePath("../../Settings")]]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Save & Quit" to="CanvasLayer-nx/Menu/Main" method="_on_save__quit_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting1" to="CanvasLayer-nx/Menu/Settings" method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting2" to="CanvasLayer-nx/Menu/Settings" method="_on_save__quit_pressed"]
+[connection signal="item_selected" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values/OptionButton" to="CanvasLayer-nx/Menu" method="update_psx" binds= ["Downscaling"]]
+[connection signal="item_selected" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/HBoxContainer/Values/OptionButton2" to="CanvasLayer-nx/Menu" method="update_psx" binds= ["Vertex Snapping"]]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://fjdc8f4hhuu6"]
+[gd_scene load_steps=5 format=3 uid="uid://fjdc8f4hhuu6"]
 
 [ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/environment/apply_psx.gd" id="1_1utox"]
 [ext_resource type="Material" uid="uid://c27umsb446kd7" path="res://Graphics/Environnement/materials/psx_auto.material" id="2_qqmah"]
+[ext_resource type="Shader" uid="uid://ctfnnu8wxax4j" path="res://Graphics/Shaders/psx.gdshader" id="3_qqmah"]
+[ext_resource type="Shader" uid="uid://bofsley30cmoq" path="res://Graphics/Shaders/psxUnshaded.gdshader" id="4_n5n5u"]
 
 [node name="PsxLoader-nx" type="Node3D"]
 script = ExtResource("1_1utox")
 psx_material = ExtResource("2_qqmah")
+psx_shaders = Array[Shader]([ExtResource("3_qqmah"), ExtResource("4_n5n5u")])

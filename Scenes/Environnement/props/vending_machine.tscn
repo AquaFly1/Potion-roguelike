@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://duccfvq305uq0"]
+[gd_scene load_steps=4 format=3 uid="uid://bnjxl7i4io76a"]
 
-[ext_resource type="Script" uid="uid://cstpgnrgr3q01" path="res://vending_machine.gd" id="1_kvq1s"]
+[ext_resource type="Script" uid="uid://cstpgnrgr3q01" path="res://Scripts/interaction/vending_machine.gd" id="1_kvq1s"]
 [ext_resource type="PackedScene" uid="uid://r5sknibx3yga" path="res://Scenes/Environnement/props/card_pack.tscn" id="2_kvq1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18hwb"]
@@ -93,63 +93,39 @@ columns = 3
 
 [node name="card_pack" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "A11"
-price = 10
 
 [node name="card_pack2" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "A12"
-price = 10
 
 [node name="card_pack3" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "A13"
-price = 15
 
 [node name="card_pack4" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "B11"
-price = 5
 
 [node name="card_pack5" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "B12"
-price = 10
 
 [node name="card_pack6" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "B13"
-price = 5
 
 [node name="card_pack7" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "C11"
-price = 15
 
 [node name="card_pack8" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "C12"
-price = 15
 
 [node name="card_pack9" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "C13"
-price = 10
 
 [node name="card_pack10" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "D11"
-price = 10
 
 [node name="card_pack11" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "D12"
-price = 5
 
 [node name="card_pack12" parent="pack_container" instance=ExtResource("2_kvq1s")]
 layout_mode = 2
-pack_position = "D13"
-price = 5
 
 [node name="player_money" type="Label" parent="."]
 layout_mode = 0

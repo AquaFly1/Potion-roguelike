@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvvxom6idxm10"]
 
-[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://menu_controller.gd" id="1_ffxdy"]
+[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://Scripts/managers/menu_controller.gd" id="1_ffxdy"]
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="2_rn3ok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfbmo"]

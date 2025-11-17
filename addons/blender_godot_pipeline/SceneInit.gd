@@ -201,7 +201,7 @@ func _material(node, metas, meta, meta_val):
 			var shader = load(node.get_meta("shader"))
 			material.set_shader(shader)
 		
-		node.set_surface_override_material(int(surface), material)
+		node.get_mesh().surface_set_material(int(surface), material)
 
 # COLLLISIONS
 func collision_script(body, node, metas) -> void:

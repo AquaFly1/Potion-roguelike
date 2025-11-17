@@ -2,18 +2,33 @@ extends Node3D
 
 @export var psx_backlist_suffix: String = "-nx"
 @export var psx_material: ShaderMaterial
+@export var psx_shaders: Array[Shader]
 @onready var psx_blacklist_name: Array[String] = []
+@onready var psx_settings = {
+	"Vertex Snapping": amount.MEDIUM, 
+	"Affine Mapping": amount.NONE,
+	"Downscaling": 4}
+var vertex_snapping_values := [1080,144,96,36]
+var downscaling_values := [false,720,480,360,240,144]
+
+enum amount{NONE,LIGHT,MEDIUM,HEAVY}
+
 var psx_instance: ShaderMaterial
 var surface_initial
 
 func _ready() -> void:
-
-	for i in get_all_children(get_parent()):
+	update()
+	
+func update() -> void:
+	for i in get_all_children(get_tree().get_root()):
 		if i is MeshInstance3D:
+			
 			for surface in i.get_mesh().get_surface_count():
 				psx_instance = psx_material.duplicate()
 				surface_initial = i.get_mesh().surface_get_material(surface)
+				
 				if surface_initial is StandardMaterial3D:
+					
 					psx_instance.set_shader_parameter(
 						"texture_albedo",surface_initial.get("albedo_texture") )
 					psx_instance.set_shader_parameter(
@@ -26,15 +41,16 @@ func _ready() -> void:
 						"emission_energy",surface_initial.get("emission_energy_multiplier") )
 					psx_instance.set_shader_parameter(
 						"texture_emission",surface_initial.get("emission_texture") )
-					if surface_initial.get("normal_texture"):
-						psx_instance.set_shader_parameter(
-						"texture_normal",surface_initial.get("normal_texture") )
+					#if surface_initial.get("normal_texture"):
+						#psx_instance.set_shader_parameter(
+						#"texture_normal",surface_initial.get("normal_texture") )
 					i.set_surface_override_material(
 						surface,
 						psx_instance
 					)
-				elif surface_initial.shader == psx_material.shader:
-					for parameter in ["affine_amount","jitter"]:
+				elif surface_initial.shader in psx_shaders:
+					for parameter in ["affine_amount","resolution"]:
+						
 						surface_initial.set_shader_parameter(
 							parameter,
 							psx_material.get_shader_parameter(parameter)
@@ -46,7 +62,6 @@ func _ready() -> void:
 
 func get_all_children(node) -> Array:
 	var nodes : Array = []
-
 	for N in node.get_children():
 			if psx_backlist_suffix not in N.name:
 				
@@ -62,3 +77,18 @@ func get_all_children(node) -> Array:
 			#else:
 				#nodes.append(N)
 	return nodes
+
+func update_setting(option: String, value) -> void:
+	psx_settings[option] = value
+	
+	psx_material.set_shader_parameter("resolution", 
+	Vector2.ONE * vertex_snapping_values[psx_settings["Vertex Snapping"]])
+	
+
+	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("downscaling",
+	downscaling_values[psx_settings["Downscaling"]] as bool)
+	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("pixel_resolution",
+	downscaling_values[psx_settings["Downscaling"]])
+	
+	
+	update()

@@ -19,6 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 shape = SubResource("CylinderShape3D_4ifdf")
 
 [node name="candle" parent="StaticBody3D" instance=ExtResource("2_llfyr")]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticBody3D"]
 transform = Transform3D(0.86, 0, 0, 0, 0.62, 0, 0, 0, 0.86, 0, 0.812, 0)
@@ -36,3 +37,14 @@ light_energy = 4.0
 spot_range = 8.874
 spot_attenuation = 0.0
 spot_angle = 20.0
+
+[node name="Point" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.8502063, 0)
+light_color = Color(0.29000002, 0.66866666, 1, 1)
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+omni_range = 100.0
+omni_attenuation = 0.7

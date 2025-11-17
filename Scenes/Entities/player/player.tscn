@@ -1121,7 +1121,8 @@ shader_parameter/frame_count = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 240.0
+shader_parameter/pixel_resolution = 240.000010925
+shader_parameter/downscaling = true
 shader_parameter/color_steps = 36
 shader_parameter/noise_strength = 0.050000002375
 shader_parameter/enable_dither = true
@@ -1158,17 +1159,16 @@ metadata/_edit_horizontal_guides_ = [-141.0]
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 layers = 5121
-light_color = Color(1, 0.922, 0.82, 1)
-light_energy = 0.4
+light_energy = 0.2
 light_indirect_energy = 0.0
 light_size = 0.27
 shadow_bias = 0.05
 shadow_blur = 0.0
 shadow_caster_mask = 4293918753
-omni_range = 40.0
-omni_attenuation = 0.6
+omni_range = 30.0
 
 [node name="Shadow" type="MeshInstance3D" parent="."]
+visible = false
 transparency = 1.0
 mesh = SubResource("CapsuleMesh_l3v4j")
 
@@ -1676,7 +1676,6 @@ color = Color(0, 0, 0, 0)
 script = ExtResource("21_fmrin")
 
 [node name="Color" type="CanvasLayer" parent="DownscaleLayer/InteractionWave"]
-visible = false
 
 [node name="ColorAdjust" type="TextureRect" parent="DownscaleLayer/InteractionWave/Color"]
 material = SubResource("ShaderMaterial_ukq60")
@@ -1688,7 +1687,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PSX" type="ColorRect" parent="DownscaleLayer"]
-visible = false
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0

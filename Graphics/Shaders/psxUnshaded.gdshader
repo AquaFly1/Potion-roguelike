@@ -1,9 +1,9 @@
 shader_type spatial;
 //IMPORTANT NOTE: SHADOWS ARE DISABLED.
-render_mode blend_add,
-	depth_draw_never,
-	cull_disabled,
-	diffuse_burley,
+render_mode blend_mix,
+	depth_draw_opaque,
+	cull_back,
+	unshaded,
 	specular_schlick_ggx,
 	depth_prepass_alpha,
 	//shadows_disabled, 

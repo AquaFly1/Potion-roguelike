@@ -1,6 +1,6 @@
 [gd_resource type="Sky" load_steps=6 format=3 uid="uid://jfal3jemn5i3"]
 
-[ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://night_sky.gdshader" id="1_444u3"]
+[ext_resource type="Shader" uid="uid://do8qssptuocjv" path="res://Graphics/Shaders/night_sky.gdshader" id="1_444u3"]
 
 [sub_resource type="Gradient" id="Gradient_yicnn"]
 offsets = PackedFloat32Array(0.993865, 1)

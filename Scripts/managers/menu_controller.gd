@@ -32,7 +32,16 @@ func toggle_menu() -> void:
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_interval(0)
 	if not visible: 
+		for i in get_children():
+			i.hide()
+		
+		
+		
+		tween.tween_property(Game.main_node, "process_mode" , Node.PROCESS_MODE_DISABLED, 0 )
+		tween.tween_property(self,"modulate",Color.WHITE,0.2)
+		
 		switch_menu(first_menu) #reset the travel
+		
 		menu_travel.append(first_menu)
 		first_menu.show()
 		visible = not visible
@@ -42,19 +51,19 @@ func toggle_menu() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 		modulate = Color(0,0,0,0)
-		tween.tween_property(self,"modulate",Color.BLACK,0.1)
-		
-		tween.tween_property(Game.main_node, "process_mode" , Node.PROCESS_MODE_DISABLED, 0 )
+		#tween.tween_property(self,"modulate",Color.BLACK,0.1)
 		
 		
-		tween.tween_property(self,"modulate",Color.WHITE,0.2)
+		
 	else:
+		var previous = menu_travel[-1]
 		menu_travel.clear()
 		Input.set_mouse_mode(Game.mouse_mode)
 		Game.main_node.process_mode = Node.PROCESS_MODE_INHERIT
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
 		tween.tween_property(self,"modulate",Color.BLACK,0.1)
+		tween.tween_property(previous, "visible",false, 0)
 		tween.tween_property(self,"modulate",Color(0,0,0,0),0.1)
 		
 		await tween.finished
@@ -67,13 +76,13 @@ func switch_menu(next: Menu) -> void:
 	next.show()
 	next.modulate = Color.TRANSPARENT
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	self.color = Color.BLACK
 	if previous:
-		tween.tween_property(previous, "modulate",Color.BLACK, 0.1)
+		tween.tween_property(previous, "modulate",modulate*Color.BLACK, 0.1)
 		tween.tween_property(previous, "visible",false, 0)
 		tween.tween_property(next, "modulate",Color.BLACK, 0)
 	
 	tween.tween_property(next, "modulate",Color.WHITE, 0.1)
-	
 
 func set_menu(from: Control, path: NodePath) -> void:
 	if tween: tween.kill()
@@ -105,8 +114,9 @@ func slider_unselect(slider: HSlider):
 	slider.release_focus()
 	
 func make_see_through(col: Color):
-	var transparent_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	transparent_tween.tween_property(self,"color",col,0.3)
+	await tween.finished
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self,"color",col,0.3)
 
 
 		

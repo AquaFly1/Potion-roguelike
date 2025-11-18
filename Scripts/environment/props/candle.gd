@@ -8,7 +8,7 @@ var size_tween: Tween
 var active: bool = false
 @onready var base_pos = flame.position
 var affect_player_light: bool = false
-@onready var player_light: OmniLight3D = Player.node.get_child(0)
+@onready var player_light: OmniLight3D = Player.node.self_light
 @onready var player_light_base_energy: float = player_light.light_energy
 @onready var base_size = flame.scale
 

@@ -11,7 +11,6 @@ var node_ref := {} ##Dictionnary of Interacteables you are looking at. ex: looki
 func _physics_process(_delta: float) -> void:
 	check_for("Candle", "[E]: Light candle")
 	check_for("Chest", "[E]: Open chest")
-	
 	#if get_collider() and "Candle" in get_collider().get_parent().name:
 		#if candle_look != get_collider().get_parent():
 			##popup_label.interact_text = "[E]: Light candle"
@@ -35,7 +34,6 @@ func _physics_process(_delta: float) -> void:
 
 func check_for(object_hint: String, text: String) -> void:
 	if get_collider() and object_hint in get_collider().get_parent().name:
-		
 		if node_ref.get(object_hint) != get_collider().get_parent():
 			popup_label.add_text(text)
 		node_ref[object_hint] = get_collider().get_parent()

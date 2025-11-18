@@ -1,13 +1,13 @@
 [gd_scene load_steps=77 format=4 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
+[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
-[ext_resource type="Script" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
+[ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
 [ext_resource type="Shader" uid="uid://bvsrns2282jtb" path="res://Graphics/Shaders/CustomPosterization.gdshader" id="6_bqky3"]
 [ext_resource type="Script" uid="uid://s8sij4pue5y" path="res://Scripts/cards/CardPathController.gd" id="7_a74oi"]
-[ext_resource type="Shader" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
+[ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="PackedScene" uid="uid://2p5vi7khwsu2" path="res://3DAssets/hand/hand.gltf" id="7_x5yqs"]
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="8_bqky3"]
 [ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scripts/environment/UI_Resolution.gd" id="8_j5c6h"]
@@ -1144,7 +1144,7 @@ shader_parameter/r_displacement = Vector2(1, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1, 0)
 
-[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hand")]
+[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "hand")]
 collision_layer = 17
 collision_mask = 17
 floor_constant_speed = true
@@ -1153,6 +1153,7 @@ floor_max_angle = 1.3386675
 script = ExtResource("1_r8aaq")
 walk_speed = 6.0
 camera = NodePath("Camera_pivot/Camera")
+self_light = NodePath("Self_Light")
 hand = NodePath("UI+PostP/2D/SubViewport/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
 
@@ -1197,6 +1198,7 @@ script = ExtResource("2_g154t")
 popup_label = NodePath("../../../UI+PostP/2D/SubViewport/UI/PopupLabel")
 
 [node name="InfiniRay" type="RayCast3D" parent="Camera_pivot/Camera"]
+visible = false
 target_position = Vector3(0, 0, -50)
 collision_mask = 4
 hit_from_inside = true

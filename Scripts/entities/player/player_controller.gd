@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
+@export var self_light: OmniLight3D
 
 var interaction_look_at: Node3D
 

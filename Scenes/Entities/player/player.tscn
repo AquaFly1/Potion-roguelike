@@ -1160,6 +1160,7 @@ metadata/_edit_horizontal_guides_ = [-141.0]
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 layers = 5121
+light_energy = 0.2
 light_indirect_energy = 0.0
 light_size = 0.27
 shadow_bias = 0.05

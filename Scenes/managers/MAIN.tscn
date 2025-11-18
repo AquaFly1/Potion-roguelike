@@ -10,7 +10,8 @@ script = ExtResource("1_rket4")
 
 [node name="Player-nx" parent="." instance=ExtResource("3_ru5bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.70951, 7.5744295, -77.31237)
-walk_speed = 12.0
+acceleration_air_mult = 1.0
+air_max_speed = 4.0
 
 [node name="test_world" parent="." instance=ExtResource("2_p17k0")]
 

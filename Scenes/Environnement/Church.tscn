@@ -645,6 +645,7 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_pwss2")
 
 [node name="interaction" parent="." instance=ExtResource("14_a3qpn")]
+process_mode = 4
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8764205, 0.9670925, 0.0049586296)
 
 [node name="Shop_3D" parent="." instance=ExtResource("12_7ees8")]

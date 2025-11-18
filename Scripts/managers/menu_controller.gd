@@ -114,7 +114,6 @@ func slider_unselect(slider: HSlider):
 	slider.release_focus()
 	
 func make_see_through(col: Color):
-	await tween.finished
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self,"color",col,0.3)
 

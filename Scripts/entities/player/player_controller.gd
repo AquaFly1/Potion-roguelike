@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var walk_speed: float = 10.0
 @export var acceleration: float = 0.1
 @export var acceleration_air_mult: float = 0.5
+@export var air_max_speed: float = 5
 @export var jump_force: float = 7
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
@@ -77,13 +78,30 @@ func _physics_process(delta):
 				
 		dir = dir.normalized()
 	
+	if is_on_floor():
 	
-	horizontal_velocity = velocity.lerp(
-		dir.normalized() * walk_speed, 
-		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
-	
-	velocity.x = horizontal_velocity.x
-	velocity.z = horizontal_velocity.z
+		horizontal_velocity = velocity.lerp(
+			dir.normalized() * walk_speed, 
+			acceleration if is_on_floor() else acceleration * acceleration_air_mult)
+		
+		velocity.x = horizontal_velocity.x
+		velocity.z = horizontal_velocity.z
+		
+	if not is_on_floor():
+		
+		var projVel := velocity.project(dir)
+		var isAway := dir.dot(projVel) <= 0
+		
+		if projVel.length() < air_max_speed or isAway:
+			var vc := dir.normalized() * acceleration_air_mult
+			
+			if not isAway: vc = vc.limit_length(air_max_speed - projVel.length())
+			else: vc = vc.limit_length(air_max_speed + projVel.length())
+
+			velocity += vc
+			var vel2d := Vector2(velocity.x,velocity.z)
+			vel2d = vel2d.limit_length(8)
+			velocity = Vector3(vel2d.x,velocity.y,vel2d.y)
 		
 #endregion
 
@@ -93,7 +111,7 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		#velocity.y = 0
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("jump"):
 			velocity.y = jump_force
 			#velocity.y = vertical_velocity.y
 

@@ -100,7 +100,7 @@ func _physics_process(delta):
 
 			velocity += vc
 			var vel2d := Vector2(velocity.x,velocity.z)
-			vel2d = vel2d.limit_length(8)
+			vel2d = vel2d.limit_length(8.5)
 			velocity = Vector3(vel2d.x,velocity.y,vel2d.y)
 		
 #endregion

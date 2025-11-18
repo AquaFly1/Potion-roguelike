@@ -13,7 +13,7 @@ viewport_path = NodePath("enemy_parent/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fkl"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.53, 0.20669998, 0.20669998, 0.07058824)
+albedo_color = Color(0.5294118, 0.20784314, 0.20784314, 0.85882354)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jvst4"]
 material = SubResource("StandardMaterial3D_r3fkl")

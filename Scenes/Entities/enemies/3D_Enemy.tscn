@@ -189,6 +189,7 @@ border_width_bottom = 2
 
 [node name="3dEnemy" type="Node3D"]
 script = ExtResource("1_vtixw")
+max_health = 5.0
 
 [node name="Enemy_sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

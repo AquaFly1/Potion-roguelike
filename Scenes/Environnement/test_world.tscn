@@ -113,3 +113,5 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 13.032282, 0.0065095425
 
 [node name="interaction" parent="Interactions" instance=ExtResource("12_36k1m")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.044361, 1.2267916, -8.15073)
+
+[node name="Node3D" type="Node3D" parent="."]

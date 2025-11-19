@@ -12,6 +12,7 @@ var affect_player_light: bool = false
 @onready var player_light_base_energy: float = player_light.light_energy
 @onready var base_size = flame.scale
 
+signal changed
 
 func _ready() -> void:
 	#armature.visible = false
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 func light_candle():
 	active = not active
-	
+	changed.emit()
 	
 	if size_tween: size_tween.stop()
 	flame.position = base_pos
@@ -45,9 +46,6 @@ func light_candle():
 		size_tween.chain().tween_property(flame,"position",base_pos + Vector3(0.1,0,0),0.07)
 		size_tween.chain().tween_property(point,"light_energy",0,0.07)
 		size_tween.tween_property(flame,"scale",Vector3.ZERO,0.02)
-	for door in doors:
-		door.get_child(0).disabled = not door.get_child(0).disabled
-	update_player_light()
 
 func update_player_light() -> void:
 	if affect_player_light:

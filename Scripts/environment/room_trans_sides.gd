@@ -8,6 +8,7 @@ var fade_target_value: float = 0
 var fading: bool = false
 @onready var block_player_light: Node3D = fade_mesh.get_child(0)
 var candle: Node3D
+@onready var block: CollisionShape3D = $"../StaticBody3D/block"
 
 func _ready() -> void:
 	if name == "Side1Area":
@@ -16,14 +17,23 @@ func _ready() -> void:
 		candle = parent.Side2Candle
 	connect("body_entered",on_body_entered)
 	connect("body_exited",on_body_exited)
+	if candle: candle.changed.connect(update_hitbox)
+	
+func update_hitbox() -> void:
+	if candle:
+		block.set_deferred("disabled", candle.active)
+	if area_other.candle:
+		if candle: block.set_deferred("disabled", candle.active or area_other.candle.active)
+		else: block.set_deferred("disabled", area_other.candle.active)
+	
 	
 func on_body_entered(_body: Node3D) -> void:
 	#first half
 	if _body == Player.node:
-		
 		if fade_mesh.transparency == 1:
 			fade_mesh_other.transparency = 0
-		
+			
+			
 			
 		else:
 			area_other.fading = true

@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=18 format=4 uid="uid://b3l36tiauvqmr"]
 
-[ext_resource type="Texture2D" uid="uid://jl5tevn38rlr" path="res://Graphics/temporary_art/chapel_layout.png" id="1_3pl5u"]
+[ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_j4k5v"]
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="4_gepd6"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
 [ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_36k1m"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="12_mw27p"]
-[ext_resource type="Script" uid="uid://dhldo34f484bo" path="res://Scripts/interaction/Interaction_Renderer.gd" id="12_pgska"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
 
@@ -32,30 +31,18 @@ _surfaces = [{
 size = Vector3(50, 0.001, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3t11"]
-albedo_texture = ExtResource("1_3pl5u")
+albedo_texture = ExtResource("1_mw27p")
 texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3pl5u"]
 material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7cmid"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gepd6"]
-size = Vector3(1, 5, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36k1m"]
-albedo_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mw27p"]
-material = SubResource("StandardMaterial3D_36k1m")
-size = Vector3(1, 5, 2)
-
 [node name="test_world" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Walls2" type="Node3D" parent="."]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
@@ -85,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -
 mesh = SubResource("ArrayMesh_36k1m")
 
 [node name="floor_body -nx" type="StaticBody3D" parent="."]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 
 [node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx"]
 shape = SubResource("BoxShape3D_5opd7")
@@ -122,191 +110,92 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7462692, 0.26749444, 1.4162
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 
 [node name="Candle" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 12.834086, 0.0065095425, -12.199351)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 17.773827, 0.0065095425, -17.181137)
 doors = [null]
 
 [node name="Candle2" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.176867, 0.0065095425, -4.5313697)
-doors = [NodePath("../../doors/door2"), NodePath("../../doors/door3")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 19.598413, 0.0065095425, -6.201963)
+doors = [null, null]
 
 [node name="Candle3" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -12.508403, 0.0065095425, -4.171642)
-doors = [NodePath("../../doors/door11"), NodePath("../../doors/door9")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -17.604052, 0.0065095425, -5.90912)
+doors = [null, null]
 
 [node name="Candle4" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -14.110827, 0.0065095425, 6.685602)
-doors = [NodePath("../../doors/door10")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -19.782055, 0.0065095425, 9.348905)
+doors = [null]
 
 [node name="Candle5" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -5.935192, 0.0065095425, 11.329364)
-doors = [NodePath("../../doors/door8"), NodePath("../../doors/door7")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -8.3239355, 0.0065095425, 15.613312)
+doors = [null, null]
 
 [node name="Candle6" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 3.3523293, 0.0065095425, 10.315585)
-doors = [NodePath("../../doors/door5"), NodePath("../../doors/door6")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 4.343393, 0.0065095425, 14.707571)
+doors = [null, null]
 
 [node name="Candle7" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 13.032282, 0.0065095425, 4.788856)
-doors = [NodePath("../../doors/door4")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 18.016548, 0.0065095425, 6.761684)
+doors = [null]
 
-[node name="Interaction_renderer" type="Node3D" parent="."]
-editor_description = "Place Interactions as children of subviewport for rendering. make local before using
-"
+[node name="Interactions" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="BypassPSX" type="CanvasLayer" parent="Interaction_renderer"]
-layer = 25
+[node name="interaction" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 23.55029, -6.2584877e-07, -16.544828)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Interaction_renderer/BypassPSX"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
+[node name="interaction2" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.775997, 0, -11.780589)
 
-[node name="SubViewport" type="SubViewport" parent="Interaction_renderer/BypassPSX/SubViewportContainer"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
+[node name="interaction3" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.585801, 0, -5.610328)
 
-[node name="Renderer" type="Camera3D" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036255717, -2.4963102)
-cull_mask = 4096
-script = ExtResource("12_pgska")
+[node name="interaction4" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.635841, 0, 0.037117325)
 
-[node name="Interactions" type="Node3D" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.75, 0)
+[node name="interaction5" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.876745, 0, 7.8717804)
 
-[node name="interaction" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16.506832, 0, -11.953525)
+[node name="interaction6" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0476849, 0, -2.8376167)
 
-[node name="interaction2" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.044361, 0, -8.15073)
+[node name="interaction7" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.3245, 0, 3.669557)
 
-[node name="interaction3" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.586997, 0, -3.9057624)
-
-[node name="interaction4" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3489485, 0, 0.8899924)
-
-[node name="interaction5" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.6580973, 0, 7.0259075)
-
-[node name="interaction6" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96825236, 0, -2.1085258)
-
-[node name="interaction7" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.951954, 0, 8.526503)
-
-[node name="interaction8" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
-process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.098728, 0, 2.068622)
-
-[node name="Sprite2D" type="Sprite2D" parent="Interaction_renderer/BypassPSX"]
-visible = false
-position = Vector2(960, 540)
-texture = SubResource("ViewportTexture_7cmid")
+[node name="interaction8" parent="Interactions" instance=ExtResource("12_36k1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.906984, 0, 2.9632576)
 
 [node name="doors" type="Node3D" parent="."]
 
-[node name="door2" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6962385, 2.1807282, -4.123586)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door2"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door2"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door3" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.15365, 2.1807284, -4.468673)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door3"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door3"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door4" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.15365, 2.1807284, 5.54977)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door4"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door4"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door5" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6036911, 2.1807284, 10.120791)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door5"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door5"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door6" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1258086, 2.1807284, 1.6632888)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door6"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door6"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door8" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.171157, 2.1807272, 6.4705973)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door8"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door8"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door9" type="StaticBody3D" parent="doors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.079415, 2.1807275, -7.860409)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door9"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door9"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door7" type="StaticBody3D" parent="doors"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.7835855, 2.1807284, 14.847191)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door7"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door7"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door10" type="StaticBody3D" parent="doors"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.913404, 2.1807284, 4.0555496)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door10"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door10"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="door11" type="StaticBody3D" parent="doors"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.946338, 2.1807284, -5.76128)
-
-[node name="door_col" type="CollisionShape3D" parent="doors/door11"]
-shape = SubResource("BoxShape3D_gepd6")
-
-[node name="door_mesh" type="MeshInstance3D" parent="doors/door11"]
-mesh = SubResource("BoxMesh_mw27p")
-
-[node name="Transition-nx" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
-transform = Transform3D(-6.875801e-08, 0, -0.743, 0, 3.9380004, 0, 1.573, 0, -3.2477566e-08, 15.458667, -0.04446445, -12.307002)
+[node name="Transition" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+transform = Transform3D(-9.301783e-08, 0, -1.7, 0, 5.578, 0, 2.128, 0, -7.430936e-08, 21.633, -0.044, -17.296)
 Side1Candle = NodePath("../../lights/Candle")
+
+[node name="Transition2" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(-9.301783e-08, 0, 1.7, 0, 5.5780005, 0, -2.128, 0, -7.430936e-08, 14.637951, -0.044, -11.438599)
+
+[node name="Transition3" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(-2.1279998, 0, -2.5669289e-07, 0, 5.5780005, 0, 3.2131902e-07, 0, -1.7, 18.90311, -0.044, -9.109648)
+
+[node name="Transition4" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(-9.3017825e-08, 0, 1.7, 0, 5.5780005, 0, -2.1279998, 0, -7.430936e-08, 21.872883, -0.044, -5.694927)
+
+[node name="Transition5" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(1.6065954e-07, 0, 1.7, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 14.5189085, -0.044, -6.085002)
+
+[node name="Transition6" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(-9.3017825e-08, 0, 1.7, 0, 5.5780005, 0, -2.1279998, 0, -7.430936e-08, 21.872883, -0.044, -5.694927)
+
+[node name="Transition7" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(-2.1279998, 0, 2.5669289e-07, 0, 5.578001, 0, -3.2131902e-07, 0, -1.7, 28.311483, -0.044, 0.1176885)
+
+[node name="Transition8" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 21.864569, -0.044, 6.315426)
+
+[node name="Transition9" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 15.240847, -0.044, 7.8124123)
+
+[node name="Transition10" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-07, 0, 1.7, 18.652225, -0.044, 3.2622843)
+
+[node name="Transition11" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)

@@ -4,7 +4,7 @@ extends Control
 @onready var burn: ColorRect = $Health/Burn
 @onready var poison: ColorRect = $Health/Burn/Poison
 @onready var rejuv: ColorRect = $Health/Rejuv
-@onready var shield: ColorRect = $Shield
+@onready var shield: ColorRect = $Health/Shield
 
 @export var is_player = false
 

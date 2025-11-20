@@ -56,15 +56,17 @@ func toggle_menu() -> void:
 		
 		
 	else:
-		var previous = menu_travel[-1]
+		
+		for i in menu_travel: i.visible = false
 		menu_travel.clear()
 		Input.set_mouse_mode(Game.mouse_mode)
 		Game.main_node.process_mode = Node.PROCESS_MODE_INHERIT
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
-		tween.tween_property(self,"modulate",Color.BLACK,0.1)
-		tween.tween_property(previous, "visible",false, 0)
-		tween.tween_property(self,"modulate",Color(0,0,0,0),0.1)
+		
+		tween.parallel().tween_property(self,"modulate",Color.BLACK,0.1)
+		#tween.tween_property(previous, "visible",false, 0)
+		tween.parallel().tween_property(self,"modulate",Color(0,0,0,0),0.1)
 		
 		await tween.finished
 		visible = not visible
@@ -110,7 +112,7 @@ func update_psx_slider_percent(value, from: Control, option: String, target_labe
 	PsxLoader.update_setting(option,value)
 	if target_label: from.get_node(target_label).text = str(int(value*100)) + "%"
 
-func slider_unselect(slider: HSlider):
+func slider_unselect(_value, slider: HSlider):
 	slider.release_focus()
 	
 func make_see_through(col: Color):

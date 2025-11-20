@@ -19,32 +19,37 @@ control = NodePath("Card_control")
 [node name="Card_control" type="Control" parent="."]
 z_index = -13
 layout_mode = 3
-anchors_preset = 0
-offset_left = -75.0
-offset_top = -203.0
-offset_right = 25.0
-offset_bottom = -63.0
-scale = Vector2(1.45, 1.45)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -77.0
+offset_right = 27.5
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Card_sprite" type="TextureRect" parent="Card_control"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h8wm0")
-layout_mode = 0
-offset_left = -14.0
-offset_top = -40.0
-offset_right = 8.0
-offset_bottom = -10.0
-scale = Vector2(6, 6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_h8wm0")
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="Card_button" type="Button" parent="Card_control"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -14.0
-offset_top = -40.0
-offset_right = 118.0
-offset_bottom = 140.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_text = "This is the text that pops up when 
 you didn't put a tooltip
 "

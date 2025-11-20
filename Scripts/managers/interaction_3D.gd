@@ -45,7 +45,7 @@ func load_enemies(enemie_list):
 	#Game.enemies_loaded.emit()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body == Player.node and not cleared:
+	if body == Player.node and not cleared and not Game.is_in_combat:
 		load_enemies(enemies)
 		Game.interaction_node = self
 		Game.interaction_started.emit()

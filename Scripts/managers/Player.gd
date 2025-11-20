@@ -6,7 +6,7 @@ var xp = 0
 
 var exposed: bool = false
 
-var max_mana = 5
+var max_mana = 6
 var mana = 0
 
 var node: CharacterBody3D

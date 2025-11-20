@@ -1,11 +1,12 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture,filter_nearest;
-uniform float pixel_resolution : hint_range(10.0, 1080.0) = 240.0;
-uniform bool downscaling = false;
+//uniform float pixel_resolution : hint_range(10.0, 1080.0) = 240.0;
+//uniform bool downscaling = false;
 
 uniform int color_steps : hint_range(2, 64) = 16;
 uniform float noise_strength : hint_range(0.0, 1.0) = 0.1;
+uniform float dither_blend_strength: hint_range(0.0, 0.1) = 0.02;
 uniform bool enable_dither = true;
 uniform float dither_strength : hint_range(0.0, 1.0) = 0.3;
 
@@ -61,7 +62,7 @@ void fragment() {
 
 
 	float steps = float(color_steps);
-	color = color + ign(FRAGCOORD.xy)*0.02;
+	color = color + ign(FRAGCOORD.xy)*dither_blend_strength;
 	color = floor(color * steps + 0.5) / steps;
 
 

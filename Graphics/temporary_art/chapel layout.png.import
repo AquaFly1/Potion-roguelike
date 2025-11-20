@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jl5tevn38rlr"
-path.s3tc="res://.godot/imported/chapel_layout.png-72eecd2d77136011c4a2a1fc5135fafb.s3tc.ctex"
+uid="uid://qf20u0t665vp"
+path.s3tc="res://.godot/imported/chapel layout.png-7b0de5f71d390b4b9f645b085daeaddb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Graphics/temporary_art/chapel_layout.png"
-dest_files=["res://.godot/imported/chapel_layout.png-72eecd2d77136011c4a2a1fc5135fafb.s3tc.ctex"]
+source_file="res://Graphics/temporary_art/chapel layout.png"
+dest_files=["res://.godot/imported/chapel layout.png-7b0de5f71d390b4b9f645b085daeaddb.s3tc.ctex"]
 
 [params]
 

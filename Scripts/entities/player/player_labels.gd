@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var info: Label = $Info_bg/Info_label
+@onready var info: Label = $Info_label
 
 
 func _ready() -> void:

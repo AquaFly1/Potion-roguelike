@@ -1,26 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgpx6lmd18v3f"]
+[gd_scene load_steps=3 format=3 uid="uid://dgpx6lmd18v3f"]
 
 [ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://Scripts/entities/player/player_labels.gd" id="1_ljlp1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljlp1"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
 
 [node name="PlayerLabels" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
 script = ExtResource("1_ljlp1")
 
-[node name="Info_bg" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 154.0
-offset_right = 409.0
-offset_bottom = 346.0
-
-[node name="Info_label" type="Label" parent="Info_bg"]
+[node name="Info_label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_right = 18.0
+offset_bottom = 25.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ljlp1")
 text = "5"
 horizontal_alignment = 1

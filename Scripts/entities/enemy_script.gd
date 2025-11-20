@@ -20,8 +20,9 @@ var chosen_potion = null
 @onready var attack_origin: Marker3D = $Enemy_sprite/attack_origin
 @onready var attack_parent: Control = $Target
 
-@onready var fire_visuals : AnimatedSprite3D = $VFX/FireSprite
-@onready var poison_visuals : GPUParticles2D = $VFX/SubViewport/PoisonBubble
+@onready var fire_origin : Node3D = $VFX/FireOrigin
+@onready var fire_visuals : AnimatedSprite3D = $VFX/FireOrigin/FireSprite
+@onready var poison_visuals : GPUParticles2D = $Target/PoisonBubble
 
 var preparing: int = 1
 #@onready var attack_button: Marker3D = $attack_origin
@@ -30,6 +31,8 @@ func _ready() -> void:
 	super()
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
+	fire_origin.scale = Vector3.ZERO
+	fire_visuals.get_child(0).light_energy = 0
 	
 	chosen_potion = potions.pick_random()
 	
@@ -67,12 +70,18 @@ func end_turn():
 
 func update_effect_vfx(effect: Effect):
 	var intensity := effects[Effect.index(effect.name)] 
+	var fx_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	fx_tween.tween_interval(0)
+	fx_tween.set_parallel()
 	match effect.name:
 		"Burn":
-			fire_visuals.visible = intensity
-			$VFX/FireSprite/FireLight.light_energy = intensity/max_health
+			fx_tween.tween_property(fire_origin,"scale",Vector3.ONE * min(intensity,1),0.5)
+			#fire_origin.visible = intensity
+			fx_tween.tween_property(fire_visuals.get_child(0),"light_energy",intensity/max_health,0.5)
 		"Poison":
-			poison_visuals.visible = intensity
+			poison_visuals.amount_ratio = intensity/ poison_visuals.amount
+			poison_visuals.emitting = intensity
+			poison_visuals.get_child(0).emitting = intensity
 		_:
 			pass
 
@@ -91,6 +100,7 @@ func _process(delta: float) -> void:
 	gui_parent.visible = not get_viewport().get_camera_3d().is_position_behind(gui_origin.global_position)
 	attack_parent.visible = gui_parent.visible
 	gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
+	#gui_parent.position = Vector2(100,100)
 	attack_parent.position = get_viewport().get_camera_3d().unproject_position(attack_origin.global_position)
 
 #	if chosen_potion and intention:

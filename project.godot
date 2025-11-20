@@ -29,8 +29,8 @@ PsxLoader="*res://Scenes/Environnement/Psx_Loader.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
@@ -159,6 +159,7 @@ sensors/enable_gravity=true
 3d_render/layer_12="Hand Mask Render"
 2d_render/layer_13="Enemy"
 3d_render/layer_13="Ennemy Render"
+3d_render/layer_20="editor only"
 
 [physics]
 

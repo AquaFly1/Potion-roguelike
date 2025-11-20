@@ -78,14 +78,13 @@ func _physics_process(delta):
 				
 		dir = dir.normalized()
 	
-	if is_on_floor():
 	
-		horizontal_velocity = velocity.lerp(
-			dir.normalized() * walk_speed, 
-			acceleration if is_on_floor() else acceleration * acceleration_air_mult)
+	horizontal_velocity = velocity.lerp(
+		dir.normalized() * walk_speed * int(is_on_floor()), 
+		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
 		
-		velocity.x = horizontal_velocity.x
-		velocity.z = horizontal_velocity.z
+	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
 		
 	if not is_on_floor():
 		
@@ -97,8 +96,9 @@ func _physics_process(delta):
 			
 			if not isAway: vc = vc.limit_length(air_max_speed - projVel.length())
 			else: vc = vc.limit_length(air_max_speed + projVel.length())
-
-			velocity += vc
+			
+			
+			velocity += vc 
 			var vel2d := Vector2(velocity.x,velocity.z)
 			vel2d = vel2d.limit_length(8.5)
 			velocity = Vector3(vel2d.x,velocity.y,vel2d.y)

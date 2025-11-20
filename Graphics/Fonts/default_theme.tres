@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://ccn7rphveje3s"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://ccn7rphveje3s"]
 
+[ext_resource type="FontFile" uid="uid://bfor7jfs0blai" path="res://Graphics/Fonts/Tiny5-Regular.ttf" id="1_6yjtp"]
 [ext_resource type="FontFile" uid="uid://drikrrt8seobl" path="res://Graphics/Fonts/alagard.ttf" id="1_he3nu"]
 [ext_resource type="Texture2D" uid="uid://cow432htspaqs" path="res://Graphics/Environnement/ChurchSpriteSheet.png" id="1_ytgyl"]
 
@@ -17,6 +18,12 @@ bg_color = Color(1, 1, 1, 0.007843138)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yjtp"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.007843138)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0p7b"]
 bg_color = Color(0, 0, 0, 0.105882354)
@@ -31,8 +38,8 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ytgyl"]
 gradient = SubResource("Gradient_he3nu")
-width = 30
-height = 40
+width = 10
+height = 14
 fill_from = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_ytgyl"]
@@ -41,33 +48,32 @@ colors = PackedColorArray(0.37, 0.37, 0.37, 0.3019608)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6yjtp"]
 gradient = SubResource("Gradient_ytgyl")
-width = 4
-height = 27
-fill_from = Vector2(1, 1)
+width = 1
+height = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqat5"]
 bg_color = Color(0.5770087, 0.5770083, 0.5770085, 1)
 corner_detail = 1
-expand_margin_top = 18.0
-expand_margin_bottom = 18.0
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl0et"]
 bg_color = Color(0.796243, 0.796243, 0.796243, 1)
 corner_detail = 1
-expand_margin_top = 18.0
-expand_margin_bottom = 18.0
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i6hy"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0.37413922, 0.37413934, 0.374139, 1)
-expand_margin_left = 2.0
-expand_margin_top = 20.0
-expand_margin_right = 2.0
-expand_margin_bottom = 20.0
+expand_margin_left = 1.0
+expand_margin_top = 7.0
+expand_margin_right = 1.0
+expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd8kw"]
 bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
@@ -138,15 +144,14 @@ vertical = true
 
 [resource]
 default_font = ExtResource("1_he3nu")
-default_font_size = 48
-BoxContainer/constants/separation = 20
+default_font_size = 16
+BoxContainer/constants/separation = 6
 Button/styles/focus = SubResource("StyleBoxFlat_he3nu")
 Button/styles/hover = SubResource("StyleBoxFlat_ytgyl")
 Button/styles/normal = SubResource("StyleBoxFlat_6yjtp")
 Button/styles/pressed = SubResource("StyleBoxFlat_f0p7b")
 HSeparator/constants/separation = 10
 HSeparator/styles/separator = SubResource("StyleBoxLine_ytgyl")
-HSlider/constants/tick_offset = -15
 HSlider/icons/grabber = SubResource("GradientTexture2D_ytgyl")
 HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_ytgyl")
 HSlider/icons/tick = SubResource("GradientTexture2D_6yjtp")
@@ -161,7 +166,8 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_he3nu")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_fn0w8")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_1s1ot")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_afyg2")
-TooltipLabel/font_sizes/font_size = 24
+TooltipLabel/font_sizes/font_size = 8
+TooltipLabel/fonts/font = ExtResource("1_6yjtp")
 TooltipPanel/styles/panel = SubResource("StyleBoxTexture_6yjtp")
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource("StyleBoxLine_he3nu")

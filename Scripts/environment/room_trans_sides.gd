@@ -11,7 +11,7 @@ var candle: Node3D
 @onready var block: CollisionShape3D = $"../StaticBody3D/block"
 
 func _ready() -> void:
-	if name == "Side1Area":
+	if name == "Side1Area-nx":
 		candle = parent.Side1Candle
 	else:
 		candle = parent.Side2Candle

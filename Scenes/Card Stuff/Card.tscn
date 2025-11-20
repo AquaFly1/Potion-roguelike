@@ -11,8 +11,9 @@ shader_parameter/outline_color = Color(1, 1, 1, 0)
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_time_scale = 6.1
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("control")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("card_sprite", "control")]
 script = ExtResource("1_3p273")
+card_sprite = NodePath("Card_control/Card_sprite")
 control = NodePath("Card_control")
 
 [node name="Card_control" type="Control" parent="."]
@@ -44,6 +45,9 @@ offset_left = -14.0
 offset_top = -40.0
 offset_right = 118.0
 offset_bottom = 140.0
+tooltip_text = "This is the text that pops up when 
+you didn't put a tooltip
+"
 mouse_default_cursor_shape = 2
 
 [connection signal="button_down" from="Card_control/Card_button" to="." method="_on_card_button_down"]

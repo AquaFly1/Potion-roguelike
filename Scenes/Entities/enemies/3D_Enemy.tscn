@@ -226,7 +226,7 @@ frame_progress = 0.68495965
 
 [node name="FireLight" type="OmniLight3D" parent="VFX/FireSprite"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.362772, 0.041957222)
-layers = 5121
+layers = 5125
 light_color = Color(0.87, 0.493, 0, 1)
 light_energy = 0.294
 light_size = 1.0
@@ -265,6 +265,7 @@ lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_0s7u1")
 
 [node name="Effects" type="Control" parent="."]
+visibility_layer = 4096
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -280,6 +281,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Health_bar" parent="Effects" instance=ExtResource("4_5faar")]
+visibility_layer = 4096
 layout_mode = 0
 offset_left = -39.845
 offset_right = -39.845
@@ -287,6 +289,7 @@ offset_bottom = 0.0
 scale = Vector2(0.095, 0.119)
 
 [node name="Target" type="Control" parent="."]
+visibility_layer = 4096
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -301,6 +304,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="Target"]
+visibility_layer = 4096
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

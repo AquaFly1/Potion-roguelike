@@ -1,6 +1,6 @@
-[gd_scene load_steps=77 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=74 format=4 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
+[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://Scripts/managers/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://Scripts/managers/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dgpx6lmd18v3f" path="res://Scenes/Entities/player/player_labels.tscn" id="4_vgqql"]
@@ -10,12 +10,10 @@
 [ext_resource type="Shader" uid="uid://cuuiththjy653" path="res://Graphics/Shaders/chromatic_abber.gdshader" id="7_sefq3"]
 [ext_resource type="PackedScene" uid="uid://2p5vi7khwsu2" path="res://3DAssets/hand/hand.gltf" id="7_x5yqs"]
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="8_bqky3"]
-[ext_resource type="Script" uid="uid://cm3cs873dbts2" path="res://Scripts/environment/UI_Resolution.gd" id="8_j5c6h"]
 [ext_resource type="Script" uid="uid://qjl80xdnvd74" path="res://Scripts/managers/handSetup.gd" id="8_nes5i"]
 [ext_resource type="Script" uid="uid://clqa2xnkjw6s4" path="res://Scripts/managers/PlayerAnimations.gd" id="8_x5yqs"]
 [ext_resource type="PackedScene" uid="uid://xwd75vy5re77" path="res://Scenes/managers/Chand_manager.tscn" id="9_7u22i"]
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="9_fmrin"]
-[ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="9_r8aaq"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://Scenes/Card Stuff/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scripts/entities/player/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="14_yicnn"]
@@ -1072,13 +1070,11 @@ _data = {
 }
 
 [sub_resource type="Curve2D" id="Curve2D_en4d4"]
+bake_interval = 1.0
 _data = {
 "points": PackedVector2Array(86.04938, 42.46979, -86.04938, -42.46979, 347, -102, 22.458641, -28.445454, -22.458641, 28.445454, 0, 0)
 }
 point_count = 2
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_r8aaq"]
-viewport_path = NodePath("UI+PostP/2D/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en4d4"]
 bg_color = Color(0, 0, 0, 0.3529412)
@@ -1121,7 +1117,7 @@ shader_parameter/frame_count = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g154t"]
 shader = ExtResource("5_l3v4j")
-shader_parameter/pixel_resolution = 240.000010925
+shader_parameter/pixel_resolution = 360.000016625
 shader_parameter/downscaling = true
 shader_parameter/color_steps = 36
 shader_parameter/noise_strength = 0.050000002375
@@ -1144,7 +1140,7 @@ shader_parameter/r_displacement = Vector2(1, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-1, 0)
 
-[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "hand")]
+[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "pivot", "hand")]
 collision_layer = 17
 collision_mask = 17
 floor_constant_speed = true
@@ -1152,9 +1148,10 @@ floor_block_on_wall = false
 floor_max_angle = 1.3386675
 script = ExtResource("1_r8aaq")
 walk_speed = 6.0
-camera = NodePath("Camera_pivot/Camera")
+camera = NodePath("Camera_pivot/Main Camera")
 self_light = NodePath("Self_Light")
-hand = NodePath("UI+PostP/2D/SubViewport/UI/hand")
+pivot = NodePath("Camera_pivot")
+hand = NodePath("UI+PostP/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
 
 [node name="Self_Light" type="OmniLight3D" parent="."]
@@ -1183,31 +1180,10 @@ shape = SubResource("CapsuleShape3D_6t5aa")
 [node name="Camera_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
-[node name="Camera" type="Camera3D" parent="Camera_pivot"]
-cull_mask = 1041407
+[node name="Main Camera" type="Camera3D" parent="Camera_pivot"]
+cull_mask = 1041403
 environment = SubResource("Environment_l3v4j")
 current = true
-
-[node name="InteractRay" type="RayCast3D" parent="Camera_pivot/Camera" node_paths=PackedStringArray("popup_label")]
-target_position = Vector3(0, 0, -1.5)
-collision_mask = 4
-hit_from_inside = true
-hit_back_faces = false
-collide_with_areas = true
-debug_shape_thickness = 1
-script = ExtResource("2_g154t")
-popup_label = NodePath("../../../UI+PostP/2D/SubViewport/UI/PopupLabel")
-
-[node name="InfiniRay" type="RayCast3D" parent="Camera_pivot/Camera"]
-visible = false
-target_position = Vector3(0, 0, -50)
-collision_mask = 4
-hit_from_inside = true
-hit_back_faces = false
-collide_with_areas = true
-debug_shape_custom_color = Color(0, 0.53, 0.45049992, 1)
-debug_shape_thickness = 1
-script = ExtResource("3_en4d4")
 
 [node name="ProjectionOriginMask" type="RemoteTransform3D" parent="Camera_pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24663508, 0.18365484)
@@ -1218,28 +1194,57 @@ update_scale = false
 remote_path = NodePath("../../../3D Projection/3D View/ViewBack/HandNewParentBack")
 update_scale = false
 
+[node name="InteractRay" type="RayCast3D" parent="Camera_pivot" node_paths=PackedStringArray("popup_label")]
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 4
+hit_from_inside = true
+hit_back_faces = false
+collide_with_areas = true
+debug_shape_thickness = 1
+script = ExtResource("2_g154t")
+popup_label = NodePath("../../UI+PostP/UI/PopupLabel")
+
+[node name="InfiniRay" type="RayCast3D" parent="Camera_pivot"]
+visible = false
+target_position = Vector3(0, 0, -50)
+collision_mask = 4
+hit_from_inside = true
+hit_back_faces = false
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 0.53, 0.45049992, 1)
+debug_shape_thickness = 1
+script = ExtResource("3_en4d4")
+
 [node name="3D Projection" type="Node2D" parent="."]
 scale = Vector2(6, 6)
 
 [node name="MaskLayer" type="CanvasLayer" parent="3D Projection"]
 layer = 42
 
-[node name="ProjMask" type="Sprite2D" parent="3D Projection/MaskLayer"]
+[node name="ProjMask" type="TextureRect" parent="3D Projection/MaskLayer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6xcv")
-scale = Vector2(6, 6)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("ViewportTexture_4kjub")
-centered = false
 
 [node name="BackLayer" type="CanvasLayer" parent="3D Projection"]
 layer = 38
 
-[node name="ProjBack" type="Sprite2D" parent="3D Projection/BackLayer"]
+[node name="ProjBack" type="TextureRect" parent="3D Projection/BackLayer"]
 z_index = -50
 texture_filter = 1
-scale = Vector2(6, 6)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("ViewportTexture_ukq60")
-centered = false
 
 [node name="3D View" type="Node3D" parent="3D Projection"]
 script = ExtResource("8_nes5i")
@@ -1527,7 +1532,7 @@ libraries = {
 transparent_bg = true
 gui_disable_input = true
 size = Vector2i(320, 180)
-size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
 
 [node name="HandNewParentBack" type="Node3D" parent="3D Projection/3D View/ViewBack"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8716351, 0.18365484)
@@ -1561,47 +1566,16 @@ layer = 40
 [node name="UI+PostP" type="CanvasLayer" parent="."]
 layer = 50
 
-[node name="SubviewportInputRelay" type="Control" parent="UI+PostP" node_paths=PackedStringArray("subviewport")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1.0
-offset_bottom = 1.0
-mouse_filter = 1
-mouse_behavior_recursive = 1
-script = ExtResource("9_r8aaq")
-subviewport = NodePath("../2D/SubViewport")
-metadata/_edit_use_anchors_ = true
-
-[node name="2D" type="TextureRect" parent="UI+PostP"]
-visibility_layer = 3
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = SubResource("ViewportTexture_r8aaq")
-script = ExtResource("8_j5c6h")
-default_resolution = 480.0
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport" type="SubViewport" parent="UI+PostP/2D"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(640, 480)
-size_2d_override = Vector2i(1920, 1080)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="UI" type="Control" parent="UI+PostP/2D/SubViewport"]
+[node name="UI" type="Control" parent="UI+PostP"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="hand" parent="UI+PostP/2D/SubViewport/UI" node_paths=PackedStringArray("hand_anim", "cards_parent", "chand_path") instance=ExtResource("9_7u22i")]
+[node name="hand" parent="UI+PostP/UI" node_paths=PackedStringArray("hand_anim", "cards_parent", "chand_path") instance=ExtResource("9_7u22i")]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -1610,16 +1584,16 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 path_scene = ExtResource("10_sefq3")
-hand_anim = NodePath("../../../../../3D Projection/3D View/ViewMasked/HandNewParent/AnimationTree")
-cards_parent = NodePath("../../../../../Cards")
-chand_path = NodePath("../../../../../HandShape")
+hand_anim = NodePath("../../../3D Projection/3D View/ViewMasked/HandNewParent/AnimationTree")
+cards_parent = NodePath("../../../Cards")
+chand_path = NodePath("../../../HandShape")
 
-[node name="PlayerLabels" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("4_vgqql")]
+[node name="PlayerLabels" parent="UI+PostP/UI" instance=ExtResource("4_vgqql")]
 visible = false
 layout_mode = 0
 mouse_filter = 1
 
-[node name="Health_bar" parent="UI+PostP/2D/SubViewport/UI" instance=ExtResource("14_yicnn")]
+[node name="Health_bar" parent="UI+PostP/UI" instance=ExtResource("14_yicnn")]
 visible = false
 layout_mode = 1
 offset_right = 0.0
@@ -1628,7 +1602,7 @@ scale = Vector2(0.39, 0.39)
 mouse_filter = 2
 is_player = true
 
-[node name="PopupLabel" type="Label" parent="UI+PostP/2D/SubViewport/UI"]
+[node name="PopupLabel" type="Label" parent="UI+PostP/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1643,7 +1617,7 @@ horizontal_alignment = 1
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
-[node name="Game_over_panel" type="Panel" parent="UI+PostP/2D/SubViewport/UI"]
+[node name="Game_over_panel" type="Panel" parent="UI+PostP/UI"]
 visible = false
 layout_mode = 0
 offset_right = 1920.0
@@ -1651,7 +1625,7 @@ offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iq2rp")
 script = ExtResource("16_iq2rp")
 
-[node name="GO_text" type="Label" parent="UI+PostP/2D/SubViewport/UI/Game_over_panel"]
+[node name="GO_text" type="Label" parent="UI+PostP/UI/Game_over_panel"]
 layout_mode = 0
 offset_left = 234.385
 offset_top = 149.295
@@ -1661,7 +1635,7 @@ scale = Vector2(3.93, 3.93)
 text = "Game Over"
 
 [node name="DownscaleLayer" type="CanvasLayer" parent="."]
-layer = 0
+layer = 88
 
 [node name="InteractionWave" type="CanvasLayer" parent="DownscaleLayer"]
 layer = -2
@@ -1693,6 +1667,8 @@ material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

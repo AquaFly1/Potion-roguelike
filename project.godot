@@ -32,8 +32,7 @@ PsxLoader="*res://Scenes/Environnement/Psx_Loader.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 window/snap/snap_2d_vertices_to_pixel=true
 window/snap/snap_2d_transforms_to_pixel=true
@@ -153,9 +152,12 @@ sensors/enable_gravity=true
 3d_render/layer_1="Default_lights"
 2d_render/layer_2="Text"
 3d_render/layer_2="transition_black_light"
+2d_render/layer_3="Ignore Downscaling"
+3d_render/layer_3="IgnoreDownscaling"
 3d_render/layer_6="Player_light"
 3d_render/layer_11="Hand Render"
 3d_render/layer_12="Hand Mask Render"
+2d_render/layer_13="Enemy"
 3d_render/layer_13="Ennemy Render"
 
 [physics]

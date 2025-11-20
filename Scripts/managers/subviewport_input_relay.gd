@@ -1,9 +1,6 @@
-extends Node
+extends Control
 
 @export var subviewport: SubViewport
 
-func _input(event: InputEvent):
-	# Only forward mouse events to the SubViewport
-	if event is InputEventMouse or event is InputEventMouseButton:
-		var ev = event.duplicate()  # duplicate so it doesn't consume original
-		subviewport.push_input(ev,true)
+func _input(event: InputEvent) -> void:
+	subviewport.push_input(event.duplicate(),true)

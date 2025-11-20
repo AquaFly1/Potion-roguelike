@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://ccn7rphveje3s"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://ccn7rphveje3s"]
 
 [ext_resource type="FontFile" uid="uid://drikrrt8seobl" path="res://Graphics/Fonts/alagard.ttf" id="1_he3nu"]
+[ext_resource type="Texture2D" uid="uid://cow432htspaqs" path="res://Graphics/Environnement/ChurchSpriteSheet.png" id="1_ytgyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he3nu"]
 bg_color = Color(1, 1, 1, 0)
@@ -119,6 +120,17 @@ bg_color = Color(0, 0, 0, 0)
 border_color = Color(0.175, 0.175, 0.175, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6yjtp"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_ytgyl")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_he3nu"]
 color = Color(0.30692267, 0.3069227, 0.3069227, 1)
 thickness = 2
@@ -149,5 +161,7 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_he3nu")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_fn0w8")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_1s1ot")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_afyg2")
+TooltipLabel/font_sizes/font_size = 24
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_6yjtp")
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource("StyleBoxLine_he3nu")

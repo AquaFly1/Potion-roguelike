@@ -1,58 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://2tbmicm44hji"]
+[gd_scene load_steps=6 format=3 uid="uid://2tbmicm44hji"]
 
 [ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://Scripts/managers/interaction_3D.gd" id="1_akt8v"]
-[ext_resource type="Script" uid="uid://cvl2ubjuqkf7j" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
+[ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="3_jvst4"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="4_pna2x"]
-[ext_resource type="Script" uid="uid://dhldo34f484bo" path="res://Scripts/interaction/Interaction_Renderer.gd" id="5_jvst4"]
-[ext_resource type="Script" uid="uid://dkydsj04vc0ns" path="res://Scripts/managers/subviewport_input_relay.gd" id="5_pna2x"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jvst4"]
-viewport_path = NodePath("enemy_parent/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fkl"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.5294118, 0.20784314, 0.20784314, 0.85882354)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jvst4"]
-material = SubResource("StandardMaterial3D_r3fkl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cdvjk"]
 
-[node name="interaction" type="Node3D"]
+[node name="interaction" type="Node3D" node_paths=PackedStringArray("enemy_parent")]
 script = ExtResource("1_akt8v")
 possible_interactions = Array[ExtResource("2_r3fkl")]([ExtResource("3_jvst4"), ExtResource("4_pna2x")])
+enemy_parent = NodePath("enemy_parent")
 
-[node name="enemy_parent" type="Node3D" parent="." node_paths=PackedStringArray("subviewport")]
+[node name="enemy_parent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036255717, -2.4963102)
-script = ExtResource("5_pna2x")
-subviewport = NodePath("SubViewport")
-
-[node name="BypassPSX" type="CanvasLayer" parent="enemy_parent"]
-layer = 25
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy_parent/BypassPSX"]
-position = Vector2(960, 540)
-texture = SubResource("ViewportTexture_jvst4")
-
-[node name="SubViewport" type="SubViewport" parent="enemy_parent"]
-transparent_bg = true
-canvas_item_default_texture_filter = 0
-size = Vector2i(1920, 1080)
-
-[node name="Parent" type="Node3D" parent="enemy_parent/SubViewport"]
-
-[node name="Renderer" type="Camera3D" parent="enemy_parent/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7515161)
-cull_mask = 4096
-script = ExtResource("5_jvst4")
 
 [node name="Area3D" type="Area3D" parent="."]
-
-[node name="MeshInstance3D-nx" type="MeshInstance3D" parent="Area3D"]
-visible = false
-mesh = SubResource("BoxMesh_jvst4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_cdvjk")

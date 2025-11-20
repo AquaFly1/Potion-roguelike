@@ -88,10 +88,10 @@ func update_setting(option: String, value) -> void:
 	psx_settings["Affine Mapping"])
 	
 
-	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("downscaling",
-	downscaling_values[psx_settings["Downscaling"]] as bool)
-	Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("pixel_resolution",
-	downscaling_values[psx_settings["Downscaling"]])
+	#Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("downscaling",
+	#downscaling_values[psx_settings["Downscaling"]] as bool)
+	#Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("pixel_resolution",
+	#downscaling_values[psx_settings["Downscaling"]])
 	
 	
 	

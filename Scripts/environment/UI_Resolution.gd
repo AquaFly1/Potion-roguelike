@@ -11,6 +11,6 @@ func update_resolution(res) -> void:
 	multiplier = 1080/res
 	size = Vector2(1920/multiplier,1080/multiplier)
 	scale = Vector2.ONE * multiplier
-	$SubViewport.size = size
+	#$SubViewport.size = size ##
 	#scale = Vector2.ONE * multiplier
 	

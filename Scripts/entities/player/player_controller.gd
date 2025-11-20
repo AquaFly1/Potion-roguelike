@@ -17,7 +17,7 @@ var interaction_look_at: Node3D
 
 var dir: Vector3 = Vector3.ZERO
 var h_rot: float = 0
-@onready var pivot: Node3D = $Camera_pivot
+@export var pivot: Node3D
 var mouse_mode_capture: bool = true
 
 @onready var hand_display: Node2D = $"3D Projection"

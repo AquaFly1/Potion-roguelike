@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Card
 
-@onready var card_sprite: TextureRect = $Card_control/Card_sprite
+@export var card_sprite: TextureRect
 
 @onready var base_sprite_pos: Vector2 = card_sprite.position
 
@@ -10,9 +10,11 @@ class_name Card
 
 @export var control: Control
 
+
 func _ready() -> void:
 	Game.held_chand_modified.connect(chand_modified)
 	card_sprite.texture = ingredient.sprite
+	
 
 func _on_button_pressed() -> void:
 	Game.card_selected.emit(self)

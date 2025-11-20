@@ -3,7 +3,7 @@ extends Node3D
 var enemies: Array[PackedScene]
 @export var possible_interactions: Array[Interaction]
 var current_interaction = null
-@onready var enemy_parent = $enemy_parent/SubViewport/Parent
+@export var enemy_parent: Node3D
 
 var cleared: bool = false
 

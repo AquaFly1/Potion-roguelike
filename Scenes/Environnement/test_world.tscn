@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=23 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://jl5tevn38rlr" path="res://Graphics/temporary_art/chapel_layout.png" id="1_3pl5u"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
 [ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_36k1m"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="12_mw27p"]
+[ext_resource type="Script" uid="uid://dhldo34f484bo" path="res://Scripts/interaction/Interaction_Renderer.gd" id="12_pgska"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
 
@@ -37,6 +38,9 @@ texture_filter = 0
 [sub_resource type="PlaneMesh" id="PlaneMesh_3pl5u"]
 material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7cmid"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gepd6"]
 size = Vector3(1, 5, 2)
@@ -145,32 +149,71 @@ doors = [NodePath("../../doors/door5"), NodePath("../../doors/door6")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 13.032282, 0.0065095425, 4.788856)
 doors = [NodePath("../../doors/door4")]
 
-[node name="Interactions" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="Interaction_renderer" type="Node3D" parent="."]
+editor_description = "Place Interactions as children of subviewport for rendering. make local before using
+"
 
-[node name="interaction" parent="Interactions" instance=ExtResource("12_36k1m")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.044361, 0, -8.15073)
+[node name="BypassPSX" type="CanvasLayer" parent="Interaction_renderer"]
+layer = 25
 
-[node name="interaction2" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Interaction_renderer/BypassPSX"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Interaction_renderer/BypassPSX/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Renderer" type="Camera3D" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036255717, -2.4963102)
+cull_mask = 4096
+script = ExtResource("12_pgska")
+
+[node name="Interactions" type="Node3D" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.75, 0)
+
+[node name="interaction" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16.506832, 0, -11.953525)
 
-[node name="interaction3" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction2" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.044361, 0, -8.15073)
+
+[node name="interaction3" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.586997, 0, -3.9057624)
 
-[node name="interaction4" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction4" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3489485, 0, 0.8899924)
 
-[node name="interaction5" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction5" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.6580973, 0, 7.0259075)
 
-[node name="interaction6" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction6" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96825236, 0, -2.1085258)
 
-[node name="interaction7" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction7" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.951954, 0, 8.526503)
 
-[node name="interaction8" parent="Interactions" instance=ExtResource("12_36k1m")]
+[node name="interaction8" parent="Interaction_renderer/BypassPSX/SubViewportContainer/SubViewport/Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.098728, 0, 2.068622)
+
+[node name="Sprite2D" type="Sprite2D" parent="Interaction_renderer/BypassPSX"]
+visible = false
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_7cmid")
 
 [node name="doors" type="Node3D" parent="."]
 

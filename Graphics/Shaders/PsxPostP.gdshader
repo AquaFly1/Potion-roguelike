@@ -44,15 +44,17 @@ float bayer_dither(vec2 pos) {
 void fragment() {
 	vec2 pixel_uv = UV;
 	vec2 pixel_frag = FRAGCOORD.xy;
-	if (downscaling){
-		
-		pixel_uv = vec2(
-			floor((UV.x * (pixel_resolution + 1.0) - (UV.x - 0.5))*(16.0/9.0) )/ ((pixel_resolution + 1.0)*(16.0/9.0)),
-			floor(UV.y * (pixel_resolution + 1.0) - (UV.y - 0.5))/ (pixel_resolution + 1.0)
-			);
-		//pixel_uv = round(UV*pixel_resolution)/pixel_resolution;
-		pixel_frag = pixel_uv*vec2((16.0/9.0),1.0)*pixel_resolution;
-	}
+	//if (downscaling){
+		//
+		//pixel_uv = vec2(
+			//floor((UV.x * (pixel_resolution + 1.0) - (UV.x - 0.5))*(16.0/9.0) )/ ((pixel_resolution + 1.0)*(16.0/9.0)),
+			//floor(UV.y * (pixel_resolution + 1.0) - (UV.y - 0.5))/ (pixel_resolution + 1.0)
+			//);
+		////pixel_uv = floor((FRAGCOORD.xy * TEXTURE_PIXEL_SIZE)/ TEXTURE_PIXEL_SIZE)* SCREEN_PIXEL_SIZE;
+		////pixel_uv = round(UV*pixel_resolution)/pixel_resolution;
+		//pixel_frag = pixel_uv*vec2((16.0/9.0),1.0)*pixel_resolution;
+		////pixel_frag = (UV/ SCREEN_PIXEL_SIZE) * TEXTURE_PIXEL_SIZE;
+	//}
 	
 	vec3 color = texture(screen_texture, pixel_uv).rgb;
 

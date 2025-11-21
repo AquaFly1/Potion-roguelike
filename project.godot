@@ -13,7 +13,7 @@ config_version=5
 config/name="potion-roguelike"
 run/main_scene="uid://dtbq8nt3ags7r"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-run/max_fps=120
+run/max_fps=60
 config/icon="res://Graphics/Sprites/icon.svg"
 
 [aseprite_importers]
@@ -33,7 +33,6 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
-window/vsync/vsync_mode=0
 window/snap/snap_2d_vertices_to_pixel=true
 window/snap/snap_2d_transforms_to_pixel=true
 window/quality/msaa_2d=0

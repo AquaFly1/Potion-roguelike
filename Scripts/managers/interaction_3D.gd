@@ -20,7 +20,7 @@ func _ready() -> void:
 func on_spawn_enemies_enter(_body: Node3D) -> void:
 
 	look_at(_body.global_position)
-	await get_tree().create_timer(0).timeout
+	#await get_tree().create_timer(0).timeout
 	
 	
 	rotation.y = fmod(rotation.y,PI/2) + PI
@@ -54,17 +54,19 @@ func load_enemies():
 			
 			var path = PathFollow3D.new()
 			enemy_parent.add_child(path)
+			
 			path.rotation_mode = PathFollow3D.ROTATION_NONE
 			path.progress_ratio = 0.5
-			print(i-float(len(enemies))/2)
 			path.progress += enemy_separation * (i-float(len(enemies)-1)/2)
-			
+			await get_tree().process_frame
 			
 			var enemy_inst := enemies[i].instantiate()
 			path.add_child(enemy_inst)
 			Game.enemy_list.append(enemy_inst)
 			
 			lookat.position.y = max(lookat.position.y, enemy_inst.get_size().y/2)
+			
+			await get_tree().process_frame
 
 
 #func turn_ended():

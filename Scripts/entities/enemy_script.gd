@@ -94,7 +94,7 @@ func update_effect_vfx(effect: Effect):
 			fx_tween.tween_method(
 				func(x): sprite_node.material_overlay.next_pass.set_shader_parameter("intensity", x), 
 				sprite_node.material_overlay.next_pass.get_shader_parameter("intensity"),
-				min(intensity*1.4/max_health,1),
+				min(intensity*1.2/max_health,1),
 				1.5)
 			fx_tween.tween_property(fire_origin,"scale",(intensity>=max_health as int) * Vector3.ONE,0.5)
 			#fire_origin.visible = intensity

@@ -5,7 +5,7 @@ uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform vec3 hot_color: source_color;
 uniform vec3 cool_color: source_color;
 uniform sampler2D noise: source_color, filter_nearest;
-uniform float intensity: hint_range(0.0, 0.5);
+uniform float intensity: hint_range(0.0, 1.0);
 
 
 
@@ -46,7 +46,6 @@ float degrade_alpha(vec2 uv,vec2 stp)
 void fragment() {
 	ALPHA = 0.;
 	if (intensity > 0.){
-	
 	vec2 stp = vec2(1,1)/ vec2(textureSize(sprite_texture,0));
 	vec4 col = texture(sprite_texture,UV);
 	//float burn_alpha = clamp(min(texture(sprite_texture,UV+vec2(0.0,1.0)*0.03).a , 1.0) - col.a,0.0,1.0);
@@ -64,13 +63,13 @@ void fragment() {
 				;
 	
 	
-	burn.rgb = 1. * mix(cool_color,hot_color,(burn.a*10.)*intensity-0.2);
+	burn.rgb = 1. * mix(cool_color,hot_color,(burn.a*10.)*intensity/2.0-0.2);
 	
-	burn.a = max(burn.a * (0.72+intensity) + (1. + round(degrade.a+0.1)) * intensity,0.0);
+	burn.a = max(burn.a * (0.72+intensity) + (1. + round(degrade.a+0.1)) * intensity/2.0,0.0);
 	
 	ALBEDO = mix(col.rgb,burn.rgb,	round(burn.a)	);
 	
-	ALPHA = col.a* round(burn.a);
+	ALPHA = col.a* min(round(burn.a),1.0);
 	//ALPHA = (round(burn.a-0.2) + round(burn.a-0.5) ) /2.;
 	
 	}

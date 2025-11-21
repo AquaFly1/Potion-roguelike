@@ -20,9 +20,11 @@ var chosen_potion = null
 @onready var attack_origin: Marker3D = $Enemy_sprite/attack_origin
 @onready var attack_parent: Control = $Target
 
-@onready var fire_origin : Node3D = $VFX/FireOrigin
-@onready var fire_visuals : AnimatedSprite3D = $VFX/FireOrigin/FireSprite
-@onready var poison_visuals : GPUParticles2D = $Target/PoisonBubble
+@export_group("VFX")
+@export var fire_origin : Node3D
+@export var fire_visuals : AnimatedSprite3D
+@export var fire_light: OmniLight3D
+@export var poison_visuals : GPUParticles2D
 
 var preparing: int = 1
 #@onready var attack_button: Marker3D = $attack_origin
@@ -32,8 +34,7 @@ func _ready() -> void:
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
 	fire_origin.scale = Vector3.ZERO
-	fire_visuals.get_child(0).light_energy = 0
-	
+	fire_light.light_energy = 0
 	chosen_potion = potions.pick_random()
 	
 
@@ -75,15 +76,23 @@ func update_effect_vfx(effect: Effect):
 	fx_tween.set_parallel()
 	match effect.name:
 		"Burn":
-			fx_tween.tween_property(fire_origin,"scale",Vector3.ONE * min(intensity,1),0.5)
+			fx_tween.tween_method(
+				func(x): sprite_node.material_overlay.next_pass.set_shader_parameter("intensity", x), 
+				sprite_node.material_overlay.next_pass.get_shader_parameter("intensity"),
+				intensity*0.4/max_health,
+				0.5)
+			fx_tween.tween_property(fire_origin,"scale",(intensity>=max_health as int) * Vector3.ONE,0.5)
 			#fire_origin.visible = intensity
-			fx_tween.tween_property(fire_visuals.get_child(0),"light_energy",intensity/max_health,0.5)
+			fx_tween.tween_property(fire_light,"light_energy",intensity/(2*max_health+20),0.5)
 		"Poison":
 			poison_visuals.amount_ratio = intensity/ poison_visuals.amount
 			poison_visuals.emitting = intensity
 			poison_visuals.get_child(0).emitting = intensity
 		_:
 			pass
+	
+
+
 
 func outline(color = null) -> Color:
 	if color: 

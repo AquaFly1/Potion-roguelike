@@ -1,16 +1,35 @@
-[gd_scene load_steps=39 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=42 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_vtixw"]
 [ext_resource type="Shader" uid="uid://drcfuw3nx40i0" path="res://Graphics/Shaders/3DOutline.gdshader" id="2_4oths"]
-[ext_resource type="Texture2D" uid="uid://b5w4h7sx06uge" path="res://Graphics/Sprites/goblion.aseprite" id="2_aft1i"]
+[ext_resource type="Shader" uid="uid://blh7tkq8mljce" path="res://Scenes/Entities/enemies/SpriteBurnOutline.gdshader" id="2_yrgos"]
 [ext_resource type="Texture2D" uid="uid://bnc2bu1d0mfjw" path="res://Graphics/Sprites/goblion_sheet.png" id="4_0s7u1"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://Scenes/managers/health_bar/health_bar.tscn" id="4_5faar"]
 [ext_resource type="SpriteFrames" uid="uid://bjgpr5kuqynbq" path="res://Graphics/Sprites/Rendered_FX/fire/fire_anim.tres" id="5_yrgos"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4oths"]
+frequency = 0.0264
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrgos"]
+noise = SubResource("FastNoiseLite_4oths")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0s7u1"]
+render_priority = 10
+shader = ExtResource("2_yrgos")
+shader_parameter/sprite_texture = ExtResource("4_0s7u1")
+shader_parameter/hot_color = Color(1, 0.6, 0, 1)
+shader_parameter/cool_color = Color(1, 0, 0, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_yrgos")
+shader_parameter/intensity = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yrgos"]
-render_priority = 0
+render_priority = 20
+next_pass = SubResource("ShaderMaterial_0s7u1")
 shader = ExtResource("2_4oths")
-shader_parameter/sprite_texture = ExtResource("2_aft1i")
+shader_parameter/sprite_texture = ExtResource("4_0s7u1")
 shader_parameter/line_color = Color(1, 1, 1, 0)
 shader_parameter/glowSize = 0.0
 shader_parameter/glowDensity = 1
@@ -213,12 +232,16 @@ radial_velocity_curve = SubResource("CurveTexture_2xgx5")
 gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_1hpgq")
 
-[node name="3dEnemy" type="Node3D"]
+[node name="3dEnemy" type="Node3D" node_paths=PackedStringArray("fire_origin", "fire_visuals", "fire_light", "poison_visuals")]
 script = ExtResource("1_vtixw")
+fire_origin = NodePath("VFX/FireOrigin")
+fire_visuals = NodePath("VFX/FireOrigin/FireSprite")
+fire_light = NodePath("VFX/FireLight")
+poison_visuals = NodePath("Target/PoisonBubble")
 max_health = 5.0
 
 [node name="Enemy_sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21490002, 0)
 layers = 4096
 material_overlay = SubResource("ShaderMaterial_yrgos")
 shaded = true
@@ -246,10 +269,10 @@ sprite_frames = ExtResource("5_yrgos")
 autoplay = "default"
 frame_progress = 0.68495965
 
-[node name="FireLight" type="OmniLight3D" parent="VFX/FireOrigin/FireSprite"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.238, 0.042)
+[node name="FireLight" type="OmniLight3D" parent="VFX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00020017475, -0.0017593801, 0.045407046)
 layers = 5125
-light_color = Color(0.87, 0.493, 0, 1)
+light_color = Color(0.87, 0.08700002, 0, 1)
 light_energy = 0.294
 light_size = 1.0
 light_specular = 0.0

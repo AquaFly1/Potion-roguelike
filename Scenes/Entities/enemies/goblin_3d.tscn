@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx0v1xfgdcqa2"]
+[gd_scene load_steps=17 format=3 uid="uid://bx0v1xfgdcqa2"]
 
 [ext_resource type="PackedScene" uid="uid://dv80o7a0f4uou" path="res://Scenes/Entities/enemies/3D_Enemy.tscn" id="1_nqjfx"]
 [ext_resource type="Texture2D" uid="uid://bnc2bu1d0mfjw" path="res://Graphics/Sprites/goblion_sheet.png" id="2_airuq"]
@@ -71,9 +71,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nqjfx"]
-viewport_path = NodePath("VFX/SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_nqjfx"]
 size = Vector3(0.275, 0.38, 0.05)
 
@@ -85,9 +82,6 @@ potions = Array[ExtResource("3_k8ixw")]([ExtResource("5_fjvxl"), ExtResource("4_
 [node name="Enemy_sprite" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21802379, 0)
 autoplay = "default"
-
-[node name="VFX" parent="." index="1"]
-texture = SubResource("ViewportTexture_nqjfx")
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
 

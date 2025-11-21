@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=19 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="8_7cmid"]
 [ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://Scenes/Interactions/Shop/shop_3d.tscn" id="9_y2fwv"]
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
+[ext_resource type="PackedScene" uid="uid://cehloeshwkxe6" path="res://Scenes/Interactions/Fight_make_local.tscn" id="11_mw27p"]
 [ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_36k1m"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="12_mw27p"]
 
@@ -141,28 +142,39 @@ doors = [null]
 [node name="Interactions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="Fight" parent="Interactions" instance=ExtResource("11_mw27p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.706356, 0, -16.497963)
+
 [node name="interaction" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 23.55029, -6.2584877e-07, -16.544828)
 
 [node name="interaction2" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.775997, 0, -11.780589)
 
 [node name="interaction3" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.585801, 0, -5.610328)
 
 [node name="interaction4" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.635841, 0, 0.037117325)
 
 [node name="interaction5" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.876745, 0, 7.8717804)
 
 [node name="interaction6" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0476849, 0, -2.8376167)
 
 [node name="interaction7" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.3245, 0, 3.669557)
 
 [node name="interaction8" parent="Interactions" instance=ExtResource("12_36k1m")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.906984, 0, 2.9632576)
 
 [node name="doors" type="Node3D" parent="."]

@@ -29,40 +29,34 @@ func update_hitbox() -> void:
 	
 func on_body_entered(_body: Node3D) -> void:
 	#first half
-	if _body == Player.node:
-		if fade_mesh.transparency == 1:
-			fade_mesh_other.transparency = 0
-			
-			
-			
-		else:
-			area_other.fading = true
-			fading = false
-			Player.node.horizontal_velocity = Vector3.ZERO
-			Player.node.velocity = Vector3.ZERO
+	if fade_mesh.transparency == 1:
+		fade_mesh_other.transparency = 0
+		
+		
+		
+	else:
+		area_other.fading = true
+		fading = false
+		Player.node.horizontal_velocity = Vector3.ZERO
+		Player.node.velocity = Vector3.ZERO
 
-			if candle:
-				candle.affect_player_light = true
-				if area_other.candle: area_other.candle.affect_player_light = false
-				if not candle.active:
-					block_player_light.visible = true
-				candle.update_player_light()
-			if area_other.candle and not area_other.candle.active:
-				area_other.block_player_light.visible = true
+		if candle:
+			candle.affect_player_light = true
+			if area_other.candle: area_other.candle.affect_player_light = false
+			if not candle.active:
+				block_player_light.visible = true
+			candle.update_player_light()
+		if area_other.candle and not area_other.candle.active:
+			area_other.block_player_light.visible = true
 	
 
 func on_body_exited(_body: Node3D) -> void:
-	if _body == Player.node:
-		#if area_other.fading:
-			#if area_other.candle and not area_other.candle.active:
-				#area_other.candle.affect_player_light = true
-				#area_other.candle.update_player_light()
-			#candle.affect_player_light = false
-		var player_distance_along_z = Player.node.global_position - area_other.global_position
-		player_distance_along_z = player_distance_along_z.dot(Vector3.FORWARD)
-		if abs(player_distance_along_z) > parent.scale.z:
-			fade_mesh_other.transparency = 1
-			fade_mesh.transparency = 1
+	
+	var player_distance_along_z = Player.node.global_position - area_other.global_position
+	player_distance_along_z = player_distance_along_z.dot(Vector3.FORWARD)
+	if abs(player_distance_along_z) > parent.scale.z:
+		fade_mesh_other.transparency = 1
+		fade_mesh.transparency = 1
 		
 		
 	

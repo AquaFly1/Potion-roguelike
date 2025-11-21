@@ -1,23 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://2tbmicm44hji"]
+[gd_scene load_steps=5 format=3 uid="uid://2tbmicm44hji"]
 
 [ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://Scripts/managers/interaction_3D.gd" id="1_akt8v"]
-[ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
+[ext_resource type="Script" uid="uid://cvl2ubjuqkf7j" path="res://Scripts/resources/Interaction.gd" id="2_r3fkl"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="3_jvst4"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="4_pna2x"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cdvjk"]
-
-[node name="interaction" type="Node3D" node_paths=PackedStringArray("enemy_parent")]
+[node name="interaction" type="Node3D"]
 script = ExtResource("1_akt8v")
 possible_interactions = Array[ExtResource("2_r3fkl")]([ExtResource("3_jvst4"), ExtResource("4_pna2x")])
-enemy_parent = NodePath("enemy_parent")
 
 [node name="enemy_parent" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036255717, -2.4963102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.496)
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_cdvjk")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="Marker3D" type="Marker3D" parent="enemy_parent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.496)

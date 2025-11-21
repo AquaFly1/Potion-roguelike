@@ -3,29 +3,63 @@ extends Node3D
 var enemies: Array[PackedScene]
 @export var possible_interactions: Array[Interaction]
 var current_interaction = null
-@export var enemy_parent: Node3D
 
+@export_group("Environnement")
+@export var sides: int = 2
+@export var Exits: Array[Node3D]
+@export var enemy_separation: float
+
+@onready var enemy_parent:= $enemy_parent
+@onready var start_angle := rotation
 var cleared: bool = false
 
 func _ready() -> void:
+	pass
+
+func on_spawn_enemies_enter(_body: Node3D) -> void:
+
+	look_at(_body.global_position)
+	rotation.y += PI
+	rotation.y = start_angle.y + (rotation-start_angle).snappedf(2*PI/sides).y
+	for i in Exits:
+		i.block_exit()
+	
+	
+	
+		
+	load_enemies()
+	
+	
+	await Game.interaction_ended
+	
+	for i in Exits:
+		i.block_exit(true)
+	
+	
+func on_start_fight_entered(_body: Node3D) -> void:
+	if not cleared and not Game.is_in_combat:
+		Game.interaction_node = self
+		Game.interaction_started.emit()
+
+func load_enemies():
 	current_interaction = possible_interactions.pick_random()
 	enemies = current_interaction.enemies
-
-	#Game.interaction_started.connect(start_interaction)
-	#Game.turn_ended.connect(turn_ended)
-	#Game.interaction_ended.connect(interaction_ended)
 	
-
-func load_enemies(enemie_list):
-	#Player.start_turn()
 	if not cleared:
-		var pos = -0.5*(len(enemie_list)-1)
-		for i in range(len(enemie_list)):
-			var enemy_inst = enemie_list[i].instantiate()
-			enemy_parent.add_child(enemy_inst)
+		for i in range(len(enemies)):
+			
+			var path = PathFollow3D.new()
+			enemy_parent.add_child(path)
+			path.rotation_mode = PathFollow3D.ROTATION_NONE
+			path.progress_ratio = 0.5
+			print(i-float(len(enemies))/2)
+			path.progress += enemy_separation * (i-float(len(enemies)-1)/2)
+			
+			
+			var enemy_inst = enemies[i].instantiate()
+			path.add_child(enemy_inst)
 			Game.enemy_list.append(enemy_inst)
-			enemy_inst.position.x += pos
-			pos += 1
+
 
 #func turn_ended():
 	#for enemy in Game.enemy_list:
@@ -43,12 +77,11 @@ func load_enemies(enemie_list):
 	#Player.start_turn()
 	#
 	#Game.enemies_loaded.emit()
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body == Player.node and not cleared and not Game.is_in_combat:
-		load_enemies(enemies)
-		Game.interaction_node = self
-		Game.interaction_started.emit()
+#
+#func _on_area_3d_body_entered(body: Node3D) -> void:
+	#if body == Player.node and not cleared and not Game.is_in_combat:
+		#Game.interaction_node = self
+		#Game.interaction_started.emit()
 		
 		
 #func _process(_delta: float) -> void:

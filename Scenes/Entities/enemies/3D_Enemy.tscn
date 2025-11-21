@@ -329,6 +329,7 @@ offset_right = 12.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/hover = SubResource("StyleBoxFlat_5faar")
 
 [node name="PoisonBubble" type="GPUParticles2D" parent="Target"]

@@ -28,7 +28,7 @@ signal enemy_killed
 var waiting_for_enemy: bool
 
 signal interaction_started(node: Node3D)
-signal interaction_ended
+signal interaction_ended(win: bool)
 var interaction_node: Node3D
 
 signal held_chand_modified(cards: Array)

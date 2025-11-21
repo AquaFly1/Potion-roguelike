@@ -8,6 +8,7 @@ extends Node3D
 @onready var decal : Decal = $"Decal-nx"
 @onready var side1 : MeshInstance3D = $"Side1Area-nx/Side1"
 @onready var side2 : MeshInstance3D = $"Side2Area-nx/Side2"
+@onready var block := $StaticBody3D/block
 
 var gradient_t : GradientTexture1D
 var gradient: Gradient
@@ -29,10 +30,16 @@ func _ready() -> void:
 		side2.mesh = side1.mesh.duplicate(true)
 		
 	if Side1Candle or Side2Candle:
-		$StaticBody3D/block.disabled = false
+		block.disabled = false
 		
 	
 	decal.size = scale
 	decal.scale = Vector3.ONE/scale
 		#shadow.light_negative = false
 		#shadow.light_color = transition_color
+		
+func block_exit(open = false) -> void:
+	block.disabled = true
+	if open:
+		if Side1Candle and Side1Candle.active: block.disabled = true
+		if Side2Candle and Side2Candle.active: block.disabled = true

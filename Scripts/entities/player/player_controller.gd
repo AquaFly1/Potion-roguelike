@@ -59,7 +59,11 @@ func _unhandled_input(event):
 	
 func _physics_process(delta):
 	
-	if interaction_look_at:	transform = transform.interpolate_with(transform.looking_at(interaction_look_at.global_position),0.1)	
+	if interaction_look_at:	
+		var rot = rotation
+		look_at(interaction_look_at.get_child(0).global_position)
+		rotation = lerp(rot,rotation, 0.1)	
+		global_position = lerp(global_position,interaction_look_at.global_position,0.1)
 	
 	
 	dir = Vector3.ZERO
@@ -144,7 +148,7 @@ func start_interaction():
 	Game.is_in_combat = true
 	hand.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	interaction_look_at = Game.interaction_node.get_child(0)
+	interaction_look_at = Game.interaction_node
 	
 func end_interaction():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

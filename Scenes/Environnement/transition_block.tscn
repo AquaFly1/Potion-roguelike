@@ -47,7 +47,8 @@ script = ExtResource("1_6v614")
 
 [node name="Side1Area-nx" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
-collision_layer = 2
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("2_ha7ph")
 area_other = NodePath("../Side2Area-nx")
 fade_mesh = NodePath("Side1")
@@ -74,7 +75,8 @@ mesh = SubResource("BoxMesh_wb8l8")
 
 [node name="Side2Area-nx" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
-collision_layer = 2
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("2_ha7ph")
 area_other = NodePath("../Side1Area-nx")
 fade_mesh = NodePath("Side2")

@@ -33,10 +33,25 @@ func _ready() -> void:
 	super()
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
+	gui_parent.visible = false
+	print(gui_parent.visible)
+	
+	attack_parent.visible = false
 	fire_origin.scale = Vector3.ZERO
 	fire_light.light_energy = 0
 	chosen_potion = potions.pick_random()
+	Game.interaction_started.connect(interaction_start)
 	
+func interaction_start() -> void:
+	gui_parent.visible = true
+	attack_parent.visible = true
+	sprite_node.set_layer_mask_value(1,false)
+	sprite_node.set_layer_mask_value(13,true)
+
+func get_size() -> Vector2:
+	return sprite_node.scale.x * sprite_node.pixel_size * sprite_node.sprite_frames.get_frame_texture(sprite_node.animation,sprite_node.frame).get_size()
+	#returns the size of the current sprite frame in world coords
+
 
 func start_turn():
 	outline(Color.WHITE)
@@ -106,11 +121,11 @@ func clear_outline(): outline(Color.TRANSPARENT)
 
 func _process(delta: float) -> void:
 	super(delta)
-	gui_parent.visible = not get_viewport().get_camera_3d().is_position_behind(gui_origin.global_position)
-	attack_parent.visible = gui_parent.visible
-	gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
-	#gui_parent.position = Vector2(100,100)
-	attack_parent.position = get_viewport().get_camera_3d().unproject_position(attack_origin.global_position)
+	if Game.is_in_combat:
+		gui_parent.visible = not get_viewport().get_camera_3d().is_position_behind(gui_origin.global_position)
+		attack_parent.visible = gui_parent.visible
+		gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
+		attack_parent.position = get_viewport().get_camera_3d().unproject_position(attack_origin.global_position)
 
 #	if chosen_potion and intention:
 #		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")

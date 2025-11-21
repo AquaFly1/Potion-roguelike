@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=25 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
@@ -10,9 +10,12 @@
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="8_7cmid"]
 [ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://Scenes/Interactions/Shop/shop_3d.tscn" id="9_y2fwv"]
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://Scenes/Environnement/props/candle_3D.tscn" id="10_j4k5v"]
-[ext_resource type="PackedScene" uid="uid://cehloeshwkxe6" path="res://Scenes/Interactions/Fight_make_local.tscn" id="11_mw27p"]
+[ext_resource type="Script" uid="uid://dqwdsxds0te7k" path="res://Scripts/managers/interaction_3D.gd" id="11_y2fwv"]
 [ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_36k1m"]
+[ext_resource type="Script" uid="uid://cvl2ubjuqkf7j" path="res://Scripts/resources/Interaction.gd" id="12_jqsnb"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="12_mw27p"]
+[ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="13_oo1gt"]
+[ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="14_u3w7i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
 
@@ -38,6 +41,19 @@ texture_filter = 0
 [sub_resource type="PlaneMesh" id="PlaneMesh_3pl5u"]
 material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
+
+[sub_resource type="Curve3D" id="Curve3D_8as5x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_476at"]
+size = Vector3(1.075, 1, 0.905)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8as5x"]
+size = Vector3(3.635, 5.01, 1)
 
 [node name="test_world" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -69,7 +85,7 @@ depth = 4.58
 material = SubResource("StandardMaterial3D_gepd6")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Walls2"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, -4.371139e-08, -0.99999994, 0, 0.99999994, -4.371139e-08, 0, -0.7195333, 0)
 mesh = SubResource("ArrayMesh_36k1m")
 
 [node name="floor_body -nx" type="StaticBody3D" parent="."]
@@ -142,8 +158,41 @@ doors = [null]
 [node name="Interactions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Fight" parent="Interactions" instance=ExtResource("11_mw27p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.706356, 0, -16.497963)
+[node name="Fight" type="Node3D" parent="Interactions"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.890789, -6.2584877e-07, -11.8227215)
+script = ExtResource("11_y2fwv")
+possible_interactions = Array[ExtResource("12_jqsnb")]([ExtResource("13_oo1gt"), ExtResource("14_u3w7i")])
+enemy_separation = 1.0
+
+[node name="enemy_parent" type="Path3D" parent="Interactions/Fight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -3.9411354)
+curve = SubResource("Curve3D_8as5x")
+debug_custom_color = Color(1, 0, 0, 1)
+
+[node name="LookAt" type="Marker3D" parent="Interactions/Fight/enemy_parent"]
+
+[node name="SpawnEnemies" type="Area3D" parent="Interactions/Fight"]
+transform = Transform3D(4.26, 0, 0, 0, 4.26, 0, 0, 0, 4.26, 0, 0, 0)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/Fight/SpawnEnemies"]
+transform = Transform3D(-0.62431663, 0, 0.7811727, 0, 1.0000005, 0, -0.7811727, 0, -0.62431663, 0.42813182, -1.4901161e-07, 0.73168135)
+shape = SubResource("BoxShape3D_476at")
+debug_color = Color(0, 0.5019608, 1, 1)
+
+[node name="StartFight" type="Area3D" parent="Interactions/Fight"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/Fight/StartFight"]
+shape = SubResource("BoxShape3D_8as5x")
+debug_color = Color(1, 0, 0.23921569, 1)
+
+[node name="PivotLabel" type="Label3D" parent="Interactions/Fight"]
+layers = 524288
+billboard = 1
+text = "Ennemy Pivot"
 
 [node name="interaction" parent="Interactions" instance=ExtResource("12_36k1m")]
 process_mode = 4
@@ -212,3 +261,6 @@ transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-
 
 [node name="Transition11" parent="doors" instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)
+
+[connection signal="body_entered" from="Interactions/Fight/SpawnEnemies" to="Interactions/Fight" method="on_spawn_enemies_enter" flags=6]
+[connection signal="body_entered" from="Interactions/Fight/StartFight" to="Interactions/Fight" method="on_start_fight_entered" flags=6]

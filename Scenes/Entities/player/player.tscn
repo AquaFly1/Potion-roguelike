@@ -1184,7 +1184,35 @@ shape = SubResource("CapsuleShape3D_6t5aa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
 [node name="Main Camera" type="Camera3D" parent="Camera_pivot"]
-cull_mask = 521215
+cull_mask = 517119
+environment = SubResource("Environment_l3v4j")
+current = true
+
+[node name="EnemyRenderTransforms" type="RemoteTransform3D" parent="Camera_pivot/Main Camera"]
+remote_path = NodePath("../../Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera")
+update_scale = false
+
+[node name="Enemy and IgnoreWave" type="CanvasLayer" parent="Camera_pivot"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_pivot/Enemy and IgnoreWave"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+stretch = true
+
+[node name="EnemyRender" type="SubViewport" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="camera" type="Camera3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+cull_mask = 4100
 environment = SubResource("Environment_l3v4j")
 current = true
 
@@ -1566,7 +1594,6 @@ camera = NodePath("../3D Projection/3D View/ViewMasked/HandNewParent/CameraMask"
 
 [node name="InteractionWave" type="CanvasLayer" parent="."]
 layer = -10
-visible = false
 
 [node name="Wave" type="ColorRect" parent="InteractionWave"]
 material = SubResource("ShaderMaterial_fmrin")
@@ -1668,7 +1695,6 @@ text = "Game Over"
 
 [node name="AbberLayer" type="CanvasLayer" parent="."]
 layer = 60
-visible = false
 
 [node name="abber" type="ColorRect" parent="AbberLayer"]
 material = SubResource("ShaderMaterial_8g4m7")

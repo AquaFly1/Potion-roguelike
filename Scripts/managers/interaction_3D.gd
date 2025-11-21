@@ -10,6 +10,7 @@ var current_interaction = null
 @export var enemy_separation: float
 
 @onready var enemy_parent:= $enemy_parent
+@onready var lookat:= $enemy_parent/LookAt
 @onready var start_angle := rotation
 var cleared: bool = false
 
@@ -19,7 +20,10 @@ func _ready() -> void:
 func on_spawn_enemies_enter(_body: Node3D) -> void:
 
 	look_at(_body.global_position)
-	rotation.y += PI
+	await get_tree().create_timer(0).timeout
+	
+	
+	rotation.y = fmod(rotation.y,PI/2) + PI
 	rotation.y = start_angle.y + (rotation-start_angle).snappedf(2*PI/sides).y
 	for i in Exits:
 		i.block_exit()
@@ -56,9 +60,11 @@ func load_enemies():
 			path.progress += enemy_separation * (i-float(len(enemies)-1)/2)
 			
 			
-			var enemy_inst = enemies[i].instantiate()
+			var enemy_inst := enemies[i].instantiate()
 			path.add_child(enemy_inst)
 			Game.enemy_list.append(enemy_inst)
+			
+			lookat.position.y = max(lookat.position.y, enemy_inst.get_size().y/2)
 
 
 #func turn_ended():

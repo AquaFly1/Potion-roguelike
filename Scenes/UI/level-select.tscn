@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7jyicno6vk8"]
+
+[ext_resource type="Texture2D" uid="uid://opy44qk14as0" path="res://Graphics/temporary_art/church_but.aseprite" id="1_vrinc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 64.0
+offset_right = 431.0
+offset_bottom = 180.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+icon = ExtResource("1_vrinc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "II"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "III"
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "IV"

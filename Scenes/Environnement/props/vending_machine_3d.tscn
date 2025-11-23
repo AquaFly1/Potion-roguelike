@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://d07at07jnbomx"]
+
+[ext_resource type="Script" uid="uid://boonlhwath8i7" path="res://Scenes/Environnement/props/vending_machine_3d.gd" id="1_g7oah"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at2en"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7oah"]
+albedo_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7nk1"]
+material = SubResource("StandardMaterial3D_g7oah")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7nk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wj6vg"]
+
+[node name="Vending_machine_3D -nx" type="Node3D"]
+script = ExtResource("1_g7oah")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.7862427, 0, 0, 0, 2.1702611, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_at2en")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_i7nk1")
+
+[node name="buttons" type="Node3D" parent="."]
+
+[node name="ONE" type="Area3D" parent="buttons"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.20793575, 0.5477683, 0.46179688)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buttons/ONE"]
+shape = SubResource("BoxShape3D_i7nk1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="buttons/ONE"]
+mesh = SubResource("BoxMesh_wj6vg")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="buttons/ONE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.53840566)
+text = "A"
+font_size = 160
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41890055, 0.74273753, 0.5382668)
+text = "B2"
+
+[connection signal="body_entered" from="buttons/ONE" to="." method="input_button" binds= ["1"]]

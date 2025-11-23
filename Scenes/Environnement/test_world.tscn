@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=26 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://Scenes/Environnement/props/chest.tscn" id="2_05l0i"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://Scenes/Environnement/transition_block.tscn" id="12_mw27p"]
 [ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://Resources/Interactions/2_goblins.tres" id="13_oo1gt"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://Resources/Interactions/3_goblins.tres" id="14_u3w7i"]
+[ext_resource type="PackedScene" uid="uid://d07at07jnbomx" path="res://Scenes/Environnement/props/vending_machine_3d.tscn" id="17_jqsnb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
 
@@ -261,6 +262,9 @@ transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-
 
 [node name="Transition11" parent="doors" instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)
+
+[node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0.9568647, 0.72093475, -23.990566)
 
 [connection signal="body_entered" from="Interactions/Fight/SpawnEnemies" to="Interactions/Fight" method="on_spawn_enemies_enter" flags=6]
 [connection signal="body_entered" from="Interactions/Fight/StartFight" to="Interactions/Fight" method="on_start_fight_entered" flags=6]

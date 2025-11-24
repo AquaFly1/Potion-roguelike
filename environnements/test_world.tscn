@@ -171,7 +171,7 @@ doors = [null]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="OutofCandleFight" type="Node3D" parent="Interactions" node_paths=PackedStringArray("Exits")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.890789, 9.490816, -11.8227215)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.891, 0, -11.823)
 script = ExtResource("11_y2fwv")
 possible_interactions = Array[Array]([[ExtResource("13_oo1gt"), ExtResource("14_u3w7i")]])
 Exits = [NodePath("../../doors/OutofCandle1"), NodePath("../../doors/IntoHallway"), NodePath("../../doors/IntoCandle2")]

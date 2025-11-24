@@ -28,7 +28,7 @@ uniform vec3 uv2_offset;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
-uniform sampler2D texture_normal : hint_normal, filter_nearest,repeat_enable;
+uniform sampler2D texture_normal : hint_roughness_normal, filter_nearest, repeat_enable;
 uniform float normal_strength = 1.0;
 
 uniform vec2 resolution = vec2(320, 240);
@@ -38,6 +38,7 @@ uniform float alpha_scissor : hint_range(0, 1) = 0.5;
 
 void vertex()
 {
+	UV = UV * uv1_scale.xy ;
 	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	w_comp = (PROJECTION_MATRIX * vec4(VERTEX, 1.0)).w;
 
@@ -49,13 +50,14 @@ void vertex()
 		VERTEX.y = floor(VERTEX.y * grid_to_snap.y) / grid_to_snap.y;
 		VERTEX *= w_comp;
 	}
-
+	
 
 
 	if(affine_mapping == true){
 		UV *= w_comp*affine_amount + 1.0 - affine_amount;
 
 	}
+	
 
 	//IMPORTANT NOTE: Make sure `NORMAL`s are transformed out of local space aswell.
 	NORMAL = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
@@ -73,8 +75,8 @@ void fragment() {
 	vec4 texture_color = texture(texture_albedo, base_uv);
 
 
-	//NORMAL_MAP = texture(texture_normal, base_uv).rgb;
-	//NORMAL_MAP_DEPTH = normal_strength;
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_strength;
 
 
 

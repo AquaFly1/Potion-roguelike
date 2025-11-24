@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbjt4uqgyabqp"
-path="res://.godot/imported/Church.blend-ef0433168f1cb35f1744d02630596502.scn"
+path="res://.godot/imported/Church.blend-d6bc57a7811440e5502ec5fdbaea9e37.scn"
 
 [deps]
 
-source_file="res://3DAssets/Evironnement/Church.blend"
-dest_files=["res://.godot/imported/Church.blend-ef0433168f1cb35f1744d02630596502.scn"]
+source_file="res://env/ch/Church.blend"
+dest_files=["res://.godot/imported/Church.blend-d6bc57a7811440e5502ec5fdbaea9e37.scn"]
 
 [params]
 

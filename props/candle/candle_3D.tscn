@@ -40,7 +40,6 @@ spot_angle = 20.0
 [node name="Point" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.8502063, 0)
 light_color = Color(0.29000002, 0.66866666, 1, 1)
-light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.01
 shadow_reverse_cull_face = true

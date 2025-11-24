@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bfor7jfs0blai" path="res://Graphics/Fonts/Tiny5-Regular.ttf" id="1_6yjtp"]
 [ext_resource type="FontFile" uid="uid://drikrrt8seobl" path="res://Graphics/Fonts/alagard.ttf" id="1_he3nu"]
-[ext_resource type="Texture2D" uid="uid://cow432htspaqs" path="res://Graphics/Environnement/ChurchSpriteSheet.png" id="1_ytgyl"]
+[ext_resource type="Texture2D" uid="uid://cow432htspaqs" path="res://env/ch/mat/w_floor/wood_floor.png" id="1_ytgyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he3nu"]
 bg_color = Color(1, 1, 1, 0)

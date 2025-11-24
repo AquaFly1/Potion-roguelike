@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=3 uid="uid://d3k4ly86u2bjk"]
+
+[resource]
+adjustment_enabled = true
+adjustment_brightness = 2.0
+adjustment_saturation = 2.0

@@ -42,9 +42,14 @@ func update() -> void:
 						"emission_energy",surface_initial.get("emission_energy_multiplier") )
 					psx_instance.set_shader_parameter(
 						"texture_emission",surface_initial.get("emission_texture") )
-					#if surface_initial.get("normal_texture"):
-						#psx_instance.set_shader_parameter(
-						#"texture_normal",surface_initial.get("normal_texture") )
+					if surface_initial.get("normal_texture"):
+						psx_instance.set_shader_parameter(
+						"texture_normal",surface_initial.get("normal_texture") )
+						
+					psx_instance.set_shader_parameter(
+						"uv1_scale",surface_initial.get("uv1_scale") )
+						
+						
 					i.set_surface_override_material(
 						surface,
 						psx_instance

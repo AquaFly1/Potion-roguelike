@@ -1,33 +1,45 @@
+/*
+Earthbound battle backgrounds shader with scrolling effect and palette cycling like in the original game.
+@retr0_dev
+
+Apply the shader to a TextureRect or a Sprite. Use a texture with some shapes in a transparent background for best results.
+You can then use a ColorRect or another method to paint the background.
+You can use the shader on multiple TextureRects and obtain a double-buffer effect tweaking the values for each one, remember to Make Unique the shader material.
+*/
 shader_type canvas_item;
 
-uniform sampler2D screen_texture : hint_screen_texture,filter_nearest;
+uniform sampler2D uv_warp: filter_nearest, repeat_enable;
+uniform sampler2D screen_texture: hint_screen_texture;
+uniform float intensity: hint_range(0.0, 1.0);
+uniform float speed: hint_range(0.0, 1.0);
+uniform float repeat: hint_range(0., 20.) = 1.;
 
-uniform vec2 base_displacement = vec2(0.0, 0.0); //Base movement
-uniform float repetion_x = 0.0; //The sine wave repetition
-uniform float scale_x = 0.0; //The displacement on the x axes scale,
-uniform float speed_x = 0.0; //The speed of the movement,
-
-
-uniform int color_count; //The amount of colors in the texture
-uniform sampler2D pallet; //The pallet whit dimensions (color_count)x(frame_count) pixels
-uniform float fps; //The fps of the animations
-uniform int frame_count; //The number of frames of the pallet for te animation
-
-
-
-void fragment() {
-	float pixel = 1.0 / SCREEN_PIXEL_SIZE.y;
-
-	vec2 display = TIME *  base_displacement;
-	vec2 uv = SCREEN_UV  + display;
-
-	float move_x =  SCREEN_PIXEL_SIZE.x *scale_x *  sin(repetion_x*uv.y + TIME*speed_x);
-	move_x *= float(int(SCREEN_UV.y * pixel) % 2) * 2.0 -1.0;
-
-	uv = vec2(uv.x + move_x, uv.y);
-	vec4 text = texture(screen_texture, uv);
-
-	COLOR = text;
+vec4 shift_hue(in vec4 color, in float shift) {
+	// The unit gray vector in RGB color space.
+	vec3 gray = vec3(0.57735);
+	// Project color onto gray axis.
+	vec3 projection = gray * dot(gray, color.rgb);
+	// Vector from gray axis to original color.
+	vec3 U = color.rgb - projection;
+	// Vector perpendicular to gray axis and U.
+	vec3 V = cross(gray, U);
+	// Rotate U and V around the gray axis.
+	vec3 shifted = U * cos(shift * 2.0 * PI) + V * sin(shift * 2.0 * PI) + projection;
+	return vec4(shifted, color.a);
+}
 
 
+void fragment()
+{
+	vec4 warp =
+
+		texture(uv_warp,UV*float(repeat))
+
+		;
+	COLOR = texture(screen_texture, UV + intensity*(UV-vec2(0.5,0.5))*warp.b +
+		(
+			shift_hue(warp,TIME*speed)
+				.rg
+				-vec2(0.5,0.5))
+			*intensity);
 }

@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cow432htspaqs"
-path="res://.godot/imported/ChurchSpriteSheet.png-161a01d8bbc3e781dd1364aaef12b93e.ctex"
+uid="uid://cacncbxqyww5x"
+path.s3tc="res://.godot/imported/Church_Wood_Trim.png-753a6f7ffad56f95deb7baf8049c0b04.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "3df08da068c0136d481071d81d5e6730"
 }
 
 [deps]
 
-source_file="res://Graphics/Environnement/ChurchSpriteSheet.png"
-dest_files=["res://.godot/imported/ChurchSpriteSheet.png-161a01d8bbc3e781dd1364aaef12b93e.ctex"]
+source_file="res://env/ch/Church_Wood_Trim.png"
+dest_files=["res://.godot/imported/Church_Wood_Trim.png-753a6f7ffad56f95deb7baf8049c0b04.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

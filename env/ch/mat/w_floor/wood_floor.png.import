@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0d28rdli0m5v"
-path="res://.godot/imported/RoomSprites.aseprite-3337d8a91519686a153ace60192965fe.ctex"
+uid="uid://cow432htspaqs"
+path="res://.godot/imported/wood_floor.png-ccb2072ca6f16f5928d9c8f6c1ba727f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Environnement/RoomSprites.aseprite"
-dest_files=["res://.godot/imported/RoomSprites.aseprite-3337d8a91519686a153ace60192965fe.ctex"]
+source_file="res://env/ch/mat/w_floor/wood_floor.png"
+dest_files=["res://.godot/imported/wood_floor.png-ccb2072ca6f16f5928d9c8f6c1ba727f.ctex"]
 
 [params]
 
@@ -21,9 +21,9 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

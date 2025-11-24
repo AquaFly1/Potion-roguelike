@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://fjdc8f4hhuu6"]
-
-[ext_resource type="Script" uid="uid://cyiwi38ri2m76" path="res://Scripts/environment/apply_psx.gd" id="1_1utox"]
-[ext_resource type="Material" uid="uid://c27umsb446kd7" path="res://Graphics/Shaders/psx_auto.material" id="2_qqmah"]
-
-[node name="PsxLoader-nx" type="Node3D"]
-script = ExtResource("1_1utox")
-psx_material = ExtResource("2_qqmah")

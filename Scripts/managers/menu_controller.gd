@@ -37,7 +37,7 @@ func toggle_menu() -> void:
 		
 		
 		
-		tween.tween_property(Game.main_node, "process_mode" , Node.PROCESS_MODE_DISABLED, 0 )
+		tween.tween_property(get_tree(), "paused" , true, 0 )
 		tween.tween_property(self,"modulate",Color.WHITE,0.2)
 		
 		switch_menu(first_menu) #reset the travel
@@ -60,7 +60,7 @@ func toggle_menu() -> void:
 		for i in menu_travel: i.visible = false
 		menu_travel.clear()
 		Input.set_mouse_mode(Game.mouse_mode)
-		Game.main_node.process_mode = Node.PROCESS_MODE_INHERIT
+		get_tree().paused = false
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
 		

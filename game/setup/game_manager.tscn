@@ -1,0 +1,241 @@
+[gd_scene load_steps=26 format=3 uid="uid://dgdt3b0jt8xy4"]
+
+[ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
+[ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
+[ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="3_yqty0"]
+[ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="4_71d4j"]
+[ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="5_i4mau"]
+[ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="6_6gmvr"]
+[ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="6_i4mau"]
+[ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="7_b5cn8"]
+[ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="7_jb27j"]
+[ext_resource type="Resource" uid="uid://cvnw2m4qh74b7" path="res://Resources/Combos/heal.tres" id="7_sm5re"]
+[ext_resource type="Resource" uid="uid://crhtsiwjsvcta" path="res://Resources/Combos/poison.tres" id="8_hjqsb"]
+[ext_resource type="Resource" uid="uid://clyxeiknep0fk" path="res://Resources/Combos/ice_bomb.tres" id="8_jencv"]
+[ext_resource type="Resource" uid="uid://jposvfisc5e" path="res://Resources/Combos/spark.tres" id="9_y8n5u"]
+[ext_resource type="Resource" uid="uid://dlyoadwqshjjk" path="res://Resources/Combos/burning_heart.tres" id="10_5tjy5"]
+[ext_resource type="Resource" uid="uid://dlvjxfw27owt2" path="res://Resources/Combos/toxic_heart.tres" id="11_iu5vk"]
+[ext_resource type="Script" uid="uid://drdvri37lj73w" path="res://Scripts/resources/Effects/Effect.gd" id="16_5nmu7"]
+[ext_resource type="Resource" uid="uid://dt7x6f3u5k6m" path="res://Resources/Effects/Damage.tres" id="17_6gmvr"]
+[ext_resource type="Resource" uid="uid://kqc8bglj7e23" path="res://Resources/Effects/Burn.tres" id="18_jb27j"]
+[ext_resource type="Resource" uid="uid://qltim5rn6kbm" path="res://Resources/Effects/Shield.tres" id="19_5ul1t"]
+[ext_resource type="Resource" uid="uid://bohvvi81lc8xh" path="res://Resources/Effects/Poison.tres" id="19_tnymu"]
+[ext_resource type="Resource" uid="uid://r7bx2y1fm66f" path="res://Resources/Effects/Rejuvination.tres" id="20_33pfu"]
+[ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://Scripts/managers/menu_controller.gd" id="23_33pfu"]
+[ext_resource type="Script" uid="uid://b6nmw3pp1g24w" path="res://Scenes/managers/Menu.gd" id="23_ofi3n"]
+[ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofi3n"]
+
+[node name="GameManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_mmt5l")
+deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
+combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
+effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t")])
+
+[node name="CanvasLayer-nx" type="CanvasLayer" parent="."]
+layer = 75
+
+[node name="Menu" type="ColorRect" parent="CanvasLayer-nx" node_paths=PackedStringArray("first_menu")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("23_33pfu")
+first_menu = NodePath("Main")
+
+[node name="Main" type="VBoxContainer" parent="CanvasLayer-nx/Menu" node_paths=PackedStringArray("settings_menu")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.25
+offset_top = -180.0
+offset_right = 79.25
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+script = ExtResource("23_ofi3n")
+settings_menu = NodePath("../Settings")
+
+[node name="Resume" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Resume"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
+custom_minimum_size = Vector2(0, 33.333)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Settings"
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
+custom_minimum_size = Vector2(0, 33.333)
+layout_mode = 2
+
+[node name="Save & Quit" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Save & Quit"
+
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer-nx/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.3335
+offset_top = -160.4075
+offset_right = 181.3335
+offset_bottom = 160.4075
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("23_ofi3n")
+
+[node name="Settings" type="Label" parent="CanvasLayer-nx/Menu/Settings"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("24_ofi3n")
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings"]
+custom_minimum_size = Vector2(0, 33.333)
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer-nx/Menu/Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
+
+[node name="Game" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Setting1" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+custom_minimum_size = Vector2(200, 33.333)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Setting2" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+layout_mode = 2
+theme = ExtResource("24_ofi3n")
+text = "Save & Quit"
+
+[node name="Graphics" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ofi3n")
+
+[node name="Vsnap" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="vsnap" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vertex Snapping:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "Off"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 3.0
+value = 1.0
+rounded = true
+tick_count = 4
+ticks_position = 3
+
+[node name="Affine" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="affine" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Texture Warp:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "0%"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 1.0
+step = 0.01
+
+[node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings"]
+custom_minimum_size = Vector2(0, 30.083)
+layout_mode = 2
+
+[node name="Cancel" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Resume" to="CanvasLayer-nx/Menu/Main" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Settings" to="CanvasLayer-nx/Menu" method="set_menu" flags=18 binds= [NodePath("../../Settings")]]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Main/Save & Quit" to="CanvasLayer-nx/Menu/Main" method="_on_save__quit_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting1" to="CanvasLayer-nx/Menu/Settings" method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Game/Setting2" to="CanvasLayer-nx/Menu/Settings" method="_on_save__quit_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" to="CanvasLayer-nx/Menu" method="make_see_through" binds= [Color(0, 0, 0, 0)]]
+[connection signal="mouse_exited" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" to="CanvasLayer-nx/Menu" method="make_see_through" binds= [Color(0, 0, 0, 1)]]
+[connection signal="drag_ended" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer/HSlider" method="release_focus" unbinds=1]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Vertex Snapping", NodePath("../Label"), ["Off", "Low", "Med", "High"]]]
+[connection signal="drag_ended" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" method="release_focus" unbinds=1]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider_percent" flags=18 binds= ["Affine Mapping", NodePath("../Label")]]

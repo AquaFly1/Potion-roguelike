@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://d07at07jnbomx"]
+
+[ext_resource type="Script" uid="uid://boonlhwath8i7" path="res://props/chests/vending_machine_3d.gd" id="1_g7oah"]
+[ext_resource type="PackedScene" uid="uid://r5sknibx3yga" path="res://props/card packs/card_pack.tscn" id="2_40wjr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at2en"]
+size = Vector3(1.865, 3, 0.901)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7oah"]
+albedo_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7nk1"]
+material = SubResource("StandardMaterial3D_g7oah")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7nk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wj6vg"]
+
+[node name="Vending_machine_3D -nx" type="Node3D"]
+script = ExtResource("1_g7oah")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_at2en")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1.865, 0, 0, 0, 3, 0, 0, 0, 0.901, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_i7nk1")
+
+[node name="buttons" type="Node3D" parent="."]
+
+[node name="ONE" type="Area3D" parent="buttons"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.34825, 1.4682963, 0.46179688)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buttons/ONE"]
+shape = SubResource("BoxShape3D_i7nk1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="buttons/ONE"]
+mesh = SubResource("BoxMesh_wj6vg")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="buttons/ONE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.53840566)
+text = "1
+"
+font_size = 160
+
+[node name="contents" type="Node3D" parent="."]
+
+[node name="card_pack" parent="contents" instance=ExtResource("2_40wjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31060362, 1.5227108, 0.4711913)
+pack_position = "111"
+price = 5
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41890055, 1.7489592, 0.5382668)
+text = "
+"
+
+[connection signal="input_event" from="buttons/ONE" to="." method="input_button" binds= ["1"]]

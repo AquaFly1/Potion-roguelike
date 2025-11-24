@@ -5,16 +5,16 @@ extends Node
 @export var effects: Array[Effect]
 
 var main_node: Node3D
-@export var menu_parent: Control
 var mouse_mode: int
 
+
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
-#u
 var current_enemy: Enemy = null
 
 var camera = null
 @onready var screen_size : Vector2 = get_viewport().size
 
+var Flame := 0
 var is_in_combat: bool = false
 
 signal card_pressed(card: Card)

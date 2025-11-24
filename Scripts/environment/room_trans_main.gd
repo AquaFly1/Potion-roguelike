@@ -39,7 +39,14 @@ func _ready() -> void:
 		#shadow.light_color = transition_color
 		
 func block_exit(open = false) -> void:
-	block.disabled = true
+	for i in [side1.get_parent(),side2.get_parent()]:
+		if i.get_overlapping_bodies():
+			$StaticBody3D/softblock.position = i.position * -1
+			
+			$StaticBody3D/softblock.set_deferred("disabled", false)
+			await i.body_exited
+			$StaticBody3D/softblock.set_deferred("disabled", true)
+	block.set_deferred("disabled", false)
 	if open:
-		if Side1Candle and Side1Candle.active: block.disabled = true
-		if Side2Candle and Side2Candle.active: block.disabled = true
+		if not Side1Candle or (Side1Candle and Side1Candle.active): block.set_deferred("disabled", true)
+		if not Side2Candle or (Side2Candle and Side2Candle.active): block.set_deferred("disabled", true)

@@ -34,7 +34,6 @@ func _ready() -> void:
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
 	gui_parent.visible = false
-	print(gui_parent.visible)
 	
 	attack_parent.visible = false
 	fire_origin.scale = Vector3.ZERO

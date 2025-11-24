@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5sknibx3yga"]
+
+[ext_resource type="Script" uid="uid://cyte20acba32p" path="res://Scripts/interaction/card_pack.gd" id="1_pvgrn"]
+[ext_resource type="Texture2D" uid="uid://cl56uobuwkcrr" path="res://Graphics/temporary_art/Untitled_Artwork-Photoroom.png" id="2_pvgrn"]
+
+[node name="card_pack" type="Node3D"]
+script = ExtResource("1_pvgrn")
+
+[node name="Icon" type="Sprite3D" parent="."]
+pixel_size = 0.001
+texture = ExtResource("2_pvgrn")
+
+[node name="position" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23793076, 0)
+text = "B22"
+
+[node name="price" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3815149, 0)
+text = "10$"

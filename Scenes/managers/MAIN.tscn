@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtbq8nt3ags7r"]
 
 [ext_resource type="Script" uid="uid://d20rluhwgrtwj" path="res://Scenes/managers/MAIN.gd" id="1_rket4"]
-[ext_resource type="PackedScene" uid="uid://b3l36tiauvqmr" path="res://Scenes/Environnement/test_world.tscn" id="2_p17k0"]
-[ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://Scenes/Entities/player/player.tscn" id="3_ru5bv"]
+[ext_resource type="PackedScene" uid="uid://b3l36tiauvqmr" path="res://environnements/test_world.tscn" id="2_p17k0"]
+[ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://entities/'player/'player_character/player_character.tscn" id="3_ru5bv"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_rket4")
 
 [node name="Player-nx" parent="." instance=ExtResource("3_ru5bv")]
-transform = Transform3D(-0.99335474, 0, -0.115093105, 0, 1, 0, 0.115093105, 0, -0.99335474, 2.244316, 1.2926288, -26.916048)
+transform = Transform3D(-0.99335474, 0, -0.115093105, 0, 1, 0, 0.115093105, 0, -0.99335474, 25.940681, 1.2926288, -17.678402)
 acceleration_air_mult = 1.0
 air_max_speed = 4.0
 

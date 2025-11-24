@@ -26,6 +26,7 @@ func _ready() -> void:
 
 func light_candle():
 	active = not active
+	Game.Flame += active as int
 	changed.emit()
 	
 	if size_tween: size_tween.stop()

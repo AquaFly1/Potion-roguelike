@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnjxl7i4io76a"]
+
+[ext_resource type="Script" uid="uid://cstpgnrgr3q01" path="res://Scripts/interaction/vending_machine.gd" id="1_kvq1s"]
+[ext_resource type="PackedScene" uid="uid://r5sknibx3yga" path="res://props/card packs/card_pack.tscn" id="2_kvq1s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18hwb"]
+
+[node name="Vending_machine" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvq1s")
+
+[node name="buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1136.0
+offset_top = 383.0
+offset_right = 1353.0
+offset_bottom = 745.0
+
+[node name="Input" type="Label" parent="buttons"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -83.0
+offset_right = 229.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 100
+
+[node name="GridContainer" type="GridContainer" parent="buttons"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="A" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "A"
+
+[node name="ONE" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "1"
+
+[node name="B" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "B"
+
+[node name="TWO" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "2"
+
+[node name="C" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "C"
+
+[node name="THREE" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "3"
+
+[node name="D" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "D"
+
+[node name="FOUR" type="Button" parent="buttons/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18hwb")
+text = "4"
+
+[node name="pack_container" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 47.0
+offset_right = 1078.0
+offset_bottom = 1123.0
+columns = 3
+
+[node name="card_pack" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack2" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack3" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack4" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack5" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack6" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack7" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack8" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack9" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack10" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack11" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="card_pack12" parent="pack_container" instance=ExtResource("2_kvq1s")]
+layout_mode = 2
+
+[node name="player_money" type="Label" parent="."]
+layout_mode = 0
+offset_right = 383.0
+offset_bottom = 204.0
+text = "67"
+
+[connection signal="pressed" from="buttons/GridContainer/A" to="." method="input_button" binds= ["A"]]
+[connection signal="pressed" from="buttons/GridContainer/ONE" to="." method="input_button" binds= ["1"]]
+[connection signal="pressed" from="buttons/GridContainer/B" to="." method="input_button" binds= ["B"]]
+[connection signal="pressed" from="buttons/GridContainer/TWO" to="." method="input_button" binds= ["2"]]
+[connection signal="pressed" from="buttons/GridContainer/C" to="." method="input_button" binds= ["C"]]
+[connection signal="pressed" from="buttons/GridContainer/THREE" to="." method="input_button" binds= ["3"]]
+[connection signal="pressed" from="buttons/GridContainer/D" to="." method="input_button" binds= ["D"]]
+[connection signal="pressed" from="buttons/GridContainer/FOUR" to="." method="input_button" binds= ["4"]]

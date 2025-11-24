@@ -1,14 +1,14 @@
-extends Control
+extends Node3D
 
 @export var pack_position: String
 @export var price: int
-@onready var position_label: Label = $position
-@onready var price_label: Label = $price
+@onready var position_label: Label3D = $position
+@onready var price_label: Label3D = $price
 
 var purchased = false
 
 func _ready() -> void:
-	price_label.text = str(price)
+	price_label.text = str(price)+" G"
 	position_label.text = pack_position
 
 func purchase():

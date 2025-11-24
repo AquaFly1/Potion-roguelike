@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://xwd75vy5re77"]
+[gd_scene load_steps=7 format=3 uid="uid://bso8dio6ydttg"]
 
-[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://Scripts/managers/chand_manager.gd" id="1_riyg6"]
-[ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Scenes/Card Stuff/Card.tscn" id="2_jjkdi"]
+[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://entities/'player/chand/chand_manager.gd" id="1_riyg6"]
+[ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Resources/cards/Card.tscn" id="2_jjkdi"]
 [ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Graphics/temporary_art/potion_bar_empty.aseprite" id="9_63gbn"]
 [ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Graphics/temporary_art/potion_bar.aseprite" id="10_25dlp"]
 [ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Graphics/temporary_art/potion.aseprite" id="11_jjkdi"]

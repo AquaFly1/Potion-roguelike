@@ -12,7 +12,9 @@ uniform sampler2D uv_warp: filter_nearest, repeat_enable;
 uniform sampler2D screen_texture: hint_screen_texture;
 uniform float intensity: hint_range(0.0, 1.0);
 uniform float speed: hint_range(0.0, 1.0);
-uniform float repeat: hint_range(0., 20.) = 1.;
+uniform float warp_repeat: hint_range(0., 20.) = 1.;
+uniform vec2 warp_offset;
+uniform vec2 warp_scroll;
 
 vec4 shift_hue(in vec4 color, in float shift) {
 	// The unit gray vector in RGB color space.
@@ -33,13 +35,14 @@ void fragment()
 {
 	vec4 warp =
 
-		texture(uv_warp,UV*float(repeat))
+		texture(uv_warp,mod(UV*warp_repeat +  warp_scroll*TIME + warp_offset,1.));
 
-		;
-	COLOR = texture(screen_texture, UV + intensity*(UV-vec2(0.5,0.5))*warp.b +
+	COLOR = texture(screen_texture, UV + (UV-vec2(0.5,0.5))*(warp.b-.5) +
 		(
 			shift_hue(warp,TIME*speed)
 				.rg
-				-vec2(0.5,0.5))
-			*intensity);
+				-vec2(0.5,0.5)
+			)*intensity
+			
+			);
 }

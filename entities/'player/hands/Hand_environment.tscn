@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://pd6gh50ihyvr" path="res://Graphics/Shaders/pixel.gdshader" id="1_y4y5h"]
 [ext_resource type="Environment" uid="uid://bgv7avnm6jp1i" path="res://entities/'player/hands/Hand_environment_preset.tres" id="2_uujy1"]
-[ext_resource type="Script" uid="uid://gd888fn3l3ca" path="res://Scripts/entities/player/RHandMain.gd" id="3_x1q8k"]
-[ext_resource type="Script" uid="uid://c2fcvriv3c3s0" path="res://Scripts/entities/player/HandAnimationController.gd" id="4_a48xy"]
+[ext_resource type="Script" uid="uid://gd888fn3l3ca" path="res://entities/'player/hands/RHandMain.gd" id="3_x1q8k"]
+[ext_resource type="Script" uid="uid://c2fcvriv3c3s0" path="res://entities/'player/hands/HandAnimationController.gd" id="4_a48xy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
 

@@ -275,12 +275,12 @@ autoplay = "default"
 frame_progress = 0.68495965
 
 [node name="FireLight" type="OmniLight3D" parent="VFX"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06765407, 0.072488114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06765407, -0.32416326)
 layers = 5125
 light_color = Color(0.87, 0.08700002, 0, 1)
 light_energy = 0.294
 light_size = 1.0
-light_specular = 0.0
+light_specular = 16.0
 omni_range = 2.124
 omni_attenuation = 2.705
 

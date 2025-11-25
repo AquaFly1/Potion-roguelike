@@ -58,13 +58,13 @@ static func call_event(entity, event: int):
 					effects[i].start_turn(entity)
 				END_TURN:
 					effects[i].end_turn(entity)
-					await entity.health_bar.update_bar(true)
+					await entity.health_bar.update_bar(true)	
 					
 				ON_DAMAGE:
 					effects[i].on_damage(entity)
 				ON_HIT:
 					effects[i].on_hit(entity)
-					
+			
 	
 	if entity.health <= 0:
 		entity.die()	
@@ -75,9 +75,7 @@ static func afflict(entity, effects_list, call_on_hit = true):
 		if call_on_hit: 
 			if entity.effects[i] > 0: 
 				effects[i].on_hit(entity)
-		await entity.health_bar.update_bar(i)
-		
-	await Game.get_tree().create_timer(1).timeout
+		await entity.health_bar.update_bar()
 	
 
 ##Activates the [code]start_turn()[/code] function of this  [member effect] .

@@ -1,6 +1,6 @@
 [gd_scene load_steps=94 format=4 uid="uid://cxuteeu2gi31u"]
 
-[ext_resource type="Script" uid="uid://dvm0q4oug7fo1" path="res://Scripts/entities/player/player_controller.gd" id="1_r8aaq"]
+[ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://entities/'player/'player_character/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://entities/'player/'player_character/rays/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://entities/'player/'player_character/rays/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://clqa2xnkjw6s4" path="res://entities/'player/hands/PlayerAnimations.gd" id="8_x5yqs"]
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="9_fmrin"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://entities/'player/chand/card_in_hand_target.tscn" id="10_sefq3"]
-[ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://Scripts/entities/player/PopupLabel.gd" id="13_en4d4"]
+[ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://props/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="Environment" uid="uid://d3k4ly86u2bjk" path="res://env/ch/color_adjusts/fight.tres" id="13_s1eas"]
-[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://entities/'player/chand/chand_manager.gd" id="14_q0cqy"]
+[ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://entities/'player/'player_character/chand_manager.gd" id="14_q0cqy"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://entities/health_bar/health_bar.tscn" id="14_yicnn"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Resources/cards/Card.tscn" id="15_vyq64"]
 [ext_resource type="Script" uid="uid://bv2gaws1frp17" path="res://entities/'player/'player_character/game_over_panel.gd" id="16_iq2rp"]
@@ -25,7 +25,7 @@
 [ext_resource type="Theme" uid="uid://ccn7rphveje3s" path="res://Graphics/Fonts/default_theme.tres" id="19_48k4y"]
 [ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Graphics/temporary_art/potion.aseprite" id="20_ixr61"]
 [ext_resource type="Script" uid="uid://ckq2nwn431u8r" path="res://Scripts/managers/interact_wave_controller.gd" id="21_fmrin"]
-[ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://Scripts/entities/player/player_labels.gd" id="21_m4mf4"]
+[ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://entities/'player/chand/player_labels.gd" id="21_m4mf4"]
 [ext_resource type="Shader" uid="uid://bn7rtec3bshnn" path="res://Graphics/Shaders/screen_wave.gdshader" id="21_nes5i"]
 [ext_resource type="Shader" uid="uid://duv1lhgdlll16" path="res://Graphics/Shaders/interaction_color.gdshader" id="22_4kjub"]
 
@@ -1128,19 +1128,24 @@ shader_parameter/ghost_intensity = 0.1
 shader_parameter/negative_intensity = 0.0
 
 [sub_resource type="Gradient" id="Gradient_75lg7"]
-colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
+offsets = PackedFloat32Array(0, 0.52191234, 1)
+colors = PackedColorArray(1, 0, 0.5019608, 1, 0, 1, 0.5019608, 1, 1, 0, 0.5019608, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bnxcq"]
 gradient = SubResource("Gradient_75lg7")
+width = 256
+height = 256
 fill = 1
-fill_from = Vector2(0.50427353, 0.50427353)
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukq60"]
 shader = ExtResource("22_4kjub")
 shader_parameter/uv_warp = SubResource("GradientTexture2D_bnxcq")
 shader_parameter/intensity = 0.0
-shader_parameter/speed = 0.1200000057
-shader_parameter/repeat = 3.0000001425
+shader_parameter/speed = 0.0
+shader_parameter/warp_repeat = 1.0
+shader_parameter/warp_offset = Vector2(0, 0)
+shader_parameter/warp_scroll = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_s1eas"]
 offsets = PackedFloat32Array(0)

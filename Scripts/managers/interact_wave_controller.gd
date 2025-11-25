@@ -23,7 +23,7 @@ func end_wave():
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	
 	tween.tween_property(self.material,"shader_parameter/intensity",0,1)
-	tween.tween_property(warp_filter.material.shader,"intensity",0,1)
+	tween.tween_method(set_shader_value.bind(warp_filter.material,"intensity"),0.5,0.0,2)
 
 
 func set_shader_value(value, mat: ShaderMaterial, target: String):

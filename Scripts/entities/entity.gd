@@ -21,11 +21,11 @@ func _ready() -> void:
 func take_damage(amount):
 	update_effect_vfx(Effect.effects[Effect.index("Damage")])
 	
-	var dmg = amount
-	if effects[4] > 0:
-		amount -= min(amount,effects[4])
-
-		effects[4] -= min(dmg,effects[4])
+	#var dmg = amount
+	#if effects[4] > 0:
+		#amount -= min(amount,effects[4])
+#
+		#effects[4] -= min(dmg,effects[4])
 
 	health -= amount
 	effects[0] = 0

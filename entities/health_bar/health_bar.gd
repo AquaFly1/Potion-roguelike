@@ -33,7 +33,8 @@ func _ready() -> void:
 	update_bar()
 
 func update_bar(_end_turn: bool = false) -> void:
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.set_parallel()
 	tween.tween_interval(0) #make sure there is at least something or it cries
 	
 	for i in [
@@ -49,19 +50,13 @@ func update_bar(_end_turn: bool = false) -> void:
 			]:
 		if i[0].get(i[1]).x != i[2]/entity.max_health * max_size: #if theres a difference
 			
-			if len(i) == 4 and i[3] == true: #if parallel
-				tween.tween_property(
-					i[0], 
-					i[1], 
-					Vector2( i[2]/entity.max_health * max_size , 
-							i[0].get(i[1]).y ) ,
-					0.5)
-			else:
+			
+			var new_size = Vector2( i[2]/entity.max_health * max_size , i[0].get(i[1]).y)
+			if i[0].get(i[1]) != new_size:
 				tween.tween_property(
 					i[0], 
 					i[1] , 
-					Vector2( i[2]/entity.max_health * max_size , 
-							i[0].get(i[1]).y ) , 
+					new_size , 
 					0.5)
 				anim_text.text = "Applying %s :  %d" %[ i[0].name , int(i[2]) ]
 			

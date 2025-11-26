@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var respawn_enemies: bool = true ##The interactions will be permanently cleared, higher [member Flame] will not spawn new enemies.
@@ -11,13 +12,67 @@ var current_interaction_pool: Array
 var current_interaction = []
 var enemies: Array[PackedScene]
 
+#@export var text: String:
+	#set(value):
+		#if Engine.is_editor_hint():
+			#text = value
+			#print(value)
+
+@export_group("Hitboxes")
+
+@export_subgroup("Spawn Hitbox","spawn_")
+@export var spawn_area_hitbox: CollisionShape3D
+@export var spawn_hitbox_position: Vector3:
+	set(value):
+		spawn_hitbox_position = value
+		_update_hitbox(spawn_area_hitbox,"position",value)
+@export var spawn_hitbox_rotation: Vector3:
+	set(value):
+		spawn_hitbox_rotation = value
+		_update_hitbox(spawn_area_hitbox,"rotation",value)
+@export var spawn_hitbox_scale: Vector3 = Vector3(4,5,4):
+	set(value):
+		spawn_hitbox_scale = value
+		_update_hitbox(spawn_area_hitbox,"scale",value)
+
+@export_subgroup("Fight Hitbox","fight_")
+@export var fight_area_hitbox: CollisionShape3D
+@export var fight_hitbox_position: Vector3:
+	set(value):
+		fight_hitbox_position = value
+		_update_hitbox(fight_area_hitbox,"position",value)
+@export var fight_hitbox_rotation: Vector3:
+	set(value):
+		fight_hitbox_rotation = value
+		_update_hitbox(fight_area_hitbox,"rotation",value)
+@export var fight_hitbox_scale: Vector3 = Vector3(3,5,1):
+	set(value):
+		fight_hitbox_scale = value
+		_update_hitbox(fight_area_hitbox,"scale",value)
+
+@export_subgroup("Path","path")
+@export var path: Path3D
+@export var path_offset: Vector3 =  Vector3(0,0,-3):
+	set(value):
+		path_offset = value
+		_update_hitbox(path,"position",value)
+
+func _update_hitbox(coll:Node3D,type:String, value: Vector3):
+	#if Engine.is_editor_hint():
+		match type:
+			"position":
+				coll.position = value
+			"rotation":
+				coll.rotation = value
+			"scale":
+				coll.shape.size = value
+
 @export_group("Environnement")
 @export var sides: int = 2
 @export var Exits: Array[Node3D]
 @export var enemy_separation: float
 
-@onready var enemy_parent:= $enemy_parent
-@onready var lookat:= $enemy_parent/LookAt
+@onready var lookat: Node3D = $enemy_parent/LookAt
 @onready var start_angle := rotation
 var cleared: bool = false
 
@@ -59,16 +114,16 @@ func load_enemies():
 	if not cleared:
 		for i in range(len(enemies)):
 			
-			var path = PathFollow3D.new()
-			enemy_parent.add_child(path)
+			var path_f = PathFollow3D.new()
+			path.add_child(path_f)
 			
-			path.rotation_mode = PathFollow3D.ROTATION_NONE
-			path.progress_ratio = 0.5
-			path.progress += enemy_separation * (i-float(len(enemies)-1)/2)
+			path_f.rotation_mode = PathFollow3D.ROTATION_NONE
+			path_f.progress_ratio = 0.5
+			path_f.progress += enemy_separation * (i-float(len(enemies)-1)/2)
 			await get_tree().process_frame
 			
 			var enemy_inst := enemies[i].instantiate()
-			path.add_child(enemy_inst)
+			path_f.add_child(enemy_inst)
 			Game.enemy_list.append(enemy_inst)
 			
 			lookat.position.y = max(lookat.position.y, enemy_inst.get_size().y/2)

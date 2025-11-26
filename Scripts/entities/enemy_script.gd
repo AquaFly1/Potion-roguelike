@@ -21,6 +21,7 @@ var chosen_potion = null
 @onready var attack_parent: Control = $Target
 
 @export_group("VFX")
+@onready var base_color := sprite_node.modulate
 @export var fire_origin : Node3D
 @export var fire_visuals : AnimatedSprite3D
 @export var fire_light: OmniLight3D
@@ -60,17 +61,17 @@ func start_turn():
 		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
 		if chosen_potion.drink == true:
 			await PotionMan.throw_potion(chosen_potion.ingredients, rings, self, true)
-			sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0) * base_color
 			chosen_potion = potions.pick_random()
 			preparing = 1
 			
 		else:
 			if preparing != 0:
-				sprite_node.modulate = Color(0.813, 0.0, 0.092, 1.0)
+				sprite_node.modulate = Color(1.0, 0.51, 0.49, 1.0) * base_color
 				preparing -= 1
 			else:
 				await PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
-				sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0) * base_color
 				chosen_potion = potions.pick_random()
 				preparing = 1
 	

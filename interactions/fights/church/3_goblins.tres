@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Interaction" load_steps=3 format=3 uid="uid://dok1jkn31w1tc"]
 
 [ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="1_ju115"]
-[ext_resource type="PackedScene" uid="uid://bx0v1xfgdcqa2" path="res://entities/'enemies/goblion/goblin_3d.tscn" id="1_svv6k"]
+[ext_resource type="PackedScene" uid="uid://bx0v1xfgdcqa2" path="res://entities/'enemies/goblion/goblin.tscn" id="1_svv6k"]
 
 [resource]
 script = ExtResource("1_ju115")

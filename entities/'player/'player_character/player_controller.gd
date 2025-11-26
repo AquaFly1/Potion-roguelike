@@ -55,16 +55,27 @@ func _unhandled_input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			mouse_mode_capture = true
 	
-	
+		$Head.disabled = Input.is_action_pressed("fly")
+		$Body.disabled = Input.is_action_pressed("fly")
+		GRAVITY = 20 * (not Input.is_action_pressed("fly") as int)
 	
 func _physics_process(delta):
 	
+	#$test.global_position = pivot.global_position + pivot.global_basis*Vector3.FORWARD
+	
 	if interaction_node:	
 		var rot = rotation
-		look_at(interaction_node.get_child(0).get_child(0).global_position)
+		pivot.look_at(interaction_node.lookat.global_position)
+		
+		
+		#look_at(interaction_node.lookat.global_position)
+		#pivot.look_at(interaction_node.lookat.global_position)
+			
+		
 		rotation = lerp(rot,rotation, 0.1)	
+		rotation.y += pivot.rotation.y
+		pivot.rotation.y = 0
 		global_position = lerp(global_position,interaction_node.global_position,0.1)
-	
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
@@ -89,6 +100,15 @@ func _physics_process(delta):
 		
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
+		
+	if Input.is_action_pressed("fly"):
+		velocity = pivot.global_transform.basis * (Vector3(Input.get_action_strength("right") 
+									- Input.get_action_strength("left"),
+									0,
+									Input.get_action_strength("backward") 
+									- Input.get_action_strength("forward")) * 25)
+		
+		
 		
 	if not is_on_floor():
 		

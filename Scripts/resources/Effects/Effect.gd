@@ -92,6 +92,7 @@ func end_turn(_entity):
 func on_hit(_entity):
 	pass
 
+
 func on_damage(_entity):
 	pass
 	

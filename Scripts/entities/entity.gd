@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func take_damage(amount):
 	update_effect_vfx(Effect.effects[Effect.index("Damage")])
-	
+	Effect.call_event(self,Effect.ON_DAMAGE)
 	#var dmg = amount
 	#if effects[4] > 0:
 		#amount -= min(amount,effects[4])

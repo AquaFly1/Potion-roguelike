@@ -10,10 +10,10 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_476at"]
-size = Vector3(1.43, 5, 4)
+size = Vector3(3.065, 4.45, 17.93)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8as5x"]
-size = Vector3(3.41, 5, 0.285)
+size = Vector3(2.98, 5, 5.84)
 
 [node name="Fight" type="Node3D" node_paths=PackedStringArray("spawn_area_hitbox", "fight_area_hitbox", "path")]
 script = ExtResource("1_m8nj4")
@@ -51,5 +51,5 @@ layers = 524288
 billboard = 1
 text = "Ennemy Pivot"
 
-[connection signal="body_entered" from="SpawnEnemies" to="." method="on_spawn_enemies_enter" flags=6]
+[connection signal="body_entered" from="SpawnEnemies" to="." method="on_spawn_enemies_enter"]
 [connection signal="body_entered" from="StartFight" to="." method="on_start_fight_entered" flags=6]

@@ -19,7 +19,11 @@ var enemies: Array[PackedScene]
 			#print(value)
 
 @export_group("Hitboxes")
-
+@export var make_shape_duplicate:bool=false:
+	set(value):
+		make_shape_duplicate = value
+		spawn_area_hitbox.shape = spawn_area_hitbox.shape.duplicate()
+		fight_area_hitbox.shape = spawn_area_hitbox.shape.duplicate()
 @export_subgroup("Spawn Hitbox","spawn_")
 @export var spawn_area_hitbox: CollisionShape3D
 @export var spawn_hitbox_position: Vector3:

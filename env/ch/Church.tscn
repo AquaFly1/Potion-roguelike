@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://cjuyi2adb48lg"]
+[gd_scene load_steps=56 format=4 uid="uid://cjuyi2adb48lg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuteeu2gi31u" path="res://entities/'player/'player_character/player_character.tscn" id="1_g8fio"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://props/transitions/transition_block.tscn" id="2_6poya"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bop8cdoq4wsy" path="res://env/ch/Church_RoomSpriteSheet.png" id="9_so65n"]
 [ext_resource type="Texture2D" uid="uid://bhqgue7jq3wbp" path="res://env/ch/Church_CandleAlbedo.png" id="10_35cjy"]
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://props/candle/candle_3D.tscn" id="11_ieqvv"]
-[ext_resource type="PackedScene" uid="uid://2tbmicm44hji" path="res://Scenes/Interactions/interaction_3D.tscn" id="12_ewcn0"]
 [ext_resource type="PackedScene" uid="uid://3iv82ijofkh2" path="res://interactions/shops/shop_3d.tscn" id="13_42y2s"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://props/chests/chest.tscn" id="14_f8bvg"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="15_w5207"]
@@ -710,11 +709,6 @@ debug_fill = false
 [node name="Candle" parent="." node_paths=PackedStringArray("doors") instance=ExtResource("11_ieqvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08873415, 0)
 doors = [null]
-
-[node name="interaction" parent="." instance=ExtResource("12_ewcn0")]
-process_mode = 4
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8764205, 0.9670925, 0.0049586296)
-possible_interactions = Array[Array]([])
 
 [node name="Shop_3D" parent="." instance=ExtResource("13_42y2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2560463, 0.024918735, -3.3414583)

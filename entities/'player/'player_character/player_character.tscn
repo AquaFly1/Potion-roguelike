@@ -1673,8 +1673,6 @@ camera = NodePath("../3D Projection/3D View/ViewMasked/HandNewParent/CameraMask"
 layer = -10
 
 [node name="Wave" type="ColorRect" parent="InteractionWave" node_paths=PackedStringArray("warp_filter")]
-process_mode = 4
-visible = false
 material = SubResource("ShaderMaterial_fmrin")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1691,7 +1689,6 @@ warp_filter = NodePath("../Color/Warp")
 layer = -9
 
 [node name="Warp" type="TextureRect" parent="InteractionWave/Color"]
-visible = false
 material = SubResource("ShaderMaterial_ukq60")
 anchors_preset = 15
 anchor_right = 1.0

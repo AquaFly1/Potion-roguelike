@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cjn8gi4f1tohh"]
+
+[ext_resource type="Script" uid="uid://drdvri37lj73w" path="res://Scripts/resources/Effects/Effect.gd" id="1_w1883"]
+
+[resource]
+script = ExtResource("1_w1883")
+name = "Brittle"
+metadata/_custom_type_script = "uid://drdvri37lj73w"

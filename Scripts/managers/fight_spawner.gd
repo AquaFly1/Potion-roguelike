@@ -79,24 +79,32 @@ func _update_hitbox(coll:Node3D,type:String, value: Vector3):
 @onready var lookat: Node3D = $enemy_parent/LookAt
 @onready var start_angle := rotation
 var cleared: bool = false
+var spawned: bool = false
 
 func _ready() -> void:
 	pass
 
 func on_spawn_enemies_enter(_body: Node3D) -> void:
 
+	
 	look_at(_body.global_position)
 	#await get_tree().create_timer(0).timeout
 	
 	
 	rotation.y = fmod(rotation.y,PI/2) + PI
 	rotation.y = start_angle.y + (rotation-start_angle).snappedf(2*PI/sides).y
-	if await load_enemies():
+	
+	
+	if spawn_enemies():
 		for i in Exits:
 			i.block_exit()
+		
+		
+		load_enemies()
 			
 		await Game.interaction_ended
-		
+		spawned = false
+		spawn_area_hitbox.set_deferred("disabled",false)
 		for i in Exits:
 			i.block_exit(true)
 	
@@ -106,16 +114,30 @@ func on_start_fight_entered(_body: Node3D) -> void:
 		Game.interaction_node = self
 		Game.interaction_started.emit()
 
+func spawn_enemies():
+	if not spawned:	
+		
+		spawned = true
+		spawn_area_hitbox.set_deferred("disabled",true)
+		
+		for i in range(min(Game.Flame,len(possible_interactions)-1), -1, -1):
+			current_interaction_pool = possible_interactions[i]
+			if len(current_interaction_pool)!=0: 
+				cleared = false
+				break
+		
+
+			
+		current_interaction = current_interaction_pool.pick_random()
+		current_interaction_pool.clear()
+		
+		enemies = current_interaction.enemies
+		
+	return spawned
+
+
 func load_enemies():
-	for i in range(min(Game.Flame,len(possible_interactions)-1), -1, -1):
-		current_interaction_pool = possible_interactions[i]
-		if len(current_interaction_pool)!=0: break
 	
-	current_interaction = current_interaction_pool.pick_random()
-	
-	enemies = current_interaction.enemies
-	
-	if not cleared:
 		for i in range(len(enemies)):
 			
 			var path_f = PathFollow3D.new()
@@ -133,5 +155,5 @@ func load_enemies():
 			lookat.position.y = max(lookat.position.y, enemy_inst.get_size().y/2)
 			
 			await get_tree().process_frame
-		
-	return not cleared
+			
+	

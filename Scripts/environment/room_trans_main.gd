@@ -10,6 +10,10 @@ extends Node3D
 @onready var side2 : MeshInstance3D = $"Side2Area-nx/Side2"
 @onready var block := $StaticBody3D/block
 
+@export var side_1_interaction: Node3D ##spawns ennemies when touching side 1
+@export var side_2_interaction: Node3D ##spawns ennemies when touching side 2
+var player_distance_along_z
+
 var gradient_t : GradientTexture1D
 var gradient: Gradient
 
@@ -35,18 +39,23 @@ func _ready() -> void:
 	
 	decal.size = scale
 	decal.scale = Vector3.ONE/scale
+	
 		#shadow.light_negative = false
 		#shadow.light_color = transition_color
 		
+func get_player_distance() -> float:
+	player_distance_along_z = Player.node.global_position - global_position
+	player_distance_along_z = player_distance_along_z.project(global_basis*Vector3.FORWARD).length()*sign(player_distance_along_z.dot(global_basis*Vector3.FORWARD))
+	return player_distance_along_z
+	
+
 func block_exit(open = false) -> void:
-	for i in [side1.get_parent(),side2.get_parent()]:
-		if i.get_overlapping_bodies():
-			$StaticBody3D/softblock.position = i.position * -1
-			
-			$StaticBody3D/softblock.set_deferred("disabled", false)
-			await i.body_exited
-			$StaticBody3D/softblock.set_deferred("disabled", true)
 	block.set_deferred("disabled", false)
+	if not open:
+		while abs(get_player_distance()) < 2:
+			block.position.z = (-get_player_distance() + sign(get_player_distance())*(0.25 + (block.shape.size.z*global_basis.get_scale().z)/2.))/ global_basis.get_scale().z
+			await get_tree().create_timer(0.2).timeout
+		block.position.z = 0
 	if open:
 		if not Side1Candle or (Side1Candle and Side1Candle.active): block.set_deferred("disabled", true)
 		if not Side2Candle or (Side2Candle and Side2Candle.active): block.set_deferred("disabled", true)

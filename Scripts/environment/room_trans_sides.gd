@@ -4,17 +4,20 @@ extends Area3D
 @export var fade_mesh_other : MeshInstance3D
 @onready var parent : Node3D = $".."
 @export var zone: CollisionShape3D
-var fade_target_value: float = 0
+var fade_target_value: float = 1
 var fading: bool = false
 @onready var block_player_light: Node3D = fade_mesh.get_child(0)
 var candle: Node3D
 @onready var block: CollisionShape3D = $"../StaticBody3D/block"
+var side := 1
 
 func _ready() -> void:
 	if name == "Side1Area-nx":
 		candle = parent.Side1Candle
+		
 	else:
 		candle = parent.Side2Candle
+		side = -1
 	connect("body_entered",on_body_entered)
 	connect("body_exited",on_body_exited)
 	if candle: candle.changed.connect(update_hitbox)
@@ -35,11 +38,18 @@ func on_body_entered(_body: Node3D) -> void:
 		
 		
 	else:
-		area_other.fading = true
-		fading = false
+		area_other.fading = false
+		fading = true
 		Player.node.horizontal_velocity = Vector3.ZERO
 		Player.node.velocity = Vector3.ZERO
 
+		if side == 1:
+			if parent.side_1_interaction: parent.side_1_interaction.on_spawn_enemies_enter(Player.node)
+		else: 
+			if parent.side_2_interaction: parent.side_2_interaction.on_spawn_enemies_enter(Player.node)
+		
+			
+		
 		if candle:
 			candle.affect_player_light = true
 			if area_other.candle: area_other.candle.affect_player_light = false
@@ -52,9 +62,8 @@ func on_body_entered(_body: Node3D) -> void:
 
 func on_body_exited(_body: Node3D) -> void:
 	
-	var player_distance_along_z = Player.node.global_position - area_other.global_position
-	player_distance_along_z = player_distance_along_z.dot(Vector3.FORWARD)
-	if abs(player_distance_along_z) > parent.scale.z:
+	
+	if abs(parent.get_player_distance()) > parent.scale.z:
 		fade_mesh_other.transparency = 1
 		fade_mesh.transparency = 1
 		
@@ -63,11 +72,11 @@ func on_body_exited(_body: Node3D) -> void:
 func _physics_process(_delta: float) -> void:
 	if fading:
 		
-		fade_mesh.transparency = lerp(fade_mesh.transparency,fade_target_value,0.2)
+		fade_mesh.transparency = lerp(fade_mesh.transparency,1.,0.1)
 		fade_mesh_other.transparency = 1 - fade_mesh.transparency
-		if abs(fade_mesh.transparency-fade_target_value) < 0.05:
-			fade_mesh.transparency = 0
-			fade_mesh_other.transparency = 1
+		if abs(1-fade_mesh.transparency) < 0.05:
+			fade_mesh.transparency = 1
+			fade_mesh_other.transparency = 0
 			area_other.block_player_light.visible = false
 			block_player_light.visible = false
 			fading = false

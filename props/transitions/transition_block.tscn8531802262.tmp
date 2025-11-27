@@ -110,7 +110,6 @@ mesh = SubResource("BoxMesh_y8lxq")
 
 [node name="Decal-nx" type="Decal" parent="."]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1.1, 0, -1.509958e-07, 0, -1, 0, 0.5, 0)
-visible = false
 layers = 2
 sorting_offset = 6.38
 size = Vector3(1, 1, 1)

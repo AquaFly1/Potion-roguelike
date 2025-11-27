@@ -4,6 +4,9 @@ extends Node
 @export var combos: Array[Combo]
 @export var effects: Array[Effect]
 
+@export var strength_multiplier: int = 2
+@export var weakness_multiplier: int = 2
+
 var main_node: Node3D
 var mouse_mode: int
 

@@ -33,6 +33,7 @@ func _ready() -> void:
 	update_bar()
 
 func update_bar(_end_turn: bool = false) -> void:
+	
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_parallel()
 	tween.tween_interval(0) #make sure there is at least something or it cries
@@ -48,17 +49,17 @@ func update_bar(_end_turn: bool = false) -> void:
 		
 		[shield ,"size" , entity.effects[4]]
 			]:
-		if i[0].get(i[1]).x != i[2]/entity.max_health * max_size: #if theres a difference
+		
+		var new_size = Vector2( max(i[2]/entity.max_health * max_size,0) , i[0].get(i[1]).y).snappedf(1)
 			
+		if i[0].get(i[1]) != new_size:
 			
-			var new_size = Vector2( i[2]/entity.max_health * max_size , i[0].get(i[1]).y)
-			if i[0].get(i[1]) != new_size:
-				tween.tween_property(
-					i[0], 
-					i[1] , 
-					new_size , 
-					0.5)
-				anim_text.text = "Applying %s :  %d" %[ i[0].name , int(i[2]) ]
+			tween.tween_property(
+				i[0], 
+				i[1] , 
+				new_size , 
+				0.5)
+			anim_text.text = "Applying %s :  %d" %[ i[0].name , int(i[2]) ]
 			
 			update_visuals()
 			

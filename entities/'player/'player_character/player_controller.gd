@@ -75,7 +75,7 @@ func _physics_process(delta):
 		rotation = lerp(rot,rotation, 0.1)	
 		rotation.y += pivot.rotation.y
 		pivot.rotation.y = 0
-		global_position = lerp(global_position,interaction_node.global_position,0.1)
+		global_position = lerp(global_position,interaction_node.player_pos.global_position,0.1)
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y

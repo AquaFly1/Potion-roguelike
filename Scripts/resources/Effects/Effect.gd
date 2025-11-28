@@ -14,6 +14,7 @@ enum {
 	START_TURN,
 	END_TURN,
 	ON_DAMAGE,
+	AFTER_DAMAGE,
 	ON_HIT
 }
 
@@ -43,7 +44,7 @@ static func index(effect_name_or_ressource):
 		for i in effects:
 			if i.name == effect_name_or_ressource:
 				return effects.find(i)
-	push_warning("No valid effect of name", effect_name_or_ressource)
+	push_warning("No valid effect of name ", effect_name_or_ressource)
 
 ##Activates the [param Effect.EVENT()] function of all valid  [member effects] .
 ##[br][param event] is [member Effect], followed by 
@@ -62,20 +63,30 @@ static func call_event(entity, event: int):
 					
 				ON_DAMAGE:
 					effects[i].on_damage(entity)
+				
+				AFTER_DAMAGE:
+					effects[i].after_damage(entity)
+					
 				ON_HIT:
-					effects[i].on_hit(entity)
-			
-	
+					await effects[i].on_hit(entity)
+					await entity.health_bar.update_bar()
+					
+					
+					
+					
+	entity.finished_afflicting.emit()			
 	if entity.health <= 0:
-		entity.die()	
+		
+		entity.die()
 
-static func afflict(entity, effects_list, call_on_hit = true):
+
+static func afflict(entity, effects_list, _call_on_hit = true):
 	for i in range(len(effects)):
 		entity.effects[i] += effects_list[i]
-		if call_on_hit: 
-			if entity.effects[i] > 0: 
-				effects[i].on_hit(entity)
-		await entity.health_bar.update_bar()
+		await effects[i].on_hit(entity)
+	call_event(entity,Effect.ON_HIT)
+		
+		
 	
 
 ##Activates the [code]start_turn()[/code] function of this  [member effect] .
@@ -88,11 +99,14 @@ func end_turn(_entity):
 	
 
 ##Activates the [code]on_hit()[/code] function of this  [member effect] .
-##By default, adds [param _value] to the entity
-func on_hit(_entity):
-	pass
+func on_hit(entity):
+	await entity.health_bar.update_bar()
+	
 
 
 func on_damage(_entity):
 	pass
 	
+
+func after_damage(_entity):
+	pass

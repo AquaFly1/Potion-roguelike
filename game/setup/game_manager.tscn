@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=30 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://cr3s27owc80vb" path="res://Scripts/managers/menu_controller.gd" id="23_33pfu"]
 [ext_resource type="Script" uid="uid://b6nmw3pp1g24w" path="res://Scenes/managers/Menu.gd" id="23_ofi3n"]
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
+[ext_resource type="Resource" uid="uid://0jvdslcbx41q" path="res://Resources/Effects/Strenght.tres" id="24_vcc2h"]
+[ext_resource type="Resource" uid="uid://dmo2at04eblv7" path="res://Resources/Effects/Weakness.tres" id="25_rulai"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofi3n"]
 
@@ -34,7 +36,7 @@ process_mode = 3
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
 combos = Array[ExtResource("6_i4mau")]([ExtResource("7_sm5re"), ExtResource("8_hjqsb"), ExtResource("9_y8n5u"), ExtResource("10_5tjy5"), ExtResource("11_iu5vk"), ExtResource("7_b5cn8"), ExtResource("8_jencv")])
-effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t"), ExtResource("18_0n2x0"), ExtResource("17_mv3jg")])
+effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("18_jb27j"), ExtResource("19_tnymu"), ExtResource("20_33pfu"), ExtResource("19_5ul1t"), ExtResource("18_0n2x0"), ExtResource("17_mv3jg"), ExtResource("24_vcc2h"), ExtResource("25_rulai")])
 
 [node name="CanvasLayer-nx" type="CanvasLayer" parent="."]
 layer = 75

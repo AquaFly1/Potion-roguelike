@@ -47,13 +47,13 @@ func throw_potion(ingredients: Array[Ingredient], rings: Array[Ring], entity: En
 		var combo_effects = combo.effect_values()
 		for i in range(Effect.get_length()):
 			total_effects[i] +=combo_effects[i]
-	total_effects[0]*=(Game.strength_modifier*(entity.effects[Effect.index("Strength")]+total_effects[Effect.index("Strength")]))
-	total_effects[0]/=(1/(1-Game.weakness_modifier*(entity.effects[Effect.index("Weakness")]+total_effects[Effect.index("Weakness")])))
+	total_effects[0]*=(Game.strength_multiplier*(entity.effects[Effect.index("Strength")]+total_effects[Effect.index("Strength")]))
+	total_effects[0]/=(1/(1-Game.weakness_multiplier*(entity.effects[Effect.index("Weakness")]+total_effects[Effect.index("Weakness")])))
 	if not drank:
 		total_effects[0] += 1
 	
-	await Effect.afflict(entity, total_effects)
+	Effect.afflict(entity, total_effects)
+	await entity.finished_afflicting
 	
-	
-func calculate_damage(entity, effects):
+func calculate_damage(_entity, _effects):
 	pass

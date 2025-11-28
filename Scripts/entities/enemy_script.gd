@@ -138,12 +138,16 @@ func die():
 	Game.xp_end_of_fight += xp_given
 	
 	
+	
 	await get_tree().create_timer(0.5).timeout
+	
+	finished_afflicting.emit()
 	
 	while Game.enemy_list.has(self):
 		Game.enemy_list.erase(self)
 	
 	Game.enemy_killed.emit()
+	
 	
 	queue_free()
 	

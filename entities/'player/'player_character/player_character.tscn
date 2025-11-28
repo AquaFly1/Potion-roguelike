@@ -1,6 +1,7 @@
-[gd_scene load_steps=94 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=95 format=4 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://entities/'player/'player_character/player_controller.gd" id="1_r8aaq"]
+[ext_resource type="Script" uid="uid://csdpr6tk3ivjt" path="res://entities/'player/'player_character/fight_light.gd" id="2_75lg7"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://entities/'player/'player_character/rays/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://entities/'player/'player_character/rays/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
@@ -1129,23 +1130,23 @@ shader_parameter/negative_intensity = 0.0
 
 [sub_resource type="Gradient" id="Gradient_75lg7"]
 offsets = PackedFloat32Array(0, 0.52191234, 1)
-colors = PackedColorArray(1, 0, 0.5019608, 1, 0, 1, 0.5019608, 1, 1, 0, 0.5019608, 1)
+colors = PackedColorArray(1, 0.5019608, 0.5019608, 1, 0, 0.5019608, 0.5019608, 1, 1, 0.5019608, 0.5019608, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bnxcq"]
 gradient = SubResource("Gradient_75lg7")
 width = 256
 height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukq60"]
 shader = ExtResource("22_4kjub")
 shader_parameter/uv_warp = SubResource("GradientTexture2D_bnxcq")
 shader_parameter/intensity = 0.0
-shader_parameter/speed = 0.078000003705
-shader_parameter/warp_repeat = 1.0
+shader_parameter/speed = 0.0
+shader_parameter/warp_repeat = 10.000000475
 shader_parameter/warp_offset = Vector2(0, 0)
-shader_parameter/warp_scroll = Vector2(0, 0)
+shader_parameter/warp_scroll = Vector2(0, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_s1eas"]
 offsets = PackedFloat32Array(0)
@@ -1261,7 +1262,7 @@ shape = SubResource("CapsuleShape3D_6t5aa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
 [node name="Main Camera" type="Camera3D" parent="Camera_pivot"]
-cull_mask = 517119
+cull_mask = 517115
 environment = SubResource("Environment_l3v4j")
 current = true
 
@@ -1292,6 +1293,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 cull_mask = 4100
 environment = SubResource("Environment_s1eas")
 current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera"]
+layers = 4
+light_energy = 0.0
+script = ExtResource("2_75lg7")
 
 [node name="ProjectionOriginMask" type="RemoteTransform3D" parent="Camera_pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24663508, 0.18365484)

@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var respawn_enemies: bool = true ##The interactions will be permanently cleared, higher [member Flame] will not spawn new enemies.
@@ -12,64 +11,14 @@ var current_interaction_pool: Array
 var current_interaction = []
 var enemies: Array[PackedScene]
 
-#@export var text: String:
-	#set(value):
-		#if Engine.is_editor_hint():
-			#text = value
-			#print(value)
 
-@export_group("Hitboxes")
-@export var make_shape_duplicate:bool=false:
-	set(value):
-		make_shape_duplicate = value
-		spawn_area_hitbox.shape = spawn_area_hitbox.shape.duplicate()
-		fight_area_hitbox.shape = spawn_area_hitbox.shape.duplicate()
-@export_subgroup("Spawn Hitbox","spawn_")
 @export var spawn_area_hitbox: CollisionShape3D
-@export var spawn_hitbox_position: Vector3:
-	set(value):
-		spawn_hitbox_position = value
-		_update_hitbox(spawn_area_hitbox,"position",value)
-@export var spawn_hitbox_rotation: Vector3:
-	set(value):
-		spawn_hitbox_rotation = value
-		_update_hitbox(spawn_area_hitbox,"rotation",value)
-@export var spawn_hitbox_scale: Vector3 = Vector3(4,5,4):
-	set(value):
-		spawn_hitbox_scale = value
-		_update_hitbox(spawn_area_hitbox,"scale",value)
 
-@export_subgroup("Fight Hitbox","fight_")
 @export var fight_area_hitbox: CollisionShape3D
-@export var fight_hitbox_position: Vector3:
-	set(value):
-		fight_hitbox_position = value
-		_update_hitbox(fight_area_hitbox,"position",value)
-@export var fight_hitbox_rotation: Vector3:
-	set(value):
-		fight_hitbox_rotation = value
-		_update_hitbox(fight_area_hitbox,"rotation",value)
-@export var fight_hitbox_scale: Vector3 = Vector3(3,5,1):
-	set(value):
-		fight_hitbox_scale = value
-		_update_hitbox(fight_area_hitbox,"scale",value)
 
-@export_subgroup("Path","path")
 @export var path: Path3D
-@export var path_offset: Vector3 =  Vector3(0,0,-3):
-	set(value):
-		path_offset = value
-		_update_hitbox(path,"position",value)
 
-func _update_hitbox(coll:Node3D,type:String, value: Vector3):
-	#if Engine.is_editor_hint():
-		match type:
-			"position":
-				coll.position = value
-			"rotation":
-				coll.rotation = value
-			"scale":
-				coll.shape.size = value
+@export var player_pos: Marker3D
 
 @export_group("Environnement")
 @export var sides: int = 2
@@ -80,6 +29,8 @@ func _update_hitbox(coll:Node3D,type:String, value: Vector3):
 @onready var start_angle := rotation
 var cleared: bool = false
 var spawned: bool = false
+
+@onready var original_rotation : Vector3 = rotation
 
 func _ready() -> void:
 	pass

@@ -196,18 +196,20 @@ doors = [null]
 [node name="OutCandle1Fight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.891, 0, -11.823)
 possible_interactions = Array[Array]([[ExtResource("13_oo1gt")]])
-make_shape_duplicate = true
-spawn_hitbox_position = Vector3(2.35, 0, 2.215)
-spawn_hitbox_rotation = Vector3(0, 0.54, 0)
-spawn_hitbox_scale = Vector3(1.44, 5, 4)
-fight_hitbox_scale = Vector3(3.625, 5, 0.285)
 Exits = [NodePath("../../doors/OutofCandle1"), NodePath("../../doors/IntoHallway"), NodePath("../../doors/IntoCandle2")]
+
+[node name="CollisionShape3D" parent="Interactions/OutCandle1Fight/SpawnEnemies" index="0"]
+transform = Transform3D(0.122869, 0, 0.5309992, 0, 1, 0, -0.07699488, 0, 0.8473725, 3.021264, 0, 1.6113987)
+
+[node name="CollisionShape3D" parent="Interactions/OutCandle1Fight/StartFight" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.375, 0, 0, 0)
+
+[node name="PlayerPosition" parent="Interactions/OutCandle1Fight" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37403107)
 
 [node name="HallwayFight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.06361, 0, -11.499209)
 possible_interactions = Array[Array]([[ExtResource("15_1s3mi")]])
-spawn_hitbox_scale = Vector3(3.065, 4.45, 17.93)
-fight_hitbox_scale = Vector3(2.98, 5, 5.84)
 Exits = [NodePath("../../doors/IntoHallway")]
 
 [node name="doors" type="Node3D" parent="."]
@@ -246,3 +248,5 @@ transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.
 
 [node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
 transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0.957, 0, -23.991)
+
+[editable path="Interactions/OutCandle1Fight"]

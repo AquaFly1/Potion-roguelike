@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_2hsdr")
+name = "Weakness"
 metadata/_custom_type_script = "uid://drdvri37lj73w"

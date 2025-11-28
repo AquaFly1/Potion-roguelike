@@ -12,6 +12,7 @@ var health_bar : Control
 
 var health: float = 0
 
+signal finished_afflicting #for potionmanager throwing a potion, if it dies before all aflicted await fuck up
 
 func _ready() -> void:
 	effects.resize(Game.effects.size()) #have to use Game 
@@ -20,15 +21,15 @@ func _ready() -> void:
 
 func take_damage(amount):
 	update_effect_vfx(Effect.effects[Effect.index("Damage")])
-	Effect.call_event(self,Effect.ON_DAMAGE)
-	#var dmg = amount
-	#if effects[4] > 0:
-		#amount -= min(amount,effects[4])
-#
-		#effects[4] -= min(dmg,effects[4])
-
+	
+	await Effect.call_event(self,Effect.ON_DAMAGE)
+	
 	health -= amount
+	
 	effects[0] = 0
+	
+	await Effect.call_event(self,Effect.AFTER_DAMAGE)
+	
 
 func start_turn():
 	health_bar.anim_text.text = "Starting turn"

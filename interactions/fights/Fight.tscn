@@ -10,16 +10,17 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_476at"]
-size = Vector3(3.065, 4.45, 17.93)
+size = Vector3(5, 5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8as5x"]
-size = Vector3(2.98, 5, 5.84)
+size = Vector3(5, 5, 2)
 
-[node name="Fight" type="Node3D" node_paths=PackedStringArray("spawn_area_hitbox", "fight_area_hitbox", "path")]
+[node name="Fight" type="Node3D" node_paths=PackedStringArray("spawn_area_hitbox", "fight_area_hitbox", "path", "player_pos")]
 script = ExtResource("1_m8nj4")
 spawn_area_hitbox = NodePath("SpawnEnemies/CollisionShape3D")
 fight_area_hitbox = NodePath("StartFight/CollisionShape3D")
 path = NodePath("enemy_parent")
+player_pos = NodePath("PlayerPosition")
 enemy_separation = 1.0
 
 [node name="enemy_parent" type="Path3D" parent="."]
@@ -50,6 +51,13 @@ debug_color = Color(1, 0, 0.23921569, 1)
 layers = 524288
 billboard = 1
 text = "Ennemy Pivot"
+
+[node name="PlayerPosition" type="Marker3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="PlayerPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49901295, 0)
+billboard = 1
+text = "Player Pos"
 
 [connection signal="body_entered" from="SpawnEnemies" to="." method="on_spawn_enemies_enter"]
 [connection signal="body_entered" from="StartFight" to="." method="on_start_fight_entered" flags=6]

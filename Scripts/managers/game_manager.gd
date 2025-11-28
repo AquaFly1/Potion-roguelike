@@ -81,7 +81,8 @@ func wait_for_enemy_turn(entity: Entity):
 func enemy_killed_func():
 	if waiting_for_enemy:
 		enemy_turn_ended.emit()
-	else: push_warning("Enemy died after turn ended")
+	if enemy_list.is_empty():	interaction_ended.emit()
+	
 
 func player_look_candle(_candle):
 	pass

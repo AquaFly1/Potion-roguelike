@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_kkj2m")
+name = "Freeze"
 metadata/_custom_type_script = "uid://drdvri37lj73w"

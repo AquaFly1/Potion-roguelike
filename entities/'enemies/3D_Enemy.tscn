@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=49 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_qlp5k"]
 [ext_resource type="Shader" uid="uid://blh7tkq8mljce" path="res://entities/'enemies/shaders/enemy_burn_outline.gdshader" id="2_yslwt"]
@@ -8,23 +8,64 @@
 [ext_resource type="Shader" uid="uid://k3col6bhrsdw" path="res://Graphics/Shaders/enemy_culling.gdshader" id="6_fwy5w"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://entities/health_bar/health_bar.tscn" id="7_t224t"]
 
+[sub_resource type="Gradient" id="Gradient_qlp5k"]
+offsets = PackedFloat32Array(0, 0.5958188)
+colors = PackedColorArray(0.0687982, 0.0687983, 0.068798214, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qlp5k"]
+noise_type = 2
+frequency = 0.0773
+offset = Vector3(0, 158.42, 0)
+fractal_type = 0
+fractal_octaves = 1
+fractal_lacunarity = 1.115
+cellular_return_type = 4
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yslwt"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_qlp5k")
+color_ramp = SubResource("Gradient_qlp5k")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlp5k"]
+render_priority = 9
+shader = ExtResource("2_yslwt")
+shader_parameter/sprite_texture = ExtResource("3_u1qr2")
+shader_parameter/hot_color = Color(0.40392157, 0.7019608, 1, 1)
+shader_parameter/cool_color = Color(0.19607843, 0.3647059, 0.63529414, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_yslwt")
+shader_parameter/alpha_steps = 5.0
+shader_parameter/intensity = 0.0
+shader_parameter/lighten = 0.0
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/billboard = true
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4oths"]
-frequency = 0.0264
+frequency = 0.1618
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrgos"]
+width = 64
+height = 64
 noise = SubResource("FastNoiseLite_4oths")
 seamless = true
 in_3d_space = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0s7u1"]
 render_priority = 10
+next_pass = SubResource("ShaderMaterial_qlp5k")
 shader = ExtResource("2_yslwt")
 shader_parameter/sprite_texture = ExtResource("3_u1qr2")
 shader_parameter/hot_color = Color(1, 0.6, 0, 1)
 shader_parameter/cool_color = Color(1, 0, 0, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_yrgos")
+shader_parameter/alpha_steps = 1.0
 shader_parameter/intensity = 0.0
+shader_parameter/lighten = 1.0
+shader_parameter/scroll = Vector2(0, 0.5)
 shader_parameter/billboard = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yrgos"]
@@ -33,6 +74,10 @@ next_pass = SubResource("ShaderMaterial_0s7u1")
 shader = ExtResource("4_cyjlv")
 shader_parameter/sprite_texture = ExtResource("3_u1qr2")
 shader_parameter/billboard = true
+shader_parameter/hovering = false
+shader_parameter/selected = false
+shader_parameter/flashing = false
+shader_parameter/hovering_time_offset = 0.0
 shader_parameter/line_color = Color(1, 1, 1, 0)
 shader_parameter/opacity = 0.0
 
@@ -251,7 +296,8 @@ billboard = 1
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_pw3mf")
-frame_progress = 0.8527279
+frame = 1
+frame_progress = 0.9461482
 
 [node name="gui_origin" type="Marker3D" parent="Enemy_sprite"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
@@ -264,6 +310,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013, 0.3, 0)
 [node name="FireOrigin" type="Node3D" parent="VFX"]
 
 [node name="FireSprite" type="AnimatedSprite3D" parent="VFX/FireOrigin"]
+visible = false
 layers = 4096
 lod_bias = 0.001
 offset = Vector2(0, 27)

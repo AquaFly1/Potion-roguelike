@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bx0v1xfgdcqa2"]
+[gd_scene load_steps=16 format=3 uid="uid://bx0v1xfgdcqa2"]
 
 [ext_resource type="PackedScene" uid="uid://dv80o7a0f4uou" path="res://entities/'enemies/3D_Enemy.tscn" id="1_nqjfx"]
 [ext_resource type="Texture2D" uid="uid://bnc2bu1d0mfjw" path="res://Graphics/Sprites/goblion_sheet.png" id="2_airuq"]
@@ -71,9 +71,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nqjfx"]
-size = Vector3(0.275, 0.38, 0.05)
-
 [node name="Goblin_3d" instance=ExtResource("1_nqjfx")]
 sprite_frames = SubResource("SpriteFrames_pw3mf")
 gold_range = Array[int]([1, 3])
@@ -82,7 +79,7 @@ potions = Array[ExtResource("3_k8ixw")]([ExtResource("5_fjvxl"), ExtResource("4_
 [node name="Enemy_sprite" parent="." index="0"]
 autoplay = "default"
 
-[node name="Area3D" type="Area3D" parent="." index="3"]
+[node name="Area3D" parent="." index="2"]
+collision_layer = 4357
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-shape = SubResource("BoxShape3D_nqjfx")
+[connection signal="input_event" from="Area3D" to="." method="clicked"]

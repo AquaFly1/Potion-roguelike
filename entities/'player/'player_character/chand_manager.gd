@@ -119,7 +119,6 @@ func _on_throw_pot_pressed() -> void:
 		has_potion = false
 		await PotionMan.throw_potion(potion, Player.rings, Game.current_enemy)
 		potion = []
-		Game.current_enemy = null
 		
 		if Player.mana <= 0: Player.turn_ended.emit()
 		else: 
@@ -133,7 +132,7 @@ func _on_throw_self_pressed() -> void:
 		await PotionMan.throw_potion(potion, Player.rings, Player, true)
 		potion = []
 		
-		if Player.mana <= 0: Player.turn_ended.emit()
+		if Player.mana <= 0: Player.end_turn()
 		else: 
 			_on_get_potion_pressed()
 			hand_anim.play()
@@ -179,40 +178,20 @@ func interaction_end():
 		remove_card(card)
 
 
-func _on_potion_mouse_entered() -> void:
-	mouse_on_potion = true
-
-func _on_potion_mouse_exited() -> void:
-	mouse_on_potion = false
-
-
-
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if not event.is_pressed():
-				if is_dragging:
-					if mouse_on_potion:
-						play_selected_cards()
-					else:
-						is_dragging = false
+		if event.is_action_released("click"):
+			if mouse_on_potion:
+				play_selected_cards()
+				
+				
 func play_selected_cards():
-	#var played_cards = 0
 	if has_potion and Player.mana > 0 and selected_cards:
 		for i in selected_cards.duplicate():
 			potion.append(i.ingredient)
 			remove_card(i)
 			Player.mana -= 1
-			#played_cards += 1
 			for j in cards:
 				j.path_pos_index -= 1.0
-		#draw(played_cards)
 		selected_cards = []
 	_update_chand_layout()
-
-
-func _on_potion_button_down() -> void:
-	was_on_pot = true
-
-func _on_potion_button_up() -> void:
-	was_on_pot = false

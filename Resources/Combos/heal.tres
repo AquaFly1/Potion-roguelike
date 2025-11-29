@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("1_qkuqa")
-name = "heal"
+name = "Heal"
 tags_needed = Array[ExtResource("2_7byod")]([ExtResource("3_pjgof")])
 combos_removed = Array[ExtResource("1_qkuqa")]([ExtResource("2_pjgof"), ExtResource("3_pmlnf")])
 effects = {

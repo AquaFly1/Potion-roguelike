@@ -30,7 +30,11 @@ func start_turn():
 	await end_turn()
 	
 func end_turn():
+	Game.current_enemy = null
+	
 	await super()
+	
+	Player.turn_ended.emit()
 
 func _process(_delta: float) -> void:
 	if xp >= xp_needed:

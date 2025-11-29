@@ -57,9 +57,10 @@ static func call_event(entity, event: int):
 			match event: #all of the possible Effect.EVENT types.
 				START_TURN:
 					effects[i].start_turn(entity)
+					await entity.health_bar.update_bar(effects[i])	
 				END_TURN:
 					effects[i].end_turn(entity)
-					await entity.health_bar.update_bar(true)	
+					await entity.health_bar.update_bar(effects[i])	
 					
 				ON_DAMAGE:
 					effects[i].on_damage(entity)
@@ -69,14 +70,13 @@ static func call_event(entity, event: int):
 					
 				ON_HIT:
 					await effects[i].on_hit(entity)
-					await entity.health_bar.update_bar()
+					await entity.health_bar.update_bar(effects[i])
 					
 					
 					
 					
 	entity.finished_afflicting.emit()			
-	if entity.health <= 0:
-		
+	if entity.health <= 0 and event in [START_TURN,END_TURN,ON_HIT]:
 		entity.die()
 
 
@@ -100,7 +100,7 @@ func end_turn(_entity):
 
 ##Activates the [code]on_hit()[/code] function of this  [member effect] .
 func on_hit(entity):
-	await entity.health_bar.update_bar()
+	await entity.health_bar.update_bar(self)
 	
 
 

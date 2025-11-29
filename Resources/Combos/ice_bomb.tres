@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=11 format=3 uid="uid://clyxeiknep0fk"]
+[gd_resource type="Resource" script_class="Combo" load_steps=12 format=3 uid="uid://clyxeiknep0fk"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_3a5cy"]
 [ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="2_7pv3a"]
 [ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_cxtoi"]
+[ext_resource type="Resource" uid="uid://8nefui8d7yj1" path="res://Resources/Combos/ice_basic.tres" id="3_guf1u"]
 [ext_resource type="Resource" uid="uid://dt7x6f3u5k6m" path="res://Resources/Effects/Damage.tres" id="3_udbwb"]
 [ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="4_7pv3a"]
 [ext_resource type="Resource" uid="uid://c3bmxobjqivv7" path="res://Resources/Effects/Freeze.tres" id="4_bbq6n"]
@@ -15,7 +16,7 @@
 script = ExtResource("1_3a5cy")
 name = "Ice Bomb"
 tags_needed = Array[ExtResource("2_cxtoi")]([ExtResource("4_7pv3a"), ExtResource("5_7pv3a"), ExtResource("6_vb3uv")])
-combos_removed = Array[ExtResource("1_3a5cy")]([ExtResource("2_7pv3a")])
+combos_removed = Array[ExtResource("1_3a5cy")]([ExtResource("2_7pv3a"), ExtResource("3_guf1u")])
 effects = {
 ExtResource("3_udbwb"): 3.0,
 ExtResource("4_bbq6n"): 1.0,

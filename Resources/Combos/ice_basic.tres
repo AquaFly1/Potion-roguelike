@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Combo" load_steps=5 format=3 uid="uid://8nefui8d7yj1"]
+
+[ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_f1brm"]
+[ext_resource type="Resource" uid="uid://c3bmxobjqivv7" path="res://Resources/Effects/Freeze.tres" id="2_7t6g7"]
+[ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_wfd7g"]
+[ext_resource type="Resource" uid="uid://bh67rgfjwakd0" path="res://Resources/Tags/ice_tag.tres" id="3_wfd7g"]
+
+[resource]
+script = ExtResource("1_f1brm")
+name = "Ice"
+tags_needed = Array[ExtResource("2_wfd7g")]([ExtResource("3_wfd7g")])
+effects = {
+ExtResource("2_7t6g7"): 1.0
+}
+metadata/_custom_type_script = "uid://dr6idhc60c460"

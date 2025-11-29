@@ -1,5 +1,13 @@
 extends Effect
 
-func start_turn(_entity):
-	if _entity.effects[Effect.index("Freeze")] > 0:
-		_entity.effects[Effect.index("Freeze")] -= 1.0
+func end_turn(entity):
+	if entity.effects[Effect.index("Freeze")] > 0:
+		entity.effects[Effect.index("Freeze")] -= 1.0
+		freeze_check(entity)
+		
+func on_hit(entity):
+	freeze_check(entity)
+
+func freeze_check(entity):
+	entity.frozen = entity.effects[Effect.index("Freeze")] > 0
+	

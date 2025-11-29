@@ -12,6 +12,11 @@ var health_bar : Control
 
 var health: float = 0
 
+var frozen:=false:
+	set(value):
+		frozen = value
+		pause_animations(value)
+
 signal finished_afflicting #for potionmanager throwing a potion, if it dies before all aflicted await fuck up
 
 func _ready() -> void:
@@ -21,13 +26,11 @@ func _ready() -> void:
 
 
 func take_damage(amount):
-	update_effect_vfx(Effect.effects[Effect.index("Damage")])
-	
 	await Effect.call_event(self,Effect.ON_DAMAGE)
 	
-	health -= amount
+	await update_effect_vfx(Effect.effects[Effect.index("Damage")],true)
 	
-	effects[0] = 0
+	health -= amount
 	
 	await Effect.call_event(self,Effect.AFTER_DAMAGE)
 	
@@ -37,7 +40,8 @@ func start_turn():
 	await Effect.call_event(self, Effect.START_TURN)
 	await Ring.call_event(self, Ring.START_TURN)
 	await get_tree().create_timer(0.5).timeout
-	
+		
+	return effects[Effect.index("Freeze")] == 0
 	
 func end_turn():
 	health_bar.anim_text.text = "Ending turn"
@@ -48,16 +52,13 @@ func end_turn():
 	
 	
 	
-func update_effect_vfx(_effect):
+func update_effect_vfx(_effect,_do_damage_effect = false):
 	pass
 
+func pause_animations(_value:bool):
+	pass
 
 func _process(_delta: float) -> void:
-	#if health:
-		#if health <= 0:
-			#die()
-	#if health > max_health:
-		#health = max_health
 	pass
 
 func die():

@@ -25,18 +25,25 @@ var chosen_potion = null
 @export var fire_origin : Node3D
 @export var fire_visuals : AnimatedSprite3D
 @export var fire_light: OmniLight3D
+@onready var fire_outline: ShaderMaterial
 @export var poison_visuals : GPUParticles2D
 
+var ice_outline: ShaderMaterial
+
+
 var preparing: int = 1
-#@onready var attack_button: Marker3D = $attack_origin
+
 
 func _ready() -> void:
 	super()
+	sprite_node.pixel_size *= self.scale.y 
+	sprite_node.scale = Vector3.ONE/self.scale.y	#or else overlays fucked
+	
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
-	sprite_node.pixel_size *= self.scale.y 
-	sprite_node.scale = Vector3.ONE/self.scale.y
 	
+	fire_outline = sprite_node.material_overlay.next_pass
+	ice_outline = fire_outline.next_pass
 	gui_parent.visible = false
 	
 	attack_parent.visible = false
@@ -44,7 +51,7 @@ func _ready() -> void:
 	fire_light.light_energy = 0
 	chosen_potion = potions.pick_random()
 	Game.interaction_started.connect(interaction_start)
-	Game.enemy_selected.connect(func(_enemy): outline(null,false,true))	##call outline function to make enemy white
+	Game.enemy_selected_signal.connect(on_selected_enemy_update)
 	
 func interaction_start() -> void:
 	gui_parent.visible = true
@@ -56,94 +63,101 @@ func get_size() -> Vector2:
 	return sprite_node.scale.x * sprite_node.pixel_size * sprite_node.sprite_frames.get_frame_texture(sprite_node.animation,sprite_node.frame).get_size()
 	#returns the size of the current sprite frame in world coords
 
-
 func start_turn():
-	outline(Color.WHITE)
+	outline(Color.YELLOW)
 	await super.start_turn()
-	
-	if not is_queued_for_deletion(): 
-		while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
-		if chosen_potion.drink == true:
-			await PotionMan.throw_potion(chosen_potion.ingredients, rings, self, true)
-			sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0) * base_color
-			chosen_potion = potions.pick_random()
-			preparing = 1
-			
-		else:
-			if preparing != 0:
-				sprite_node.modulate = Color(1.0, 0.51, 0.49, 1.0) * base_color
-				preparing -= 1
-			else:
-				await PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
+	if not frozen:
+		if not is_queued_for_deletion(): 
+			while chosen_potion.drink == true and health == max_health: chosen_potion = potions.pick_random()
+			if chosen_potion.drink == true:
+				await PotionMan.throw_potion(chosen_potion.ingredients, rings, self, true)
 				sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0) * base_color
 				chosen_potion = potions.pick_random()
 				preparing = 1
+				
+			else:
+				if preparing != 0:
+					sprite_node.modulate = Color(1.0, 0.51, 0.49, 1.0) * base_color
+					preparing -= 1
+				else:
+					await PotionMan.throw_potion(chosen_potion.ingredients, rings, Player)
+					sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0) * base_color
+					chosen_potion = potions.pick_random()
+					preparing = 1
 	
 	await end_turn()
 
 func end_turn():
 	
 	await super()
-	clear_outline()
+	outline(Color.TRANSPARENT)
 	
 
 
-func update_effect_vfx(effect: Effect):
+func update_effect_vfx(effect: Effect, do_damage_effect = false):	##since damage is called by the entity when it loses health
 	var intensity := effects[Effect.index(effect.name)] 
 	var fx_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	fx_tween.tween_interval(0)
 	fx_tween.set_parallel()
 	match effect.name:
+		"Damage":
+			if do_damage_effect:
+				var prev_sprite_color = sprite_node.modulate
+				var prev_outline_color = outline()
+				sprite_node.modulate = Color.RED
+				fx_tween.set_trans(Tween.TRANS_QUAD)
+				fx_tween.tween_property(sprite_node,"modulate",prev_sprite_color,max(intensity*4./max_health,1.))
+				fx_tween.tween_method(outline,Color.RED,prev_outline_color,max(intensity*4./max_health,1.))
 		"Burn":
 			fx_tween.tween_method(
-				func(x): sprite_node.material_overlay.next_pass.set_shader_parameter("intensity", x), 
-				sprite_node.material_overlay.next_pass.get_shader_parameter("intensity"),
+				func(x): fire_outline.set_shader_parameter("intensity", x), 
+				fire_outline.get_shader_parameter("intensity"),
 				min(intensity*1.2/max_health,1),
 				1.5)
 			fx_tween.tween_property(fire_origin,"scale",(intensity>=max_health as int) * Vector3.ONE,0.5)
-			#fire_origin.visible = intensity
 			fx_tween.tween_property(fire_light,"light_energy",intensity/(2*max_health+20),0.5)
 		"Poison":
 			poison_visuals.amount_ratio = intensity/ poison_visuals.amount
 			poison_visuals.emitting = intensity
 			poison_visuals.get_child(0).emitting = intensity
+		
+		"Freeze":
+			fx_tween.tween_method(
+				func(x): ice_outline.set_shader_parameter("intensity", x), 
+				ice_outline.get_shader_parameter("intensity"),
+				min(intensity*0.5,1),
+				1.5)
 		_:
 			pass
-	
-	
+
+func pause_animations(value:bool):
+	if value: sprite_node.pause()
+	else: sprite_node.play()
+
 var hovering: bool
 func update_hover(active:bool):
-	print(1)
-	hovering = active
-	
-var under_color: Color
+	sprite_node.material_overlay.set("shader_parameter/hovering", active)
+	sprite_node.material_overlay.set("shader_parameter/hovering_time_offset", Time.get_ticks_msec()/1000.)
 
-func outline(color = null, overlay = false, enemy_selected = false) -> Color:
-	sprite_node.material_overlay.set("shader_parameter/opacity", under_color.a)
-	if enemy_selected and Game.current_enemy != self:
-		sprite_node.material_overlay.set("shader_parameter/line_color", under_color)
-	
-	if hovering:
-		sprite_node.material_overlay.set("shader_parameter/line_color", Color.WHITE)
-		sprite_node.material_overlay.set("shader_parameter/opacity", Color.WHITE)
-	
-	elif overlay and color == Color.TRANSPARENT: ##if removing overlay
-		sprite_node.material_overlay.set("shader_parameter/line_color", under_color)
-	elif color: 
-		if not overlay: under_color = color
+var selected:	bool = false
+func clicked(_camera: Node, event: InputEvent, _event_position: Vector3 = Vector3.ZERO, _normal: Vector3 = Vector3.ZERO, _shape_idx: int = 0):
+	if event.is_action_pressed("click"):
+		selected = not selected
+		Game.current_enemy = self if selected else null
+		if not selected:	sprite_node.material_overlay.set("shader_parameter/hovering_time_offset", Time.get_ticks_msec()/1000.)
+		sprite_node.material_overlay.set("shader_parameter/selected", selected)
+
+func on_selected_enemy_update(enemy):
+	if self != enemy: 
+		selected = false
+		sprite_node.material_overlay.set("shader_parameter/selected", false)
+		sprite_node.material_overlay.set("shader_parameter/hovering_time_offset", Time.get_ticks_msec()/1000.)
+
+func outline(color = null) -> Color:
+	if color:
 		sprite_node.material_overlay.set("shader_parameter/opacity",  color.a)
 		sprite_node.material_overlay.set("shader_parameter/line_color",color)
-
-	
-	if Game.current_enemy == self:	##if selected
-		sprite_node.material_overlay.set("shader_parameter/glowSize",  1)
-		sprite_node.material_overlay.set("shader_parameter/line_color",Color.WHITE)
-		
-	return under_color
-	
-func clear_outline(overlay = false): outline(Color.TRANSPARENT, overlay)
-
-
+	return sprite_node.material_overlay.get("shader_parameter/line_color")
 
 func _process(delta: float) -> void:
 	super(delta)

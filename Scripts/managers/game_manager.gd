@@ -13,11 +13,11 @@ var mouse_mode: int
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
 
-signal enemy_selected(enemy: Enemy)
+signal enemy_selected_signal(enemy: Enemy)
 var current_enemy: Enemy = null:
 	set(value):
 		current_enemy = value
-		enemy_selected.emit(value)
+		enemy_selected_signal.emit(value)
 
 var camera = null
 @onready var screen_size : Vector2 = get_viewport().size
@@ -105,7 +105,6 @@ func interaction_start_func():
 	player_start_turn.emit()
 func card_pressed_func(_card):
 	pass
-
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("window_fullscreen"):

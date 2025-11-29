@@ -5,7 +5,10 @@ uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform vec3 hot_color: source_color;
 uniform vec3 cool_color: source_color;
 uniform sampler2D noise: source_color, filter_nearest;
+uniform float alpha_steps: hint_range(1.0, 5., 1) = 1.0;
 uniform float intensity: hint_range(0.0, 1.0);
+uniform float lighten: hint_range(0.0, 1.0, 0.1);
+uniform vec2 scroll = vec2(0.,0.);
 uniform bool billboard = true;
 
 void vertex() {
@@ -51,19 +54,28 @@ void fragment() {
 	burn.a =	
 				(degrade.a * col.a + 0.05)
 				*
-				clamp(	max((texture(noise,floor(UV /stp) * stp.y + vec2(0,TIME/5.0)).r),0.0)
+				clamp(	max((texture(noise,floor(UV /stp) * stp.y + TIME*scroll).r),0.0)
 					
 						,.0,2.)
 				;
 	
 	
-	burn.rgb = 1. * mix(cool_color,hot_color,(burn.a*10.)*intensity/2.0-0.2);
+	burn.rgb = 1. * mix(cool_color,min(hot_color*(max(1.0,1.+sin(TIME)*0.2+0.2)),vec3(0.7,0.7,0.7)),(burn.a*10.)*intensity/2.0-0.2);
 	
 	burn.a = max(burn.a * (0.72+intensity) + (1. + round(degrade.a+0.1)) * intensity/2.0,0.0);
 	
-	ALBEDO = mix(col.rgb,burn.rgb,	round(burn.a)	);
+	float alpha_stepped = 0.;
+	for (float j = 0.; j < alpha_steps; j++)
+	{
+		alpha_stepped *= (1.-1./(j+1.));
+		alpha_stepped += round(burn.a + j*0.3/alpha_steps)/(j+1.);
+	}
 	
-	ALPHA = col.a* min(round(burn.a),1.0);
+	ALBEDO =	burn.rgb * (1.+lighten*2.);
+	
+	ALPHA = col.a* min(alpha_stepped ,1.0)*(1.-lighten/2.);
+	
+	
 	//ALPHA = (round(burn.a-0.2) + round(burn.a-0.5) ) /2.;
 	
 	}

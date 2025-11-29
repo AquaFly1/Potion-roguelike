@@ -2,6 +2,10 @@ shader_type spatial;
 render_mode unshaded,blend_mix,depth_prepass_alpha,cull_disabled,specular_disabled;
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform bool billboard = true;
+uniform bool hovering = false;
+uniform bool selected = false;
+uniform bool flashing = false;
+uniform float hovering_time_offset = 0.;
 uniform vec4 line_color : source_color = vec4(1.0,1.0,1.0,1.0); // Glow or outline color
 uniform float opacity: hint_range(0.0, 1.0) = 1;
 //Goes through every single pixle and does thing
@@ -43,10 +47,21 @@ void fragment() {
 	// Adds outline if this part of the image is transparent
 
 	ALBEDO = line_color.rgb;
-	ALPHA = alph*opacity;
+	ALPHA = clamp(alph*opacity,0,1) - col.a;
+	if (selected)
+	{
+		ALBEDO = vec3(1.,1.,1.);
+		ALPHA = alph-col.a;
+	}
+	if (hovering)
+	{
+		ALPHA = ALPHA + (alph-col.a*0.95) * (sin((TIME-hovering_time_offset+0.5)*5.)*float(hovering)*0.3+0.4);
+	}
 
+
+	ALPHA = clamp(ALPHA,0,2);
 
 	// Enabling this line will cut out the image and leave the outline
-	ALPHA = max(ALPHA-col.a,0);
+	//ALPHA = max(ALPHA-col.a,0);
 	// if you set blend to add, and set this as a second pass, you'll get a better glow effect
 }

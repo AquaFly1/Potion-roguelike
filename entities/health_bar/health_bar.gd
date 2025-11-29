@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 	update_bar()
 
-func update_bar(_end_turn: bool = false) -> void:
+func update_bar(effect: Effect = null) -> void:
 	
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.set_parallel()
@@ -41,11 +41,11 @@ func update_bar(_end_turn: bool = false) -> void:
 	for i in [
 		[health,"size",entity.health],
 		
-		[burn,"size", entity.effects[1], _end_turn],
+		[burn,"size", entity.effects[1]],
 		
-		[poison,"size", min(entity.effects[2],1), _end_turn],
+		[poison,"size", min(entity.effects[2],1)],
 		
-		[rejuv, "size", min(entity.effects[3],entity.max_health-entity.health), _end_turn],
+		[rejuv, "size", min(entity.effects[3],entity.max_health-entity.health)],
 		
 		[shield ,"size" , entity.effects[4]]
 			]:
@@ -60,8 +60,9 @@ func update_bar(_end_turn: bool = false) -> void:
 				new_size , 
 				0.5)
 			anim_text.text = "Applying %s :  %d" %[ i[0].name , int(i[2]) ]
-			
-			update_visuals()
+		
+		if effect: 	entity.update_effect_vfx(effect)
+		else: update_visuals()
 			
 	await tween.finished
 	

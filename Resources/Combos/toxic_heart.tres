@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("1_2f560")
-name = "toxic heart"
+name = "Toxic Heart"
 tags_needed = Array[ExtResource("2_wyu8r")]([ExtResource("4_3xo80"), ExtResource("5_71xbp")])
 combos_removed = Array[ExtResource("1_2f560")]([ExtResource("2_irs2g")])
 effects = {

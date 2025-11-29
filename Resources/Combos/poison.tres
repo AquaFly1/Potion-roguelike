@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_2sa13")
-name = "poison"
+name = "Poison"
 tags_needed = Array[ExtResource("2_0qe6f")]([ExtResource("3_0qe6f")])
 effects = {
 ExtResource("2_yvy08"): 4.0

@@ -9,4 +9,5 @@ func on_hit(_entity):
 
 [resource]
 script = SubResource("GDScript_b7kki")
+name = "Shield"
 metadata/_custom_type_script = "uid://drdvri37lj73w"

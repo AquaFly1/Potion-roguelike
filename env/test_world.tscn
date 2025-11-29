@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cdgpw42im05pk" path="res://props/candle/candle_3D.tscn" id="10_j4k5v"]
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://props/transitions/transition_block.tscn" id="12_mw27p"]
 [ext_resource type="PackedScene" uid="uid://cehloeshwkxe6" path="res://interactions/fights/Fight.tscn" id="12_snkmw"]
-[ext_resource type="Resource" uid="uid://lrpev6qofemb" path="res://interactions/fights/church/2_goblins.tres" id="13_oo1gt"]
+[ext_resource type="Resource" uid="uid://blr2kfttbr3u" path="res://interactions/fights/church/1_goblin.tres" id="13_w3wqa"]
 [ext_resource type="Resource" uid="uid://drnbxpw5c57cu" path="res://interactions/fights/church/big_evil_ass_goblin.tres" id="15_1s3mi"]
 [ext_resource type="PackedScene" uid="uid://d07at07jnbomx" path="res://props/chests/vending_machine_3d.tscn" id="17_jqsnb"]
 
@@ -92,10 +92,9 @@ material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
 
 [node name="test_world" type="Node3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Walls2" type="Node3D" parent="."]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
@@ -125,7 +124,7 @@ transform = Transform3D(0.9999998, 0, 0, 0, -4.371139e-08, -0.9999998, 0, 0.9999
 mesh = SubResource("ArrayMesh_36k1m")
 
 [node name="floor_body -nx" type="StaticBody3D" parent="."]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
 
 [node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx"]
 shape = SubResource("BoxShape3D_5opd7")
@@ -137,90 +136,101 @@ mesh = SubResource("PlaneMesh_3pl5u")
 skeleton = NodePath("../..")
 
 [node name="Chests" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1743357, 0, -1.9830847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7615036, 0, -2.974627)
 
 [node name="Chest_mesh" parent="Chests" instance=ExtResource("2_05l0i")]
-transform = Transform3D(0.8028175, 0, 0.5962248, 0, 1, 0, -0.5962248, 0, 0.8028175, 2.8354902, -4.7683716e-07, -3.1155272)
+transform = Transform3D(0.8028175, 0, 0.5962248, 0, 1, 0, -0.5962248, 0, 0.8028175, 4.2532353, -7.1525574e-07, -4.6732903)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("6_mw27p"), ExtResource("5_36k1m"), ExtResource("4_gepd6")])
 
 [node name="Chest_mesh3" parent="Chests" instance=ExtResource("2_05l0i")]
-transform = Transform3D(-0.68649125, 0, 0.72713816, 0, 1, 0, -0.72713816, 0, -0.68649125, -15.1711235, -4.7683716e-07, 22.75085)
+transform = Transform3D(-0.6864912, 0, 0.7271381, 0, 1, 0, -0.7271381, 0, -0.6864912, -22.756683, -7.1525574e-07, 34.126274)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("6_mw27p"), ExtResource("5_36k1m"), ExtResource("4_gepd6")])
 
 [node name="Chest_mesh4" parent="Chests" instance=ExtResource("2_05l0i")]
-transform = Transform3D(0.09492499, 0, 0.99548453, 0, 1, 0, -0.99548453, 0, 0.09492499, -16.171082, -4.7683716e-07, 24.040737)
+transform = Transform3D(0.09492503, 0, 0.9954844, 0, 1, 0, -0.9954844, 0, 0.09492503, -24.256622, -7.1525574e-07, 36.061104)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
 
 [node name="Chest_mesh2" parent="Chests" instance=ExtResource("2_05l0i")]
-transform = Transform3D(0.8028175, 0, -0.5962248, 0, 1, 0, 0.5962248, 0, 0.8028175, 3.5732498, -4.7683716e-07, -4.3274345)
+transform = Transform3D(0.8028175, 0, -0.5962248, 0, 1, 0, 0.5962248, 0, 0.8028175, 5.3598742, -7.1525574e-07, -6.4911513)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
 
 [node name="Shops" type="Node3D" parent="."]
 
 [node name="Shop_3D" parent="Shops" instance=ExtResource("9_y2fwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.647717, 0.504383, -19.234612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.574913, 0.7565745, -29.246891)
 
 [node name="lights" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
 
 [node name="Candle" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 17.773827, 0.0065095425, -17.181137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.66074, 0.009764314, -25.771706)
 doors = [null]
 
 [node name="Candle2" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 19.598413, 0.0065095425, -6.201963)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.397621, 0.009764314, -9.302944)
 doors = [null, null]
 
 [node name="Candle3" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -17.604052, 0.0065095425, -5.90912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.406078, 0.009764314, -8.86368)
 doors = [null, null]
 
 [node name="Candle4" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -19.782055, 0.0065095425, 9.348905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.673082, 0.009764314, 14.023357)
 doors = [null]
 
 [node name="Candle5" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -8.3239355, 0.0065095425, 15.613312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.485903, 0.009764314, 23.419968)
 doors = [null, null]
 
 [node name="Candle6" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 4.343393, 0.0065095425, 14.707571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.515089, 0.009764314, 22.061356)
 doors = [null, null]
 
 [node name="Candle7" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 18.016548, 0.0065095425, 6.761684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.024822, 0.009764314, 10.142526)
 doors = [null]
 
 [node name="Interactions" type="Node3D" parent="."]
 
 [node name="OutCandle1Fight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.891, 0, -11.823)
-possible_interactions = Array[Array]([[ExtResource("13_oo1gt")]])
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.836502, 0, -17.7345)
+possible_interactions = Array[Array]([[ExtResource("13_w3wqa")]])
 Exits = [NodePath("../../doors/OutofCandle1"), NodePath("../../doors/IntoHallway"), NodePath("../../doors/IntoCandle2")]
 
+[node name="enemy_parent" parent="Interactions/OutCandle1Fight" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3862476)
+
 [node name="CollisionShape3D" parent="Interactions/OutCandle1Fight/SpawnEnemies" index="0"]
-transform = Transform3D(0.122869, 0, 0.5309992, 0, 1, 0, -0.07699488, 0, 0.8473725, 3.021264, 0, 1.6113987)
+transform = Transform3D(0.122868985, 0, 0.7035739, 0, 1, 0, -0.07699487, 0, 1.1227684, 4.6435585, 0, 2.8574104)
 
-[node name="CollisionShape3D" parent="Interactions/OutCandle1Fight/StartFight" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.375, 0, 0, 0)
-
-[node name="PlayerPosition" parent="Interactions/OutCandle1Fight" index="4"]
+[node name="PlayerPosition" parent="Interactions/OutCandle1Fight" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37403107)
 
 [node name="HallwayFight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.06361, 0, -11.499209)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.095415, 0, -17.248814)
 possible_interactions = Array[Array]([[ExtResource("15_1s3mi")]])
 Exits = [NodePath("../../doors/IntoHallway")]
 
-[node name="doors" type="Node3D" parent="."]
+[node name="enemy_parent" parent="Interactions/HallwayFight" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5531225)
 
-[node name="OutofCandle1" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="PlayerPosition" parent="Interactions/HallwayFight" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.071396)
+
+[node name="doors" type="Node3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="OutofCandle1" parent="doors" node_paths=PackedStringArray("Side1Candle", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, -1.7, 0, 5.578, 0, 2.128, 0, -7.430936e-08, 21.633, -0.044, -17.296)
 Side1Candle = NodePath("../../lights/Candle")
+side_2_interaction = NodePath("../../Interactions/OutCandle1Fight")
 
-[node name="IntoHallway" parent="doors" node_paths=PackedStringArray("side_2_interaction") instance=ExtResource("12_mw27p")]
+[node name="IntoHallway" parent="doors" node_paths=PackedStringArray("side_1_interaction", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, 1.7, 0, 5.5780005, 0, -2.128, 0, -7.430936e-08, 14.637951, -0.044, -11.438599)
+side_1_interaction = NodePath("../OutofCandle1")
+show_enemies_1_immediately = true
 side_2_interaction = NodePath("../../Interactions/HallwayFight")
+show_enemies_2_immediately = true
 
 [node name="IntoCandle2" parent="doors" instance=ExtResource("12_mw27p")]
 transform = Transform3D(-2.1279998, 0, -2.5669289e-07, 0, 5.5780005, 0, 3.2131902e-07, 0, -1.7, 18.90311, -0.044, -9.109648)
@@ -247,6 +257,7 @@ transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)
 
 [node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
-transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0.957, 0, -23.991)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4355, 0, -35.986504)
 
 [editable path="Interactions/OutCandle1Fight"]
+[editable path="Interactions/HallwayFight"]

@@ -15,6 +15,7 @@ func _ready() -> void:
 	if name == "Side1Area-nx":
 		candle = parent.Side1Candle
 		
+		
 	else:
 		candle = parent.Side2Candle
 		side = -1
@@ -44,9 +45,13 @@ func on_body_entered(_body: Node3D) -> void:
 		Player.node.velocity = Vector3.ZERO
 
 		if side == 1:
-			if parent.side_1_interaction: parent.side_1_interaction.on_spawn_enemies_enter(Player.node)
+			if parent.side_1_interaction:
+				if parent.show_enemies_1_immediately: parent.side_1_interaction.on_spawn_enemies_enter(Player.node)
+				else:	parent.side_1_interaction.spawn_enemies()
 		else: 
-			if parent.side_2_interaction: parent.side_2_interaction.on_spawn_enemies_enter(Player.node)
+			if parent.side_2_interaction:
+				if parent.show_enemies_2_immediately: parent.side_2_interaction.on_spawn_enemies_enter(Player.node)
+				else:	parent.side_2_interaction.spawn_enemies()
 		
 			
 		

@@ -19,6 +19,7 @@ func _ready() -> void:
 	effects.fill(0.0)
 	health = max_health
 
+
 func take_damage(amount):
 	update_effect_vfx(Effect.effects[Effect.index("Damage")])
 	

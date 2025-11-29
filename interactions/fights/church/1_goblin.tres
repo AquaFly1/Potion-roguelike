@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Interaction" load_steps=3 format=3 uid="uid://blr2kfttbr3u"]
+
+[ext_resource type="PackedScene" uid="uid://bx0v1xfgdcqa2" path="res://entities/'enemies/goblion/goblin.tscn" id="1_a6rrh"]
+[ext_resource type="Script" path="res://Scripts/resources/Interaction.gd" id="2_hgdts"]
+
+[resource]
+script = ExtResource("2_hgdts")
+enemies = Array[PackedScene]([ExtResource("1_a6rrh")])

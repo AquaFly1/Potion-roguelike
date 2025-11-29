@@ -34,6 +34,9 @@ func _ready() -> void:
 	super()
 	sprite_node.material_overlay = sprite_node.material_overlay.duplicate(true)
 	sprite_node.material_overlay.set("sprite_frames",sprite_frames)
+	sprite_node.pixel_size *= self.scale.y 
+	sprite_node.scale = Vector3.ONE/self.scale.y
+	
 	gui_parent.visible = false
 	
 	attack_parent.visible = false
@@ -41,6 +44,7 @@ func _ready() -> void:
 	fire_light.light_energy = 0
 	chosen_potion = potions.pick_random()
 	Game.interaction_started.connect(interaction_start)
+	Game.enemy_selected.connect(func(_enemy): outline(null,false,true))	##call outline function to make enemy white
 	
 func interaction_start() -> void:
 	gui_parent.visible = true
@@ -106,18 +110,40 @@ func update_effect_vfx(effect: Effect):
 		_:
 			pass
 	
-
-
-
-func outline(color = null) -> Color:
-	if color: 
-		sprite_node.material_overlay.set("shader_parameter/glowSize",  int(color != Color.TRANSPARENT))
-		sprite_node.material_overlay.set("shader_parameter/line_color",color)
-	else: color = sprite_node.material_overlay.get("shader_parameter/line_color")
-	return color
 	
+var hovering: bool
+func update_hover(active:bool):
+	print(1)
+	hovering = active
+	
+var under_color: Color
 
-func clear_outline(): outline(Color.TRANSPARENT)
+func outline(color = null, overlay = false, enemy_selected = false) -> Color:
+	sprite_node.material_overlay.set("shader_parameter/opacity", under_color.a)
+	if enemy_selected and Game.current_enemy != self:
+		sprite_node.material_overlay.set("shader_parameter/line_color", under_color)
+	
+	if hovering:
+		sprite_node.material_overlay.set("shader_parameter/line_color", Color.WHITE)
+		sprite_node.material_overlay.set("shader_parameter/opacity", Color.WHITE)
+	
+	elif overlay and color == Color.TRANSPARENT: ##if removing overlay
+		sprite_node.material_overlay.set("shader_parameter/line_color", under_color)
+	elif color: 
+		if not overlay: under_color = color
+		sprite_node.material_overlay.set("shader_parameter/opacity",  color.a)
+		sprite_node.material_overlay.set("shader_parameter/line_color",color)
+
+	
+	if Game.current_enemy == self:	##if selected
+		sprite_node.material_overlay.set("shader_parameter/glowSize",  1)
+		sprite_node.material_overlay.set("shader_parameter/line_color",Color.WHITE)
+		
+	return under_color
+	
+func clear_outline(overlay = false): outline(Color.TRANSPARENT, overlay)
+
+
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -127,8 +153,6 @@ func _process(delta: float) -> void:
 		gui_parent.position = get_viewport().get_camera_3d().unproject_position(gui_origin.global_position)
 		attack_parent.position = get_viewport().get_camera_3d().unproject_position(attack_origin.global_position)
 
-#	if chosen_potion and intention:
-#		intention.text = ("This enemy \nintends to \n" + str(chosen_potion.intention) + ".")
 
 func _on_button_pressed() -> void:
 	Game.current_enemy = self

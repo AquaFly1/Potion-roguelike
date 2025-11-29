@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=93 format=4 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://entities/'player/'player_character/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://csdpr6tk3ivjt" path="res://entities/'player/'player_character/fight_light.gd" id="2_75lg7"]
@@ -1157,13 +1157,6 @@ gradient = SubResource("Gradient_s1eas")
 width = 640
 height = 360
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wprcl"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wprcl"]
-width = 640
-height = 360
-noise = SubResource("FastNoiseLite_wprcl")
-
 [sub_resource type="Gradient" id="Gradient_wprcl"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
@@ -1227,8 +1220,6 @@ floor_block_on_wall = false
 floor_max_angle = 1.3386675
 script = ExtResource("1_r8aaq")
 walk_speed = 6.0
-acceleration_air_mult = 0.3
-air_max_speed = 8.0
 mouse_sensitivity = 0.002
 camera = NodePath("Camera_pivot/Main Camera")
 self_light = NodePath("Self_Light")
@@ -1285,6 +1276,7 @@ stretch = true
 [node name="EnemyRender" type="SubViewport" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
+physics_object_picking = true
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
@@ -1679,6 +1671,7 @@ camera = NodePath("../3D Projection/3D View/ViewMasked/HandNewParent/CameraMask"
 layer = -10
 
 [node name="Wave" type="ColorRect" parent="InteractionWave" node_paths=PackedStringArray("warp_filter")]
+process_mode = 4
 material = SubResource("ShaderMaterial_fmrin")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1703,11 +1696,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_75lg7")
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractionWave"]
-visible = false
-position = Vector2(320, 179)
-texture = SubResource("NoiseTexture2D_wprcl")
 
 [node name="Cards" type="CanvasLayer" parent="."]
 layer = 40
@@ -1854,6 +1842,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("20_ixr61")
 
 [node name="PlayerLabels" type="Control" parent="UI+PostP/UI"]
+visible = false
 anchors_preset = 0
 offset_left = 1.0
 offset_top = 43.0
@@ -1871,6 +1860,7 @@ text = "5"
 horizontal_alignment = 1
 
 [node name="Health_bar" parent="UI+PostP/UI" instance=ExtResource("14_yicnn")]
+visible = false
 layout_mode = 1
 offset_left = 3.0
 offset_top = 2.0
@@ -1929,7 +1919,6 @@ mouse_filter = 2
 
 [node name="Crunch" type="CanvasLayer" parent="."]
 layer = 80
-visible = false
 
 [node name="PSX" type="ColorRect" parent="Crunch"]
 material = SubResource("ShaderMaterial_g154t")
@@ -1942,7 +1931,6 @@ mouse_filter = 2
 
 [node name="PostEffectLayer" type="CanvasLayer" parent="."]
 layer = 90
-visible = false
 
 [node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
 material = SubResource("ShaderMaterial_iq2rp")

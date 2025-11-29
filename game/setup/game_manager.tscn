@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene load_steps=31 format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -28,6 +28,7 @@
 [ext_resource type="Theme" uid="uid://b6ru1rg45cmjg" path="res://Graphics/temporary_art/button_theme.tres" id="24_ofi3n"]
 [ext_resource type="Resource" uid="uid://0jvdslcbx41q" path="res://Resources/Effects/Strenght.tres" id="24_vcc2h"]
 [ext_resource type="Resource" uid="uid://dmo2at04eblv7" path="res://Resources/Effects/Weakness.tres" id="25_rulai"]
+[ext_resource type="FontFile" uid="uid://bfor7jfs0blai" path="res://Graphics/Fonts/Tiny5-Regular.ttf" id="29_rulai"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofi3n"]
 
@@ -148,12 +149,13 @@ text = "Save & Quit"
 
 [node name="Graphics" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
 metadata/_tab_index = 1
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_constants/separation = 16
+theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ofi3n")
 
 [node name="Vsnap" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
@@ -172,6 +174,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "Off"
@@ -182,7 +185,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 max_value = 3.0
-value = 1.0
+value = 2.0
 rounded = true
 tick_count = 4
 ticks_position = 3
@@ -203,6 +206,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "0%"
@@ -214,6 +218,73 @@ size_flags_horizontal = 3
 mouse_filter = 1
 max_value = 1.0
 step = 0.01
+
+[node name="Dither" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="dithering" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dithering:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "Heavy"
+
+[node name="dither" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 2.0
+value = 2.0
+rounded = true
+tick_count = 3
+ticks_position = 3
+
+[node name="ColorS" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="bandingLabel" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color Banding:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("29_rulai")
+theme_override_font_sizes/font_size = 8
+text = "Heavy"
+horizontal_alignment = 2
+
+[node name="banding" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+max_value = 3.0
+value = 2.0
+rounded = true
+tick_count = 4
+ticks_position = 3
 
 [node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings"]
 custom_minimum_size = Vector2(0, 30.083)
@@ -243,3 +314,7 @@ text = "Apply"
 [connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Vertex Snapping", NodePath("../Label"), ["Off", "Low", "Med", "High"]]]
 [connection signal="drag_ended" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" method="release_focus" unbinds=1]
 [connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer/HSlider" to="CanvasLayer-nx/Menu" method="update_psx_slider_percent" flags=18 binds= ["Affine Mapping", NodePath("../Label")]]
+[connection signal="drag_ended" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer/dither" to="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer/dither" method="release_focus" unbinds=1]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer/dither" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Dithering", NodePath("../Label"), ["None", "Light", "Heavy"]]]
+[connection signal="drag_ended" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer/banding" to="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer/banding" method="release_focus" unbinds=1]
+[connection signal="value_changed" from="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer/banding" to="CanvasLayer-nx/Menu" method="update_psx_slider" flags=18 binds= ["Color Banding", NodePath("../Label"), ["None", "Light", "Medium", "Heavy"]]]

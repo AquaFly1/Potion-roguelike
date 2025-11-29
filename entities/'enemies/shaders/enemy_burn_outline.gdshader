@@ -6,20 +6,14 @@ uniform vec3 hot_color: source_color;
 uniform vec3 cool_color: source_color;
 uniform sampler2D noise: source_color, filter_nearest;
 uniform float intensity: hint_range(0.0, 1.0);
+uniform bool billboard = true;
 
-
-
-//vec4 extend_alpha(vec2 uv, float amount) {
-	//float stp = 1.0/ float(textureSize(sprite_texture,0).y);
-	//float alph = 0.0;
-	//float dist = 0.0;
-	//for (float i = 0.0; i < amount; i += stp) {
-		//alph += texture(sprite_texture,uv+vec2(0.0,i)).a;
-		//dist += alph*i;
-	//}
-	//return vec4(dist,dist,dist,clamp(alph,0.0,1.0));
-//}
-
+void vertex() {
+	if (billboard){
+		MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	}
+}
 
 
 float degrade_alpha(vec2 uv,vec2 stp)

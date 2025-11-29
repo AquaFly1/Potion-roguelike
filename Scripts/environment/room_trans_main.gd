@@ -11,7 +11,9 @@ extends Node3D
 @onready var block := $StaticBody3D/block
 
 @export var side_1_interaction: Node3D ##spawns ennemies when touching side 1
+@export var show_enemies_1_immediately: bool ##orients and shows the enemies immediately, else only when the player enters the fight spawner hitbox
 @export var side_2_interaction: Node3D ##spawns ennemies when touching side 2
+@export var show_enemies_2_immediately: bool ##orients and shows the enemies immediately, else only when the player enters the fight spawner hitbox
 var player_distance_along_z
 
 var gradient_t : GradientTexture1D

@@ -12,7 +12,12 @@ var mouse_mode: int
 
 
 var enemy_list: Array[Enemy] ##The array of [member enemies] of this combat. [br]Empty if out of combat.
-var current_enemy: Enemy = null
+
+signal enemy_selected(enemy: Enemy)
+var current_enemy: Enemy = null:
+	set(value):
+		current_enemy = value
+		enemy_selected.emit(value)
 
 var camera = null
 @onready var screen_size : Vector2 = get_viewport().size

@@ -6,7 +6,6 @@ extends CharacterBody3D
 @export var walk_speed: float = 10.0
 @export var acceleration: float = 0.1
 @export var acceleration_air_mult: float = 0.5
-@export var air_max_speed: float = 5
 @export var jump_force: float = 7
 @export var GRAVITY: float = 20
 @export var mouse_sensitivity: float = 0.001
@@ -64,7 +63,7 @@ func _physics_process(delta):
 	#$test.global_position = pivot.global_position + pivot.global_basis*Vector3.FORWARD
 	
 	if interaction_node:	
-		var rot = rotation
+		var rot = pivot.rotation
 		pivot.look_at(interaction_node.lookat.global_position)
 		
 		
@@ -72,10 +71,13 @@ func _physics_process(delta):
 		#pivot.look_at(interaction_node.lookat.global_position)
 			
 		
-		rotation = lerp(rot,rotation, 0.1)	
+		pivot.rotation = lerp(rot,pivot.rotation, 0.1)	
 		rotation.y += pivot.rotation.y
 		pivot.rotation.y = 0
-		global_position = lerp(global_position,interaction_node.player_pos.global_position,0.1)
+		
+		var target_position = interaction_node.player_pos.global_position
+		target_position.y = global_position.y
+		global_position = lerp(global_position,target_position,0.1)
 	
 	dir = Vector3.ZERO
 	h_rot = pivot.global_transform.basis.get_euler().y
@@ -95,8 +97,8 @@ func _physics_process(delta):
 	
 	
 	horizontal_velocity = velocity.lerp(
-		dir.normalized() * walk_speed * int(is_on_floor()), 
-		acceleration if is_on_floor() else acceleration * acceleration_air_mult)
+		dir.normalized() * walk_speed, 
+		acceleration if is_on_floor() else acceleration*acceleration_air_mult)
 		
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
@@ -109,23 +111,7 @@ func _physics_process(delta):
 									- Input.get_action_strength("forward")) * 25)
 		
 		
-		
-	if not is_on_floor():
-		
-		var projVel := velocity.project(dir)
-		var isAway := dir.dot(projVel) <= 0
-		
-		if projVel.length() < air_max_speed or isAway:
-			var vc := dir.normalized() * acceleration_air_mult
-			
-			if not isAway: vc = vc.limit_length(air_max_speed - projVel.length())
-			else: vc = vc.limit_length(air_max_speed + projVel.length())
-			
-			
-			velocity += vc 
-			var vel2d := Vector2(velocity.x,velocity.z)
-			vel2d = vel2d.limit_length(8.5)
-			velocity = Vector3(vel2d.x,velocity.y,vel2d.y)
+	
 		
 #endregion
 
@@ -161,7 +147,6 @@ func _physics_process(delta):
 	hand_display.transform.origin.y = anim_y
 #endregion
 	# Move character
-	
 	move_and_slide()
 
 func start_interaction():

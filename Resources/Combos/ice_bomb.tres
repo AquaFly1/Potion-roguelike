@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="Combo" load_steps=8 format=3 uid="uid://clyxeiknep0fk"]
+[gd_resource type="Resource" script_class="Combo" load_steps=11 format=3 uid="uid://clyxeiknep0fk"]
 
 [ext_resource type="Script" uid="uid://dr6idhc60c460" path="res://Scripts/resources/Combo.gd" id="1_3a5cy"]
 [ext_resource type="Resource" uid="uid://bfnfpccw8rf5l" path="res://Resources/Combos/FireBomb.tres" id="2_7pv3a"]
 [ext_resource type="Script" uid="uid://tjt7fxkcbbpx" path="res://Scripts/resources/Tag.gd" id="2_cxtoi"]
 [ext_resource type="Resource" uid="uid://dt7x6f3u5k6m" path="res://Resources/Effects/Damage.tres" id="3_udbwb"]
 [ext_resource type="Resource" uid="uid://df2jvtdpxygrj" path="res://Resources/Tags/etincelle_tag.tres" id="4_7pv3a"]
+[ext_resource type="Resource" uid="uid://c3bmxobjqivv7" path="res://Resources/Effects/Freeze.tres" id="4_bbq6n"]
 [ext_resource type="Resource" uid="uid://cfvm3alspeqe4" path="res://Resources/Tags/bois_tag.tres" id="5_7pv3a"]
+[ext_resource type="Resource" uid="uid://cjn8gi4f1tohh" path="res://Resources/Effects/Brittle.tres" id="5_guf1u"]
+[ext_resource type="Resource" uid="uid://kqc8bglj7e23" path="res://Resources/Effects/Burn.tres" id="6_8sbbc"]
 [ext_resource type="Resource" uid="uid://bh67rgfjwakd0" path="res://Resources/Tags/ice_tag.tres" id="6_vb3uv"]
 
 [resource]
@@ -14,6 +17,9 @@ name = "Ice Bomb"
 tags_needed = Array[ExtResource("2_cxtoi")]([ExtResource("4_7pv3a"), ExtResource("5_7pv3a"), ExtResource("6_vb3uv")])
 combos_removed = Array[ExtResource("1_3a5cy")]([ExtResource("2_7pv3a")])
 effects = {
-ExtResource("3_udbwb"): 3.0
+ExtResource("3_udbwb"): 3.0,
+ExtResource("4_bbq6n"): 1.0,
+ExtResource("5_guf1u"): 1.0,
+ExtResource("6_8sbbc"): 2.0
 }
 metadata/_custom_type_script = "uid://dr6idhc60c460"

@@ -27,6 +27,10 @@ Game="*res://game/setup/game_manager.tscn"
 PotionMan="*res://Scripts/managers/potion_manager.gd"
 PsxLoader="*res://game/setup/Psx_Loader.tscn"
 
+[debug]
+
+settings/profiler/max_timestamp_query_elements=512
+
 [display]
 
 window/size/viewport_width=640

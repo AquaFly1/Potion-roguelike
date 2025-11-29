@@ -28,7 +28,7 @@ func light_candle():
 	active = not active
 	Game.Flame += active as int
 	changed.emit()
-	
+	update_player_light()
 	if size_tween: size_tween.stop()
 	flame.position = base_pos
 	flame.rotation = Vector3.ZERO

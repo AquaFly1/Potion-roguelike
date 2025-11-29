@@ -7,9 +7,11 @@ extends Node3D
 @onready var psx_settings = {
 	"Vertex Snapping": amount.MEDIUM, 
 	"Affine Mapping": 0.25,
-	"Downscaling": 4}
+	"Dithering": 2,
+	"Color Banding" : 2}
 var vertex_snapping_values := [1080,144,96,36]
-var downscaling_values := [false,720,360,240,144]
+var dither_values := [0.,0.5,1.]
+var color_step_values := [100,48,32,24]
 
 enum amount{NONE,LIGHT,MEDIUM,HEAVY}
 
@@ -92,12 +94,10 @@ func update_setting(option: String, value) -> void:
 	psx_material.set_shader_parameter("affine_amount", 
 	psx_settings["Affine Mapping"])
 	
+	Player.node.get_node("Crunch/PSX").get_material().set_shader_parameter("dither_blend_strength",
+	dither_values[ psx_settings["Dithering"]])
+	
+	Player.node.get_node("Crunch/PSX").get_material().set_shader_parameter("color_steps",
+	color_step_values[ psx_settings["Color Banding"]])
 
-	#Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("downscaling",
-	#downscaling_values[psx_settings["Downscaling"]] as bool)
-	#Player.node.get_node("DownscaleLayer/PSX").get_material().set_shader_parameter("pixel_resolution",
-	#downscaling_values[psx_settings["Downscaling"]])
-	
-	
-	
 	update()

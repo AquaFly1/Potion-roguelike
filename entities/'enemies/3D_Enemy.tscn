@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dv80o7a0f4uou"]
+[gd_scene load_steps=45 format=3 uid="uid://dv80o7a0f4uou"]
 
 [ext_resource type="Script" uid="uid://osu3xa4a2w72" path="res://Scripts/entities/enemy_script.gd" id="1_qlp5k"]
 [ext_resource type="Shader" uid="uid://blh7tkq8mljce" path="res://entities/'enemies/shaders/enemy_burn_outline.gdshader" id="2_yslwt"]
@@ -25,19 +25,16 @@ shader_parameter/hot_color = Color(1, 0.6, 0, 1)
 shader_parameter/cool_color = Color(1, 0, 0, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_yrgos")
 shader_parameter/intensity = 0.0
+shader_parameter/billboard = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yrgos"]
 render_priority = 20
 next_pass = SubResource("ShaderMaterial_0s7u1")
 shader = ExtResource("4_cyjlv")
 shader_parameter/sprite_texture = ExtResource("3_u1qr2")
+shader_parameter/billboard = true
 shader_parameter/line_color = Color(1, 1, 1, 0)
-shader_parameter/glowSize = 0.0
-shader_parameter/glowDensity = 1
-shader_parameter/glowRadialCoverage = 4
-shader_parameter/glowAngle = 1.57
-shader_parameter/glowSharpness = 1.0
-shader_parameter/alphaThreshold = 0.2
+shader_parameter/opacity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hpgq"]
 atlas = ExtResource("3_u1qr2")
@@ -102,6 +99,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlp5k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1hpgq"]
 shader = ExtResource("6_fwy5w")
@@ -245,29 +244,31 @@ poison_visuals = NodePath("Target/PoisonBubble")
 max_health = 5.0
 
 [node name="Enemy_sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4373578, 0)
 material_overlay = SubResource("ShaderMaterial_yrgos")
+offset = Vector2(2, 11)
 pixel_size = 0.04
+billboard = 1
 shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_pw3mf")
 frame_progress = 0.8527279
 
 [node name="gui_origin" type="Marker3D" parent="Enemy_sprite"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
 
 [node name="attack_origin" type="Marker3D" parent="Enemy_sprite"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013009878, -0.09191123, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.013, 0.3, 0)
 
 [node name="VFX" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036, 0, -0.01)
 
 [node name="FireOrigin" type="Node3D" parent="VFX"]
 
 [node name="FireSprite" type="AnimatedSprite3D" parent="VFX/FireOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04602336, 1.0910065, -0.031141846)
 layers = 4096
+lod_bias = 0.001
+offset = Vector2(0, 27)
 pixel_size = 0.04
+billboard = 1
 texture_filter = 0
 render_priority = -3
 sprite_frames = ExtResource("5_mijyd")
@@ -276,7 +277,7 @@ frame_progress = 0.68495965
 
 [node name="FireLight" type="OmniLight3D" parent="VFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06765407, -0.32416326)
-layers = 5125
+layers = 1025
 light_color = Color(0.87, 0.08700002, 0, 1)
 light_energy = 0.294
 light_size = 1.0
@@ -284,7 +285,16 @@ light_specular = 16.0
 omni_range = 2.124
 omni_attenuation = 2.705
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_qlp5k")
+
 [node name="Effects" type="Control" parent="."]
+visible = false
 visibility_layer = 4097
 material = SubResource("ShaderMaterial_1hpgq")
 layout_mode = 3
@@ -322,6 +332,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="Target"]
+visible = false
 visibility_layer = 4096
 layout_mode = 1
 anchors_preset = 8
@@ -362,5 +373,7 @@ lifetime = 4.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_0s7u1")
 
+[connection signal="mouse_entered" from="Area3D" to="." method="update_hover" binds= [true]]
+[connection signal="mouse_exited" from="Area3D" to="." method="update_hover" binds= [false]]
 [connection signal="mouse_entered" from="Target/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Target/Button" to="." method="_on_button_pressed"]

@@ -38,7 +38,7 @@ func _ready() -> void:
 func on_spawn_enemies_enter(_body: Node3D) -> void:
 
 	
-	look_at(_body.global_position)
+	look_at(Vector3(_body.global_position.x,global_position.y,_body.global_position.z))
 	#await get_tree().create_timer(0).timeout
 	
 	
@@ -47,11 +47,11 @@ func on_spawn_enemies_enter(_body: Node3D) -> void:
 	
 	
 	if spawn_enemies():
+		spawn_area_hitbox.set_deferred("disabled",true)
+		
 		for i in Exits:
 			i.block_exit()
-		
-		
-		load_enemies()
+		path.show()
 			
 		await Game.interaction_ended
 		spawned = false
@@ -69,7 +69,7 @@ func spawn_enemies():
 	if not spawned:	
 		
 		spawned = true
-		spawn_area_hitbox.set_deferred("disabled",true)
+		
 		
 		for i in range(min(Game.Flame,len(possible_interactions)-1), -1, -1):
 			current_interaction_pool = possible_interactions[i]
@@ -84,6 +84,9 @@ func spawn_enemies():
 		
 		enemies = current_interaction.enemies
 		
+		load_enemies()
+		
+		path.hide()
 	return spawned
 
 
@@ -94,17 +97,19 @@ func load_enemies():
 			var path_f = PathFollow3D.new()
 			path.add_child(path_f)
 			
+			
 			path_f.rotation_mode = PathFollow3D.ROTATION_NONE
 			path_f.progress_ratio = 0.5
 			path_f.progress += enemy_separation * (i-float(len(enemies)-1)/2)
-			await get_tree().process_frame
+			
 			
 			var enemy_inst := enemies[i].instantiate()
+			
+			
 			path_f.add_child(enemy_inst)
 			Game.enemy_list.append(enemy_inst)
 			
 			lookat.position.y = max(lookat.position.y, enemy_inst.get_size().y/2)
 			
-			await get_tree().process_frame
 			
 	

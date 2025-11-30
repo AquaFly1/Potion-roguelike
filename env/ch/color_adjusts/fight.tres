@@ -3,5 +3,5 @@
 [resource]
 adjustment_enabled = true
 adjustment_brightness = 4.0
-adjustment_contrast = 4.0
-adjustment_saturation = 8.0
+adjustment_contrast = 2.0
+adjustment_saturation = 4.0

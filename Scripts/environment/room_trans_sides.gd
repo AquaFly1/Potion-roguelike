@@ -9,7 +9,7 @@ var fading: bool = false
 @onready var block_player_light: Node3D = fade_mesh.get_child(0)
 var candle: Node3D
 @onready var block: CollisionShape3D = $"../StaticBody3D/block"
-var side := 1
+var side := -1
 
 func _ready() -> void:
 	if name == "Side1Area-nx":
@@ -18,21 +18,26 @@ func _ready() -> void:
 		
 	else:
 		candle = parent.Side2Candle
-		side = -1
+		side = 1
 	connect("body_entered",on_body_entered)
 	connect("body_exited",on_body_exited)
-	if candle: candle.changed.connect(update_hitbox)
+	#if candle: candle.changed.connect(update_hitbox)
 	
 func update_hitbox() -> void:
-	if candle:
-		block.set_deferred("disabled", candle.active)
-	if area_other.candle:
-		if candle: block.set_deferred("disabled", candle.active or area_other.candle.active)
-		else: block.set_deferred("disabled", area_other.candle.active)
+	if side == -1 and parent.side_1_interaction and parent.side_1_interaction.spawned: return
+	if side == 1 and parent.side_2_interaction and parent.side_2_interaction.spawned: return
+	block.set_deferred("disabled", true)
+	if not parent.secret_passage: 
+		if candle: print(candle.active)
+		if candle and sign(parent.get_player_distance()) == side:
+			
+			parent.block_exit(candle.active)
 	
 	
 func on_body_entered(_body: Node3D) -> void:
 	#first half
+	update_hitbox()
+	
 	if fade_mesh.transparency == 1:
 		fade_mesh_other.transparency = 0
 		
@@ -44,7 +49,7 @@ func on_body_entered(_body: Node3D) -> void:
 		Player.node.horizontal_velocity = Vector3.ZERO
 		Player.node.velocity = Vector3.ZERO
 
-		if side == 1:
+		if side == -1:
 			if parent.side_1_interaction:
 				if parent.show_enemies_1_immediately: parent.side_1_interaction.on_spawn_enemies_enter(Player.node)
 				else:	parent.side_1_interaction.spawn_enemies()
@@ -61,8 +66,11 @@ func on_body_entered(_body: Node3D) -> void:
 			if not candle.active:
 				block_player_light.visible = true
 			candle.update_player_light()
-		if area_other.candle and not area_other.candle.active:
-			area_other.block_player_light.visible = true
+		else:
+			if area_other.candle and not area_other.candle.active:
+				Player.node.self_dark_light.show()
+		if area_other.candle:
+			area_other.candle.update_player_dark_light()
 	
 
 func on_body_exited(_body: Node3D) -> void:
@@ -71,6 +79,10 @@ func on_body_exited(_body: Node3D) -> void:
 	if abs(parent.get_player_distance()) > parent.scale.z:
 		fade_mesh_other.transparency = 1
 		fade_mesh.transparency = 1
+		fading = false
+		area_other.block_player_light.visible = false
+		block_player_light.visible = false
+		
 		
 		
 	

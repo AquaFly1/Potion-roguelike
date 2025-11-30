@@ -1,7 +1,8 @@
-[gd_scene load_steps=93 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene load_steps=88 format=4 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://entities/'player/'player_character/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://csdpr6tk3ivjt" path="res://entities/'player/'player_character/fight_light.gd" id="2_75lg7"]
+[ext_resource type="Script" uid="uid://dye08i43dgp1v" path="res://entities/'player/'player_character/main_camera.gd" id="2_bnxcq"]
 [ext_resource type="Script" uid="uid://b5yex22svwdvk" path="res://entities/'player/'player_character/rays/player_interact_cast.gd" id="2_g154t"]
 [ext_resource type="Script" uid="uid://bhp4tysfhdesh" path="res://entities/'player/'player_character/rays/player_infini_raycast.gd" id="3_en4d4"]
 [ext_resource type="Shader" uid="uid://c1ac2etadxs3s" path="res://Graphics/Shaders/PsxPostP.gdshader" id="5_l3v4j"]
@@ -30,12 +31,6 @@
 [ext_resource type="Shader" uid="uid://bn7rtec3bshnn" path="res://Graphics/Shaders/screen_wave.gdshader" id="21_nes5i"]
 [ext_resource type="Shader" uid="uid://duv1lhgdlll16" path="res://Graphics/Shaders/interaction_color.gdshader" id="22_4kjub"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhch0"]
-stencil_flags = 2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_l3v4j"]
-material = SubResource("StandardMaterial3D_yhch0")
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l3v4j"]
 height = 0.5
 radius = 0.25
@@ -43,23 +38,6 @@ radius = 0.25
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t5aa"]
 radius = 0.25
 height = 1.75
-
-[sub_resource type="Curve" id="Curve_wprcl"]
-_data = [Vector2(0, 0), 0.0, 0.6194696, 0, 1, Vector2(0.57435894, 0.3557979), 1.0307232, 1.0307232, 0, 0, Vector2(1, 1), 1.5134867, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_s1eas"]
-_data = [Vector2(0, 0), 0.0, 0.73749006, 0, 1, Vector2(0.5435897, 0.40089202), 0.78512144, 0.78512144, 0, 0, Vector2(1, 1), 1.3126522, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_75lg7"]
-_data = [Vector2(0, 0), 0.0, 1.2243441, 0, 1, Vector2(0.4589744, 0.5619426), 1.3247138, 1.3247138, 0, 0, Vector2(1, 1), 0.74229646, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bnxcq"]
-curve_x = SubResource("Curve_wprcl")
-curve_y = SubResource("Curve_s1eas")
-curve_z = SubResource("Curve_75lg7")
 
 [sub_resource type="Gradient" id="Gradient_fmrin"]
 interpolation_color_space = 2
@@ -84,11 +62,10 @@ background_color = Color(0.044239994, 0.0378, 0.07, 1)
 sky = SubResource("Sky_t4x3f")
 ambient_light_source = 2
 ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
-ambient_light_energy = 0.05
+ambient_light_energy = 0.0
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
 adjustment_enabled = true
-adjustment_color_correction = SubResource("CurveXYZTexture_bnxcq")
 
 [sub_resource type="Environment" id="Environment_s1eas"]
 background_mode = 2
@@ -99,7 +76,7 @@ ambient_light_color = Color(0.1607961, 0.17035338, 0.26961827, 1)
 ambient_light_energy = 0.05
 glow_intensity = 5.38
 volumetric_fog_temporal_reprojection_enabled = false
-adjustment_color_correction = SubResource("CurveXYZTexture_bnxcq")
+adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6xcv"]
 shader = ExtResource("6_bqky3")
@@ -1119,7 +1096,7 @@ shader_parameter/intensity = 0.0
 shader_parameter/glitch_frequency = 0.91100004001262
 shader_parameter/glitch_duration = 0.1
 shader_parameter/wave_size = 2.0
-shader_parameter/displacement_amount = 1.0000003799999997
+shader_parameter/displacement_amount = 0.20000034200000005
 shader_parameter/green_displacement = 0.02
 shader_parameter/blue_displacement = 0.02
 shader_parameter/scanline_intensity = 0.0
@@ -1129,24 +1106,24 @@ shader_parameter/ghost_intensity = 0.1
 shader_parameter/negative_intensity = 0.0
 
 [sub_resource type="Gradient" id="Gradient_75lg7"]
-offsets = PackedFloat32Array(0, 0.52191234, 1)
-colors = PackedColorArray(1, 0.5019608, 0.5019608, 1, 0, 0.5019608, 0.5019608, 1, 1, 0.5019608, 0.5019608, 1)
+colors = PackedColorArray(0.5019608, 0.5019608, 1, 1, 0.5019608, 0.5019608, 0.5019608, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bnxcq"]
 gradient = SubResource("Gradient_75lg7")
 width = 256
 height = 256
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukq60"]
 shader = ExtResource("22_4kjub")
 shader_parameter/uv_warp = SubResource("GradientTexture2D_bnxcq")
 shader_parameter/intensity = 0.0
 shader_parameter/speed = 0.0
-shader_parameter/warp_repeat = 10.000000475
+shader_parameter/warp_repeat = 50.0
 shader_parameter/warp_offset = Vector2(0, 0)
-shader_parameter/warp_scroll = Vector2(0, 0.1)
+shader_parameter/warp_scroll = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_s1eas"]
 offsets = PackedFloat32Array(0)
@@ -1212,7 +1189,7 @@ shader_parameter/enable_glow = true
 shader_parameter/glow_strength = 0.1150000054625
 shader_parameter/glow_spread = 0.005
 
-[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "pivot", "hand")]
+[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "self_dark_light", "pivot", "hand")]
 collision_layer = 17
 collision_mask = 17
 floor_constant_speed = true
@@ -1223,6 +1200,7 @@ walk_speed = 6.0
 mouse_sensitivity = 0.002
 camera = NodePath("Camera_pivot/Main Camera")
 self_light = NodePath("Self_Light")
+self_dark_light = NodePath("Dark_light")
 pivot = NodePath("Camera_pivot")
 hand = NodePath("UI+PostP/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
@@ -1230,17 +1208,24 @@ metadata/_edit_horizontal_guides_ = [-141.0]
 [node name="Self_Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 layers = 5121
-light_energy = 0.4
+light_energy = 0.6
 light_indirect_energy = 0.0
 shadow_bias = 0.05
 shadow_blur = 0.0
 shadow_caster_mask = 4293918753
 omni_range = 40.0
 
-[node name="Shadow" type="MeshInstance3D" parent="."]
-visible = false
-transparency = 1.0
-mesh = SubResource("CapsuleMesh_l3v4j")
+[node name="Dark_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+layers = 5121
+light_color = Color(0.102000006, 0.10880001, 0.17, 1)
+light_energy = 0.67
+light_indirect_energy = 0.0
+shadow_bias = 0.05
+shadow_blur = 0.0
+shadow_caster_mask = 4293918753
+omni_range = 6.7
+omni_attenuation = 0.0
 
 [node name="Head" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
@@ -1256,6 +1241,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 cull_mask = 517115
 environment = SubResource("Environment_l3v4j")
 current = true
+script = ExtResource("2_bnxcq")
 
 [node name="EnemyRenderTransforms" type="RemoteTransform3D" parent="Camera_pivot/Main Camera"]
 remote_path = NodePath("../../Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera")
@@ -1671,7 +1657,6 @@ camera = NodePath("../3D Projection/3D View/ViewMasked/HandNewParent/CameraMask"
 layer = -10
 
 [node name="Wave" type="ColorRect" parent="InteractionWave" node_paths=PackedStringArray("warp_filter")]
-process_mode = 4
 material = SubResource("ShaderMaterial_fmrin")
 anchors_preset = 15
 anchor_right = 1.0

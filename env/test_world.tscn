@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=36 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
-[ext_resource type="Texture2D" uid="uid://dqhkj6koe08ab" path="res://Graphics/Environnement/RoomSpriteSheet.png" id="1_procx"]
+[ext_resource type="Script" uid="uid://b482nybq75fmf" path="res://env/test_world/test_world.gd" id="1_w3wqa"]
+[ext_resource type="Environment" uid="uid://cnhavoch61n4f" path="res://env/ch/color_adjusts/main_dark.tres" id="2_1s3mi"]
 [ext_resource type="PackedScene" uid="uid://dtobymj5rrktk" path="res://props/chests/chest.tscn" id="2_05l0i"]
+[ext_resource type="Environment" uid="uid://cy4khehn6t5ux" path="res://env/ch/color_adjusts/main.tres" id="2_snkmw"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="3_j4k5v"]
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="4_gepd6"]
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="5_36k1m"]
@@ -18,6 +20,24 @@
 [ext_resource type="PackedScene" uid="uid://d07at07jnbomx" path="res://props/chests/vending_machine_3d.tscn" id="17_jqsnb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
+
+[sub_resource type="Gradient" id="Gradient_v7tkg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.13015874, 0.26031747, 0.47936508)
+colors = PackedColorArray(0, 0.050980393, 0.2, 1, 0.11339999, 0.17619, 0.21, 1, 0.30980393, 0.3254902, 0.4509804, 1, 0.3784, 0.43076003, 0.44, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v7tkg"]
+noise_type = 2
+fractal_octaves = 1
+cellular_jitter = 0.35
+cellular_return_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w3wqa"]
+noise = SubResource("FastNoiseLite_v7tkg")
+color_ramp = SubResource("Gradient_v7tkg")
+seamless = true
+in_3d_space = true
+seamless_blend_skirt = 0.586
 
 [sub_resource type="Gradient" id="Gradient_snj22"]
 colors = PackedColorArray(0, 0.039666664, 0.14, 1, 0.1332, 0.37, 0.22397332, 1)
@@ -50,8 +70,7 @@ noise = SubResource("FastNoiseLite_snj22")
 seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_procx"]
-albedo_texture = ExtResource("1_procx")
-roughness = 0.57
+albedo_texture = SubResource("NoiseTexture2D_w3wqa")
 normal_enabled = true
 heightmap_scale = 16.0
 heightmap_deep_parallax = true
@@ -92,9 +111,12 @@ material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
 
 [node name="test_world" type="Node3D"]
+script = ExtResource("1_w3wqa")
+base_env = ExtResource("2_snkmw")
+dark_env = ExtResource("2_1s3mi")
 
 [node name="Walls2" type="Node3D" parent="."]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
+transform = Transform3D(2.1, 0, 0, 0, 1.175, 0, 0, 0, 2.1, 0, 0, 0)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
@@ -171,24 +193,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.397621, 0.009764314, -9.30
 doors = [null, null]
 
 [node name="Candle3" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.406078, 0.009764314, -8.86368)
-doors = [null, null]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.024822, 0.009764314, 10.142526)
+doors = [null]
 
 [node name="Candle4" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.673082, 0.009764314, 14.023357)
-doors = [null]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.515089, 0.009764314, 22.061356)
+doors = [null, null]
 
 [node name="Candle5" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.485903, 0.009764314, 23.419968)
 doors = [null, null]
 
 [node name="Candle6" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.515089, 0.009764314, 22.061356)
-doors = [null, null]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.673082, 0.009764314, 14.023357)
+doors = [null]
 
 [node name="Candle7" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.024822, 0.009764314, 10.142526)
-doors = [null]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.406078, 0.009764314, -8.86368)
+doors = [null, null]
 
 [node name="Interactions" type="Node3D" parent="."]
 
@@ -227,34 +249,49 @@ side_2_interaction = NodePath("../../Interactions/OutCandle1Fight")
 
 [node name="IntoHallway" parent="doors" node_paths=PackedStringArray("side_1_interaction", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, 1.7, 0, 5.5780005, 0, -2.128, 0, -7.430936e-08, 14.637951, -0.044, -11.438599)
-side_1_interaction = NodePath("../OutofCandle1")
+side_1_interaction = NodePath("../../Interactions/OutCandle1Fight")
 show_enemies_1_immediately = true
 side_2_interaction = NodePath("../../Interactions/HallwayFight")
 show_enemies_2_immediately = true
 
-[node name="IntoCandle2" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoCandle2" parent="doors" node_paths=PackedStringArray("Side2Candle", "side_1_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-2.1279998, 0, -2.5669289e-07, 0, 5.5780005, 0, 3.2131902e-07, 0, -1.7, 18.90311, -0.044, -9.109648)
+Side2Candle = NodePath("../../lights/Candle2")
+side_1_interaction = NodePath("../../Interactions/OutCandle1Fight")
+show_enemies_1_immediately = true
 
-[node name="IntoCRoom" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoCRoom" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.3017825e-08, 0, 1.7, 0, 5.5780005, 0, -2.1279998, 0, -7.430936e-08, 21.872883, -0.044, -5.694927)
+Side2Candle = NodePath("../../lights/Candle2")
+secret_passage = true
+show_enemies_1_immediately = true
 
-[node name="IntoShopHallway" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoShopHallway" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065954e-07, 0, 1.7, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 14.5189085, -0.044, -6.085002)
+Side1Candle = NodePath("../../lights/Candle2")
+
+[node name="IntoShopHallway2" parent="doors" instance=ExtResource("12_mw27p")]
+transform = Transform3D(1.6065955e-07, 0, 1.7000002, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 7.87647, -0.044, -5.2666426)
 
 [node name="CRoomSplit" parent="doors" instance=ExtResource("12_mw27p")]
 transform = Transform3D(-2.1279998, 0, 2.5669289e-07, 0, 5.578001, 0, -3.2131902e-07, 0, -1.7, 28.311483, -0.044, 0.1176885)
 
-[node name="OutofCRoom" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="OutofCRoom" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 21.864569, -0.044, 6.315426)
+Side2Candle = NodePath("../../lights/Candle3")
 
-[node name="OutOfCandle3" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="OutOfCandle3" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 15.240847, -0.044, 7.8124123)
+Side1Candle = NodePath("../../lights/Candle3")
+secret_passage = true
 
-[node name="Candle3SideRoom" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="Candle3SideRoom" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-07, 0, 1.7, 18.652225, -0.044, 3.2622843)
+Side1Candle = NodePath("../../lights/Candle3")
 
-[node name="IntoCandle4" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoCandle4" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)
+Side2Candle = NodePath("../../lights/Candle4")
 
 [node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4355, 0, -35.986504)

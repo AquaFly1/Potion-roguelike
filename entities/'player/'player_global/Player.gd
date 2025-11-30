@@ -15,7 +15,7 @@ var xp_needed = 10
 
 @warning_ignore("unused_signal")
 signal player_ready ##Called when the Player.node is ready
-
+signal change_camera_colors(env: Environment, only_adjustments)
 signal death
 
 signal turn_ended
@@ -23,6 +23,7 @@ signal turn_ended
 
 func _ready() -> void:
 	super()
+	change_camera_colors.connect(_change_camera_env)
 
 func start_turn():
 	await super()
@@ -55,4 +56,7 @@ func die():
 	health_bar.visible = not exposed
 
 func game_over():
+	pass
+	
+func _change_camera_env(_env: Environment, _only_adjustments = true):
 	pass

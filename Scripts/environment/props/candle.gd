@@ -9,13 +9,18 @@ var active: bool = false
 @onready var base_pos = flame.position
 var affect_player_light: bool = false
 @onready var player_light: OmniLight3D = Player.node.self_light
+@onready var player_dark_light: OmniLight3D = Player.node.self_dark_light
+
 @onready var player_light_base_energy: float = player_light.light_energy
+var player_dark_light_base_energy: float
+
 @onready var base_size = flame.scale
 
 signal changed
 
 func _ready() -> void:
 	#armature.visible = false
+	player_dark_light_base_energy = player_dark_light.light_energy
 	point.set_layer_mask_value(1,1)
 	point.set_layer_mask_value(11,1)
 	point.light_energy = 0
@@ -28,7 +33,10 @@ func light_candle():
 	active = not active
 	Game.Flame += active as int
 	changed.emit()
+	
 	update_player_light()
+	
+	
 	if size_tween: size_tween.stop()
 	flame.position = base_pos
 	flame.rotation = Vector3.ZERO
@@ -53,6 +61,19 @@ func update_player_light() -> void:
 		var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		if active:
 			tween.tween_property(player_light,"light_energy",player_light_base_energy,0.25)
+			Player.change_camera_colors.emit(World.current_world.base_env)
 		else:
 			tween.tween_property(player_light,"light_energy",0,0.25)
+			Player.change_camera_colors.emit(World.current_world.dark_env)
+func update_player_dark_light() -> void:
+	
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	if not active:
+		print(player_dark_light_base_energy)
+		tween.tween_property(player_dark_light,"light_energy",player_dark_light_base_energy,0.25)
+		
+	else:
+		tween.tween_property(player_dark_light,"light_energy",0,0.25)
+
+	
 		

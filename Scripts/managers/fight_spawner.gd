@@ -68,25 +68,27 @@ func on_start_fight_entered(_body: Node3D) -> void:
 func spawn_enemies():
 	if not spawned:	
 		
-		spawned = true
+		
 		
 		
 		for i in range(min(Game.Flame,len(possible_interactions)-1), -1, -1):
 			current_interaction_pool = possible_interactions[i]
-			if len(current_interaction_pool)!=0: 
+			if not current_interaction_pool.is_empty(): 
+				print(current_interaction_pool)
 				cleared = false
 				break
 		
 
+		if not current_interaction_pool.is_empty():	
+			spawned = true
+			current_interaction = current_interaction_pool.pick_random()
+			current_interaction_pool.clear()
 			
-		current_interaction = current_interaction_pool.pick_random()
-		current_interaction_pool.clear()
-		
-		enemies = current_interaction.enemies
-		
-		load_enemies()
-		
-		path.hide()
+			enemies = current_interaction.enemies
+			
+			load_enemies()
+			
+			path.hide()
 	return spawned
 
 

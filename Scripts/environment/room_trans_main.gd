@@ -2,6 +2,7 @@ extends Node3D
 
 @export var Side1Candle: Node3D
 @export var Side2Candle: Node3D
+@export var secret_passage: bool = false
 
 @export var transition_color : Color = Color(0,0,0)
 @onready var black : MeshInstance3D = $"Black-nx"
@@ -35,7 +36,7 @@ func _ready() -> void:
 		side1.mesh.surface_get_material(0).albedo_color = transition_color
 		side2.mesh = side1.mesh.duplicate(true)
 		
-	if Side1Candle or Side2Candle:
+	if Side1Candle or Side2Candle and not secret_passage:
 		block.disabled = false
 		
 	
@@ -54,10 +55,10 @@ func get_player_distance() -> float:
 func block_exit(open = false) -> void:
 	block.set_deferred("disabled", false)
 	if not open:
-		while abs(get_player_distance()) < 2:
+		while abs(get_player_distance()) < scale.z:
 			block.position.z = (-get_player_distance() + sign(get_player_distance())*(0.25 + (block.shape.size.z*global_basis.get_scale().z)/2.))/ global_basis.get_scale().z
 			await get_tree().create_timer(0.2).timeout
 		block.position.z = 0
 	if open:
-		if not Side1Candle or (Side1Candle and Side1Candle.active): block.set_deferred("disabled", true)
-		if not Side2Candle or (Side2Candle and Side2Candle.active): block.set_deferred("disabled", true)
+		if secret_passage or not Side1Candle or (Side1Candle and Side1Candle.active): block.set_deferred("disabled", true)
+		if secret_passage or not Side2Candle or (Side2Candle and Side2Candle.active): block.set_deferred("disabled", true)

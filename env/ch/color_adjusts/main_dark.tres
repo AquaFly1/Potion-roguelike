@@ -1,0 +1,23 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://cnhavoch61n4f"]
+
+[sub_resource type="Curve" id="Curve_wprcl"]
+_data = [Vector2(0, 0), 0.0, 0.6194696, 0, 1, Vector2(0.57435894, 0.3557979), 1.0307232, 1.0307232, 0, 0, Vector2(1, 1), 1.5134867, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_s1eas"]
+_data = [Vector2(0, 0), 0.0, 0.73749006, 0, 1, Vector2(0.5435897, 0.40089202), 0.78512144, 0.78512144, 0, 0, Vector2(1, 1), 1.3126522, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_75lg7"]
+_data = [Vector2(0, 0), 0.0, 1.2243441, 0, 1, Vector2(0.4589744, 0.5619426), 1.3247138, 1.3247138, 0, 0, Vector2(1, 1), 0.74229646, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bnxcq"]
+curve_x = SubResource("Curve_wprcl")
+curve_y = SubResource("Curve_s1eas")
+curve_z = SubResource("Curve_75lg7")
+
+[resource]
+adjustment_enabled = true
+adjustment_brightness = 4.0
+adjustment_color_correction = SubResource("CurveXYZTexture_bnxcq")

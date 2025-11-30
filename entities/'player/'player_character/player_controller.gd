@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.001
 @export var camera: Node3D
 @export var self_light: OmniLight3D
+@export var self_dark_light: OmniLight3D
 
 var interaction_node: Node3D
 
@@ -37,29 +38,12 @@ func _ready() -> void:
 	mouse_mode_capture = true
 	Player.player_ready.emit()
 	
-
-func _unhandled_input(event):
-	if not Game.is_in_combat:
-		if event is InputEventMouseMotion:
-			# Yaw on Player
-			rotate_y(-event.relative.x * mouse_sensitivity)
-			# Pitch on Pivot
-			pivot.rotate_x(-event.relative.y * mouse_sensitivity)
-			# Clamp pitch to avoid flipping
-			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-85), deg_to_rad(75))
-		elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == true:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			mouse_mode_capture = false
-		elif event is InputEventKey and event.pressed and event.keycode == KEY_0 and mouse_mode_capture == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			mouse_mode_capture = true
-	
-		$Head.disabled = Input.is_action_pressed("fly")
-		$Body.disabled = Input.is_action_pressed("fly")
-		GRAVITY = 20 * (not Input.is_action_pressed("fly") as int)
+		
 	
 func _physics_process(delta):
-	
+	$Head.disabled = Input.is_action_pressed("fly")
+	$Body.disabled = Input.is_action_pressed("fly")
+	GRAVITY = 20 * (not Input.is_action_pressed("fly") as int)
 	#$test.global_position = pivot.global_position + pivot.global_basis*Vector3.FORWARD
 	
 	if interaction_node:	

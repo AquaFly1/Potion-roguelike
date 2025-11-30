@@ -10,9 +10,9 @@ shader_type canvas_item;
 
 uniform sampler2D uv_warp: filter_nearest, repeat_enable;
 uniform sampler2D screen_texture: hint_screen_texture;
-uniform float intensity: hint_range(0.0, 1.0);
+uniform float intensity: hint_range(0.0, 3.0);
 uniform float speed: hint_range(0.0, 1.0);
-uniform float warp_repeat: hint_range(0., 20.) = 1.;
+uniform float warp_repeat: hint_range(0., 50.) = 1.;
 uniform vec2 warp_offset;
 uniform vec2 warp_scroll;
 
@@ -33,16 +33,25 @@ vec4 shift_hue(in vec4 color, in float shift) {
 
 void fragment()
 {
-	vec4 warp =
+	vec2 warp_repeat_vec = warp_repeat*(SCREEN_PIXEL_SIZE.y/ SCREEN_PIXEL_SIZE);
+	vec2 scroll = warp_scroll*TIME + warp_offset;
+	vec4 warp = 
 
-		texture(uv_warp,mod(UV*warp_repeat +  warp_scroll*TIME + warp_offset,1.));
+		texture(uv_warp,mod(UV*warp_repeat_vec,1.));
+		
+	vec4 warp_scrolled = texture(uv_warp,mod(UV*warp_repeat_vec + scroll,1.));
+	
 
-	COLOR = texture(screen_texture, UV + (UV-vec2(0.5,0.5))*(warp.b-.5) +
-		(
-			shift_hue(warp,TIME*speed)
+	COLOR = texture(screen_texture, UV+ mod(UV*warp_repeat_vec+scroll,1.)*(warp_scrolled.b-.5)*intensity/warp_repeat_vec 
+
+		+(
+			shift_hue(warp_scrolled,TIME*speed)
 				.rg
 				-vec2(0.5,0.5)
-			)*intensity
+			)*intensity/warp_repeat_vec
 			
 			);
+	//COLOR = vec4( UV+ mod(UV*warp_repeat_vec+scroll,1.)*(warp_scrolled.b-.5)*intensity/warp_repeat_vec
+	//
+			//,0.,1.);
 }

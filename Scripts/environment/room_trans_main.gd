@@ -9,7 +9,7 @@ extends Node3D
 @onready var decal : Decal = $"Decal-nx"
 @onready var side1 : MeshInstance3D = $"Side1Area-nx/Side1"
 @onready var side2 : MeshInstance3D = $"Side2Area-nx/Side2"
-@onready var block := $StaticBody3D/block
+@onready var block := $"StaticBody3D/block"
 
 @export var side_1_interaction: Node3D ##spawns ennemies when touching side 1
 @export var show_enemies_1_immediately: bool ##orients and shows the enemies immediately, else only when the player enters the fight spawner hitbox

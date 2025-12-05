@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bop8cdoq4wsy"
-path.s3tc="res://.godot/imported/Church_RoomSpriteSheet.png-bed23df53e09735d1666194c66f1b7e1.s3tc.ctex"
+uid="uid://b0tw4yqkpjg1u"
+path.s3tc="res://.godot/imported/RoomSpriteSheet.png-82c1135462e40e1e831423574c25ba4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "b2a30207021a517036a46c3d55eca93b"
-}
 
 [deps]
 
-source_file="res://env/ch/Church_RoomSpriteSheet.png"
-dest_files=["res://.godot/imported/Church_RoomSpriteSheet.png-bed23df53e09735d1666194c66f1b7e1.s3tc.ctex"]
+source_file="res://env/ctcmb/ch/textures/RoomSpriteSheet.png"
+dest_files=["res://.godot/imported/RoomSpriteSheet.png-82c1135462e40e1e831423574c25ba4e.s3tc.ctex"]
 
 [params]
 

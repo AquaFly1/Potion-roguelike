@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbjt4uqgyabqp"
-path="res://.godot/imported/Church.blend-d6bc57a7811440e5502ec5fdbaea9e37.scn"
+path="res://.godot/imported/Church.blend-5f368337af3b5d394eb93c593804441f.scn"
 
 [deps]
 
-source_file="res://env/ch/Church.blend"
-dest_files=["res://.godot/imported/Church.blend-d6bc57a7811440e5502ec5fdbaea9e37.scn"]
+source_file="res://env/ctcmb/ch/Church.blend"
+dest_files=["res://.godot/imported/Church.blend-5f368337af3b5d394eb93c593804441f.scn"]
 
 [params]
 
@@ -52,7 +52,7 @@ blender/meshes/tangents=true
 blender/meshes/skins=2
 blender/meshes/export_bones_deforming_mesh_only=false
 blender/materials/unpack_enabled=false
-blender/materials/export_materials=1
+blender/materials/export_materials=0
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true

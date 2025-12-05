@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://yf6jb6b0ryyr"]
 
-[ext_resource type="Texture2D" uid="uid://dexb1sfw66hwa" path="res://env/ch/mat/glass/window.png" id="1_d7uvp"]
+[ext_resource type="Texture2D" uid="uid://dexb1sfw66hwa" path="res://env/ctcmb/ch/mat/glass/window.png" id="1_d7uvp"]
 [ext_resource type="Shader" uid="uid://bofsley30cmoq" path="res://Graphics/Shaders/psxUnshaded.gdshader" id="1_lv2k5"]
 
 [resource]

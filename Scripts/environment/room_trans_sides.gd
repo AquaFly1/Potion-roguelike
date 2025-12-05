@@ -89,7 +89,7 @@ func on_body_exited(_body: Node3D) -> void:
 func _physics_process(_delta: float) -> void:
 	if fading:
 		
-		fade_mesh.transparency = lerp(fade_mesh.transparency,1.,0.1)
+		fade_mesh.transparency = lerp(fade_mesh.transparency,1.,0.2)
 		fade_mesh_other.transparency = 1 - fade_mesh.transparency
 		if abs(1-fade_mesh.transparency) < 0.05:
 			fade_mesh.transparency = 1

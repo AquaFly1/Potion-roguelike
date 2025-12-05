@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cow432htspaqs"
-path="res://.godot/imported/wood_floor.png-ccb2072ca6f16f5928d9c8f6c1ba727f.ctex"
+uid="uid://ddl1gktkue7f5"
+path="res://.godot/imported/walls.aseprite _Sheet_.png-ac196bf1f31965979bec694a0aa1dddb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://env/ch/mat/w_floor/wood_floor.png"
-dest_files=["res://.godot/imported/wood_floor.png-ccb2072ca6f16f5928d9c8f6c1ba727f.ctex"]
+source_file="res://env/ctcmb/ch/textures/walls.aseprite _Sheet_.png"
+dest_files=["res://.godot/imported/walls.aseprite _Sheet_.png-ac196bf1f31965979bec694a0aa1dddb.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

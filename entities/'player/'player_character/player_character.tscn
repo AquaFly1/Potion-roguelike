@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="9_fmrin"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://entities/'player/chand/card_in_hand_target.tscn" id="10_sefq3"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://props/PopupLabel.gd" id="13_en4d4"]
-[ext_resource type="Environment" uid="uid://d3k4ly86u2bjk" path="res://env/ch/color_adjusts/fight.tres" id="13_s1eas"]
+[ext_resource type="Environment" uid="uid://d3k4ly86u2bjk" path="res://env/ctcmb/color_adjusts/fight.tres" id="13_s1eas"]
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://entities/'player/'player_character/chand_manager.gd" id="14_q0cqy"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://entities/health_bar/health_bar.tscn" id="14_yicnn"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Resources/cards/Card.tscn" id="15_vyq64"]

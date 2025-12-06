@@ -34,7 +34,7 @@ func light_candle():
 	Game.Flame += active as int
 	changed.emit()
 	
-	update_player_light()
+	
 	
 	
 	if size_tween: size_tween.stop()
@@ -55,6 +55,10 @@ func light_candle():
 		size_tween.chain().tween_property(flame,"position",base_pos + Vector3(0.1,0,0),0.07)
 		size_tween.chain().tween_property(point,"light_energy",0,0.07)
 		size_tween.tween_property(flame,"scale",Vector3.ZERO,0.02)
+		await size_tween.finished
+	
+	
+	update_player_light()
 
 func update_player_light() -> void:
 	if affect_player_light:
@@ -69,7 +73,6 @@ func update_player_dark_light() -> void:
 	
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	if not active:
-		print(player_dark_light_base_energy)
 		tween.tween_property(player_dark_light,"light_energy",player_dark_light_base_energy,0.25)
 		
 	else:

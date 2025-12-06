@@ -33,7 +33,7 @@ frame_progress = 0.71156263
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.899515, 0)
 light_color = Color(0.45999998, 0.6400001, 1, 1)
-light_energy = 1.5
+light_energy = 0.8
 shadow_blur = 0.0
 shadow_caster_mask = 4293918721
 spot_range = 8.874
@@ -42,9 +42,13 @@ spot_angle = 20.0
 [node name="Point" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.8502063, 0)
 light_color = Color(0.29000002, 0.66866666, 1, 1)
+light_energy = 0.8
 shadow_enabled = true
 shadow_bias = 0.01
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
-omni_range = 100.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+distance_fade_shadow = 20.0
+omni_range = 20.0
 omni_attenuation = 0.7

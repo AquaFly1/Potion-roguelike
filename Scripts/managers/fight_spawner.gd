@@ -74,7 +74,6 @@ func spawn_enemies():
 		for i in range(min(Game.Flame,len(possible_interactions)-1), -1, -1):
 			current_interaction_pool = possible_interactions[i]
 			if not current_interaction_pool.is_empty(): 
-				print(current_interaction_pool)
 				cleared = false
 				break
 		

@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcuo1hmgevme2"
-path.s3tc="res://.godot/imported/walls.aseprite.png-a0caa03d4f91a4f6a05cbe5aab1fbef4.s3tc.ctex"
+uid="uid://2e5ehhqugxl6"
+path="res://.godot/imported/Wood_Trim.png-69172d604299e0e6d8924cc691d5c542.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://env/ctcmb/ch/textures/walls.aseprite.png"
-dest_files=["res://.godot/imported/walls.aseprite.png-a0caa03d4f91a4f6a05cbe5aab1fbef4.s3tc.ctex"]
+source_file="res://env/ctcmb/mat/wood/Wood_Trim.png"
+dest_files=["res://.godot/imported/Wood_Trim.png-69172d604299e0e6d8924cc691d5c542.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

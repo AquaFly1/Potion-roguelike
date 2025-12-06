@@ -93,7 +93,8 @@ theme/custom="uid://ccn7rphveje3s"
 
 scene={
 &"blender/materials/unpack_enabled": false,
-&"import_script/path": "uid://dk5pujb3sxea8"
+&"import_script/path": "uid://dk5pujb3sxea8",
+&"materials/extract_format": 2
 }
 3d_texture={
 &"compress/mode": 0

@@ -38,7 +38,7 @@ func _update_camera_env(env: Environment, only_adjustments = true):
 	tween_adjustments(camera_base_env,self)
 	tween_adjustments(camera_base_env.duplicate_deep(),battle_cam)
 func tween_adjustments(env, camera: Camera3D = self):
-	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
 	for i in ["adjustment_brightness","adjustment_saturation","adjustment_contrast"]:
 		tween.tween_property(camera.environment,i,
 			env.get(i)

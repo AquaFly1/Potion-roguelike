@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqhkj6koe08ab"
-path.s3tc="res://.godot/imported/RoomSpriteSheet.png-bc8381aec29dee3211f1be2cd6bf8351.s3tc.ctex"
+uid="uid://d0d28rdli0m5v"
+path="res://.godot/imported/RoomSprites.aseprite-26a6d3ab47fa023515baf38d3c86e2fd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Environnement/RoomSpriteSheet.png"
-dest_files=["res://.godot/imported/RoomSpriteSheet.png-bc8381aec29dee3211f1be2cd6bf8351.s3tc.ctex"]
+source_file="res://env/ctcmb/mat/stone/RoomSprites.aseprite"
+dest_files=["res://.godot/imported/RoomSprites.aseprite-26a6d3ab47fa023515baf38d3c86e2fd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

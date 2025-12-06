@@ -28,7 +28,6 @@ func update_hitbox() -> void:
 	if side == 1 and parent.side_2_interaction and parent.side_2_interaction.spawned: return
 	block.set_deferred("disabled", true)
 	if not parent.secret_passage: 
-		if candle: print(candle.active)
 		if candle and sign(parent.get_player_distance()) == side:
 			
 			parent.block_exit(candle.active)

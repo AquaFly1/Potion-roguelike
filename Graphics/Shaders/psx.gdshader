@@ -89,7 +89,6 @@ void fragment() {
 	
 
 	ALBEDO = albedo.rgb * texture_color.rgb;
-	//ALBEDO = vec3(base_uv,0.);
 	ALPHA = texture_color.a * color_base.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
 	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);

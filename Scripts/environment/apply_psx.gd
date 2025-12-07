@@ -92,7 +92,7 @@ func update_setting(option: String, value) -> void:
 	psx_material.set_shader_parameter("resolution", 
 	Vector2.ONE * vertex_snapping_values[psx_settings["Vertex Snapping"]])
 	psx_material.set_shader_parameter("affine_amount", 
-	psx_settings["Affine Mapping"])
+	psx_settings["Affine Mapping"]/5.)
 	
 	Player.node.get_node("Crunch/PSX").get_material().set_shader_parameter("dither_blend_strength",
 	dither_values[ psx_settings["Dithering"]])

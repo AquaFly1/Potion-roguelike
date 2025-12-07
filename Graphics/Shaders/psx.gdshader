@@ -10,6 +10,7 @@ render_mode blend_mix,
 	skip_vertex_transform;
 
 varying float w_comp;
+varying vec2 og_uv;
 uniform float affine_amount: hint_range(0,1) = 0.15;
 uniform float point_size : hint_range(0,128);
 uniform float roughness : hint_range(0,1);
@@ -35,7 +36,6 @@ uniform vec2 resolution = vec2(320, 240);
 uniform bool affine_mapping = true;
 uniform float alpha_scissor : hint_range(0, 1) = 0.5;
 
-
 void vertex()
 {
 	UV = UV * uv1_scale.xy ;
@@ -52,13 +52,14 @@ void vertex()
 	}
 	
 
-
+	
 	if(affine_mapping == true){
 		UV *= w_comp*affine_amount + 1.0 - affine_amount;
-
+		
+		
 	}
 	
-
+	
 	//IMPORTANT NOTE: Make sure `NORMAL`s are transformed out of local space aswell.
 	NORMAL = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
 }
@@ -68,7 +69,11 @@ void vertex()
 void fragment() {
 	vec2 base_uv = UV;
 	if(affine_mapping == true){
+		
 		base_uv /= w_comp*affine_amount + 1.0 - affine_amount;
+		base_uv = clamp	(base_uv,0.001,0.999);
+		
+		
 	}
 
 	vec4 color_base = COLOR;
@@ -81,9 +86,10 @@ void fragment() {
 
 
 
-
+	
 
 	ALBEDO = albedo.rgb * texture_color.rgb;
+	//ALBEDO = vec3(base_uv,0.);
 	ALPHA = texture_color.a * color_base.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
 	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);

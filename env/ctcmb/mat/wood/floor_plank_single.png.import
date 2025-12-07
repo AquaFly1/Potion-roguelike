@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b23q3wyu2pqhi"
-path.s3tc="res://.godot/imported/walls.aseprite-1285d0dc4ade4dddce5f275aebe97cda.s3tc.ctex"
+uid="uid://byk5k2kcuwgw5"
+path="res://.godot/imported/floor_plank_single.png-33c257234b15bf9b1d6dae17a90c2a88.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://env/ctcmb/mat/walls/walls.aseprite"
-dest_files=["res://.godot/imported/walls.aseprite-1285d0dc4ade4dddce5f275aebe97cda.s3tc.ctex"]
+source_file="res://env/ctcmb/mat/wood/floor_plank_single.png"
+dest_files=["res://.godot/imported/floor_plank_single.png-33c257234b15bf9b1d6dae17a90c2a88.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

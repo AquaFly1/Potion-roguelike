@@ -1217,6 +1217,7 @@ omni_range = 40.0
 
 [node name="Dark_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+visible = false
 layers = 5121
 light_color = Color(0.102000006, 0.10880001, 0.17, 1)
 light_energy = 0.67
@@ -1295,6 +1296,10 @@ collide_with_areas = true
 debug_shape_thickness = 1
 script = ExtResource("2_g154t")
 popup_label = NodePath("../../UI+PostP/UI/PopupLabel")
+name_and_text = Dictionary[String, String]({
+"Candle": "[E] : Light Candle",
+"Chest": "[E] : Open Chest"
+})
 
 [node name="InfiniRay" type="RayCast3D" parent="Camera_pivot"]
 visible = false

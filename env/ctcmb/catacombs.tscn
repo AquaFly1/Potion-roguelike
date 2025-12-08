@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene load_steps=38 format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="Script" uid="uid://b482nybq75fmf" path="res://env/ctcmb/catacombs.gd" id="1_w3wqa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://b6pgjmw77cn0j" path="res://Resources/Ingredients/heart_ing.tres" id="4_gepd6"]
 [ext_resource type="PackedScene" uid="uid://cjuyi2adb48lg" path="res://env/ctcmb/ch/Chapel.tscn" id="4_oxv5g"]
 [ext_resource type="Resource" uid="uid://ccbgrr0ka2q11" path="res://Resources/Ingredients/poison.tres" id="5_36k1m"]
+[ext_resource type="PackedScene" uid="uid://cxr6jir8t26uc" path="res://env/ctcmb/models/Stairs.tscn" id="5_yusr8"]
 [ext_resource type="Resource" uid="uid://cklr6xig7l0v" path="res://Resources/Ingredients/ice_ing.tres" id="6_mw27p"]
 [ext_resource type="Resource" uid="uid://dgk78wy7djprj" path="res://Resources/Ingredients/bois_ing.tres" id="7_pgska"]
 [ext_resource type="Resource" uid="uid://2emq08loikm2" path="res://Resources/Ingredients/etincelle_ing.tres" id="8_7cmid"]
@@ -117,10 +118,11 @@ base_env = ExtResource("2_snkmw")
 dark_env = ExtResource("2_1s3mi")
 
 [node name="Chapel" parent="." instance=ExtResource("4_oxv5g")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 17.849148, -34.87894)
+
+[node name="Stairs" parent="." instance=ExtResource("5_yusr8")]
 
 [node name="Walls2" type="Node3D" parent="."]
-transform = Transform3D(2.1, 0, 0, 0, 1.175, 0, 0, 0, 2.1, 0, 0, 0)
+transform = Transform3D(-9.1793915e-08, 0, -2.1, 0, 1.175, 0, 2.1, 0, -9.1793915e-08, 0, -39.636307, 0)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
@@ -150,7 +152,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -2.015, 0, 1, -8.807845e-08, 
 mesh = SubResource("ArrayMesh_36k1m")
 
 [node name="floor_body -nx" type="StaticBody3D" parent="."]
-transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
+transform = Transform3D(-9.1793915e-08, 0, -2.1, 0, 2.1, 0, 2.1, 0, -9.1793915e-08, 0, -39.636307, 0)
 
 [node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx"]
 shape = SubResource("BoxShape3D_5opd7")
@@ -162,7 +164,7 @@ mesh = SubResource("PlaneMesh_3pl5u")
 skeleton = NodePath("../..")
 
 [node name="Chests" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7615036, 0, -2.974627)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.7615036, -39.636307, -2.974627)
 
 [node name="Chest_mesh" parent="Chests" instance=ExtResource("2_05l0i")]
 transform = Transform3D(0.8028175, 0, 0.5962248, 0, 1, 0, -0.5962248, 0, 0.8028175, 4.2532353, -7.1525574e-07, -4.6732903)
@@ -181,12 +183,13 @@ transform = Transform3D(0.8028175, 0, -0.5962248, 0, 1, 0, 0.5962248, 0, 0.80281
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
 
 [node name="Shops" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.636307, 0)
 
 [node name="Shop_3D" parent="Shops" instance=ExtResource("9_y2fwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.574913, 0.7565745, -29.246891)
 
 [node name="lights" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.59881, 0)
 
 [node name="Candle" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.66074, 0.009764314, -25.771706)
@@ -217,6 +220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.406078, 0.009764314, -8.8
 doors = [null, null]
 
 [node name="Interactions" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.636307, 0)
 
 [node name="OutCandle1Fight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.836502, 0, -17.7345)
@@ -244,7 +248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5531225)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.071396)
 
 [node name="doors" type="Node3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0, -39.636307, 0)
 
 [node name="OutofCandle1" parent="doors" node_paths=PackedStringArray("Side1Candle", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, -1.7, 0, 5.578, 0, 2.128, 0, -7.430936e-08, 21.633, -0.044, -17.296)
@@ -298,7 +302,7 @@ transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.
 Side2Candle = NodePath("../../lights/Candle4")
 
 [node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.233335, 0, -24.186382)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.233335, -39.636307, -24.186382)
 
 [editable path="Interactions/OutCandle1Fight"]
 [editable path="Interactions/HallwayFight"]

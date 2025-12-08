@@ -34,7 +34,7 @@ gradient = SubResource("Gradient_wb8l8")
 
 [sub_resource type="Gradient" id="Gradient_nkbog"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0, 1, 1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yh3e2"]
 gradient = SubResource("Gradient_nkbog")
@@ -117,7 +117,7 @@ cast_shadow = 2
 mesh = SubResource("BoxMesh_y8lxq")
 
 [node name="Decal-nx" type="Decal" parent="."]
-transform = Transform3D(-1, 0, 1.509958e-07, 0, 1.1, 0, -1.509958e-07, 0, -1, 0, 0.5, 0)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1.1, 0, -1.509958e-07, 0, -1, 0, 0.45, 0)
 layers = 2
 sorting_offset = 6.38
 size = Vector3(1, 1, 1)

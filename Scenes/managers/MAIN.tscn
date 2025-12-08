@@ -8,7 +8,7 @@
 script = ExtResource("1_rket4")
 
 [node name="Player-nx" parent="." instance=ExtResource("3_ru5bv")]
-transform = Transform3D(-0.99335474, 0, -0.115093105, 0, 1, 0, 0.115093105, 0, -0.99335474, -0.14597178, 19.235233, -50.099087)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.000002, 0.8954401, 0.09986842)
 mouse_sensitivity = 0.003
 
 [node name="catacombs" parent="." instance=ExtResource("2_p17k0")]

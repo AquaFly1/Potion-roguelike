@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cbjt4uqgyabqp"
-path="res://.godot/imported/Church.blend-5f368337af3b5d394eb93c593804441f.scn"
+uid="uid://cv56dkyg5owp"
+path="res://.godot/imported/stairs.blend-25cb1e2d952d8a9f38a89c246871332c.scn"
 
 [deps]
 
-source_file="res://env/ctcmb/ch/Church.blend"
-dest_files=["res://.godot/imported/Church.blend-5f368337af3b5d394eb93c593804441f.scn"]
+source_file="res://env/ctcmb/models/stairs.blend"
+dest_files=["res://.godot/imported/stairs.blend-25cb1e2d952d8a9f38a89c246871332c.scn"]
 
 [params]
 

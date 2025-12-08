@@ -63,9 +63,7 @@ func update() -> void:
 							parameter,
 							psx_material.get_shader_parameter(parameter)
 							)
-			
-					
-					
+						
 					
 
 func get_all_children(node) -> Array:

@@ -37,6 +37,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 window/snap/snap_2d_vertices_to_pixel=true
 window/snap/snap_2d_transforms_to_pixel=true
 window/quality/msaa_2d=0
@@ -92,9 +93,50 @@ theme/custom="uid://ccn7rphveje3s"
 [importer_defaults]
 
 scene={
+"_subresources": {},
+"animation/fps": 30,
+"animation/import": true,
+"animation/import_rest_as_RESET": false,
+"animation/remove_immutable_tracks": true,
+"animation/trimming": false,
+"blender/animation/always_sample": true,
+"blender/animation/group_tracks": true,
+"blender/animation/limit_playback": true,
+"blender/materials/export_materials": 0,
 &"blender/materials/unpack_enabled": false,
+"blender/meshes/colors": false,
+"blender/meshes/export_bones_deforming_mesh_only": false,
+"blender/meshes/export_geometry_nodes_instances": false,
+"blender/meshes/normals": true,
+"blender/meshes/skins": 2,
+"blender/meshes/tangents": true,
+"blender/meshes/uvs": true,
+"blender/nodes/active_collection_only": false,
+"blender/nodes/cameras": true,
+"blender/nodes/custom_properties": true,
+"blender/nodes/modifiers": 1,
+"blender/nodes/punctual_lights": true,
+"blender/nodes/visible": 2,
+"gltf/naming_version": 2,
 &"import_script/path": "uid://dk5pujb3sxea8",
-&"materials/extract_format": 2
+"materials/extract": 0,
+&"materials/extract_format": 0,
+"materials/extract_path": "",
+"meshes/create_shadow_meshes": true,
+"meshes/ensure_tangents": true,
+"meshes/force_disable_compression": false,
+"meshes/generate_lods": true,
+"meshes/light_baking": 2,
+"meshes/lightmap_texel_size": 0.2,
+"nodes/apply_root_scale": true,
+"nodes/import_as_skeleton_bones": false,
+"nodes/root_name": "",
+"nodes/root_scale": 1.0,
+"nodes/root_script": null,
+"nodes/root_type": "",
+"nodes/use_name_suffixes": true,
+"nodes/use_node_type_suffixes": true,
+"skins/use_named_skins": true
 }
 3d_texture={
 &"compress/mode": 0
@@ -209,6 +251,8 @@ common/physics_interpolation=true
 rendering_device/pipeline_cache/enable=false
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 textures/decals/filter=0
 environment/volumetric_fog/use_filter=0
 2d/snap/snap_2d_transforms_to_pixel=true

@@ -2,7 +2,10 @@ extends Button
 
 class_name ShopButton
 
-@export var price: int = 0
+@export var price: int = 0:
+	set(value):
+		price = value
+		if price_label: price_label.text = str(value)
 @onready var price_label: Label = $Price
 
 
@@ -14,6 +17,3 @@ func _on_pressed() -> void:
 
 func purchase():
 	queue_free()
-
-func _process(_delta: float) -> void:
-	price_label.text = str(price)

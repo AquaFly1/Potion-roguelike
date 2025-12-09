@@ -1195,9 +1195,10 @@ collision_mask = 17
 floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 1.3386675
+floor_snap_length = 0.3
 script = ExtResource("1_r8aaq")
 walk_speed = 6.0
-mouse_sensitivity = 0.002
+mouse_sensitivity = 0.003
 camera = NodePath("Camera_pivot/Main Camera")
 self_light = NodePath("Self_Light")
 self_dark_light = NodePath("Dark_light")
@@ -1863,6 +1864,7 @@ text = "5"
 horizontal_alignment = 1
 
 [node name="Health_bar" parent="UI+PostP/UI" instance=ExtResource("14_yicnn")]
+visible = false
 layout_mode = 1
 offset_left = 3.0
 offset_top = 2.0

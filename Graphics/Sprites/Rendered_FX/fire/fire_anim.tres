@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://bjgpr5kuqynbq"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bjgpr5kuqynbq"]
 
 [ext_resource type="Texture2D" uid="uid://dm4y65ra4wkm0" path="res://Graphics/Sprites/Rendered_FX/fire/fire_sheet.png" id="1_n7e1g"]
 

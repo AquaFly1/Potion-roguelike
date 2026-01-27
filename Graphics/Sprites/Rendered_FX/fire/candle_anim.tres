@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=41 format=3 uid="uid://ggjpcgjfqw6c"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://ggjpcgjfqw6c"]
 
 [ext_resource type="Texture2D" uid="uid://due7phovaxq8e" path="res://Graphics/Sprites/Rendered_FX/fire/candle_sheet.png" id="1_x4gld"]
 

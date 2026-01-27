@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dgdt3b0jt8xy4"]
+[gd_scene format=3 uid="uid://dgdt3b0jt8xy4"]
 
 [ext_resource type="Script" uid="uid://c6oms0haklfoq" path="res://Scripts/managers/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="Script" uid="uid://b34khk8m7t8aq" path="res://Scripts/resources/Ingredient.gd" id="2_fgdfb"]
@@ -30,10 +30,12 @@
 [ext_resource type="Resource" uid="uid://0jvdslcbx41q" path="res://Resources/Effects/Strenght.tres" id="24_vcc2h"]
 [ext_resource type="Resource" uid="uid://dmo2at04eblv7" path="res://Resources/Effects/Weakness.tres" id="25_rulai"]
 [ext_resource type="FontFile" uid="uid://bfor7jfs0blai" path="res://Graphics/Fonts/Tiny5-Regular.ttf" id="29_rulai"]
+[ext_resource type="AudioStream" uid="uid://d3m2axn658tp2" path="res://Audio/UI/pauseblip.ogg" id="30_ut10i"]
+[ext_resource type="AudioStream" uid="uid://r7v6bc181i42" path="res://Audio/UI/pauseblip2.ogg" id="31_v46l1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofi3n"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node2D" unique_id=706455211]
 process_mode = 3
 script = ExtResource("1_mmt5l")
 deck = Array[ExtResource("2_fgdfb")]([ExtResource("4_71d4j"), ExtResource("4_71d4j"), ExtResource("3_yqty0"), ExtResource("3_yqty0"), ExtResource("5_i4mau"), ExtResource("6_6gmvr"), ExtResource("6_6gmvr"), ExtResource("7_jb27j"), ExtResource("7_jb27j")])
@@ -42,10 +44,10 @@ effects = Array[ExtResource("16_5nmu7")]([ExtResource("17_6gmvr"), ExtResource("
 strength_multiplier = 1
 weakness_multiplier = 1
 
-[node name="CanvasLayer-nx" type="CanvasLayer" parent="."]
+[node name="CanvasLayer-nx" type="CanvasLayer" parent="." unique_id=1409248006]
 layer = 75
 
-[node name="Menu" type="ColorRect" parent="CanvasLayer-nx" node_paths=PackedStringArray("first_menu")]
+[node name="Menu" type="ColorRect" parent="CanvasLayer-nx" unique_id=2089923662 node_paths=PackedStringArray("first_menu")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,7 +57,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("23_33pfu")
 first_menu = NodePath("Main")
 
-[node name="Main" type="VBoxContainer" parent="CanvasLayer-nx/Menu" node_paths=PackedStringArray("settings_menu")]
+[node name="Main" type="VBoxContainer" parent="CanvasLayer-nx/Menu" unique_id=602046712 node_paths=PackedStringArray("settings_menu")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -74,30 +76,36 @@ alignment = 1
 script = ExtResource("23_ofi3n")
 settings_menu = NodePath("../Settings")
 
-[node name="Resume" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+[node name="Resume" type="Button" parent="CanvasLayer-nx/Menu/Main" unique_id=1829362649]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Resume"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Main" unique_id=1126967046]
 custom_minimum_size = Vector2(0, 33.333)
 layout_mode = 2
 
-[node name="Settings" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+[node name="Settings" type="Button" parent="CanvasLayer-nx/Menu/Main" unique_id=1972279898]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Settings"
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer-nx/Menu/Main"]
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer-nx/Menu/Main" unique_id=1435389180]
 custom_minimum_size = Vector2(0, 33.333)
 layout_mode = 2
 
-[node name="Save & Quit" type="Button" parent="CanvasLayer-nx/Menu/Main"]
+[node name="Save & Quit" type="Button" parent="CanvasLayer-nx/Menu/Main" unique_id=956892123]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Save & Quit"
 
-[node name="Settings" type="VBoxContainer" parent="CanvasLayer-nx/Menu"]
+[node name="PauseIn" type="AudioStreamPlayer" parent="CanvasLayer-nx/Menu/Main" unique_id=473773786]
+stream = ExtResource("30_ut10i")
+
+[node name="PauseOut" type="AudioStreamPlayer" parent="CanvasLayer-nx/Menu/Main" unique_id=303316319]
+stream = ExtResource("31_v46l1")
+
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer-nx/Menu" unique_id=813133233]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,76 +121,76 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("23_ofi3n")
 
-[node name="Settings" type="Label" parent="CanvasLayer-nx/Menu/Settings"]
+[node name="Settings" type="Label" parent="CanvasLayer-nx/Menu/Settings" unique_id=1110751842]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("24_ofi3n")
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings" unique_id=1489141160]
 custom_minimum_size = Vector2(0, 33.333)
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="CanvasLayer-nx/Menu/Settings"]
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer-nx/Menu/Settings" unique_id=761237756]
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
 current_tab = 1
 
-[node name="Game" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+[node name="Game" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer" unique_id=805473990]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Setting1" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+[node name="Setting1" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game" unique_id=392964660]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Settings"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game" unique_id=1512846429]
 custom_minimum_size = Vector2(200, 33.333)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Setting2" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game"]
+[node name="Setting2" type="Button" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Game" unique_id=616154055]
 layout_mode = 2
 theme = ExtResource("24_ofi3n")
 text = "Save & Quit"
 
-[node name="Graphics" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer"]
+[node name="Graphics" type="VBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer" unique_id=1715805447]
 layout_mode = 2
 theme_override_constants/separation = 11
 metadata/_tab_index = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" unique_id=476768869]
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ofi3n")
 
-[node name="Vsnap" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="Vsnap" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" unique_id=1426657773]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="vsnap" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+[node name="vsnap" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap" unique_id=496603510]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Vertex Snapping:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap" unique_id=2042720458]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer" unique_id=1289720932]
 visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "Off"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Vsnap/HBoxContainer" unique_id=1604627134]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -193,28 +201,28 @@ rounded = true
 tick_count = 4
 ticks_position = 3
 
-[node name="Affine" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="Affine" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" unique_id=46274056]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="affine" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+[node name="affine" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine" unique_id=1342571422]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Texture Warp:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine" unique_id=538411664]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer" unique_id=1809321296]
 visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "0%"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Affine/HBoxContainer" unique_id=1832159415]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -222,28 +230,28 @@ mouse_filter = 1
 max_value = 1.0
 step = 0.01
 
-[node name="Dither" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="Dither" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" unique_id=1212499133]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="dithering" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither"]
+[node name="dithering" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither" unique_id=913475390]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dithering:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither" unique_id=582626210]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer" unique_id=1535228918]
 visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "Heavy"
 
-[node name="dither" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer"]
+[node name="dither" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/Dither/HBoxContainer" unique_id=1498744100]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -254,22 +262,22 @@ rounded = true
 tick_count = 3
 ticks_position = 3
 
-[node name="ColorS" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics"]
+[node name="ColorS" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics" unique_id=1674981610]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="bandingLabel" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS"]
+[node name="bandingLabel" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS" unique_id=495313284]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Color Banding:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS" unique_id=1169695329]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer" unique_id=587108502]
 visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -278,7 +286,7 @@ theme_override_font_sizes/font_size = 8
 text = "Heavy"
 horizontal_alignment = 2
 
-[node name="banding" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer"]
+[node name="banding" type="HSlider" parent="CanvasLayer-nx/Menu/Settings/TabContainer/Graphics/ColorS/HBoxContainer" unique_id=1327924254]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -289,19 +297,19 @@ rounded = true
 tick_count = 4
 ticks_position = 3
 
-[node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings"]
+[node name="Bottom" type="HBoxContainer" parent="CanvasLayer-nx/Menu/Settings" unique_id=701637133]
 custom_minimum_size = Vector2(0, 30.083)
 layout_mode = 2
 
-[node name="Cancel" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+[node name="Cancel" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom" unique_id=958829038]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer-nx/Menu/Settings/Bottom" unique_id=309993862]
 layout_mode = 2
 
-[node name="Apply" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom"]
+[node name="Apply" type="Button" parent="CanvasLayer-nx/Menu/Settings/Bottom" unique_id=1353152384]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Apply"

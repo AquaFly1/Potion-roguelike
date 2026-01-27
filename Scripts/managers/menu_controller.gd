@@ -41,7 +41,7 @@ func toggle_menu() -> void:
 		tween.tween_property(self,"modulate",Color.WHITE,0.2)
 		
 		switch_menu(first_menu) #reset the travel
-		
+		$Main/PauseIn.play()
 		menu_travel.append(first_menu)
 		first_menu.show()
 		visible = not visible
@@ -58,6 +58,7 @@ func toggle_menu() -> void:
 	else:
 		
 		for i in menu_travel: i.visible = false
+		$Main/PauseOut.play()
 		menu_travel.clear()
 		Input.set_mouse_mode(Game.mouse_mode)
 		get_tree().paused = false

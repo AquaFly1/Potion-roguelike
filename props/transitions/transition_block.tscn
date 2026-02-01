@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxewjyxiyo7my"]
+[gd_scene format=3 uid="uid://cxewjyxiyo7my"]
 
 [ext_resource type="Script" uid="uid://6frvg0obaj15" path="res://Scripts/environment/room_trans_main.gd" id="1_6v614"]
 [ext_resource type="Script" uid="uid://bl8s5b64qnb3u" path="res://Scripts/environment/room_trans_sides.gd" id="2_ha7ph"]
+[ext_resource type="AudioStream" uid="uid://cru30wwrftkhc" path="res://Audio/env/trans_1.ogg" id="3_yh3e2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8lxq"]
 size = Vector3(1, 1, 0.5)
@@ -49,11 +50,12 @@ gradient = SubResource("Gradient_4q0dg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb8l8"]
 
-[node name="Transition" type="Node3D"]
+[node name="Transition" type="Node3D" unique_id=399818610 node_paths=PackedStringArray("sound_exit")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_6v614")
+sound_exit = NodePath("SoundExit")
 
-[node name="Side1Area-nx" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
+[node name="Side1Area-nx" type="Area3D" parent="." unique_id=320179256 node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 collision_layer = 16
 collision_mask = 16
@@ -63,25 +65,25 @@ fade_mesh = NodePath("Side1")
 fade_mesh_other = NodePath("../Side2Area-nx/Side2")
 zone = NodePath("Detect")
 
-[node name="Detect" type="CollisionShape3D" parent="Side1Area-nx"]
+[node name="Detect" type="CollisionShape3D" parent="Side1Area-nx" unique_id=1524665080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
 shape = SubResource("BoxShape3D_y8lxq")
 debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
 
-[node name="Side1" type="MeshInstance3D" parent="Side1Area-nx"]
+[node name="Side1" type="MeshInstance3D" parent="Side1Area-nx" unique_id=1390882274]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0.25)
 layers = 2
 transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("BoxMesh_buf24")
 
-[node name="playerlightBlock" type="MeshInstance3D" parent="Side1Area-nx/Side1"]
+[node name="playerlightBlock" type="MeshInstance3D" parent="Side1Area-nx/Side1" unique_id=2067200895]
 visible = false
 layers = 32
 cast_shadow = 3
 mesh = SubResource("BoxMesh_wb8l8")
 
-[node name="Side2Area-nx" type="Area3D" parent="." node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
+[node name="Side2Area-nx" type="Area3D" parent="." unique_id=722937597 node_paths=PackedStringArray("area_other", "fade_mesh", "fade_mesh_other", "zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
 collision_layer = 16
 collision_mask = 16
@@ -91,32 +93,32 @@ fade_mesh = NodePath("Side2")
 fade_mesh_other = NodePath("../Side1Area-nx/Side1")
 zone = NodePath("Detect")
 
-[node name="Detect" type="CollisionShape3D" parent="Side2Area-nx"]
+[node name="Detect" type="CollisionShape3D" parent="Side2Area-nx" unique_id=225267596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 shape = SubResource("BoxShape3D_y8lxq")
 debug_color = Color(0.9345488, 0.2567793, 0, 0.41960785)
 
-[node name="Side2" type="MeshInstance3D" parent="Side2Area-nx"]
+[node name="Side2" type="MeshInstance3D" parent="Side2Area-nx" unique_id=655325289]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, -0.25)
 layers = 2
 transparency = 1.0
 cast_shadow = 0
 mesh = SubResource("BoxMesh_buf24")
 
-[node name="playerlightBlock2" type="MeshInstance3D" parent="Side2Area-nx/Side2"]
+[node name="playerlightBlock2" type="MeshInstance3D" parent="Side2Area-nx/Side2" unique_id=839523646]
 visible = false
 layers = 32
 material_override = SubResource("StandardMaterial3D_wb8l8")
 cast_shadow = 3
 mesh = SubResource("BoxMesh_wb8l8")
 
-[node name="Black-nx" type="MeshInstance3D" parent="."]
+[node name="Black-nx" type="MeshInstance3D" parent="." unique_id=888456519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 layers = 2
 cast_shadow = 2
 mesh = SubResource("BoxMesh_y8lxq")
 
-[node name="Decal-nx" type="Decal" parent="."]
+[node name="Decal-nx" type="Decal" parent="." unique_id=661814892]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1.1, 0, -1.509958e-07, 0, -1, 0, 0.45, 0)
 layers = 2
 sorting_offset = 6.38
@@ -128,15 +130,15 @@ upper_fade = 1e-05
 lower_fade = 1e-05
 cull_mask = 1021
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1923376324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 input_ray_pickable = false
 
-[node name="block" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="block" type="CollisionShape3D" parent="StaticBody3D" unique_id=239494558]
 shape = SubResource("BoxShape3D_wb8l8")
 disabled = true
 
-[node name="Label3D2" type="Label3D" parent="."]
+[node name="Label3D2" type="Label3D" parent="." unique_id=1675269051]
 transform = Transform3D(1.59, 0, 0, 0, 0.675, 0, 0, 0, 1.59, -0.11361122, 0.38210154, -1.1779199)
 layers = 524288
 billboard = 1
@@ -147,7 +149,7 @@ text = "Side 2
 font_size = 16
 outline_size = 4
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=1937960801]
 transform = Transform3D(1.59, 0, 0, 0, 0.675, 0, 0, 0, 1.59, 0, 0.6185519, 1.0052149)
 layers = 524288
 billboard = 1
@@ -157,3 +159,8 @@ text = "Side 1
 "
 font_size = 16
 outline_size = 4
+
+[node name="SoundExit" type="AudioStreamPlayer" parent="." unique_id=713262660]
+stream = ExtResource("3_yh3e2")
+volume_db = -28.0
+max_polyphony = 2

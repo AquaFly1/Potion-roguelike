@@ -101,9 +101,13 @@ text = "Save & Quit"
 
 [node name="PauseIn" type="AudioStreamPlayer" parent="CanvasLayer-nx/Menu/Main" unique_id=473773786]
 stream = ExtResource("30_ut10i")
+volume_db = -8.0
+pitch_scale = 3.0
 
 [node name="PauseOut" type="AudioStreamPlayer" parent="CanvasLayer-nx/Menu/Main" unique_id=303316319]
 stream = ExtResource("31_v46l1")
+volume_db = -8.0
+pitch_scale = 3.0
 
 [node name="Settings" type="VBoxContainer" parent="CanvasLayer-nx/Menu" unique_id=813133233]
 layout_mode = 1

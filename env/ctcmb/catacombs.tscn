@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b3l36tiauvqmr"]
+[gd_scene format=4 uid="uid://b3l36tiauvqmr"]
 
 [ext_resource type="Texture2D" uid="uid://qf20u0t665vp" path="res://Graphics/temporary_art/chapel layout.png" id="1_mw27p"]
 [ext_resource type="Script" uid="uid://b482nybq75fmf" path="res://env/ctcmb/catacombs.gd" id="1_w3wqa"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://blr2kfttbr3u" path="res://interactions/fights/church/1_goblin.tres" id="13_w3wqa"]
 [ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://interactions/fights/church/3_goblins.tres" id="14_w3wqa"]
 [ext_resource type="PackedScene" uid="uid://d07at07jnbomx" path="res://props/chests/vending_machine_3d.tscn" id="17_jqsnb"]
+[ext_resource type="AudioStream" uid="uid://35pq6uly8wxj" path="res://Audio/env/ambient_1.ogg" id="21_wb1tf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
 
@@ -112,19 +113,19 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_f3t11")
 size = Vector2(25, 25)
 
-[node name="catacombs" type="Node3D"]
+[node name="catacombs" type="Node3D" unique_id=556105291]
 script = ExtResource("1_w3wqa")
 base_env = ExtResource("2_snkmw")
 dark_env = ExtResource("2_1s3mi")
 
-[node name="Chapel" parent="." instance=ExtResource("4_oxv5g")]
+[node name="Chapel" parent="." unique_id=673709974 instance=ExtResource("4_oxv5g")]
 
-[node name="Stairs" parent="." instance=ExtResource("5_yusr8")]
+[node name="Stairs" parent="." unique_id=1516726726 instance=ExtResource("5_yusr8")]
 
-[node name="Walls2" type="Node3D" parent="."]
+[node name="Walls2" type="Node3D" parent="." unique_id=1542581778]
 transform = Transform3D(-9.1793915e-08, 0, -2.1, 0, 1.175, 0, 2.1, 0, -9.1793915e-08, 0, -39.636307, 0)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls2" unique_id=903631412]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
 visible = false
 use_collision = true
@@ -133,96 +134,96 @@ polygon = PackedVector2Array(1.3566622, -22.010647, -3.3251615, -22.058945, 3.84
 depth = 4.58
 material = SubResource("StandardMaterial3D_gepd6")
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Walls2"]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Walls2" unique_id=494370937]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
 use_collision = true
 polygon = PackedVector2Array(-7.1902466, -7.582608, -7.9912734, -7.544465, -8.14385, -6.514573, -9.784048, -6.514573, -9.745903, -6.094987, -9.822192, -5.6754017, -9.185347, -5.5733166, -9.185347, -1.991762, -9.618018, -1.6792774, -9.545906, -1.0543078, -7.598886, -0.9341214, -7.622924, 3.3925886, -11.228516, 3.416626, -11.300628, -0.813935, -10.723732, -0.9100841, -10.74777, -1.8715757, -13.463984, -1.7754266, -13.463984, -1.294681, -12.117895, -1.2225688, -12.190006, 3.849297, -13.295721, 3.849297, -13.27314, 4.6472883, -12.335688, 4.7194, -12.2155, 6.017413, -11.758792, 5.993376, -11.6626425, 4.1665425, -7.0955596, 4.4790273, -6.9753723, 0.8734349, -3.5140052, 0.84939766, -3.3217063, 1.5464787, -2.3602142, 1.4984043, -2.2640662, 0.36865205, -1.2545013, 0.29654026, -1.206426, -0.42457837, -2.4082909, -0.6889884, -2.3541658, -5.6589365, 0.674531, -5.6829734, 0.79471684, -0.6591818, -0.1667738, -0.58706987, -0.19081149, 0.27827215, 1.1072016, 0.3744213, 1.0350912, 1.0474652, 1.443724, 1.0715022, 1.4677604, -0.4428463, 5.602173, -0.49092072, 5.7223587, 0.8070922, 6.299253, 0.9272787, 6.2271423, -3.1109846, 5.0493164, -3.0388727, 4.760869, -2.3898659, 1.732171, -2.3658285, 1.7802452, -4.961855, 4.881055, -4.9378176, 4.881055, -4.3368855, 6.082919, -4.4089975, 6.179067, -6.428129, 8.99143, -6.3560176, 9.207764, -5.033967, 11.010562, -5.0099297, 11.274971, -6.019495, 12.909506, -6.1877565, 12.957581, -6.740614, 11.250934, -6.9329123, 10.962486, -7.6780677, 10.000995, -7.7501793, 9.736586, -7.053098, -7.017398, -6.956949)
 depth = 4.58
 material = SubResource("StandardMaterial3D_procx")
 
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="Walls2"]
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="Walls2" unique_id=1725801487]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.7195333, 0)
 use_collision = true
 polygon = PackedVector2Array(9.084209, 3.5442548, 9.207858, -3.812839, 11.37171, -3.7716224, 11.454142, -2.5557444, 15.189689, -2.5492616, 15.27212, -3.5590591, 16.03462, -3.5178428, 16.137661, -2.4874375, 18.054214, -2.4668293, 18.095432, -0.3235866, 19.517391, -0.24115418, 19.496784, 0.37708932, 18.013, 0.4183055, 17.930567, 2.891278, 16.199486, 2.8706698, 15.93158, 3.7980342, 15.354553, 3.921683, 15.127864, 2.8706698, 14.138675, 2.932494, 14.035635, 1.7990484, 16.982594, 1.7784404, 17.106243, -1.7455457, 10.532257, -1.7043295, 10.655906, 1.8196566, 12.840364, 1.922697, 12.572459, 2.8088455, 11.253542, 3.1797912, 11.253542, 4.7872233, 9.275163, 4.7872233, 8.595096, 4.1895885, 6.1839476, 4.333845, 6.1881275, 9.355838, 5.260763, 9.479486, 5.3638034, 8.346041, 1.8810343, 8.449081, 1.7779936, 9.541311, 0.8300209, 9.417662, 0.829965, 2.2064993, 1.4482079, 2.1652832, 1.4894245, 3.2369049, 5.8171263, 3.0926483, 5.7553015, 1.8149455, 6.1674643, 1.8149455, 6.249897, 3.6078508)
 depth = 4.58
 material = SubResource("StandardMaterial3D_procx")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Walls2"]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Walls2" unique_id=1400039343]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -2.015, 0, 1, -8.807845e-08, 0, -0.7195333, 0)
 mesh = SubResource("ArrayMesh_36k1m")
 
-[node name="floor_body -nx" type="StaticBody3D" parent="."]
+[node name="floor_body -nx" type="StaticBody3D" parent="." unique_id=522229835]
 transform = Transform3D(-9.1793915e-08, 0, -2.1, 0, 2.1, 0, 2.1, 0, -9.1793915e-08, 0, -39.636307, 0)
 
-[node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx"]
+[node name="floor_collision -nx" type="CollisionShape3D" parent="floor_body -nx" unique_id=1672228085]
 shape = SubResource("BoxShape3D_5opd7")
 debug_color = Color(0, 0.6, 0.69803923, 0.39607844)
 
-[node name="floor -nx" type="MeshInstance3D" parent="floor_body -nx"]
+[node name="floor -nx" type="MeshInstance3D" parent="floor_body -nx" unique_id=262783794]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("PlaneMesh_3pl5u")
 skeleton = NodePath("../..")
 
-[node name="Chests" type="Node3D" parent="."]
+[node name="Chests" type="Node3D" parent="." unique_id=751728760]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.7615036, -39.636307, -2.974627)
 
-[node name="Chest_mesh" parent="Chests" instance=ExtResource("2_05l0i")]
+[node name="Chest_mesh" parent="Chests" unique_id=1456667509 instance=ExtResource("2_05l0i")]
 transform = Transform3D(0.8028175, 0, 0.5962248, 0, 1, 0, -0.5962248, 0, 0.8028175, 9.8199005, 0, -4.673291)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("6_mw27p"), ExtResource("5_36k1m"), ExtResource("4_gepd6")])
 
-[node name="Chest_mesh3" parent="Chests" instance=ExtResource("2_05l0i")]
+[node name="Chest_mesh3" parent="Chests" unique_id=32696916 instance=ExtResource("2_05l0i")]
 transform = Transform3D(-0.6864912, 0, 0.7271381, 0, 1, 0, -0.7271381, 0, -0.6864912, -17.128962, 0, 34.126274)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("6_mw27p"), ExtResource("5_36k1m"), ExtResource("4_gepd6")])
 
-[node name="Chest_mesh4" parent="Chests" instance=ExtResource("2_05l0i")]
+[node name="Chest_mesh4" parent="Chests" unique_id=149342310 instance=ExtResource("2_05l0i")]
 transform = Transform3D(0.09492503, 0, 0.9954844, 0, 1, 0, -0.9954844, 0, 0.09492503, -18.6289, 0, 36.061104)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
 
-[node name="Chest_mesh2" parent="Chests" instance=ExtResource("2_05l0i")]
+[node name="Chest_mesh2" parent="Chests" unique_id=1004714532 instance=ExtResource("2_05l0i")]
 transform = Transform3D(0.8028175, 0, -0.5962248, 0, 1, 0, 0.5962248, 0, 0.8028175, 10.92654, 0, -6.491152)
 cards = Array[ExtResource("3_j4k5v")]([ExtResource("7_pgska"), ExtResource("8_7cmid")])
 
-[node name="Shops" type="Node3D" parent="."]
+[node name="Shops" type="Node3D" parent="." unique_id=993302217]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.636307, 0)
 
-[node name="Shop_3D" parent="Shops" instance=ExtResource("9_y2fwv")]
+[node name="Shop_3D" parent="Shops" unique_id=1452118095 instance=ExtResource("9_y2fwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.574913, 0.7565745, -29.246891)
 
-[node name="lights" type="Node3D" parent="."]
+[node name="lights" type="Node3D" parent="." unique_id=238848137]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.59881, 0)
 
-[node name="Candle" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle" parent="lights" unique_id=342432248 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.66074, 0.009764314, -25.771706)
 doors = [null]
 
-[node name="Candle2" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle2" parent="lights" unique_id=1587279012 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.397621, 0.009764314, -9.302944)
 doors = [null, null]
 
-[node name="Candle3" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle3" parent="lights" unique_id=1118684433 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.024822, 0.009764314, 10.142526)
 doors = [null]
 
-[node name="Candle4" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle4" parent="lights" unique_id=1131527395 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.515089, 0.009764314, 22.061356)
 doors = [null, null]
 
-[node name="Candle5" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle5" parent="lights" unique_id=50069437 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.485903, 0.009764314, 23.419968)
 doors = [null, null]
 
-[node name="Candle6" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle6" parent="lights" unique_id=295079243 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.673082, 0.009764314, 14.023357)
 doors = [null]
 
-[node name="Candle7" parent="lights" node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
+[node name="Candle7" parent="lights" unique_id=421640018 node_paths=PackedStringArray("doors") instance=ExtResource("10_j4k5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.406078, 0.009764314, -8.86368)
 doors = [null, null]
 
-[node name="Interactions" type="Node3D" parent="."]
+[node name="Interactions" type="Node3D" parent="." unique_id=1868543905]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -39.636307, 0)
 
-[node name="OutCandle1Fight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
+[node name="OutCandle1Fight" parent="Interactions" unique_id=322378867 node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.836502, 0, -17.7345)
 possible_interactions = Array[Array]([[ExtResource("13_w3wqa")]])
 Exits = [NodePath("../../doors/OutofCandle1"), NodePath("../../doors/IntoHallway"), NodePath("../../doors/IntoCandle2")]
@@ -236,7 +237,7 @@ transform = Transform3D(0.122868985, 0, 0.7035739, 0, 1, 0, -0.07699487, 0, 1.12
 [node name="PlayerPosition" parent="Interactions/OutCandle1Fight" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37403107)
 
-[node name="HallwayFight" parent="Interactions" node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
+[node name="HallwayFight" parent="Interactions" unique_id=209255768 node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.095415, 0, -17.248814)
 possible_interactions = Array[Array]([[ExtResource("14_w3wqa")]])
 Exits = [NodePath("../../doors/IntoHallway")]
@@ -247,127 +248,135 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5531225)
 [node name="PlayerPosition" parent="Interactions/HallwayFight" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.071396)
 
-[node name="doors" type="Node3D" parent="."]
+[node name="doors" type="Node3D" parent="." unique_id=638128573]
 transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0, -39.636307, 0)
 
-[node name="OutofCandle1" parent="doors" node_paths=PackedStringArray("Side1Candle", "side_2_interaction") instance=ExtResource("12_mw27p")]
+[node name="OutofCandle1" parent="doors" unique_id=15309264 node_paths=PackedStringArray("Side1Candle", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, -1.7, 0, 5.578, 0, 2.128, 0, -7.430936e-08, 21.633, -0.044, -17.296)
 Side1Candle = NodePath("../../lights/Candle")
 side_2_interaction = NodePath("../../Interactions/OutCandle1Fight")
 
-[node name="IntoCandle1" parent="doors" node_paths=PackedStringArray("side_2_interaction") instance=ExtResource("12_mw27p")]
+[node name="IntoCandle1" parent="doors" unique_id=104656391 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301784e-08, 0, -1.7000002, 0, 5.5780005, 0, 2.128, 0, -7.4309376e-08, 14.915021, -0.044000626, -15.232268)
-side_2_interaction = NodePath("../../Interactions/OutCandle1Fight")
+Side2Candle = NodePath("../../lights/Candle")
 
-[node name="IntoHallway" parent="doors" node_paths=PackedStringArray("side_1_interaction", "side_2_interaction") instance=ExtResource("12_mw27p")]
+[node name="IntoHallway" parent="doors" unique_id=338827224 node_paths=PackedStringArray("side_1_interaction", "side_2_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.301783e-08, 0, 1.7, 0, 5.5780005, 0, -2.128, 0, -7.430936e-08, 14.637951, -0.044, -11.438599)
 side_1_interaction = NodePath("../../Interactions/OutCandle1Fight")
 show_enemies_1_immediately = true
 side_2_interaction = NodePath("../../Interactions/HallwayFight")
 show_enemies_2_immediately = true
 
-[node name="IntoCandle2" parent="doors" node_paths=PackedStringArray("Side2Candle", "side_1_interaction") instance=ExtResource("12_mw27p")]
+[node name="IntoCandle2" parent="doors" unique_id=1755220364 node_paths=PackedStringArray("Side2Candle", "side_1_interaction") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-2.1279998, 0, -2.5669289e-07, 0, 5.5780005, 0, 3.2131902e-07, 0, -1.7, 18.90311, -0.044, -9.109648)
 Side2Candle = NodePath("../../lights/Candle2")
 side_1_interaction = NodePath("../../Interactions/OutCandle1Fight")
 show_enemies_1_immediately = true
 
-[node name="IntoCRoom" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoCRoom" parent="doors" unique_id=2117174265 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(-9.3017825e-08, 0, 1.7, 0, 5.5780005, 0, -2.1279998, 0, -7.430936e-08, 21.872883, -0.044, -5.694927)
 Side2Candle = NodePath("../../lights/Candle2")
 secret_passage = true
 show_enemies_1_immediately = true
 
-[node name="IntoShopHallway" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoShopHallway" parent="doors" unique_id=771950650 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065954e-07, 0, 1.7, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 14.5189085, -0.044, -6.085002)
 Side1Candle = NodePath("../../lights/Candle2")
 
-[node name="IntoChest" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoChest" parent="doors" unique_id=295274850 instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065955e-07, 0, 1.7000002, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 7.87647, -0.044, -5.2666426)
 
-[node name="IntoShop" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoShop" parent="doors" unique_id=610308257 instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065957e-07, 0, 1.7000002, 0, 5.578001, 0, -2.128, 0, 1.2834644e-07, 7.87647, -0.044000626, 1.8105751)
 
-[node name="OutofShop" parent="doors" node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("12_mw27p")]
+[node name="OutofShop" parent="doors" unique_id=1503217669 node_paths=PackedStringArray("Side1Candle", "Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.9942809e-07, 0, 1.7000002, 0, 5.578001, 0, -2.6415043, 0, 1.2834644e-07, 1.5816245, -0.044000626, 2.097364)
 Side1Candle = NodePath("../../lights/Candle4")
 Side2Candle = NodePath("../../lights/Candle4")
 
-[node name="IntoHallway2" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoHallway2" parent="doors" unique_id=284150401 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.0870631e-07, 0, 1.7, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -4.072679, -0.044000626, 3.2771199)
 Side1Candle = NodePath("../../lights/Candle5")
 
-[node name="IntoHallway3" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoHallway3" parent="doors" unique_id=1115512878 instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.0870631e-07, 0, 1.7000002, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -10.890321, -0.044000626, -11.826967)
 
-[node name="Into?2" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="Into?2" parent="doors" unique_id=1732501026 instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.0870631e-07, 0, 1.7000002, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -23.433075, -0.044000626, 0.41511813)
 
-[node name="IntoCandle5" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoCandle5" parent="doors" unique_id=1441421955 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.0870631e-07, 0, 1.7000002, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -11.448638, -0.044000626, 14.793)
-
-[node name="IntoCandle6" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
-transform = Transform3D(2.0870631e-07, 0, 1.7000002, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -16.946869, -0.044000626, 9.337379)
 Side1Candle = NodePath("../../lights/Candle5")
 
-[node name="CRoomSplit" parent="doors" instance=ExtResource("12_mw27p")]
+[node name="IntoCandle6" parent="doors" unique_id=1622117306 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
+transform = Transform3D(2.0870631e-07, 0, 1.7000002, 0, 5.578001, 0, -2.7643983, 0, 1.2834644e-07, -16.946869, -0.044000626, 9.337379)
+Side2Candle = NodePath("../../lights/Candle6")
+
+[node name="CRoomSplit" parent="doors" unique_id=731048072 instance=ExtResource("12_mw27p")]
 transform = Transform3D(-2.1279998, 0, 2.5669289e-07, 0, 5.578001, 0, -3.2131902e-07, 0, -1.7, 28.311483, -0.044, 0.1176885)
 
-[node name="OutofCRoom" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
+[node name="OutofCRoom" parent="doors" unique_id=1319739263 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 21.864569, -0.044, 6.315426)
 Side2Candle = NodePath("../../lights/Candle3")
 
-[node name="OutOfCandle3" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="OutOfCandle3" parent="doors" unique_id=1926175834 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 15.240847, -0.044, 7.8124123)
 Side1Candle = NodePath("../../lights/Candle3")
 secret_passage = true
 
-[node name="Candle3SideRoom" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="Candle3SideRoom" parent="doors" unique_id=1220888197 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.9723745e-07, 0, 5.578002, 0, 3.720713e-07, 0, 1.7, 18.652225, -0.044, 3.2622843)
 Side1Candle = NodePath("../../lights/Candle3")
 
-[node name="Into?" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="Into?" parent="doors" unique_id=1493253283 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.972375e-07, 0, 5.578002, 0, 3.7207127e-07, 0, 1.7000002, 11.03931, -0.044000626, 17.509787)
 Side1Candle = NodePath("../../lights/Candle3")
 
-[node name="IntoEmpty" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoEmpty" parent="doors" unique_id=168027503 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.972375e-07, 0, 5.578002, 0, 3.7207127e-07, 0, 1.7000002, -1.1895969, -0.044000626, 17.116222)
 Side1Candle = NodePath("../../lights/Candle3")
 
-[node name="IntoChest2" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoChest2" parent="doors" unique_id=1374973608 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.972375e-07, 0, 5.578002, 0, 3.7207127e-07, 0, 1.7000002, -7.98794, -0.044000626, 21.21371)
-Side1Candle = NodePath("../../lights/Candle5")
+Side2Candle = NodePath("../../lights/Candle5")
 
-[node name="IntoEmpty2" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoEmpty2" parent="doors" unique_id=189295873 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.1279998, 0, -2.972375e-07, 0, 5.578002, 0, 3.7207127e-07, 0, 1.7000002, -1.1895976, -0.044000626, 0.14813842)
 Side1Candle = NodePath("../../lights/Candle3")
 
-[node name="IntoEmpty3" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoEmpty3" parent="doors" unique_id=393309210 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.9273975, 0, -2.972375e-07, 0, 5.578002, 0, 5.1184225e-07, 0, 1.7000002, -14.351252, -0.044000626, -2.1788075)
-Side1Candle = NodePath("../../lights/Candle7")
+Side2Candle = NodePath("../../lights/Candle7")
 
-[node name="IntoEmpty4" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoEmpty4" parent="doors" unique_id=1127646402 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.9273975, 0, -2.972375e-07, 0, 5.578002, 0, 5.1184225e-07, 0, 1.7000002, -14.730957, -0.044000626, -8.409078)
 Side1Candle = NodePath("../../lights/Candle7")
 
-[node name="IntoCandle7" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoCandle7" parent="doors" unique_id=390342281 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.9273975, 0, -2.972375e-07, 0, 5.578002, 0, 5.1184225e-07, 0, 1.7000002, -19.624582, -0.044000626, -2.1788073)
-Side1Candle = NodePath("../../lights/Candle3")
+Side2Candle = NodePath("../../lights/Candle7")
 
-[node name="OutofCandle6" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="OutofCandle6" parent="doors" unique_id=242211059 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(2.9273975, 0, -2.972375e-07, 0, 5.578002, 0, 5.1184225e-07, 0, 1.7000002, -19.624584, -0.044000626, 5.778521)
 Side1Candle = NodePath("../../lights/Candle6")
 
-[node name="IntoCandle4" parent="doors" node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
+[node name="IntoCandle4" parent="doors" unique_id=811076977 node_paths=PackedStringArray("Side2Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065951e-07, 0, 1.7, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 8.17017, -0.044, 13.971577)
 Side2Candle = NodePath("../../lights/Candle4")
 
-[node name="OutofCandle4" parent="doors" node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
+[node name="OutofCandle4" parent="doors" unique_id=1394471469 node_paths=PackedStringArray("Side1Candle") instance=ExtResource("12_mw27p")]
 transform = Transform3D(1.6065952e-07, 0, 1.7000002, 0, 5.578001, 0, -2.1279998, 0, 1.2834644e-07, 1.8036867, -0.044000626, 13.971577)
 Side1Candle = NodePath("../../lights/Candle4")
 
-[node name="Vending_machine_3D -nx" parent="." instance=ExtResource("17_jqsnb")]
+[node name="Vending_machine_3D -nx" parent="." unique_id=1438009848 instance=ExtResource("17_jqsnb")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.233335, -39.636307, -24.186382)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=205658922]
+stream = ExtResource("21_wb1tf")
+volume_db = -16.0
+autoplay = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1747045569]
 
 [editable path="Interactions/OutCandle1Fight"]
 [editable path="Interactions/HallwayFight"]

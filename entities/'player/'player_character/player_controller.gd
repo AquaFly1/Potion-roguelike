@@ -20,7 +20,11 @@ var h_rot: float = 0
 @export var pivot: Node3D
 var mouse_mode_capture: bool = true
 
-@onready var hand_display: Node2D = $"3D Projection"
+@onready var hand_display_front = $"3D Projection/MaskLayer/ProjMask"
+@onready var hand_display_back = $"3D Projection/BackLayer/ProjBack"
+@export var steps_player: AudioStreamPlayer
+@export var steps_timer: Timer
+@export var hand_bounce_curve: Curve
 @export var hand: Control
 
 var horizontal_velocity: Vector3
@@ -36,6 +40,7 @@ func _ready() -> void:
 	Game.interaction_started.connect(start_interaction)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_mode_capture = true
+	steps_timer.timeout.connect(step_loop)
 	Player.player_ready.emit()
 	
 		
@@ -113,25 +118,37 @@ func _physics_process(delta):
 		
 #region small anims
 	if velocity.distance_to(Vector3.ZERO) > 2 and is_on_floor():
-		anim_time += delta
-		anim_y = (cos(anim_time*15-PI)+1)*-10
+		anim_time = fmod(anim_time+delta,.6)
+		anim_y = hand_bounce_curve.sample(anim_time/.6)*-7.
+		if steps_timer.one_shot:
+			steps_timer.start()
+			steps_timer.one_shot = false
+			if not steps_player.playing:
+				step_loop()
+			
+			
+			
 
 	else:
+		steps_timer.one_shot = true
 		if is_on_floor():
-			if cos(anim_time*15) < 0.98:
-				anim_time += delta
-				anim_y = (cos(anim_time*15-PI)+1)*-10
-			
-			else:
+				anim_y = lerpf(anim_y,0,0.1)	
 				anim_time = 0
 		else:
 			anim_y = lerpf(anim_y,0,0.1)	
 			anim_time = 0 
+			
 		
-	hand_display.transform.origin.y = anim_y
+	hand_display_front.position.y = anim_y
+	hand_display_back.position.y = anim_y
 #endregion
 	# Move character
 	move_and_slide()
+
+func step_loop():
+	if not steps_timer.one_shot:
+		steps_player.play()
+
 
 func start_interaction():
 	Game.is_in_combat = true

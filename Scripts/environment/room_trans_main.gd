@@ -15,6 +15,7 @@ extends Node3D
 @export var show_enemies_1_immediately: bool ##orients and shows the enemies immediately, else only when the player enters the fight spawner hitbox
 @export var side_2_interaction: Node3D ##spawns ennemies when touching side 2
 @export var show_enemies_2_immediately: bool ##orients and shows the enemies immediately, else only when the player enters the fight spawner hitbox
+@export var sound_exit: AudioStreamPlayer
 var player_distance_along_z
 
 var gradient_t : GradientTexture1D

@@ -43,6 +43,7 @@ func on_body_entered(_body: Node3D) -> void:
 		
 		
 	else:
+		parent.sound_exit.play()
 		area_other.fading = false
 		fading = true
 		Player.node.horizontal_velocity = Vector3.ZERO
@@ -81,6 +82,7 @@ func on_body_exited(_body: Node3D) -> void:
 		fading = false
 		area_other.block_player_light.visible = false
 		block_player_light.visible = false
+		
 		
 		
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://cxuteeu2gi31u"]
+[gd_scene format=4 uid="uid://cxuteeu2gi31u"]
 
 [ext_resource type="Script" uid="uid://dioiden3c3rso" path="res://entities/'player/'player_character/player_controller.gd" id="1_r8aaq"]
 [ext_resource type="Script" uid="uid://csdpr6tk3ivjt" path="res://entities/'player/'player_character/fight_light.gd" id="2_75lg7"]
@@ -15,21 +15,36 @@
 [ext_resource type="Script" uid="uid://clqa2xnkjw6s4" path="res://entities/'player/hands/PlayerAnimations.gd" id="8_x5yqs"]
 [ext_resource type="Texture2D" uid="uid://d1pflar10i156" path="res://Graphics/Sprites/palette.png" id="9_fmrin"]
 [ext_resource type="PackedScene" uid="uid://b1vvsgo53l5k2" path="res://entities/'player/chand/card_in_hand_target.tscn" id="10_sefq3"]
+[ext_resource type="AudioStream" uid="uid://wfhvi1fud2gr" path="res://Audio/player/steps1.ogg" id="13_e6l4s"]
 [ext_resource type="Script" uid="uid://b1hq1hw8ia184" path="res://props/PopupLabel.gd" id="13_en4d4"]
 [ext_resource type="Environment" uid="uid://d3k4ly86u2bjk" path="res://env/ctcmb/color_adjusts/fight.tres" id="13_s1eas"]
+[ext_resource type="AudioStream" uid="uid://cop13nqdakga4" path="res://Audio/player/steps2.ogg" id="14_8wq02"]
 [ext_resource type="Script" uid="uid://b4p4btdnb0aq3" path="res://entities/'player/'player_character/chand_manager.gd" id="14_q0cqy"]
 [ext_resource type="PackedScene" uid="uid://dsrc1ojniam15" path="res://entities/health_bar/health_bar.tscn" id="14_yicnn"]
+[ext_resource type="AudioStream" uid="uid://cs4yt7qstifi7" path="res://Audio/player/steps3.ogg" id="15_2bm51"]
 [ext_resource type="PackedScene" uid="uid://cl5187ltkgw2i" path="res://Resources/cards/Card.tscn" id="15_vyq64"]
 [ext_resource type="Script" uid="uid://bv2gaws1frp17" path="res://entities/'player/'player_character/game_over_panel.gd" id="16_iq2rp"]
+[ext_resource type="AudioStream" uid="uid://ccvb3fo0wv4n2" path="res://Audio/player/steps4.ogg" id="16_vdqx0"]
 [ext_resource type="Shader" uid="uid://dmok00qb87l71" path="res://Graphics/Shaders/PostPDownScaler.gdshader" id="17_iq2rp"]
+[ext_resource type="AudioStream" uid="uid://dkqg657pdx4c7" path="res://Audio/player/steps5.ogg" id="17_snx8x"]
 [ext_resource type="Texture2D" uid="uid://cyie8g3yocdk0" path="res://Graphics/temporary_art/potion_bar_empty.aseprite" id="17_y4bcr"]
+[ext_resource type="AudioStream" uid="uid://king7fnufhyb" path="res://Audio/player/steps6.ogg" id="18_h1cp8"]
 [ext_resource type="Texture2D" uid="uid://c0kcxe0lwh7x6" path="res://Graphics/temporary_art/potion_bar.aseprite" id="18_scb0v"]
 [ext_resource type="Theme" uid="uid://ccn7rphveje3s" path="res://Graphics/Fonts/default_theme.tres" id="19_48k4y"]
+[ext_resource type="AudioStream" uid="uid://dui826jcdk8vd" path="res://Audio/player/steps7.ogg" id="19_k62s7"]
 [ext_resource type="Texture2D" uid="uid://dd7032uivjcxf" path="res://Graphics/temporary_art/potion.aseprite" id="20_ixr61"]
+[ext_resource type="AudioStream" uid="uid://dnqi80emftsjr" path="res://Audio/player/steps8.ogg" id="20_mdid8"]
 [ext_resource type="Script" uid="uid://ckq2nwn431u8r" path="res://Scripts/managers/interact_wave_controller.gd" id="21_fmrin"]
 [ext_resource type="Script" uid="uid://c5xx8gq1bd3fi" path="res://entities/'player/chand/player_labels.gd" id="21_m4mf4"]
+[ext_resource type="AudioStream" uid="uid://bcfh2kp5cvipo" path="res://Audio/player/steps9.ogg" id="21_ncfk4"]
 [ext_resource type="Shader" uid="uid://bn7rtec3bshnn" path="res://Graphics/Shaders/screen_wave.gdshader" id="21_nes5i"]
 [ext_resource type="Shader" uid="uid://duv1lhgdlll16" path="res://Graphics/Shaders/interaction_color.gdshader" id="22_4kjub"]
+[ext_resource type="AudioStream" uid="uid://p7q32uypqewc" path="res://Audio/player/steps10.ogg" id="22_uv0k4"]
+
+[sub_resource type="Curve" id="Curve_bnxcq"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1.4901161e-08), 0.0, 0.0, 0, 0, Vector2(0.1, 1.4901161e-08), 0.0, 0.0, 0, 0, Vector2(0.3, -1), -0.07224341, -0.07224341, 0, 0, Vector2(0.8, 1.4901161e-08), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l3v4j"]
 height = 0.5
@@ -1090,6 +1105,20 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bnxcq"]
+random_pitch = 1.1799698
+streams_count = 10
+stream_0/stream = ExtResource("13_e6l4s")
+stream_1/stream = ExtResource("14_8wq02")
+stream_2/stream = ExtResource("15_2bm51")
+stream_3/stream = ExtResource("16_vdqx0")
+stream_4/stream = ExtResource("17_snx8x")
+stream_5/stream = ExtResource("18_h1cp8")
+stream_6/stream = ExtResource("19_k62s7")
+stream_7/stream = ExtResource("20_mdid8")
+stream_8/stream = ExtResource("21_ncfk4")
+stream_9/stream = ExtResource("22_uv0k4")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmrin"]
 shader = ExtResource("21_nes5i")
 shader_parameter/intensity = 0.0
@@ -1189,7 +1218,7 @@ shader_parameter/enable_glow = true
 shader_parameter/glow_strength = 0.1150000054625
 shader_parameter/glow_spread = 0.005
 
-[node name="Player-nx" type="CharacterBody3D" node_paths=PackedStringArray("camera", "self_light", "self_dark_light", "pivot", "hand")]
+[node name="Player-nx" type="CharacterBody3D" unique_id=1804713245 node_paths=PackedStringArray("camera", "self_light", "self_dark_light", "pivot", "steps_player", "steps_timer", "hand")]
 collision_layer = 17
 collision_mask = 17
 floor_constant_speed = true
@@ -1203,10 +1232,13 @@ camera = NodePath("Camera_pivot/Main Camera")
 self_light = NodePath("Self_Light")
 self_dark_light = NodePath("Dark_light")
 pivot = NodePath("Camera_pivot")
+steps_player = NodePath("steps")
+steps_timer = NodePath("steps/Timer")
+hand_bounce_curve = SubResource("Curve_bnxcq")
 hand = NodePath("UI+PostP/UI/hand")
 metadata/_edit_horizontal_guides_ = [-141.0]
 
-[node name="Self_Light" type="OmniLight3D" parent="."]
+[node name="Self_Light" type="OmniLight3D" parent="." unique_id=2142535981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 layers = 5121
 light_energy = 0.6
@@ -1216,7 +1248,7 @@ shadow_blur = 0.0
 shadow_caster_mask = 4293918753
 omni_range = 40.0
 
-[node name="Dark_light" type="OmniLight3D" parent="."]
+[node name="Dark_light" type="OmniLight3D" parent="." unique_id=467853107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 visible = false
 layers = 5121
@@ -1229,7 +1261,7 @@ shadow_caster_mask = 4293918753
 omni_range = 6.7
 omni_attenuation = 0.0
 
-[node name="Teeny_Dark_light" type="SpotLight3D" parent="."]
+[node name="Teeny_Dark_light" type="SpotLight3D" parent="." unique_id=1069307869]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
 layers = 5121
 light_color = Color(0.049300004, 0.10562667, 0.17, 1)
@@ -1242,29 +1274,29 @@ shadow_caster_mask = 4293918753
 spot_range = 3.5
 spot_angle = 30.71
 
-[node name="Head" type="CollisionShape3D" parent="."]
+[node name="Head" type="CollisionShape3D" parent="." unique_id=845324851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 shape = SubResource("CylinderShape3D_l3v4j")
 
-[node name="Body" type="CollisionShape3D" parent="."]
+[node name="Body" type="CollisionShape3D" parent="." unique_id=950278318]
 shape = SubResource("CapsuleShape3D_6t5aa")
 
-[node name="Camera_pivot" type="Node3D" parent="."]
+[node name="Camera_pivot" type="Node3D" parent="." unique_id=2067847210]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 
-[node name="Main Camera" type="Camera3D" parent="Camera_pivot"]
+[node name="Main Camera" type="Camera3D" parent="Camera_pivot" unique_id=262217370]
 cull_mask = 517115
 environment = SubResource("Environment_l3v4j")
 current = true
 script = ExtResource("2_bnxcq")
 
-[node name="EnemyRenderTransforms" type="RemoteTransform3D" parent="Camera_pivot/Main Camera"]
+[node name="EnemyRenderTransforms" type="RemoteTransform3D" parent="Camera_pivot/Main Camera" unique_id=269346563]
 remote_path = NodePath("../../Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera")
 update_scale = false
 
-[node name="Enemy and IgnoreWave" type="CanvasLayer" parent="Camera_pivot"]
+[node name="Enemy and IgnoreWave" type="CanvasLayer" parent="Camera_pivot" unique_id=1846650334]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_pivot/Enemy and IgnoreWave"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_pivot/Enemy and IgnoreWave" unique_id=2042207549]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1274,34 +1306,34 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 stretch = true
 
-[node name="EnemyRender" type="SubViewport" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer"]
+[node name="EnemyRender" type="SubViewport" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer" unique_id=358198399]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="camera" type="Camera3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender"]
+[node name="camera" type="Camera3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender" unique_id=629871545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 cull_mask = 4100
 environment = SubResource("Environment_s1eas")
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera_pivot/Enemy and IgnoreWave/SubViewportContainer/EnemyRender/camera" unique_id=2091268111]
 layers = 4
 light_energy = 0.0
 script = ExtResource("2_75lg7")
 
-[node name="ProjectionOriginMask" type="RemoteTransform3D" parent="Camera_pivot"]
+[node name="ProjectionOriginMask" type="RemoteTransform3D" parent="Camera_pivot" unique_id=807393950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24663508, 0.18365484)
 remote_path = NodePath("../../3D Projection/3D View/ViewMasked/HandNewParent")
 update_scale = false
 
-[node name="ProjectionOriginBack" type="RemoteTransform3D" parent="Camera_pivot/ProjectionOriginMask"]
+[node name="ProjectionOriginBack" type="RemoteTransform3D" parent="Camera_pivot/ProjectionOriginMask" unique_id=784258379]
 remote_path = NodePath("../../../3D Projection/3D View/ViewBack/HandNewParentBack")
 update_scale = false
 
-[node name="InteractRay" type="RayCast3D" parent="Camera_pivot" node_paths=PackedStringArray("popup_label")]
+[node name="InteractRay" type="RayCast3D" parent="Camera_pivot" unique_id=1056567199 node_paths=PackedStringArray("popup_label")]
 target_position = Vector3(0, 0, -2.5)
 collision_mask = 4
 hit_from_inside = true
@@ -1315,7 +1347,7 @@ name_and_text = Dictionary[String, String]({
 "Chest": "[E] : Open Chest"
 })
 
-[node name="InfiniRay" type="RayCast3D" parent="Camera_pivot"]
+[node name="InfiniRay" type="RayCast3D" parent="Camera_pivot" unique_id=2098091205]
 visible = false
 target_position = Vector3(0, 0, -50)
 collision_mask = 4
@@ -1326,13 +1358,13 @@ debug_shape_custom_color = Color(0, 0.53, 0.45049992, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_en4d4")
 
-[node name="3D Projection" type="Node2D" parent="."]
+[node name="3D Projection" type="Node2D" parent="." unique_id=671260404]
 scale = Vector2(6, 6)
 
-[node name="MaskLayer" type="CanvasLayer" parent="3D Projection"]
+[node name="MaskLayer" type="CanvasLayer" parent="3D Projection" unique_id=1747305657]
 layer = 42
 
-[node name="ProjMask" type="TextureRect" parent="3D Projection/MaskLayer"]
+[node name="ProjMask" type="TextureRect" parent="3D Projection/MaskLayer" unique_id=805253143]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6xcv")
 anchors_preset = 15
@@ -1343,10 +1375,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("ViewportTexture_4kjub")
 
-[node name="BackLayer" type="CanvasLayer" parent="3D Projection"]
+[node name="BackLayer" type="CanvasLayer" parent="3D Projection" unique_id=957020328]
 layer = 38
 
-[node name="ProjBack" type="TextureRect" parent="3D Projection/BackLayer"]
+[node name="ProjBack" type="TextureRect" parent="3D Projection/BackLayer" unique_id=2104359454]
 z_index = -50
 texture_filter = 1
 anchors_preset = 15
@@ -1357,10 +1389,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("ViewportTexture_ukq60")
 
-[node name="3D View" type="Node3D" parent="3D Projection"]
+[node name="3D View" type="Node3D" parent="3D Projection" unique_id=888957078]
 script = ExtResource("8_nes5i")
 
-[node name="ViewMasked" type="SubViewport" parent="3D Projection/3D View"]
+[node name="ViewMasked" type="SubViewport" parent="3D Projection/3D View" unique_id=1819682571]
 transparent_bg = true
 handle_input_locally = false
 gui_disable_input = true
@@ -1368,14 +1400,14 @@ size = Vector2i(320, 180)
 size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
 
-[node name="HandNewParent" type="Node3D" parent="3D Projection/3D View/ViewMasked"]
+[node name="HandNewParent" type="Node3D" parent="3D Projection/3D View/ViewMasked" unique_id=932609337]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8716351, 0.18365484)
 
-[node name="hand" parent="3D Projection/3D View/ViewMasked/HandNewParent" instance=ExtResource("7_x5yqs")]
+[node name="hand" parent="3D Projection/3D View/ViewMasked/HandNewParent" unique_id=1129603631 instance=ExtResource("7_x5yqs")]
 visible = false
 metadata/run = false
 
-[node name="AnimationTree" type="AnimationTree" parent="3D Projection/3D View/ViewMasked/HandNewParent"]
+[node name="AnimationTree" type="AnimationTree" parent="3D Projection/3D View/ViewMasked/HandNewParent" unique_id=797046704]
 root_node = NodePath("../hand_Imported")
 tree_root = SubResource("AnimationNodeBlendTree_rd67o")
 anim_player = NodePath("../hand_Imported/AnimationPlayer")
@@ -1389,7 +1421,7 @@ parameters/holdStop/scale = 0.0
 parameters/hold_amount/seek_request = -1.0
 script = ExtResource("8_x5yqs")
 
-[node name="mask2" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent"]
+[node name="mask2" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent" unique_id=240179103]
 transform = Transform3D(0.93409836, -0.35367963, 0.048689842, 0.19489998, 0.39090902, -0.899558, 0.29912186, 0.8497654, 0.4340797, 0.66857445, -0.0810132, -1.4033873)
 layers = 2048
 cast_shadow = 0
@@ -1397,49 +1429,49 @@ mesh = SubResource("PlaneMesh_v6xcv")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_b7dpg")
 
-[node name="CameraMask" type="Camera3D" parent="3D Projection/3D View/ViewMasked/HandNewParent"]
+[node name="CameraMask" type="Camera3D" parent="3D Projection/3D View/ViewMasked/HandNewParent" unique_id=657043015]
 transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.17364822, 0, -0.17364822, 0.9848078, 0, 0.1795767, 1.0184299)
 cull_mask = 3072
 fov = 29.394957
 near = 0.1
 far = 100.0
 
-[node name="Post-Process" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/CameraMask"]
+[node name="Post-Process" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/CameraMask" unique_id=1094264429]
 transform = Transform3D(0.99999994, 0, 0, 0, 1.164898, 0, 0, 1.4901161e-08, 0.06481738, 0, 0, -0.585)
 layers = 1024
 material_override = SubResource("ShaderMaterial_x5yqs")
 mesh = SubResource("BoxMesh_j5eje")
 skeleton = NodePath("../../mask2")
 
-[node name="hand_Imported" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent"]
+[node name="hand_Imported" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent" unique_id=1593019144]
 metadata/run = false
 
-[node name="Origin" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported"]
+[node name="Origin" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported" unique_id=1183364903]
 
-[node name="ArmRight" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin"]
+[node name="ArmRight" type="Node3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin" unique_id=106372343]
 transform = Transform3D(0.022453127, -0.3018036, 0.0671602, 0.2103928, -0.03442879, -0.22505453, 0.22656289, 0.0618813, 0.20233633, 0.68911994, -0.73348266, -1.1523228)
 
-[node name="CardPathEnd" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight"]
+[node name="CardPathEnd" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight" unique_id=213696426]
 transform = Transform3D(0.04998956, 0, 0, 0, 0.049989555, 0, 0, 0, 0.049989555, -0.24426594, -0.18248151, -0.6635866)
 mesh = SubResource("ArrayMesh_2ckpf")
 skeleton = NodePath("")
 
-[node name="CardPathEndCurve" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/CardPathEnd"]
+[node name="CardPathEndCurve" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/CardPathEnd" unique_id=1412263449]
 transform = Transform3D(10, 0, 0, 0, 0, -10, 0, 9.999963, 0, -6.2975225, 21.895061, 21.326902)
 mesh = SubResource("ArrayMesh_07iu7")
 skeleton = NodePath("")
 
-[node name="CardPathStart" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight"]
+[node name="CardPathStart" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight" unique_id=1357146963]
 transform = Transform3D(0.050263837, 0, 0, 0, 0.050263833, 0, 0, 0, 0.050263837, -0.18879439, 0.26133892, -0.80709636)
 mesh = SubResource("ArrayMesh_53pds")
 skeleton = NodePath("")
 
-[node name="CardPathStartCurve" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/CardPathStart"]
+[node name="CardPathStartCurve" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/CardPathStart" unique_id=1923964776]
 transform = Transform3D(10, 0, 0, 0, 0, -9.999999, 0, 9.999962, 0, -1.5071048, 19.803537, 20.658184)
 mesh = SubResource("ArrayMesh_g6hrr")
 skeleton = NodePath("")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight"]
+[node name="Skeleton3D" type="Skeleton3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight" unique_id=1437399758]
 bones/0/name = "Wrist"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.9428636, -0.32125777, 0.0883271, -0.06513798, 0.08224976, 0.9944807, -0.32674956, -0.9434132, 0.056624215, 0.065740466, -0.024731666, -0.029745221)
@@ -1630,52 +1662,58 @@ bones/26/position = Vector3(-0.033332996, 0.8182988, -0.9056075)
 bones/26/rotation = Quaternion(0.16051202, 0.85342914, 0.3076915, -0.38887087)
 bones/26/scale = Vector3(0.99999994, 1.0000001, 1)
 
-[node name="HandRight" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/Skeleton3D"]
+[node name="HandRight" type="MeshInstance3D" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported/Origin/ArmRight/Skeleton3D" unique_id=1844830828]
 mesh = SubResource("ArrayMesh_kil1g")
 skin = SubResource("Skin_hmew1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported"]
-libraries = {
-&"": SubResource("AnimationLibrary_6ns7h")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="3D Projection/3D View/ViewMasked/HandNewParent/hand_Imported" unique_id=1491368069]
+libraries/ = SubResource("AnimationLibrary_6ns7h")
 
-[node name="ViewBack" type="SubViewport" parent="3D Projection/3D View"]
+[node name="ViewBack" type="SubViewport" parent="3D Projection/3D View" unique_id=1296820893]
 transparent_bg = true
 gui_disable_input = true
 size = Vector2i(320, 180)
 size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
 
-[node name="HandNewParentBack" type="Node3D" parent="3D Projection/3D View/ViewBack"]
+[node name="HandNewParentBack" type="Node3D" parent="3D Projection/3D View/ViewBack" unique_id=1409143291]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8716351, 0.18365484)
 
-[node name="CameraBack" type="Camera3D" parent="3D Projection/3D View/ViewBack/HandNewParentBack"]
+[node name="CameraBack" type="Camera3D" parent="3D Projection/3D View/ViewBack/HandNewParentBack" unique_id=2079861959]
 transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.17364821, 0, -0.17364821, 0.9848078, 0, 0.1795767, 1.0184299)
 cull_mask = 1024
 fov = 29.394957
 near = 0.1
 far = 100.0
 
-[node name="Palette" type="Sprite2D" parent="3D Projection"]
+[node name="Palette" type="Sprite2D" parent="3D Projection" unique_id=1758948218]
 visible = false
 position = Vector2(-121.83334, -35.666664)
 scale = Vector2(3.6249998, 65.66667)
 texture = ExtResource("9_fmrin")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Projection"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Projection" unique_id=1023623388]
 transform = Transform3D(1, 0, 0, 0, -0.034446023, 0.9994066, 0, -0.9994066, -0.034446023, 0, 1.6982912, -3.6866739)
 visible = false
 layers = 1024
 
-[node name="HandShape" type="Path2D" parent="." node_paths=PackedStringArray("camera")]
+[node name="HandShape" type="Path2D" parent="." unique_id=2040577614 node_paths=PackedStringArray("camera")]
 curve = SubResource("Curve2D_en4d4")
 script = ExtResource("7_a74oi")
 camera = NodePath("../3D Projection/3D View/ViewMasked/HandNewParent/CameraMask")
 
-[node name="InteractionWave" type="CanvasLayer" parent="."]
+[node name="steps" type="AudioStreamPlayer" parent="." unique_id=395375815]
+stream = SubResource("AudioStreamRandomizer_bnxcq")
+volume_db = -12.0
+max_polyphony = 4
+
+[node name="Timer" type="Timer" parent="steps" unique_id=1243443718]
+wait_time = 0.6
+
+[node name="InteractionWave" type="CanvasLayer" parent="." unique_id=2099521240]
 layer = -10
 
-[node name="Wave" type="ColorRect" parent="InteractionWave" node_paths=PackedStringArray("warp_filter")]
+[node name="Wave" type="ColorRect" parent="InteractionWave" unique_id=1463664641 node_paths=PackedStringArray("warp_filter")]
 material = SubResource("ShaderMaterial_fmrin")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1688,10 +1726,10 @@ script = ExtResource("21_fmrin")
 battle_curves = ExtResource("13_s1eas")
 warp_filter = NodePath("../Color/Warp")
 
-[node name="Color" type="CanvasLayer" parent="InteractionWave"]
+[node name="Color" type="CanvasLayer" parent="InteractionWave" unique_id=1613048614]
 layer = -9
 
-[node name="Warp" type="TextureRect" parent="InteractionWave/Color"]
+[node name="Warp" type="TextureRect" parent="InteractionWave/Color" unique_id=1018042779]
 material = SubResource("ShaderMaterial_ukq60")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1701,13 +1739,13 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_75lg7")
 
-[node name="Cards" type="CanvasLayer" parent="."]
+[node name="Cards" type="CanvasLayer" parent="." unique_id=1985148481]
 layer = 40
 
-[node name="UI+PostP" type="CanvasLayer" parent="."]
+[node name="UI+PostP" type="CanvasLayer" parent="." unique_id=866865301]
 layer = 50
 
-[node name="UI" type="Control" parent="UI+PostP"]
+[node name="UI" type="Control" parent="UI+PostP" unique_id=1422614551]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1716,7 +1754,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Crosshair" type="TextureRect" parent="UI+PostP/UI"]
+[node name="Crosshair" type="TextureRect" parent="UI+PostP/UI" unique_id=1249988595]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1733,7 +1771,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_s1eas")
 stretch_mode = 3
 
-[node name="hand" type="Control" parent="UI+PostP/UI" node_paths=PackedStringArray("hand_anim", "cards_parent", "chand_path")]
+[node name="hand" type="Control" parent="UI+PostP/UI" unique_id=745720636 node_paths=PackedStringArray("hand_anim", "cards_parent", "chand_path")]
 visible = false
 visibility_layer = 3
 layout_mode = 1
@@ -1750,7 +1788,7 @@ hand_anim = NodePath("../../../3D Projection/3D View/ViewMasked/HandNewParent/An
 cards_parent = NodePath("../../../Cards")
 chand_path = NodePath("../../../HandShape")
 
-[node name="draw" type="Button" parent="UI+PostP/UI/hand"]
+[node name="draw" type="Button" parent="UI+PostP/UI/hand" unique_id=1253755295]
 visibility_layer = 2
 layout_mode = 0
 offset_left = 462.0
@@ -1760,7 +1798,7 @@ offset_bottom = 47.225
 text = "draw (temporary)
 "
 
-[node name="get_potion" type="Button" parent="UI+PostP/UI/hand"]
+[node name="get_potion" type="Button" parent="UI+PostP/UI/hand" unique_id=452801507]
 visibility_layer = 2
 layout_mode = 0
 offset_left = 17.0
@@ -1769,7 +1807,7 @@ offset_right = 115.0
 offset_bottom = 206.0
 text = "get potion"
 
-[node name="throw_pot" type="Button" parent="UI+PostP/UI/hand"]
+[node name="throw_pot" type="Button" parent="UI+PostP/UI/hand" unique_id=1815247622]
 visibility_layer = 2
 layout_mode = 1
 anchors_preset = 5
@@ -1782,7 +1820,7 @@ offset_bottom = 37.0
 grow_horizontal = 2
 text = "throw potion"
 
-[node name="end_turn" type="Button" parent="UI+PostP/UI/hand"]
+[node name="end_turn" type="Button" parent="UI+PostP/UI/hand" unique_id=616444689]
 visibility_layer = 2
 layout_mode = 1
 anchors_preset = 5
@@ -1795,7 +1833,7 @@ offset_bottom = 66.0
 grow_horizontal = 2
 text = "end turn"
 
-[node name="throw_self" type="Button" parent="UI+PostP/UI/hand"]
+[node name="throw_self" type="Button" parent="UI+PostP/UI/hand" unique_id=1750953482]
 visibility_layer = 2
 layout_mode = 1
 anchors_preset = 7
@@ -1811,7 +1849,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "throw to self"
 
-[node name="Mana_bar" type="TextureProgressBar" parent="UI+PostP/UI/hand"]
+[node name="Mana_bar" type="TextureProgressBar" parent="UI+PostP/UI/hand" unique_id=308513205]
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = 7
@@ -1832,7 +1870,7 @@ rounded = true
 texture_under = ExtResource("17_y4bcr")
 texture_progress = ExtResource("18_scb0v")
 
-[node name="Potion" type="Button" parent="UI+PostP/UI/hand"]
+[node name="Potion" type="Button" parent="UI+PostP/UI/hand" unique_id=1480012210]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 198.0
@@ -1840,12 +1878,12 @@ offset_right = 172.66177
 offset_bottom = 352.0
 theme = ExtResource("19_48k4y")
 
-[node name="TextureRect" type="Sprite2D" parent="UI+PostP/UI/hand/Potion"]
+[node name="TextureRect" type="Sprite2D" parent="UI+PostP/UI/hand/Potion" unique_id=1570654020]
 position = Vector2(101, 58)
 scale = Vector2(2, 2)
 texture = ExtResource("20_ixr61")
 
-[node name="PlayerLabels" type="Control" parent="UI+PostP/UI"]
+[node name="PlayerLabels" type="Control" parent="UI+PostP/UI" unique_id=138533374]
 visible = false
 anchors_preset = 0
 offset_left = 1.0
@@ -1855,7 +1893,7 @@ offset_bottom = 83.0
 mouse_filter = 1
 script = ExtResource("21_m4mf4")
 
-[node name="Info_label" type="Label" parent="UI+PostP/UI/PlayerLabels"]
+[node name="Info_label" type="Label" parent="UI+PostP/UI/PlayerLabels" unique_id=1203999531]
 layout_mode = 1
 offset_right = 18.0
 offset_bottom = 25.0
@@ -1863,7 +1901,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ljlp1")
 text = "5"
 horizontal_alignment = 1
 
-[node name="Health_bar" parent="UI+PostP/UI" instance=ExtResource("14_yicnn")]
+[node name="Health_bar" parent="UI+PostP/UI" unique_id=123256314 instance=ExtResource("14_yicnn")]
 visible = false
 layout_mode = 1
 offset_left = 3.0
@@ -1873,7 +1911,7 @@ offset_bottom = 16.57
 mouse_filter = 2
 is_player = true
 
-[node name="PopupLabel" type="Label" parent="UI+PostP/UI"]
+[node name="PopupLabel" type="Label" parent="UI+PostP/UI" unique_id=1479999635]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1888,7 +1926,7 @@ horizontal_alignment = 1
 script = ExtResource("13_en4d4")
 letters_per_sec = 200.0
 
-[node name="Game_over_panel" type="Panel" parent="UI+PostP/UI"]
+[node name="Game_over_panel" type="Panel" parent="UI+PostP/UI" unique_id=811838410]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1899,7 +1937,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iq2rp")
 script = ExtResource("16_iq2rp")
 
-[node name="GO_text" type="Label" parent="UI+PostP/UI/Game_over_panel"]
+[node name="GO_text" type="Label" parent="UI+PostP/UI/Game_over_panel" unique_id=414138633]
 layout_mode = 0
 offset_left = 234.385
 offset_top = 149.295
@@ -1908,11 +1946,11 @@ offset_bottom = 194.29501
 scale = Vector2(3.93, 3.93)
 text = "Game Over"
 
-[node name="AbberLayer" type="CanvasLayer" parent="."]
+[node name="AbberLayer" type="CanvasLayer" parent="." unique_id=2104203690]
 layer = 60
 visible = false
 
-[node name="abber" type="ColorRect" parent="AbberLayer"]
+[node name="abber" type="ColorRect" parent="AbberLayer" unique_id=282088181]
 material = SubResource("ShaderMaterial_8g4m7")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1921,10 +1959,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Crunch" type="CanvasLayer" parent="."]
+[node name="Crunch" type="CanvasLayer" parent="." unique_id=233866512]
 layer = 80
 
-[node name="PSX" type="ColorRect" parent="Crunch"]
+[node name="PSX" type="ColorRect" parent="Crunch" unique_id=143155578]
 material = SubResource("ShaderMaterial_g154t")
 anchors_preset = 15
 anchor_right = 1.0
@@ -1933,10 +1971,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PostEffectLayer" type="CanvasLayer" parent="."]
+[node name="PostEffectLayer" type="CanvasLayer" parent="." unique_id=440810969]
 layer = 90
 
-[node name="PostEffects" type="ColorRect" parent="PostEffectLayer"]
+[node name="PostEffects" type="ColorRect" parent="PostEffectLayer" unique_id=1162655404]
 material = SubResource("ShaderMaterial_iq2rp")
 anchors_preset = 15
 anchor_right = 1.0

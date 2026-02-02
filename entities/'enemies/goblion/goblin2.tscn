@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cta7jxti75tme"]
+[gd_scene format=3 uid="uid://cta7jxti75tme"]
 
 [ext_resource type="PackedScene" uid="uid://dv80o7a0f4uou" path="res://entities/'enemies/3D_Enemy.tscn" id="1_bohic"]
 [ext_resource type="Texture2D" uid="uid://bnc2bu1d0mfjw" path="res://Graphics/Sprites/goblion_sheet.png" id="2_tey5k"]
@@ -71,13 +71,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Goblin_3d" instance=ExtResource("1_bohic")]
+[node name="Goblin_3d" unique_id=517766647 instance=ExtResource("1_bohic")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_pw3mf")
 gold_range = Array[int]([1, 3])
 potions = Array[ExtResource("3_bgacx")]([ExtResource("4_jpsn1"), ExtResource("5_mtylk"), ExtResource("6_5ewhd")])
 max_health = 15.0
 
-[node name="Enemy_sprite" parent="." index="0"]
+[node name="Enemy_sprite" parent="." index="0" unique_id=1202053194]
 modulate = Color(0.43137255, 1, 1, 1)
 autoplay = "default"

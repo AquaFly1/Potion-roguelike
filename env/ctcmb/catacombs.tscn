@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cxewjyxiyo7my" path="res://props/transitions/transition_block.tscn" id="12_mw27p"]
 [ext_resource type="PackedScene" uid="uid://cehloeshwkxe6" path="res://interactions/fights/Fight.tscn" id="12_snkmw"]
 [ext_resource type="Resource" uid="uid://blr2kfttbr3u" path="res://interactions/fights/church/1_goblin.tres" id="13_w3wqa"]
-[ext_resource type="Resource" uid="uid://dok1jkn31w1tc" path="res://interactions/fights/church/3_goblins.tres" id="14_w3wqa"]
 [ext_resource type="PackedScene" uid="uid://d07at07jnbomx" path="res://props/chests/vending_machine_3d.tscn" id="17_jqsnb"]
+[ext_resource type="Resource" uid="uid://drnbxpw5c57cu" path="res://interactions/fights/church/big_evil_ass_goblin.tres" id="18_wb1tf"]
 [ext_resource type="AudioStream" uid="uid://35pq6uly8wxj" path="res://Audio/env/ambient_1.ogg" id="21_wb1tf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gepd6"]
@@ -239,7 +239,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37403107)
 
 [node name="HallwayFight" parent="Interactions" unique_id=209255768 node_paths=PackedStringArray("Exits") instance=ExtResource("12_snkmw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.095415, 0, -17.248814)
-possible_interactions = Array[Array]([[ExtResource("14_w3wqa")]])
+possible_interactions = Array[Array]([[ExtResource("18_wb1tf")]])
 Exits = [NodePath("../../doors/IntoHallway")]
 
 [node name="enemy_parent" parent="Interactions/HallwayFight" index="0"]
